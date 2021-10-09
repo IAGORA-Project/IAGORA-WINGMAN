@@ -15,4 +15,9 @@
     <color name="DividerColor">#C2C2C2</color>
     <color name="shimmerColor">#C2C2C2</color>
 
+
+    <!--Font-->
+    <color name="fontGrey">#C4C4C4</color>
+    <color name="text_primary">#020202</color>
+
 </resources>

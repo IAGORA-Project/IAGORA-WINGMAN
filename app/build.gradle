@@ -38,6 +38,25 @@ android {
         viewBinding true
     }
 
+    flavorDimensions "WINGMAN"
+    productFlavors {
+        dev {
+            dimension "WINGMAN"
+            applicationId "com.ssd.iagorawingman_dev"
+            buildConfigField ("String", "BASE_URL", "\"${BASE_URL}\"")
+            buildConfigField ("String", "KEY_CRYPTO_RESPONSE", "\"${KEY_CRYPTO_RESPONSE}\"")
+            buildConfigField ("String", "KEY_CRYPTO_AUTH", "\"${KEY_CRYPTO_AUTH}\"")
+            buildConfigField ("String", "KEY_CRYPTO_DT", "\"${KEY_CRYPTO_DT}\"")
+            buildConfigField ("String", "KEY_SHARED_PREFERENCE_AUTH", "\"${KEY_SHARED_PREFERENCE_AUTH}\"")
+            buildConfigField ("String", "KEY_SHARED_PREFERENCE_DT", "\"${KEY_SHARED_PREFERENCE_DT}\"")
+        }
+        production {
+            dimension "WINGMAN"
+            applicationId "com.ssd.iagorawingman_production"
+            buildConfigField ("String", "BASE_URL", "\"${BASE_URL}\"")
+        }
+    }
+
 }
 
 dependencies {
@@ -46,6 +65,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

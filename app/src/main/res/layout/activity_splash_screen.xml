@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    tools:context=".ui.auth.splash_screen.SplashScreenActivity">
+
+    <TextView
+        android:id="@+id/tvTitleSplashScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IAGORA"
+        android:theme="@style/TextViewBold.OpenSans_25sp_020202"
+        android:textColor="@color/redPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="177dp" />
+
+    <TextView
+        android:id="@+id/tvTitleWingman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:theme="@style/TextViewBold.OpenSans_25sp_020202"
+        android:text="Wingman"
+        android:textColor="@color/redPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="177dp" />
+</LinearLayout>
