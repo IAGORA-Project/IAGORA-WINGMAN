@@ -19,6 +19,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IAGORAWingman">
         <activity
+            android:name=".ui.pasar.add_product.AddProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.pasar.list_product_pasar.ListProductPasarActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.pasar.list_pasar.ListPasarActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.chat.ChatActivity"
             android:exported="true" />
         <activity

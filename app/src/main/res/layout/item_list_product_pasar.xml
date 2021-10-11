@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="10dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivCoverProduk"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="@dimen/activity_horizontal_margin_minus"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin_minus"
+            android:layout_marginTop="@dimen/activity_horizontal_margin_minus"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_background_home"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.TopRadius" />
+
+        <TextView
+            android:id="@+id/tvTitleProduk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:theme="@style/TextViewReguler.OpenSans_14sp_020202"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivCoverProduk"
+            tools:text="Product Name " />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:maxLines="1"
+            tools:text="Rp. 60.000"
+            android:theme="@style/TextViewBold.OpenSans_15sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleProduk" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

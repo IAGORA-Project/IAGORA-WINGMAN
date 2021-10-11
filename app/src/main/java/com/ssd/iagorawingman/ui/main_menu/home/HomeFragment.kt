@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.databinding.FragmentHomeBinding
 import com.ssd.iagorawingman.ui.chat.ChatActivity
+import com.ssd.iagorawingman.ui.pasar.list_pasar.ListPasarActivity
 import com.ssd.iagorawingman.ui.process_order.ProcessOrderActivity
 
 class HomeFragment : Fragment() {
@@ -32,15 +33,6 @@ class HomeFragment : Fragment() {
         handleAction()
     }
 
-    private fun handleAction(){
-        binding.incCardInfomration.cvFinishOrder.setOnClickListener {
-            ProcessOrderActivity.newInstance(requireContext(), 3)
-        }
-
-        binding.ivButtonChat.setOnClickListener {
-            ChatActivity.newInstance(requireContext())
-        }
-    }
 
     override fun onResume() {
         super.onResume()
@@ -56,6 +48,26 @@ class HomeFragment : Fragment() {
         val window = requireActivity().window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(Color.WHITE);
+    }
+
+    private fun handleAction(){
+        binding.incCardInfomration.cvFinishOrder.setOnClickListener {
+            ProcessOrderActivity.newInstance(requireContext(), 3)
+        }
+
+        binding.ivButtonChat.setOnClickListener {
+            ChatActivity.newInstance(requireContext())
+        }
+
+        binding.incMenuWingman.PasarGroup.setOnClickListener {
+            ProcessOrderActivity.newInstance(requireContext(), 0)
+        }
+
+        binding.incMenuWingman.btnPasar.setOnClickListener {
+            startActivity(Intent(context, ListPasarActivity::class.java))
+        }
+
+
     }
 
 }
