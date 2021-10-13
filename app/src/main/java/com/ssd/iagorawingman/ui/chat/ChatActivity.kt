@@ -9,13 +9,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.ssd.iagorawingman.databinding.ActivityChatBinding
 import com.ssd.iagorawingman.ui.chat.finished_chat.FinishedChatFragment
 import com.ssd.iagorawingman.ui.chat.ongoing.OnGoingFragment
-import com.ssd.iagorawingman.ui.process_order.ProcessOrderActivity
 import com.ssd.iagorawingman.ui.process_order.ProcessOrderTabLayoutAdapter
-import com.ssd.iagorawingman.ui.process_order.finished.FinishedFragment
-import com.ssd.iagorawingman.ui.process_order.on_process.OnProcessFragment
-import com.ssd.iagorawingman.ui.process_order.paid.PaidFragment
-import com.ssd.iagorawingman.ui.process_order.sent.SentFragment
-
 class ChatActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityChatBinding

@@ -1,0 +1,9 @@
+package com.ssd.iagorawingman.data.source.local.model
+
+
+import com.google.gson.annotations.SerializedName
+
+data class ImageTakeCamera(
+    @SerializedName("imageName") var imageName: String? = null,
+    @SerializedName("imagePath") var imagePath: String? = null,
+)

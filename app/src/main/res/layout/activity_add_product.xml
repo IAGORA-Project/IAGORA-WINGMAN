@@ -33,6 +33,7 @@
             android:padding="15dp">
 
             <include
+                android:id="@+id/incAddImages"
                 layout="@layout/layout_add_picture_product_pasar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
