@@ -4,9 +4,8 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.*
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.os.FileUtils
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ssd.iagora_user.data.source.local.shared_view_model.SharedViewModel
@@ -34,12 +33,10 @@ import okhttp3.RequestBody
 import java.io.ByteArrayOutputStream
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.asRequestBody
-import android.os.Environment
 import okhttp3.RequestBody.Companion.toRequestBody
 import android.provider.MediaStore.MediaColumns
-
-
-
+import android.widget.Toast
+import com.ssd.iagorawingman.utils.Loader
 
 
 class AlbumsCameraActivity : AppCompatActivity() {
@@ -58,6 +55,7 @@ class AlbumsCameraActivity : AppCompatActivity() {
         binding = ActivityAlbumCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        Loader.handleLoading(this)
         getImageSelected()
         getImageSelected2()
         handleView()
@@ -114,6 +112,7 @@ class AlbumsCameraActivity : AppCompatActivity() {
         return imageFile
     }
 
+    val multiPart: ArrayList<MultipartBody.Part> = ArrayList()
 
 
     private fun handleView(){
@@ -123,8 +122,8 @@ class AlbumsCameraActivity : AppCompatActivity() {
         }
 
         binding.incHeader.tvNext.setOnClickListener {
+            Loader.progressDialog?.show()
 
-            val multiPart: ArrayList<MultipartBody.Part> = ArrayList()
 //            tempImageSelected2?.forEach {
 //                val bitmap = getImageResized(this, it.uri!!)
 //                val files = File(it.uri.toString())
@@ -132,36 +131,39 @@ class AlbumsCameraActivity : AppCompatActivity() {
 //                val mFile: RequestBody = newFile.asRequestBody("image/*".toMediaTypeOrNull())
 //                multiPart.add(MultipartBody.Part.createFormData("img", it.imageName, mFile))
 //            }
-
-            tempImageSelected?.forEach {
-//                val bitmap = getImageResized(this, it.uri!!)
-//                val files = File(it.uri.toString())
-//                val newFile =  this.persistImage(bitmap, files.name)
-//                val mFile: RequestBody = newFile.asRequestBody("image/*".toMediaTypeOrNull())
-
-
-                val sourceUri = Uri.fromFile(File(it.imagePath))
-                println("jerfh839h $sourceUri")
+            Handler(Looper.getMainLooper()).postDelayed({
+                tempImageSelected?.forEach {
+                    val bitmap = getImageResized(this, it.uri!!)
+                    val newFile =  this.persistImage(bitmap, it.imageName!!)
+                    val mFile: RequestBody =  newFile.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+                    multiPart.add(MultipartBody.Part.createFormData("img", it.imageName, mFile))
+                }
+            }, 500)
 
 
 
-                val files = File((sourceUri.path), it.imageName)
-                val mFile: RequestBody =  files.path.toRequestBody("image/*".toMediaTypeOrNull())
+            Handler(Looper.getMainLooper()).postDelayed({
+                pasarViewModel.vmAddPhoto(multiPart).observe(this, {
+                    it.getContentIfNotHandled().let { res ->
+                        when(res?.status) {
+                            Status.LOADING -> {
+                                println("LOAAADINGGGG")
+                            }
+                            Status.SUCCESS -> {
+                                println("YEESSSHHHHHHHHHHH")
+                                Log.d("COBABABABAAA", "TEST")
+                                Toast.makeText(this, "sdjshj", Toast.LENGTH_SHORT).show()
+                                Loader.progressDialog?.dismiss()
+                                finish()
+                            }
+                            Status.ERROR -> {
 
-
-                multiPart.add(MultipartBody.Part.createFormData("img", files.name, mFile))
-            }
-
-
-            pasarViewModel.vmAddPhoto(multiPart).observe(this, {
-                it.getContentIfNotHandled().let { res ->
-                    when(res?.status) {
-                        Status.SUCCESS -> {
-                            println("YEESSSHHHHHHHHHHH")
+                                println("EEERRORRRR")
+                            }
                         }
                     }
-                }
-            })
+                })
+            }, 1000)
 
         }
     }

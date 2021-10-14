@@ -71,19 +71,20 @@ class AlbumsFragment : Fragment(), AlbumsAdapter.ItemCallBackAdapter {
         val columnIndexID: Int
         val images = ArrayList<Image>()
         val allImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-        val projection = arrayOf(MediaStore.Images.ImageColumns.DATA, MediaStore.Images.Media.DISPLAY_NAME)
+        val projection = arrayOf(MediaStore.Images.Media._ID, MediaStore.Images.Media.DISPLAY_NAME)
         var cursor = requireActivity().contentResolver.query(allImageUri, projection, null, null, MediaStore.Images.ImageColumns.DATE_ADDED + " DESC")
         var imageId: Long
 
         try{
             cursor!!.moveToFirst()
-//            columnIndexID = cursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID)
+            columnIndexID = cursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID)
 
             do{
                 val image = Image()
-//                val uriImage = Uri.withAppendedPath(allImageUri, "" + cursor.getLong(columnIndexID))
+                val uriImage = Uri.withAppendedPath(allImageUri, "" + cursor.getLong(columnIndexID))
 
-                image.imagePath = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA))
+                image.uri = uriImage
+                image.imagePath = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID))
                 image.imageName = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DISPLAY_NAME))
                 images.add(image)
             }while (cursor.moveToNext())

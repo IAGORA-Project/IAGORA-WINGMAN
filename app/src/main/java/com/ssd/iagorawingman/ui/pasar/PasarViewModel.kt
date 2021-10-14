@@ -1,6 +1,7 @@
 package com.ssd.iagorawingman.ui.pasar
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -102,23 +103,32 @@ class PasarViewModel(
     }
 
 
-    fun vmAddPhoto(photo: ArrayList<MultipartBody.Part>): LiveData<EventWrapper<Resource<ResAddPhoto>>>{
+    fun vmAddPhoto(photo: ArrayList<MultipartBody.Part>): LiveData<EventWrapper<Resource<ResAddPhoto>>> {
+        addphoto.postValue(EventWrapper(Resource.loading("true", null)))
 
         println("KIRIMAPA $photo")
         pasarRepository.postAddPhoto(photo).enqueue(object : Callback<ResAddPhoto> {
             override fun onResponse(call: Call<ResAddPhoto>, response: Response<ResAddPhoto>) {
                 val body = response.body()
 
+               Log.d("OKEEEMANTAP", "")
+
+                println("DDHJDHDJDH $response")
+
                 if (response.code() == 200) {
                     Log.d("berhasilllllADDPHOTO", "$body")
+                    addphoto.postValue(EventWrapper(Resource.success(body)))
                 }else{
                     val json = JSONObject(response.errorBody()?.string())
                     Log.d("ERRORNIHAddphoto", "$json")
+                    addphoto.postValue(EventWrapper(Resource.error("Gagal tambah produk", null)))
+
                 }
             }
 
             override fun onFailure(call: Call<ResAddPhoto>, t: Throwable) {
                 Log.d("gagalphoto", "$t")
+                addphoto.postValue(EventWrapper(Resource.error("Terjadi Kesalahan.", null)))
             }
 
         })

@@ -28,7 +28,7 @@ class AlbumsAdapter(
 
         Glide
             .with(holder.itemView.context)
-            .load(data.imagePath)
+            .load(data.uri)
             .into(holder.binding.ivImageItem)
 
 
