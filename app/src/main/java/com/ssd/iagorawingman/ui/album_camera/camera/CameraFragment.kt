@@ -27,9 +27,9 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.random.Random
 import android.os.FileUtils
+import com.ssd.iagora_user.data.source.local.shared_view_model.SharedViewModel
 import okhttp3.RequestBody
-
-
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class CameraFragment : Fragment() {
@@ -40,6 +40,8 @@ class CameraFragment : Fragment() {
     private lateinit var cameraExecutor: ExecutorService
     private var takePhotos: ArrayList<ImageTakeCamera> = ArrayList()
     private lateinit var photoListAdapter: PhotoListAdapter
+    private val sharedViewModel: SharedViewModel by viewModel()
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         cameraExecutor = Executors.newSingleThreadExecutor()
@@ -155,7 +157,15 @@ class CameraFragment : Fragment() {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
 
-                    takePhotos.add(ImageTakeCamera(imagePath = photoFile.path, imageName = photoFile.name))
+                    println("PSOPSOPSOS $savedUri")
+
+
+                    takePhotos.add(ImageTakeCamera(imagePath = photoFile.path, imageName = photoFile.name,
+                        uri = savedUri
+                    ))
+
+                    sharedViewModel.SharedImageSelected2(takePhotos)
+
 
                     Loader.progressDialog?.dismiss()
                     Toast.makeText(context, "Berhasil Mengambil Foto", Toast.LENGTH_SHORT).show()

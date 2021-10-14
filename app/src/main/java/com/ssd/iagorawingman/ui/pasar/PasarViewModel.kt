@@ -7,10 +7,12 @@ import androidx.lifecycle.ViewModel
 import com.ssd.iagorawingman.BuildConfig
 import com.ssd.iagorawingman.data.source.local.shared_handle.auth.SharedAuthRepository
 import com.ssd.iagorawingman.data.source.remote.api_handle.pasar.PasarRepository
+import com.ssd.iagorawingman.data.source.remote.response.ResAddPhoto
 import com.ssd.iagorawingman.data.source.remote.response.ResGetListPasar
 import com.ssd.iagorawingman.data.source.remote.response.ResGetListProductPasar
 import com.ssd.iagorawingman.utils.EventWrapper
 import com.ssd.iagorawingman.utils.Resource
+import okhttp3.MultipartBody
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,6 +26,7 @@ class PasarViewModel(
 
     val listPasar: MutableLiveData<EventWrapper<Resource<ResGetListPasar>>> = MutableLiveData()
     val listProductPasar: MutableLiveData<EventWrapper<Resource<ResGetListProductPasar>>> = MutableLiveData()
+    val addphoto: MutableLiveData<EventWrapper<Resource<ResAddPhoto>>> = MutableLiveData()
 
 
     fun vmGetListPasar(): LiveData<EventWrapper<Resource<ResGetListPasar>>> {
@@ -98,4 +101,28 @@ class PasarViewModel(
         return listProductPasar
     }
 
+
+    fun vmAddPhoto(photo: ArrayList<MultipartBody.Part>): LiveData<EventWrapper<Resource<ResAddPhoto>>>{
+
+        println("KIRIMAPA $photo")
+        pasarRepository.postAddPhoto(photo).enqueue(object : Callback<ResAddPhoto> {
+            override fun onResponse(call: Call<ResAddPhoto>, response: Response<ResAddPhoto>) {
+                val body = response.body()
+
+                if (response.code() == 200) {
+                    Log.d("berhasilllllADDPHOTO", "$body")
+                }else{
+                    val json = JSONObject(response.errorBody()?.string())
+                    Log.d("ERRORNIHAddphoto", "$json")
+                }
+            }
+
+            override fun onFailure(call: Call<ResAddPhoto>, t: Throwable) {
+                Log.d("gagalphoto", "$t")
+            }
+
+        })
+
+        return addphoto
+    }
 }
