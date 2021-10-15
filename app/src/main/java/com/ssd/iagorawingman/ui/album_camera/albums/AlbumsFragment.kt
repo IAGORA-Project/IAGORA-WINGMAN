@@ -83,7 +83,7 @@ class AlbumsFragment : Fragment(), AlbumsAdapter.ItemCallBackAdapter {
                 val image = Image()
                 val uriImage = Uri.withAppendedPath(allImageUri, "" + cursor.getLong(columnIndexID))
 
-                image.uri = uriImage
+                image.imageUri = uriImage
                 image.imagePath = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID))
                 image.imageName = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DISPLAY_NAME))
                 images.add(image)
@@ -95,6 +95,8 @@ class AlbumsFragment : Fragment(), AlbumsAdapter.ItemCallBackAdapter {
 
         return images
     }
+
+
 
     override fun onSelectedImage(result: ArrayList<Image>) {
         selectedImage = result

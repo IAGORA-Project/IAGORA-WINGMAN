@@ -35,6 +35,7 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import android.provider.MediaStore.MediaColumns
+import android.view.View
 import android.widget.Toast
 import com.ssd.iagorawingman.utils.Loader
 
@@ -48,6 +49,7 @@ class AlbumsCameraActivity : AppCompatActivity() {
     private var tempImageSelected: ArrayList<Image>? = null
     private var tempImageSelected2: ArrayList<ImageTakeCamera>? = null
     private val pasarViewModel: PasarViewModel by viewModel()
+    val multiPart: ArrayList<MultipartBody.Part> = ArrayList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,6 +67,14 @@ class AlbumsCameraActivity : AppCompatActivity() {
     private fun getImageSelected() {
         sharedViewModel.imageSelected.observe(this, {data ->
             tempImageSelected = data
+
+            println("JKHJFHJFHJF ${data.size }")
+            println("JKHJFHJFHJF2 ${data }")
+            if(data.size > 0) {
+                binding.tabs.visibility = View.GONE
+            }else{
+                binding.tabs.visibility = View.VISIBLE
+            }
         })
     }
 
@@ -100,7 +110,7 @@ class AlbumsCameraActivity : AppCompatActivity() {
 
     fun Context.persistImage(bitmap: Bitmap, name: String): File {
         val filesDir: File = this.filesDir
-        val imageFile = File(filesDir, "$name.jpg")
+        val imageFile = File(filesDir, name)
         var os: OutputStream? = null
         try {
             os = FileOutputStream(imageFile)
@@ -111,8 +121,6 @@ class AlbumsCameraActivity : AppCompatActivity() {
         }
         return imageFile
     }
-
-    val multiPart: ArrayList<MultipartBody.Part> = ArrayList()
 
 
     private fun handleView(){
@@ -131,15 +139,16 @@ class AlbumsCameraActivity : AppCompatActivity() {
 //                val mFile: RequestBody = newFile.asRequestBody("image/*".toMediaTypeOrNull())
 //                multiPart.add(MultipartBody.Part.createFormData("img", it.imageName, mFile))
 //            }
+
+
             Handler(Looper.getMainLooper()).postDelayed({
                 tempImageSelected?.forEach {
-                    val bitmap = getImageResized(this, it.uri!!)
+                    val bitmap = getImageResized(this, it.imageUri!!)
                     val newFile =  this.persistImage(bitmap, it.imageName!!)
                     val mFile: RequestBody =  newFile.asRequestBody("multipart/form-data".toMediaTypeOrNull())
                     multiPart.add(MultipartBody.Part.createFormData("img", it.imageName, mFile))
                 }
             }, 500)
-
 
 
             Handler(Looper.getMainLooper()).postDelayed({
@@ -193,5 +202,10 @@ class AlbumsCameraActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         println("SOJSIOSJS ${permissions}")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        sharedViewModel.SharedImageSelected(ArrayList())
     }
 }

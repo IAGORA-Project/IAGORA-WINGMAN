@@ -17,7 +17,6 @@ import com.ssd.iagorawingman.utils.Constants
 import android.net.Uri
 import androidx.camera.core.*
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ssd.iagorawingman.data.source.local.model.ImageTakeCamera
 import com.ssd.iagorawingman.utils.Loader
 import com.ssd.iagorawingman.utils.Permission
 import java.io.File
@@ -26,19 +25,19 @@ import java.util.*
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.random.Random
-import android.os.FileUtils
 import com.ssd.iagora_user.data.source.local.shared_view_model.SharedViewModel
-import okhttp3.RequestBody
+import com.ssd.iagorawingman.data.source.local.model.Image
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.collections.ArrayList
 
 
-class CameraFragment : Fragment() {
+class CameraFragment : Fragment(), PhotoListAdapter.ItemCallBackAdapter {
 
     private lateinit var binding: FragmentCameraBinding
     private var imageCapture: ImageCapture? = null
     private lateinit var outputDirectory: File
     private lateinit var cameraExecutor: ExecutorService
-    private var takePhotos: ArrayList<ImageTakeCamera> = ArrayList()
+    private var takePhotos: ArrayList<Image> = ArrayList()
     private lateinit var photoListAdapter: PhotoListAdapter
     private val sharedViewModel: SharedViewModel by viewModel()
 
@@ -157,36 +156,29 @@ class CameraFragment : Fragment() {
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
 
-                    println("PSOPSOPSOS $savedUri")
+                    takePhotos.add(Image(imageUri = savedUri, imageName = photoFile.name))
+                    sharedViewModel.SharedImageSelected(takePhotos)
 
-
-                    takePhotos.add(ImageTakeCamera(imagePath = photoFile.path, imageName = photoFile.name,
-                        uri = savedUri
-                    ))
-
-                    sharedViewModel.SharedImageSelected2(takePhotos)
-
-
-                    Loader.progressDialog?.dismiss()
                     Toast.makeText(context, "Berhasil Mengambil Foto", Toast.LENGTH_SHORT).show()
-
-
-
-                    photoListAdapter = PhotoListAdapter(takePhotos)
-                    binding.rvListPhoto.apply {
-                        adapter = photoListAdapter
-                        layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL ,false)
-                    }
+                    handleAdapter(takePhotos)
+                    Loader.progressDialog?.dismiss()
                 }
 
                 override fun onError(exception: ImageCaptureException) {
                     Toast.makeText(context, "Gagal mengambil foto", Toast.LENGTH_SHORT).show()
                     Loader.progressDialog?.dismiss()
-
                 }
 
             }
         )
+    }
+
+    private fun handleAdapter(data: ArrayList<Image>) {
+        photoListAdapter = PhotoListAdapter(data, this)
+        binding.rvListPhoto.apply {
+            adapter = photoListAdapter
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL ,false)
+        }
     }
 
     private fun checkPermissions(): Boolean {
@@ -200,4 +192,9 @@ class CameraFragment : Fragment() {
 
         cameraExecutor.shutdown()
     }
+
+    override fun deletePhoto(result: Image) {
+        sharedViewModel.SharedImageSelected(takePhotos)
+    }
+
 }
