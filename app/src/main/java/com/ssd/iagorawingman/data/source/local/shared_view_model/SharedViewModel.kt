@@ -12,16 +12,16 @@ class SharedViewModel(
 ): ViewModel() {
 
     var imageSelected: MutableLiveData<ArrayList<Image>> = MutableLiveData()
-    var imageSelected2: MutableLiveData<ArrayList<ImageTakeCamera>> = MutableLiveData()
+    var addProductImage: MutableLiveData<ArrayList<Image>> = MutableLiveData()
 
 
-    fun SharedImageSelected(data: ArrayList<Image>?) {
+    fun TempImageSelected(data: ArrayList<Image>?) {
         println("WOKWOKWWOWWW $data")
         imageSelected.value = data
     }
 
-    fun SharedImageSelected2(data: ArrayList<ImageTakeCamera>) {
-        println("WOKWOKWWOWWW $data")
-        imageSelected2.value = data
+    fun AddProductImage(data: ArrayList<Image>?) {
+        addProductImage.value = data
     }
+
 }

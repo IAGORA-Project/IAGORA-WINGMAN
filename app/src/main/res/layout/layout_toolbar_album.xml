@@ -6,7 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/all_padding"
     android:background="@color/white"
     android:elevation="2dp">
 
@@ -14,6 +13,7 @@
         android:id="@+id/ivBackButton"
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:layout_margin="@dimen/all_padding"
         android:src="@drawable/ic_close"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,8 @@
     <TextView
         android:id="@+id/tvNext"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:padding="@dimen/all_padding"
         android:theme="@style/TextViewSemiBold.OpenSans_15sp_020202"
         android:textColor="@color/redPrimary"
         app:layout_constraintBottom_toBottomOf="parent"

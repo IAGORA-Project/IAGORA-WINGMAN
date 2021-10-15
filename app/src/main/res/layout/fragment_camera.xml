@@ -7,14 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.album_camera.camera.CameraFragment">
 
+
     <include
         android:id="@+id/incCameraView"
         layout="@layout/layout_camera_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/rvListPhoto"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <ImageButton
@@ -25,10 +29,11 @@
         android:background="@null"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_shutter_camera"
+        app:layout_constraintBottom_toTopOf="@+id/rvListPhoto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/incCameraView" />
-
+        app:layout_constraintTop_toBottomOf="@+id/incCameraView"
+        app:layout_constraintVertical_bias="0.038" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvListPhoto"

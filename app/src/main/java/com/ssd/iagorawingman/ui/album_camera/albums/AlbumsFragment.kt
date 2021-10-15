@@ -99,9 +99,7 @@ class AlbumsFragment : Fragment(), AlbumsAdapter.ItemCallBackAdapter {
 
 
     override fun onSelectedImage(result: ArrayList<Image>) {
-        selectedImage = result
-        sharedViewModel.SharedImageSelected(result)
-       println("WOKWOWJOIWJIOW ${result}")
+        sharedViewModel.TempImageSelected(result)
     }
 
 }

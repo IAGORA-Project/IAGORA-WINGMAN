@@ -136,41 +136,46 @@ class CameraFragment : Fragment(), PhotoListAdapter.ItemCallBackAdapter {
 
 
     private fun takePhoto() {
-        Loader.progressDialog?.show()
-        val imageCapture = imageCapture ?: return
-        val photoFile = File(
-            outputDirectory,
-            SimpleDateFormat(
-                Constants.FILE_NAME_FORMAT + Random.nextInt(), Locale.getDefault()
-            ).format(System.currentTimeMillis()) + ".jpg")
+        if(takePhotos.size < 9) {
+            Loader.progressDialog?.show()
+            val imageCapture = imageCapture ?: return
+            val photoFile = File(
+                outputDirectory,
+                SimpleDateFormat(
+                    Constants.FILE_NAME_FORMAT + Random.nextInt(), Locale.getDefault()
+                ).format(System.currentTimeMillis()) + ".jpg")
 
-        val outputOption = ImageCapture
-            .OutputFileOptions
-            .Builder(photoFile)
-            .build()
+            val outputOption = ImageCapture
+                .OutputFileOptions
+                .Builder(photoFile)
+                .build()
 
-        imageCapture.takePicture(
-            outputOption, ContextCompat.getMainExecutor(requireActivity()),
-            object : ImageCapture.OnImageSavedCallback {
+            imageCapture.takePicture(
+                outputOption, ContextCompat.getMainExecutor(requireActivity()),
+                object : ImageCapture.OnImageSavedCallback {
 
-                override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                    val savedUri = Uri.fromFile(photoFile)
+                    override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                        val savedUri = Uri.fromFile(photoFile)
 
-                    takePhotos.add(Image(imageUri = savedUri, imageName = photoFile.name))
-                    sharedViewModel.SharedImageSelected(takePhotos)
+                        takePhotos.add(Image(imageUri = savedUri, imageName = photoFile.name))
+                        sharedViewModel.TempImageSelected(takePhotos)
 
-                    Toast.makeText(context, "Berhasil Mengambil Foto", Toast.LENGTH_SHORT).show()
-                    handleAdapter(takePhotos)
-                    Loader.progressDialog?.dismiss()
+                        Toast.makeText(context, "Berhasil Mengambil Foto", Toast.LENGTH_SHORT).show()
+                        handleAdapter(takePhotos)
+                        Loader.progressDialog?.dismiss()
+                    }
+
+                    override fun onError(exception: ImageCaptureException) {
+                        Toast.makeText(context, "Gagal mengambil foto", Toast.LENGTH_SHORT).show()
+                        Loader.progressDialog?.dismiss()
+                    }
+
                 }
-
-                override fun onError(exception: ImageCaptureException) {
-                    Toast.makeText(context, "Gagal mengambil foto", Toast.LENGTH_SHORT).show()
-                    Loader.progressDialog?.dismiss()
-                }
-
-            }
-        )
+            )
+        }else{
+            println("MAKSIMALLLLLL $takePhotos")
+            Toast.makeText(context, "Maksimal hanya 9 foto.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun handleAdapter(data: ArrayList<Image>) {
@@ -194,7 +199,7 @@ class CameraFragment : Fragment(), PhotoListAdapter.ItemCallBackAdapter {
     }
 
     override fun deletePhoto(result: Image) {
-        sharedViewModel.SharedImageSelected(takePhotos)
+        sharedViewModel.TempImageSelected(takePhotos)
     }
 
 }

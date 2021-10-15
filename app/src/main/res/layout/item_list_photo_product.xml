@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/ivItemPhoto"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_margin="5dp"
         android:scaleType="centerCrop"
         android:src="@mipmap/ic_launcher"
@@ -21,8 +21,8 @@
 
     <ImageView
         android:id="@+id/ivDeletePhoto"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:src="@drawable/ic_close_round_red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
