@@ -17,10 +17,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="false"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddProduct"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/incHeader">
@@ -46,31 +47,32 @@
                 android:id="@+id/rvListPhotoProduct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
-                tools:listitem="@layout/item_list_photo_product"
+                android:visibility="gone"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/incAddImages" />
+                app:layout_constraintTop_toBottomOf="@+id/incAddImages"
+                tools:listitem="@layout/item_list_photo_product" />
 
 
             <TextView
                 android:id="@+id/tvTitleNamaProduk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:theme="@style/TextViewSemiBold.OpenSans_15sp_020202"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rvListPhotoProduct"
                 tools:text="Title Nama Produk" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilProductName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="7dp"
                 android:hint="Nama Produk"
                 app:boxCornerRadiusBottomEnd="5dp"
                 app:boxCornerRadiusBottomStart="5dp"
@@ -88,15 +90,133 @@
                     android:id="@+id/editText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingVertical="15dp"
                     android:inputType="text"
                     android:maxLength="70"
+                    android:paddingVertical="15dp"
                     tools:ignore="KeyboardInaccessibleWidget" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
+
+            <TextView
+                android:id="@+id/tvTitleKategoriProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:theme="@style/TextViewSemiBold.OpenSans_15sp_020202"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilProductName"
+                tools:text="Title" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDropDownKategori"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="5dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
+                app:boxStrokeWidthFocused="1.5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleKategoriProduct">
+
+                <AutoCompleteTextView
+                    android:id="@+id/dropdownChildKategoriProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:dropDownHeight="200dp"
+                    android:inputType="none"
+                    android:paddingVertical="15dp"
+                    android:text="Pilih Kategori Produk" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/tvTitleTypeProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:theme="@style/TextViewSemiBold.OpenSans_15sp_020202"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilDropDownKategori"
+                tools:text="Title" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDropDownTypeProduct"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                app:boxCornerRadiusBottomEnd="5dp"
+                app:boxCornerRadiusBottomStart="5dp"
+                app:boxCornerRadiusTopEnd="5dp"
+                app:boxCornerRadiusTopStart="5dp"
+                app:boxStrokeWidthFocused="1.5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleTypeProduct">
+
+                <AutoCompleteTextView
+                    android:id="@+id/dropdownChildTypeProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:dropDownHeight="200dp"
+                    android:inputType="none"
+                    android:paddingVertical="15dp"
+                    android:text="Pilih Tipe Produk" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/tvTitleHarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:theme="@style/TextViewSemiBold.OpenSans_15sp_020202"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilDropDownTypeProduct"
+                tools:text="Title" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvListVariantPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleHarga"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_list_variant_price" />
+
+
+            <TextView
+                android:id="@+id/tvAddVariantPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/redPrimary"
+                android:theme="@style/TextViewSemiBold.OpenSans_15sp_020202"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvListVariantPrice"
+                tools:text="Title" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+
+    <include
+        android:id="@+id/btnAddProduct"
+        layout="@layout/layout_button_primary_with_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

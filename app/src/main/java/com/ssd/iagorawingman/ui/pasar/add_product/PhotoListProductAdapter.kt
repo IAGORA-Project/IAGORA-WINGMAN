@@ -11,6 +11,7 @@ class PhotoListProductAdapter(
     private val listData: ArrayList<Image>
 ): RecyclerView.Adapter<PhotoListProductAdapter.ViewHolder>() {
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PhotoListProductAdapter.ViewHolder (
         ItemListPhotoProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
