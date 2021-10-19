@@ -26,7 +26,7 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.random.Random
 import com.ssd.iagora_user.data.source.local.shared_view_model.SharedViewModel
-import com.ssd.iagorawingman.data.source.local.model.Image
+import com.ssd.iagorawingman.data.source.local.model.ImageModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.collections.ArrayList
 
@@ -37,7 +37,7 @@ class CameraFragment : Fragment(), PhotoListAdapter.ItemCallBackAdapter {
     private var imageCapture: ImageCapture? = null
     private lateinit var outputDirectory: File
     private lateinit var cameraExecutor: ExecutorService
-    private var takePhotos: ArrayList<Image> = ArrayList()
+    private var takePhotos: ArrayList<ImageModel> = ArrayList()
     private lateinit var photoListAdapter: PhotoListAdapter
     private val sharedViewModel: SharedViewModel by viewModel()
 
@@ -157,7 +157,7 @@ class CameraFragment : Fragment(), PhotoListAdapter.ItemCallBackAdapter {
                     override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                         val savedUri = Uri.fromFile(photoFile)
 
-                        takePhotos.add(Image(imageUri = savedUri, imageName = photoFile.name))
+                        takePhotos.add(ImageModel(imageUri = savedUri, imageName = photoFile.name))
                         sharedViewModel.TempImageSelected(takePhotos)
 
                         Toast.makeText(context, "Berhasil Mengambil Foto", Toast.LENGTH_SHORT).show()
@@ -178,7 +178,7 @@ class CameraFragment : Fragment(), PhotoListAdapter.ItemCallBackAdapter {
         }
     }
 
-    private fun handleAdapter(data: ArrayList<Image>) {
+    private fun handleAdapter(data: ArrayList<ImageModel>) {
         photoListAdapter = PhotoListAdapter(data, this)
         binding.rvListPhoto.apply {
             adapter = photoListAdapter
@@ -198,7 +198,7 @@ class CameraFragment : Fragment(), PhotoListAdapter.ItemCallBackAdapter {
         cameraExecutor.shutdown()
     }
 
-    override fun deletePhoto(result: Image) {
+    override fun deletePhoto(result: ImageModel) {
         sharedViewModel.TempImageSelected(takePhotos)
     }
 

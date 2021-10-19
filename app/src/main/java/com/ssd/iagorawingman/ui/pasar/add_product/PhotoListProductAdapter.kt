@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.ssd.iagorawingman.data.source.local.model.Image
+import com.ssd.iagorawingman.data.source.local.model.ImageModel
 import com.ssd.iagorawingman.databinding.ItemListPhotoProductBinding
 
 class PhotoListProductAdapter(
-    private val listData: ArrayList<Image>
+    private val listData: ArrayList<ImageModel>,
 ): RecyclerView.Adapter<PhotoListProductAdapter.ViewHolder>() {
 
 
@@ -33,5 +33,4 @@ class PhotoListProductAdapter(
     override fun getItemCount(): Int = listData.size
 
     class ViewHolder(val binding: ItemListPhotoProductBinding): RecyclerView.ViewHolder(binding.root)
-
 }

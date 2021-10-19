@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ssd.iagora_user.data.source.local.shared_view_model.SharedViewModel
-import com.ssd.iagorawingman.data.source.local.model.Image
+import com.ssd.iagorawingman.data.source.local.model.ImageModel
 import com.ssd.iagorawingman.databinding.ActivityAlbumCameraBinding
 import com.ssd.iagorawingman.ui.album_camera.albums.AlbumsFragment
 import com.ssd.iagorawingman.ui.album_camera.camera.CameraFragment
@@ -25,14 +25,14 @@ class AlbumsCameraActivity : AppCompatActivity() {
     private val titleTabLayout = mutableListOf<String>()
     private val listFragment = mutableListOf<Fragment>()
     private val sharedViewModel: SharedViewModel by viewModel()
-    private var tempImageSelected: ArrayList<Image>? = null
-    private var imageProductSelected: ArrayList<Image> = ArrayList()
+    private var tempImageModelSelected: ArrayList<ImageModel>? = null
+    private var imageModelProductSelected: ArrayList<ImageModel> = ArrayList()
     val multiPart: ArrayList<MultipartBody.Part> = ArrayList()
 
 
 
     companion object {
-        fun newInstance(context: Context, data: ArrayList<Image>) {
+        fun newInstance(context: Context, data: ArrayList<ImageModel>) {
             val dataIntent = Intent(context, AlbumsCameraActivity::class.java)
             dataIntent.putExtra("image-product", data)
             context.startActivity(dataIntent)
@@ -40,7 +40,7 @@ class AlbumsCameraActivity : AppCompatActivity() {
     }
 
     private fun initBundle() {
-        imageProductSelected = intent.getParcelableArrayListExtra("image-product")!!
+        imageModelProductSelected = intent.getParcelableArrayListExtra("image-product")!!
     }
 
 
@@ -58,9 +58,9 @@ class AlbumsCameraActivity : AppCompatActivity() {
 
 
     private fun getImageSelected() {
-        sharedViewModel.imageSelected.observe(this, {data ->
+        sharedViewModel.imageModelSelected.observe(this, { data ->
             if (!data.isNullOrEmpty()){
-                tempImageSelected = data
+                tempImageModelSelected = data
             }
 
             if(data.isNullOrEmpty()) {
@@ -79,30 +79,30 @@ class AlbumsCameraActivity : AppCompatActivity() {
         }
 
         binding.incHeader.tvNext.setOnClickListener {
-            if(!tempImageSelected.isNullOrEmpty()){
-                if(imageProductSelected.size + tempImageSelected!!.size <= 9) {
+            if(!tempImageModelSelected.isNullOrEmpty()){
+                if(imageModelProductSelected.size + tempImageModelSelected!!.size <= 9) {
                     Loader.progressDialog?.show()
                     Handler(Looper.getMainLooper()).postDelayed({
-                        tempImageSelected?.forEach {
+                        tempImageModelSelected?.forEach {
 //                        val bitmap = getImageResized(this, it.imageUri!!)
 //                        val newFile =  this.persistImage(bitmap, it.imageName!!)
 //                        val mFile: RequestBody =  newFile.asRequestBody("multipart/form-data".toMediaTypeOrNull())
 //                        multiPart.add(MultipartBody.Part.createFormData("img", it.imageName, mFile))
 
-                            imageProductSelected.add(
-                                Image(
+                            imageModelProductSelected.add(
+                                ImageModel(
                                     imageUri = it.imageUri,
                                     imageName = it.imageName,
                                 )
                             )
-                            sharedViewModel.AddProductImage(imageProductSelected)
+                            sharedViewModel.AddProductImage(imageModelProductSelected)
 
                             Loader.progressDialog?.dismiss()
-                            finish()
+                            onBackPressed()
                         }
                     }, 500)
                 }else{
-                    Toast.makeText(this, "Maksimal hanya 9 foto. Anda hanya bisa menambah ${9 - imageProductSelected.size} lagi.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Maksimal hanya 9 foto. Anda hanya bisa menambah ${9 - imageModelProductSelected.size} lagi.", Toast.LENGTH_SHORT).show()
                 }
 
 

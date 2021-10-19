@@ -7,17 +7,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.ssd.iagorawingman.data.source.local.model.Image
+import com.ssd.iagorawingman.data.source.local.model.ImageModel
 import com.ssd.iagorawingman.databinding.ItemListAlbumsBinding
 
 
 class AlbumsAdapter(
-    private val listData: ArrayList<Image>,
+    private val listData: ArrayList<ImageModel>,
     private val itemCallBackAdapter: ItemCallBackAdapter,
     private val context: Context
 ): RecyclerView.Adapter<AlbumsAdapter.ViewHolder>() {
 
-     var selectedImage: ArrayList<Image> = ArrayList()
+     var selectedImageModel: ArrayList<ImageModel> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = AlbumsAdapter.ViewHolder (
         ItemListAlbumsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -34,23 +34,23 @@ class AlbumsAdapter(
 
         holder.binding.ivImageItem.setOnClickListener {
              if(!data.selected){
-                 if(selectedImage.size < 9){
+                 if(selectedImageModel.size < 9){
                      data.selected = true
-                     selectedImage.add(data)
+                     selectedImageModel.add(data)
                  }else{
                      Toast.makeText(context, "Maksimal 9 foto", Toast.LENGTH_SHORT).show()
                  }
             }else{
                  data.selected = false
-                 selectedImage.remove(data)
+                 selectedImageModel.remove(data)
 
              }
 
-            itemCallBackAdapter.onSelectedImage(selectedImage)
+            itemCallBackAdapter.onSelectedImage(selectedImageModel)
             notifyDataSetChanged()
         }
 
-        selectedImage.forEachIndexed { index, image ->
+        selectedImageModel.forEachIndexed { index, image ->
             if(image.imagePath == data.imagePath){
                 holder.binding.tvCountSelected.text = (index + 1).toString()
             }
@@ -71,6 +71,6 @@ class AlbumsAdapter(
     class ViewHolder(val binding: ItemListAlbumsBinding): RecyclerView.ViewHolder(binding.root)
 
     interface ItemCallBackAdapter {
-        fun onSelectedImage (result: ArrayList<Image>)
+        fun onSelectedImage (result: ArrayList<ImageModel>)
     }
 }

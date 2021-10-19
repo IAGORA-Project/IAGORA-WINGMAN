@@ -9,7 +9,7 @@ import kotlinx.parcelize.RawValue
 import okhttp3.MultipartBody
 
 @Parcelize
-data class Image(
+data class ImageModel(
     @SerializedName("imageName") var imageName: String? = null,
     @SerializedName("imagePath") var imagePath: String? = null,
     @SerializedName("imageUri") var imageUri: Uri? = null,

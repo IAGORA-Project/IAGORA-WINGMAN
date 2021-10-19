@@ -2,15 +2,13 @@ package com.ssd.iagorawingman.ui.album_camera.camera
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.camera.core.ImageCapture
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.ssd.iagorawingman.data.source.local.model.Image
-import com.ssd.iagorawingman.data.source.local.model.ImageTakeCamera
+import com.ssd.iagorawingman.data.source.local.model.ImageModel
 import com.ssd.iagorawingman.databinding.ItemListCameraPhotoBinding
 
 class PhotoListAdapter(
-    private val listData: ArrayList<Image>,
+    private val listData: ArrayList<ImageModel>,
     private val itemCallBackAdapter: ItemCallBackAdapter
 ): RecyclerView.Adapter<PhotoListAdapter.ViewHolder>() {
 
@@ -40,6 +38,6 @@ class PhotoListAdapter(
     class ViewHolder(val binding: ItemListCameraPhotoBinding): RecyclerView.ViewHolder(binding.root)
 
     interface ItemCallBackAdapter {
-        fun deletePhoto(result: Image)
+        fun deletePhoto(result: ImageModel)
     }
 }

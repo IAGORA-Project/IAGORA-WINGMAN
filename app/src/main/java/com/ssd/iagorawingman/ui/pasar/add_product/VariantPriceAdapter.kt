@@ -12,8 +12,9 @@ import com.ssd.iagorawingman.databinding.ItemListVariantPriceBinding
 
 class VariantPriceAdapter(
     private val listData: ArrayList<ListVariantAddProductModel.Variant>,
-    private val context: Context
+    var satuan: String = "",
 ): RecyclerView.Adapter<VariantPriceAdapter.ViewHolder>() {
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = VariantPriceAdapter.ViewHolder (
@@ -22,10 +23,24 @@ class VariantPriceAdapter(
 
     override fun onBindViewHolder(holder: VariantPriceAdapter.ViewHolder, position: Int) {
         val data = listData[position]
-        val listSatuan = context.resources.getStringArray(R.array.satuan)
-        val arrayAdapterTypeProduct = ArrayAdapter(context, R.layout.item_dropdown_text, listSatuan)
 
-        holder.binding.dropdownChildSatuan.setAdapter(arrayAdapterTypeProduct)
+        if(satuan.isBlank()){
+            holder.binding.tilVariantScale.isEnabled = false
+            holder.binding.tilPrice.isEnabled = false
+        } else if(satuan == "Pcs"){
+            holder.binding.tilVariantScale.isEnabled = false
+            holder.binding.tilPrice.isEnabled = true
+            data.satuan = satuan
+        }else{
+            holder.binding.tilVariantScale.isEnabled = true
+            holder.binding.tilPrice.isEnabled = true
+            data.satuan = satuan
+        }
+
+        if(data.idList != null){
+            holder.binding.tilVariantScale.editText?.setText(data.variant)
+            holder.binding.tilPrice.editText?.setText(data.price)
+        }
 
         holder.binding.tilVariantScale.editText?.addTextChangedListener {
            data.variant = it.toString()
@@ -35,19 +50,13 @@ class VariantPriceAdapter(
             data.price = it.toString()
         }
 
-        holder.binding.dropdownChildSatuan.setOnItemClickListener { parent, view, positionChild, id ->
-            data.satuan = listSatuan[positionChild]
-        }
+
 
         holder.binding.ivDeleteVariant.setOnClickListener {
-
-//            if(listData.size > 1){
-//                listData.remove(data)
-//                notifyDataSetChanged()
-//            }
-
-            println("esgfhbashfasf $data $position")
-            println("listusyusyuss $listData")
+            if(listData.size > 1){
+                listData.remove(data)
+                notifyDataSetChanged()
+            }
         }
     }
 

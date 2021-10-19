@@ -53,7 +53,7 @@ class ListProductPasarActivity : AppCompatActivity() {
 
         binding.btnAddproduct.text = "Tambah Produk"
         binding.btnAddproduct.setOnClickListener {
-            startActivity(Intent(this, AddProductActivity::class.java))
+            idPasar?.let { it1 -> AddProductActivity.newInstance(this, it1) }
         }
     }
 

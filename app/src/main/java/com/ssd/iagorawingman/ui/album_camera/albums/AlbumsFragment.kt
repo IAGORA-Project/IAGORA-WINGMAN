@@ -1,7 +1,6 @@
 package com.ssd.iagorawingman.ui.album_camera.albums
 
 import android.Manifest
-import android.content.ContentUris
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
@@ -16,7 +15,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ssd.iagora_user.data.source.local.shared_view_model.SharedViewModel
-import com.ssd.iagorawingman.data.source.local.model.Image
+import com.ssd.iagorawingman.data.source.local.model.ImageModel
 import com.ssd.iagorawingman.databinding.FragmentAlbumBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.lang.Exception
@@ -26,8 +25,8 @@ class AlbumsFragment : Fragment(), AlbumsAdapter.ItemCallBackAdapter {
 
     private lateinit var binding: FragmentAlbumBinding
     private lateinit var albumsAdapter: AlbumsAdapter
-    private var allPictures: ArrayList<Image> = ArrayList()
-    private var selectedImage: ArrayList<Image> = ArrayList()
+    private var allPictures: ArrayList<ImageModel> = ArrayList()
+    private var selectedImageModel: ArrayList<ImageModel> = ArrayList()
     private val sharedViewModel: SharedViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -67,9 +66,9 @@ class AlbumsFragment : Fragment(), AlbumsAdapter.ItemCallBackAdapter {
 
 
 
-    private fun getAllImages(): ArrayList<Image> {
+    private fun getAllImages(): ArrayList<ImageModel> {
         val columnIndexID: Int
-        val images = ArrayList<Image>()
+        val images = ArrayList<ImageModel>()
         val allImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         val projection = arrayOf(MediaStore.Images.Media._ID, MediaStore.Images.Media.DISPLAY_NAME)
         var cursor = requireActivity().contentResolver.query(allImageUri, projection, null, null, MediaStore.Images.ImageColumns.DATE_ADDED + " DESC")
@@ -80,7 +79,7 @@ class AlbumsFragment : Fragment(), AlbumsAdapter.ItemCallBackAdapter {
             columnIndexID = cursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID)
 
             do{
-                val image = Image()
+                val image = ImageModel()
                 val uriImage = Uri.withAppendedPath(allImageUri, "" + cursor.getLong(columnIndexID))
 
                 image.imageUri = uriImage
@@ -98,7 +97,7 @@ class AlbumsFragment : Fragment(), AlbumsAdapter.ItemCallBackAdapter {
 
 
 
-    override fun onSelectedImage(result: ArrayList<Image>) {
+    override fun onSelectedImage(result: ArrayList<ImageModel>) {
         sharedViewModel.TempImageSelected(result)
     }
 
