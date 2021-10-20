@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
     val database: FirebaseDatabase = FirebaseDatabase.getInstance()
     private lateinit var referense: DatabaseReference
     private lateinit var manager: LocationManager
+    private lateinit var locationListener: LocationListener
      var MIN_TIME: Long = 1000L // 1 sec
      var MIN_DISTANCE: Float = 1f // 1 meter
 
@@ -37,7 +38,8 @@ class MainActivity : AppCompatActivity(), LocationListener {
         navView.setupWithNavController(navController)
 
         manager = getSystemService(LOCATION_SERVICE) as LocationManager
-        referense = database.reference.child("Wingman-01")
+
+        referense = database.reference.child("Geolocation")
 //
 //        myRef.setValue("Hello, World!")
 
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
     }
 
     private fun saveLocation(location: Location) {
-        referense.setValue(location)
+        referense.child("Wingman-01").setValue(location)
     }
 
     private fun getLocationUpdate() {
@@ -77,6 +79,7 @@ class MainActivity : AppCompatActivity(), LocationListener {
     private fun readChanges() {
         referense.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+
                if(snapshot.exists()){
                    try {
                        val location: MyLocation? = snapshot.getValue(MyLocation::class.java)
@@ -112,4 +115,5 @@ class MainActivity : AppCompatActivity(), LocationListener {
             }
         }
     }
+
 }
