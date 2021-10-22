@@ -48,6 +48,7 @@ android {
             buildConfigField ("String", "KEY_CRYPTO_RESPONSE", "\"${KEY_CRYPTO_RESPONSE}\"")
             buildConfigField ("String", "KEY_CRYPTO_AUTH", "\"${KEY_CRYPTO_AUTH}\"")
             buildConfigField ("String", "KEY_CRYPTO_DT", "\"${KEY_CRYPTO_DT}\"")
+            buildConfigField ("String", "KEY_SHARED_PREFERENCE_WINGMAN_INFO", "\"${KEY_SHARED_PREFERENCE_WINGMAN_INFO}\"")
             buildConfigField ("String", "KEY_SHARED_PREFERENCE_AUTH", "\"${KEY_SHARED_PREFERENCE_AUTH}\"")
             buildConfigField ("String", "KEY_SHARED_PREFERENCE_DT", "\"${KEY_SHARED_PREFERENCE_DT}\"")
         }

@@ -14,22 +14,25 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationRequest
 import com.google.firebase.database.*
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.data.source.local.model.MyLocation
 import com.ssd.iagorawingman.databinding.ActivityMainBinding
 import com.ssd.iagorawingman.service.TrackingService
 
-class MainActivity : AppCompatActivity(), LocationListener {
+import android.os.HandlerThread
+import com.ssd.iagorawingman.data.source.remote.response.ResGetWingmanInfo
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
+
+class MainActivity : AppCompatActivity()   {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var manager: LocationManager
     val database: FirebaseDatabase = FirebaseDatabase.getInstance()
     private lateinit var referense: DatabaseReference
-    private lateinit var manager: LocationManager
-    var MIN_TIME: Long = 1000L // 1 sec
-    var MIN_DISTANCE: Float = 1f // 1 meter
+    private val mainViewModel: MainViewModel by viewModel()
+    private lateinit var wingman_id: ResGetWingmanInfo
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,70 +45,40 @@ class MainActivity : AppCompatActivity(), LocationListener {
         navView.setupWithNavController(navController)
 
         manager = getSystemService(LOCATION_SERVICE) as LocationManager
+        referense = database.reference.child("Geolocation").child("615bb397a515a58908191c56")
+        wingman_id = mainViewModel.getWingmanInfo!!
 
-        referense = database.reference.child("Geolocation")
 
         getLocationUpdate()
         readChanges() // read realtime-database firebase
-
     }
 
-
-    override fun onLocationChanged(location: Location) {
-        println("OKEEEEE123")
-        println("livelocation ${location.latitude}")
-        if(location != null){
-            saveLocation(location)
-            println("livelocationada")
-        }else{
-            println("livelocation-tidakada")
-            Toast.makeText(this, "Tidak dapat lokasi", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-
-    override fun onProviderEnabled(provider: String) {
-        super.onProviderEnabled(provider)
-
-        println("PROVIDERENABLE")
-        getLocationUpdate()
-    }
-
-    override fun onProviderDisabled(provider: String) {
-        super.onProviderDisabled(provider)
-
-        println("PROVIDERDISABLE")
-    }
-
-    private fun saveLocation(location: Location) {
-        println("SAVEEEEEE $location")
-        referense.child("Wingman-01").setValue(location)
-    }
 
     private fun getLocationUpdate() {
-        println("jksdfjdskfsdkjf $manager")
-        if(manager != null){
-            if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-                if(manager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-                    println("GPSNEWTWorK ${manager.getLastKnownLocation(LocationManager.GPS_PROVIDER)}")
-
-                    manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME, MIN_DISTANCE, this)
-                } else if(manager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
-                    println("NETWORKPROVIDER")
-                    manager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIME, MIN_DISTANCE, this)
-                } else{
-                    Toast.makeText(this, "Error No Provider", Toast.LENGTH_SHORT).show()
-                }
-            }else{
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+                startService()
+        }else{
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 101)
-            }
         }
     }
+
+
+    private fun startService() {
+//        val intent = Intent(this, TrackingService::class.java)
+//        startService(intent)
+
+        Intent(this, TrackingService::class.java).also {
+            it.action = wingman_id.success?.idKol
+            this.startService(it)
+        }
+    }
+
 
     private fun readChanges() {
         referense.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+                println("KJDJKDHKJDHKJDHDJD $snapshot")
                if(snapshot.exists()){
                    try {
                        val location: MyLocation? = snapshot.getValue(MyLocation::class.java)
@@ -126,7 +99,6 @@ class MainActivity : AppCompatActivity(), LocationListener {
             }
         })
     }
-
 
 
     override fun onRequestPermissionsResult(

@@ -46,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
                     Status.SUCCESS -> {
                         Loader.progressDialog?.dismiss()
                         startActivity(Intent(this, MainActivity::class.java))
-
+                        finishAffinity()
                     }
                     Status.ERROR -> {
                         Loader.progressDialog?.dismiss()

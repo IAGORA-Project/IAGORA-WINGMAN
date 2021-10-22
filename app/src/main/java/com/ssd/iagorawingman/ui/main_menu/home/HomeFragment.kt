@@ -1,8 +1,9 @@
 package com.ssd.iagorawingman.ui.main_menu.home
 
-import android.annotation.SuppressLint
+
 import android.content.Intent
 import android.graphics.Color
+import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,15 +13,21 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.databinding.FragmentHomeBinding
 import com.ssd.iagorawingman.ui.chat.ChatActivity
+import com.ssd.iagorawingman.ui.main_menu.MainViewModel
 import com.ssd.iagorawingman.ui.pasar.list_pasar.ListPasarActivity
 import com.ssd.iagorawingman.ui.process_order.ProcessOrderActivity
+import com.ssd.iagorawingman.utils.Status
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
+    private val mainViewModel: MainViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -31,6 +38,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         handleAction()
+        getWingmanInfo()
     }
 
 
@@ -66,8 +74,26 @@ class HomeFragment : Fragment() {
         binding.incMenuWingman.btnPasar.setOnClickListener {
             startActivity(Intent(context, ListPasarActivity::class.java))
         }
-
-
     }
+
+    private fun getWingmanInfo() {
+        mainViewModel.vmGetWingmanInfo().observe(viewLifecycleOwner, {
+            it.getContentIfNotHandled().let { res ->
+                when(res?.status){
+                    Status.LOADING -> {
+
+                    }
+                    Status.SUCCESS -> {
+
+                    }
+                    Status.ERROR -> {
+
+                    }
+                }
+            }
+        })
+    }
+
+
 
 }
