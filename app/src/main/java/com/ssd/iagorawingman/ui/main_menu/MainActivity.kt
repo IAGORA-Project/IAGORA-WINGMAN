@@ -1,11 +1,8 @@
 package com.ssd.iagorawingman.ui.main_menu
 
 import android.Manifest
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Location
-import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.widget.Toast
@@ -18,10 +15,10 @@ import com.google.firebase.database.*
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.data.source.local.model.MyLocation
 import com.ssd.iagorawingman.databinding.ActivityMainBinding
-import com.ssd.iagorawingman.service.TrackingService
+import com.ssd.iagorawingman.services.TrackingService
 
-import android.os.HandlerThread
 import com.ssd.iagorawingman.data.source.remote.response.ResGetWingmanInfo
+import com.ssd.iagorawingman.services.BroadcastService
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -46,7 +43,8 @@ class MainActivity : AppCompatActivity()   {
 
         manager = getSystemService(LOCATION_SERVICE) as LocationManager
         referense = database.reference.child("Geolocation").child("615bb397a515a58908191c56")
-        wingman_id = mainViewModel.getWingmanInfo!!
+//        wingman_id = mainViewModel.getWingmanInfo!!
+
 
 
         getLocationUpdate()
@@ -69,7 +67,8 @@ class MainActivity : AppCompatActivity()   {
 //        startService(intent)
 
         Intent(this, TrackingService::class.java).also {
-            it.action = wingman_id.success?.idKol
+            it.action = "615bb397a515a58908191c56"
+//            it.action = wingman_id.success?.idKol
             this.startService(it)
         }
     }

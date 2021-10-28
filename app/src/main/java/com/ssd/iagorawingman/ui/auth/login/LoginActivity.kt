@@ -3,6 +3,8 @@ package com.ssd.iagorawingman.ui.auth.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import com.google.firebase.messaging.FirebaseMessaging
 import com.ssd.iagorawingman.data.source.remote.body.LoginBody
 import com.ssd.iagorawingman.databinding.ActivityLoginBinding
 import com.ssd.iagorawingman.ui.auth.AuthViewModel
@@ -15,7 +17,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private val authViewModel: AuthViewModel by viewModel()
-
+    private var deviceToken: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         Loader.handleLoading(this)
+        initFirebase()
         handleAction()
     }
 
@@ -30,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
         binding.incButtonMasuk.btnPrimary.setOnClickListener {
             val phone_number =  binding.tilNomorPonsel.editText?.text.toString()
             val password =  binding.tilPassword.editText?.text.toString()
-            val body = LoginBody("082239720318", "wingman", "")
+            val body = LoginBody("082239720318", "wingman", deviceToken)
 
             login(body)
         }
@@ -54,6 +57,22 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun initFirebase() {
+        FirebaseMessaging.getInstance().isAutoInitEnabled = true
+        FirebaseMessaging.getInstance().token.addOnCompleteListener {
+            try{
+                deviceToken = it.result
+                Log.d("hasilTOKEN","dilakukan ${it.result}")
+//                it.result?.let { it1 -> sharedViewModel.SharedDeviceToken(it1) }
+
+//                it.result?.let { it1 -> authViewModel.saveDeviceToken(it1) }
+            }catch (e: Exception){
+                println("ERRORGETRESULT")
+            }
+
+        }
     }
 
 

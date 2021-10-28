@@ -1,13 +1,11 @@
-package com.ssd.iagorawingman.service
+package com.ssd.iagorawingman.services
 
 import android.content.Context
 import android.content.Intent
 import android.location.Location
-import android.util.Log
 import androidx.lifecycle.LifecycleService
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.ssd.iagorawingman.ui.chat.ChatActivity
 
 class FirebaseSaveDataLocation: LifecycleService() {
 

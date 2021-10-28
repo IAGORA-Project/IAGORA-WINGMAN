@@ -1,4 +1,4 @@
-package com.ssd.iagorawingman.service
+package com.ssd.iagorawingman.services
 
 import android.Manifest
 import android.app.NotificationChannel
