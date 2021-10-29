@@ -48,29 +48,26 @@ class FirebaseNotificationService: FirebaseMessagingService() {
 
         println("DKJDJKDHJKDDJ $remoteMessage")
 
-        val notification = remoteMessage.data["customerdata"]
 
         // Check if message contains a data payload.
         if (remoteMessage.data.isNotEmpty()) {
             if(remoteMessage.data["type"] == "new-order") {
-                val intent = Intent(this, ReceiveOrderActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                intent.putExtra("data-notif", notification)
-                startActivity(intent)
+                try {
+                    val notification = remoteMessage.data["details"]
+                    val intent = Intent(this, ReceiveOrderActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    intent.putExtra("data-notif", notification)
+                    startActivity(intent)
+                } catch (e: Exception) { }
             }
-             Log.d("CEKDDATAAAA", "Message data: " + remoteMessage.data)
+
+            Log.d("CEKDDATAAAA", "Message data: " + remoteMessage.data)
         }
 
 
         if(messageBody != null && messageTitle != null){
             showNotification(messageTitle, messageBody, messageImageUrl, remoteMessage.data)
         }
-    }
-
-    override fun startService(service: Intent?): ComponentName? {
-        return super.startService(service)
-
-        println("DJKDDJKHDJKHDKJD $service")
     }
 
 
@@ -95,12 +92,6 @@ class FirebaseNotificationService: FirebaseMessagingService() {
         // create notification channel
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             val mChannel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
-            val audioAttributes = AudioAttributes.Builder()
-                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                .setUsage(AudioAttributes.USAGE_NOTIFICATION)
-                .build()
-
-            mChannel.setSound(soundUriEcek, Notification.AUDIO_ATTRIBUTES_DEFAULT)
             notificationManager.createNotificationChannel(mChannel)
         }
 
@@ -122,7 +113,6 @@ class FirebaseNotificationService: FirebaseMessagingService() {
             .setContentText(json.getString("body"))
             .setAutoCancel(true)
             .setOngoing(false)
-
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(pendingIntent)
             .setLargeIcon(imageNotifToBitmap(json.getString("image"))) // untuk icon gambar samping kanan
