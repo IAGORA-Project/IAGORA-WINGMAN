@@ -6,16 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ssd.iagorawingman.R
+import com.ssd.iagorawingman.databinding.FragmentOnProcessBinding
 
 
-class OnProcessFragment : Fragment() {
+class OnProcessFragment : Fragment(R.layout.fragment_on_process) {
+    private lateinit var binding: FragmentOnProcessBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_on_process, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentOnProcessBinding.bind(view)
     }
+
+
+
 
 }

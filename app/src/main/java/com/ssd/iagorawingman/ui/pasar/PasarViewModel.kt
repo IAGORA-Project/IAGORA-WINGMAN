@@ -1,7 +1,6 @@
 package com.ssd.iagorawingman.ui.pasar
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,7 +16,6 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.Exception
 
 class PasarViewModel(
     private val pasarRepository: PasarRepository,
