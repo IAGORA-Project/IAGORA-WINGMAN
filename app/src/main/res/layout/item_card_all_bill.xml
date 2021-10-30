@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_white_rounded_20"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvTotalTitle"
+        style="@style/TextViewSemiBold.OpenSans_15sp_020202"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_total_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvShoppingTitle"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/text_shopping_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalTitle" />
+
+    <TextView
+        android:id="@+id/tvDiscountVoucherTitle"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/text_discount_voucher_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvShoppingTitle" />
+
+    <TextView
+        android:id="@+id/tvSubTotalTitle"
+        style="@style/TextViewSemiBold.OpenSans_15sp_020202"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/text_sub_total_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDiscountVoucherTitle" />
+
+    <TextView
+        android:id="@+id/tvPriceDeliveryTitle"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/text_price_delivery_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubTotalTitle" />
+
+    <TextView
+        android:id="@+id/tvServiceChargeTitle"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawablePadding="10dp"
+        android:text="@string/text_services_charge_title"
+        app:drawableEndCompat="@drawable/ic_info_mini"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPriceDeliveryTitle" />
+
+    <TextView
+        android:id="@+id/tvPlatformChargeTitle"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawablePadding="10dp"
+        android:text="@string/text_platform_charge_title"
+        app:drawableEndCompat="@drawable/ic_info_mini"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvServiceChargeTitle" />
+
+    <TextView
+        android:id="@+id/tvGrandTotalTitle"
+        style="@style/TextViewSemiBold.OpenSans_15sp_020202"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="@string/text_grand_total_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlatformChargeTitle" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

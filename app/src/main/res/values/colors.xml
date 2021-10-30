@@ -14,7 +14,8 @@
     <color name="grey_400">#B4B0B0</color>
     <color name="DividerColor">#C2C2C2</color>
     <color name="shimmerColor">#C2C2C2</color>
-    <color name="transparent_600">#A33A3939</color>
+    <color name="transparent_600">#003A3939</color>
+    <color name="background_grey">#F5F5F9</color>
 
     <!--Font-->
     <color name="fontGrey">#C4C4C4</color>

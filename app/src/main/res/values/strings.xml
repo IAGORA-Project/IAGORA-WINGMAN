@@ -5,9 +5,38 @@
     <string name="title_akun">Akun</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_order_not_processed">Order belum diproses</string>
+    <string name="dummy_text_total_item">Total belanja : <b>Rp.7,000</b></string>
+    <string name="format_text_total_item">Total belanja : <b>%1$s</b></string>
+    <string name="dummy_item_price_discount"><strike>Rp.6000/<sub>kg</sub></strike></string>
+    <string name="format_item_price_discount"><strike>%1$s/<sub>%2$s</sub></strike></string>
+    <string name="dummy_item_price">Rp.6,000/<sub>kg</sub></string>
+    <string name="format_item_price">%1$s/<sub>%2$s</sub></string>
+    <string name="text_price_bargaining">Harga Tawaran</string>
+    <string name="text_bargain">Tawar</string>
+    <string name="text_change">Ubah</string>
+    <string name="text_sentence_changing_services">Ubah biaya penanganan</string>
+    <string name="text_button_detail">button detail</string>
+    <string name="text_delivery_services">Layanan Pengiriman</string>
+    <string name="text_Location">Lokasi Pengiriman</string>
+    <string name="dummy_price">Rp.6,000</string>
+    <string name="text_total_title">Total</string>
+    <string name="text_shopping_title">Belanja</string>
+    <string name="text_discount_voucher_title">Diskon Voucher</string>
+    <string name="text_sub_total_title">Sub-total</string>
+    <string name="text_price_delivery_title">Ongkir</string>
+    <string name="text_services_charge_title">Biaya penanganan</string>
+    <string name="text_platform_charge_title">Biaya platform</string>
+    <string name="text_grand_total_title">Grand total</string>
 
     <string-array name="satuan">
         <item>Gram</item>
         <item>Pcs</item>
+    </string-array>
+    <string-array name="tab_title_order">
+        <item>Dalam proses</item>
+        <item>Telah dibayar</item>
+        <item>Dikirm</item>
+        <item>Selesai</item>
     </string-array>
 </resources>

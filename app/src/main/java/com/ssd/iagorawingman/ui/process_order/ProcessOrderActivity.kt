@@ -2,23 +2,16 @@ package com.ssd.iagorawingman.ui.process_order
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayoutMediator
+import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.databinding.ActivityProcessOrderBinding
-import com.ssd.iagorawingman.ui.process_order.finished.FinishedFragment
-import com.ssd.iagorawingman.ui.process_order.on_process.OnProcessFragment
-import com.ssd.iagorawingman.ui.process_order.paid.PaidFragment
-import com.ssd.iagorawingman.ui.process_order.sent.SentFragment
 
 class ProcessOrderActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProcessOrderBinding
-    private val titleTabLayout = mutableListOf<String>()
-    private val listFragment = mutableListOf<Fragment>()
-    private var positionTab: Int = 0
 
 
     companion object {
@@ -29,49 +22,44 @@ class ProcessOrderActivity : AppCompatActivity() {
         }
     }
 
-    private fun initBundle() {
-        positionTab = intent.getIntExtra("position-tab", 0)
-        Log.d("positionTab", positionTab.toString())
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProcessOrderBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initBundle()
+
         handleHeaderView()
         handleTabViewPager()
     }
 
-    private fun handleHeaderView(){
-        binding.incHeader.ivBackButton.setOnClickListener {
-            onBackPressed()
+    private fun handleHeaderView() {
+        binding.apply {
+            incHeader.ivBackButton.setOnClickListener {
+                onBackPressed()
+            }
+            incHeader.tvTitle.text = StringBuilder("Orderan Saya")
+            incHeader.containerToolbar.elevation = 0f
         }
-        binding.incHeader.tvTitle.text = "Orderan Saya"
-        binding.incHeader.containerToolbar.elevation = 0f
     }
 
     private fun handleTabViewPager() {
-        listFragment.add(OnProcessFragment())
-        listFragment.add(PaidFragment())
-        listFragment.add(SentFragment())
-        listFragment.add(FinishedFragment())
+        val tabTitle = this.resources.getStringArray(R.array.tab_title_order)
+        val sectionsPagerAdapter = ProcessOrderTabLayoutAdapter(this)
 
-        titleTabLayout.add("Dalam Proses")
-        titleTabLayout.add("Sudah Dibayar")
-        titleTabLayout.add("Dikirim")
-        titleTabLayout.add("Selesai")
+        binding.apply {
 
-        val sectionsPagerAdapter = ProcessOrderTabLayoutAdapter(this, listFragment)
-        binding.vpTabs.adapter = sectionsPagerAdapter
-        TabLayoutMediator(binding.tabs, binding.vpTabs) { tab, position ->
-            tab.text = titleTabLayout[position]
-        }.attach()
+            vpTabs.apply {
+                adapter = sectionsPagerAdapter
+                getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+            }
 
-        binding.vpTabs.setCurrentItem(positionTab, true)
+            TabLayoutMediator(tabs, vpTabs) { tab, position ->
+                tab.text = tabTitle[position]
+            }.attach()
+
+        }
     }
-
 
 
 }
