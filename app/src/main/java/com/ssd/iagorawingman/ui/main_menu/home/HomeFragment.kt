@@ -38,7 +38,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         handleAction()
-        getWingmanInfo()
     }
 
 
@@ -76,23 +75,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun getWingmanInfo() {
-        mainViewModel.vmGetWingmanInfo().observe(viewLifecycleOwner, {
-            it.getContentIfNotHandled().let { res ->
-                when(res?.status){
-                    Status.LOADING -> {
 
-                    }
-                    Status.SUCCESS -> {
-
-                    }
-                    Status.ERROR -> {
-
-                    }
-                }
-            }
-        })
-    }
 
 
 

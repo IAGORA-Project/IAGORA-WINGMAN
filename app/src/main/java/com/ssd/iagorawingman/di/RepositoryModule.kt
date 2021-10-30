@@ -7,6 +7,7 @@ import com.ssd.iagorawingman.data.source.local.shared_handle.wingman_info.Shared
 import com.ssd.iagorawingman.data.source.remote.api_handle.auth.AuthReposiroty
 import com.ssd.iagorawingman.data.source.remote.api_handle.main_menu.MainMenuRepository
 import com.ssd.iagorawingman.data.source.remote.api_handle.pasar.PasarRepository
+import com.ssd.iagorawingman.data.source.remote.api_handle.receive_order.ReceiveOrderRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
@@ -17,4 +18,5 @@ val repositoryModule = module {
     factory { MainMenuRepository( get() ) }
     factory { AuthReposiroty( get() ) }
     factory { PasarRepository( get() ) }
+    factory { ReceiveOrderRepository( get() ) }
 }
