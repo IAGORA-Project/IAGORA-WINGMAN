@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity()   {
     val database: FirebaseDatabase = FirebaseDatabase.getInstance()
     private lateinit var referense: DatabaseReference
     private val mainViewModel: MainViewModel by viewModel()
-    private var wingman_id: ResGetWingmanInfo? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,47 +41,37 @@ class MainActivity : AppCompatActivity()   {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         navView.setupWithNavController(navController)
 
-//        val getWingmanInfo = sharedWingmanInfoRepository.getWingmanInfo(BuildConfig.KEY_SHARED_PREFERENCE_WINGMAN_INFO)
-
 
         manager = getSystemService(LOCATION_SERVICE) as LocationManager
-
-//        referense = database.reference.child("Geolocation").child(wingman_id?.success?.idKol)
-
-//        wingman_id = mainViewModel.getWingmanInfo!!
-
+        referense = database.reference.child("Geolocation")
 
 
 
         getWingmanInfo()
-        getSharedWingmanInfo()
-        getLocationUpdate()
 //        readChanges() // read realtime-database firebase
     }
 
 
-    private fun getLocationUpdate() {
+    private fun getLocationUpdate(wingman_id: String) {
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
             ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-                startService()
+                println("JHFJHDJHDJDHD $wingman_id")
+            startService(wingman_id)
         }else{
+            println("GAKAKTIFFFFF")
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 101)
         }
     }
 
 
-    private fun startService() {
+    private fun startService(wingman_id: String) {
+        println("serviceeeee $wingman_id")
         Intent(this, TrackingService::class.java).also {
-            it.action = wingman_id?.success?.idKol
+            it.action = wingman_id
             this.startService(it)
         }
     }
 
-    private fun getSharedWingmanInfo(){
-        mainViewModel.vmGetSharedWingmanInfo().observe(this, {
-            println("KDJHFJKFJKFHJKFHF ${it}")
-        })
-    }
 
 
     private fun readChanges() {
@@ -110,6 +99,7 @@ class MainActivity : AppCompatActivity()   {
         })
     }
 
+
     private fun getWingmanInfo() {
         mainViewModel.vmGetWingmanInfo().observe(this, {
             it.getContentIfNotHandled().let { res ->
@@ -119,7 +109,7 @@ class MainActivity : AppCompatActivity()   {
                     }
                     Status.SUCCESS -> {
                         println("jadasdhajsdhajshd ${res.data}")
-                        wingman_id = res.data
+                        res.data?.success?.idKol?.let { it1 -> getLocationUpdate(it1) }
                     }
                     Status.ERROR -> {
 
@@ -139,7 +129,9 @@ class MainActivity : AppCompatActivity()   {
 
         if(requestCode == 101){
             if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                getLocationUpdate()
+                mainViewModel.getSharedwingmanInfo.observe(this, {
+                    it.success?.idKol?.let { it1 -> getLocationUpdate(it1) }
+                })
                 println("permissionngranted")
             }else{
                 Toast.makeText(this, "Permission Required", Toast.LENGTH_SHORT).show()

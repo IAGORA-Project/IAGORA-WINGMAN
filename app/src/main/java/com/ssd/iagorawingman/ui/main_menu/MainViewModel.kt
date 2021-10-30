@@ -28,20 +28,14 @@ class MainViewModel(
     val wingmanInfo: MutableLiveData<EventWrapper<Resource<ResGetWingmanInfo>>> = MutableLiveData()
     val getSharedwingmanInfo: MutableLiveData<ResGetWingmanInfo> = MutableLiveData()
 
+
     private fun saveWingmanInfo(data: ResGetWingmanInfo?){
         if(data != null){
             val toJson = Gson().toJson(data)
             val EncryptData = ChCrypto.aesEncrypt(toJson, BuildConfig.KEY_CRYPTO_AUTH)
             sharedWingmanInfoRepository.saveWingmanInfo(BuildConfig.KEY_SHARED_PREFERENCE_WINGMAN_INFO, EncryptData)
+            getSharedwingmanInfo.postValue(data)
         }
-    }
-
-
-    fun vmGetSharedWingmanInfo(): LiveData<ResGetWingmanInfo> {
-        val getWingmanInfo = sharedWingmanInfoRepository.getWingmanInfo(BuildConfig.KEY_SHARED_PREFERENCE_WINGMAN_INFO)
-        getSharedwingmanInfo.postValue(getWingmanInfo)
-
-        return getSharedwingmanInfo
     }
 
 
