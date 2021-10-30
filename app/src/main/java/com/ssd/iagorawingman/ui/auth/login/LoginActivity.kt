@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.google.firebase.messaging.FirebaseMessaging
 import com.ssd.iagorawingman.data.source.remote.body.LoginBody
 import com.ssd.iagorawingman.databinding.ActivityLoginBinding
@@ -33,9 +34,13 @@ class LoginActivity : AppCompatActivity() {
         binding.incButtonMasuk.btnPrimary.setOnClickListener {
             val phone_number =  binding.tilNomorPonsel.editText?.text.toString()
             val password =  binding.tilPassword.editText?.text.toString()
-            val body = LoginBody("082239720318", "wingman", deviceToken)
+            val body = LoginBody(phone_number, password, deviceToken)
 
-            login(body)
+            if(!phone_number.isNullOrEmpty() && !password.isNullOrEmpty()){
+                login(body)
+            }else{
+                Toast.makeText(this, "Isi dulu nomor ponsel dan password anda.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
