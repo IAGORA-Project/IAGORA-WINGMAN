@@ -4,12 +4,16 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.databinding.FragmentOnProcessBinding
 import com.ssd.iagorawingman.utils.Status
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -25,7 +29,8 @@ class OnProcessFragment : Fragment(R.layout.fragment_on_process) {
 
         handleAdapter()
         subscribeToViewModel()
-        handleUI()
+
+
     }
 
     private fun handleAdapter() {
@@ -34,30 +39,37 @@ class OnProcessFragment : Fragment(R.layout.fragment_on_process) {
     }
 
     private fun subscribeToViewModel() {
-        viewModel.vmGetAllListWaiting.observe(viewLifecycleOwner, { res ->
-            when (res.status) {
-                Status.LOADING -> {
-
-                }
-                Status.SUCCESS -> {
-                    viewModel.setDataUI(res.data!!)
-                    Toast.makeText(requireContext(), "setData", Toast.LENGTH_SHORT).show()
-                }
-            }
-        })
+        lifecycleScope.launch {
+           repeatOnLifecycle(Lifecycle.State.STARTED){
 
 
-    }
+               viewModel.vmGetWaitingList().collectLatest { res ->
 
-    private fun handleUI() {
-        lifecycleScope.launchWhenStarted {
-            viewModel.dataUI.collectLatest {
-                adapter.differ.submitList(it.success)
-                Toast.makeText(requireContext(), "ui", Toast.LENGTH_SHORT).show()
-                adapter.setOnItemClickListener {
+                   when(res.status){
+                       Status.LOADING ->{
+
+                       }
+                       Status.SUCCESS ->{
+                           adapter.differ.submitList(res.data?.success)
+                           viewModel.setTotalWaitingList(adapter.itemCount)
+                       }
+                   }
 
 
-            }
+
+                   adapter.setOnItemClickListener {
+                       findNavController().navigate(R.id.action_processOrderFragment_to_detailOnProcessFragment)
+                   }
+
+
+               }
+
+               viewModel.totalWaitingList.collectLatest {total ->
+                   binding.tvNumberOfOrder.text = total.toString()
+               }
+
+
+           }
         }
     }
 

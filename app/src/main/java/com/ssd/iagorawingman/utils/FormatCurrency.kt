@@ -9,7 +9,7 @@ object FormatCurrency {
         this.text = getCurrencyRp(java.lang.Double.parseDouble(value))
     }
 
-    fun getCurrencyRp (price: Double): String {
+     fun getCurrencyRp(price: Double): String {
         val format = DecimalFormat("#,###,###")
         return "Rp " + format.format(price).replace(",".toRegex(), ".")
     }

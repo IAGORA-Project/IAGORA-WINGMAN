@@ -1,12 +1,17 @@
 package com.ssd.iagorawingman.di
 
+import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModel
 import com.ssd.iagorawingman.data.source.remote.api_handle.auth.AuthApi
 import com.ssd.iagorawingman.data.source.remote.api_handle.main_menu.MainMenuApi
 import com.ssd.iagorawingman.data.source.remote.api_handle.pasar.PasarApi
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.on_process.OnProcessApi
 import com.ssd.iagorawingman.data.source.remote.api_handle.receive_order.ReceiveOrderApi
+import kotlinx.coroutines.CoroutineScope
 import org.koin.dsl.module
 import retrofit2.Retrofit
+import kotlin.coroutines.CoroutineContext
 
 val apiModule = module {
     single { provideMainMenuApi(get()) }
@@ -14,6 +19,7 @@ val apiModule = module {
     single { providePasarApi(get()) }
     single { provideReceiveOrderApi(get()) }
     single { provideOnProcessApi(get()) }
+
 }
 
 private fun provideMainMenuApi(retrofit: Retrofit): MainMenuApi =

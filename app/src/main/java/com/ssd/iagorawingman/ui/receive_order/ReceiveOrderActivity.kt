@@ -52,7 +52,7 @@ class ReceiveOrderActivity : AppCompatActivity() {
                     }
                     Status.SUCCESS -> {
                         println("KJDBHJDHDJHDD ${res.data}")
-                        ProcessOrderFragment.newInstance(this, 0)
+//                        ProcessOrderFragment.newInstance(this, 0)
                         finish()
                     }
                 }
@@ -70,7 +70,7 @@ class ReceiveOrderActivity : AppCompatActivity() {
                     }
                     Status.SUCCESS -> {
                         println("KJDBHJDHDJHDD ${res.data}")
-                        ProcessOrderFragment.newInstance(this, 0)
+//                        ProcessOrderFragment.newInstance(this, 0)
                         finish()
                     }
                 }

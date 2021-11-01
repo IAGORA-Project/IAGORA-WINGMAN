@@ -2,12 +2,15 @@ package com.ssd.iagorawingman.ui.process_order.on_process
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat.FROM_HTML_MODE_COMPACT
+import androidx.core.text.HtmlCompat.fromHtml
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.on_process.domain.model.ListWaitingOnProcess
 import com.ssd.iagorawingman.databinding.ItemListOnProcessBinding
+import com.ssd.iagorawingman.utils.FormatCurrency
 import com.ssd.iagorawingman.utils.SetImage.loadPhotoProfile
 
 
@@ -27,9 +30,9 @@ class OnProcessAdapter : RecyclerView.Adapter<OnProcessAdapter.OnProcessViewHold
                     with(dataUser) {
                         shapeIvPerson.loadPhotoProfile(imgProfile)
                         tvNamePerson.text = fullName
-                        tvItemTotal.text = String.format(
-                            itemView.resources.getString(R.string.format_text_total_item),
-                            grandTotal
+                        tvItemTotal.text = fromHtml(
+                            "Total belanja : <b>${FormatCurrency.getCurrencyRp(grandTotal.toDouble())} <b/>",
+                            FROM_HTML_MODE_COMPACT
                         )
 
                         with(listProduct) {

@@ -43,7 +43,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         val window = requireActivity().window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(Color.WHITE);
+        window.statusBarColor = Color.WHITE;
     }
 
     private fun handleAction() {
@@ -56,7 +56,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         binding.incMenuWingman.PasarGroup.setOnClickListener {
-            ProcessOrderFragment.newInstance(requireContext(), 0)
+//            ProcessOrderFragment.newInstance(requireContext(), 0)
         }
 
         binding.incMenuWingman.btnPasar.setOnClickListener {

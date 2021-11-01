@@ -29,38 +29,35 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilName"
+        android:id="@+id/tilTotalPrice"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:hint="@string/text_sentence_changing_services"
+        app:boxStrokeWidthFocused="1dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTotalBill">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etName"
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shape_border_item_scale"
-            android:ems="10"
-            android:textSize="15sp"
-            android:hint="@string/text_sentence_changing_services"
-            android:inputType="numberDecimal" />
-
-
+            android:inputType="numberDecimal"
+            android:maxLength="15"
+            android:paddingVertical="14dp"
+            android:theme="@style/TextViewReguler.OpenSans_14sp_020202" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button"
         android:layout_width="100dp"
-        android:layout_height="70dp"
+        android:layout_height="65dp"
         android:text="@string/text_change"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tilName"
+        app:layout_constraintBottom_toBottomOf="@+id/tilTotalPrice"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tilName" />
+        app:layout_constraintTop_toTopOf="@+id/tilTotalPrice" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
