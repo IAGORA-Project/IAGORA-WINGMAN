@@ -9,11 +9,34 @@
         android:id="@+id/navigation_home"
         android:name="com.ssd.iagorawingman.ui.main_menu.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/homeFragmentMoveToProcessFragment"
+            app:destination="@id/processOrderFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_akun"
         android:name="com.ssd.iagorawingman.ui.main_menu.akun.AkunFragment"
         android:label="@string/title_akun"
         tools:layout="@layout/fragment_akun" />
+
+    <fragment
+        android:id="@+id/onProcessFragment"
+        android:name="com.ssd.iagorawingman.ui.process_order.on_process.OnProcessFragment"
+        android:label="fragment_on_process"
+        tools:layout="@layout/fragment_on_process">
+        <action
+            android:id="@+id/OnProcessMoveToDetailOnProcess"
+            app:destination="@id/detailOnProcessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailOnProcessFragment"
+        android:name="com.ssd.iagorawingman.ui.process_order.on_process.DetailOnProcessFragment"
+        android:label="DetailOnProcessFragment" />
+    <fragment
+        android:id="@+id/processOrderFragment"
+        android:name="com.ssd.iagorawingman.ui.process_order.ProcessOrderFragment"
+        android:label="fragment_process_order"
+        tools:layout="@layout/fragment_process_order" />
 </navigation>

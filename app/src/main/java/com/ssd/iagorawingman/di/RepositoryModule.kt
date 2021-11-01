@@ -7,16 +7,21 @@ import com.ssd.iagorawingman.data.source.local.shared_handle.wingman_info.Shared
 import com.ssd.iagorawingman.data.source.remote.api_handle.auth.AuthReposiroty
 import com.ssd.iagorawingman.data.source.remote.api_handle.main_menu.MainMenuRepository
 import com.ssd.iagorawingman.data.source.remote.api_handle.pasar.PasarRepository
+import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.on_process.OnProcessRepository
+import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.on_process.domain.repository.IOnProcessRepository
 import com.ssd.iagorawingman.data.source.remote.api_handle.receive_order.ReceiveOrderRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
     single { Gson() }
-    factory { SharedAuthRepository( get(),get() ) }
-    factory { SharedWingmanInfoRepository( get(),get() ) }
-    factory { SharedDeviceTokenRepository( get(),get() ) }
-    factory { MainMenuRepository( get() ) }
-    factory { AuthReposiroty( get() ) }
-    factory { PasarRepository( get() ) }
-    factory { ReceiveOrderRepository( get() ) }
+    factory { SharedAuthRepository(get(), get()) }
+    factory { SharedWingmanInfoRepository(get(), get()) }
+    factory { SharedDeviceTokenRepository(get(), get()) }
+    factory { MainMenuRepository(get()) }
+    factory { AuthReposiroty(get()) }
+    factory { PasarRepository(get()) }
+    factory { ReceiveOrderRepository(get()) }
+    single <IOnProcessRepository>{
+        OnProcessRepository(get(),get())
+    }
 }

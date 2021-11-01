@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.process_order.ProcessOrderActivity">
+    tools:context=".ui.process_order.ProcessOrderFragment">
 
     <include
         android:id="@+id/incHeader"
@@ -27,7 +27,7 @@
         android:layout_marginHorizontal="22dp"
         app:tabPaddingBottom="-5dp"
         android:textAlignment="textStart"
-        app:tabTextAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+        app:tabTextAppearance="@style/TextViewSemiBold.OpenSans_15sp_020202"
 
         app:tabTextColor="@color/text_primary"
         />

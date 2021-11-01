@@ -6,7 +6,7 @@ import android.util.Log
 import com.google.gson.Gson
 import com.ssd.iagorawingman.data.source.remote.body.AcceptedOrCancelledOrderBody
 import com.ssd.iagorawingman.databinding.ActivityReceiveOrderBinding
-import com.ssd.iagorawingman.ui.process_order.ProcessOrderActivity
+import com.ssd.iagorawingman.ui.process_order.ProcessOrderFragment
 import com.ssd.iagorawingman.utils.Status
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -52,7 +52,7 @@ class ReceiveOrderActivity : AppCompatActivity() {
                     }
                     Status.SUCCESS -> {
                         println("KJDBHJDHDJHDD ${res.data}")
-                        ProcessOrderActivity.newInstance(this, 0)
+                        ProcessOrderFragment.newInstance(this, 0)
                         finish()
                     }
                 }
@@ -70,7 +70,7 @@ class ReceiveOrderActivity : AppCompatActivity() {
                     }
                     Status.SUCCESS -> {
                         println("KJDBHJDHDJHDD ${res.data}")
-                        ProcessOrderActivity.newInstance(this, 0)
+                        ProcessOrderFragment.newInstance(this, 0)
                         finish()
                     }
                 }
