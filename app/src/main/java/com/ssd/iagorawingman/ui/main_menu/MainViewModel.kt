@@ -30,12 +30,14 @@ class MainViewModel(
 
 
     private fun saveWingmanInfo(data: ResGetWingmanInfo?){
+        println("SKJHSJKSHJKSHJSJH $data")
         if(data != null){
             val toJson = Gson().toJson(data)
             val EncryptData = ChCrypto.aesEncrypt(toJson, BuildConfig.KEY_CRYPTO_AUTH)
             sharedWingmanInfoRepository.saveWingmanInfo(BuildConfig.KEY_SHARED_PREFERENCE_WINGMAN_INFO, EncryptData)
-            getSharedwingmanInfo.postValue(data)
         }
+        getSharedwingmanInfo.value = data
+
     }
 
 

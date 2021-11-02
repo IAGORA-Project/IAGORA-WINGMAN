@@ -131,6 +131,7 @@ class MainActivity : AppCompatActivity()   {
             if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 mainViewModel.getSharedwingmanInfo.observe(this, {
                     it.success?.idKol?.let { it1 -> getLocationUpdate(it1) }
+                    println("DKLJDLFJLKFJFKJF $it")
                 })
                 println("permissionngranted")
             }else{

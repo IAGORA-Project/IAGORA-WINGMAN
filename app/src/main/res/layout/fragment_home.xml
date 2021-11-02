@@ -22,14 +22,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageView
-        android:id="@+id/ivButtonChat"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_chat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <ImageView-->
+<!--        android:id="@+id/ivButtonChat"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:src="@drawable/ic_chat"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <TextView
         android:id="@+id/tvTitle"
@@ -54,12 +54,37 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
 
+    <TextView
+        android:id="@+id/tvTitleActiveStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        tools:text="Title Layanan"
+        android:textColor="@color/white"
+        android:theme="@style/TextViewBold.OpenSans_16sp_020202"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFullName" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchActiveStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:thumb="@drawable/thumb_switch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleActiveStatus"
+        app:switchMinWidth="50dp"
+        app:track="@drawable/track_switch"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+
     <include
         android:id="@+id/incCardInfomration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         layout="@layout/layout_card_information_home"
-        android:layout_marginTop="-50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -70,7 +95,7 @@
         layout="@layout/layout_menu_wingman"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/incCardInfomration" />

@@ -13,6 +13,7 @@ data class ResGetWingmanInfo(
         @SerializedName("full_name") var fullName: String? = null,
         @SerializedName("id_kol") var idKol: String? = null,
         @SerializedName("img_profile") var imgProfile: String? = null,
-        @SerializedName("phone_number") var phoneNumber: String? = null
+        @SerializedName("phone_number") var phoneNumber: String? = null,
+        @SerializedName("active") var statusActive: Boolean? = null
     )
 }

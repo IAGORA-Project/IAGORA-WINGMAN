@@ -1,10 +1,13 @@
 package com.ssd.iagorawingman.ui.auth.login
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import com.google.firebase.messaging.FirebaseMessaging
 import com.ssd.iagorawingman.data.source.remote.body.LoginBody
 import com.ssd.iagorawingman.databinding.ActivityLoginBinding
@@ -35,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
             val phone_number =  binding.tilNomorPonsel.editText?.text.toString()
             val password =  binding.tilPassword.editText?.text.toString()
             val body = LoginBody(phone_number, password, deviceToken)
+
 
             if(!phone_number.isNullOrEmpty() && !password.isNullOrEmpty()){
                 login(body)

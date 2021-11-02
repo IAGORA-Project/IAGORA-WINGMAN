@@ -1,10 +1,8 @@
 package com.ssd.iagorawingman.services
 
-import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -20,9 +18,7 @@ import com.ssd.iagorawingman.ui.receive_order.ReceiveOrderActivity
 import org.json.JSONObject
 import kotlin.random.Random
 import android.net.Uri
-
-import android.content.ContentResolver
-import android.media.AudioAttributes
+import com.ssd.iagorawingman.utils.TriggerWhatsApp
 
 
 class FirebaseNotificationService: FirebaseMessagingService() {
@@ -47,7 +43,7 @@ class FirebaseNotificationService: FirebaseMessagingService() {
         }
 
         println("DKJDJKDHJKDDJ $remoteMessage")
-
+        val ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 5469
 
         // Check if message contains a data payload.
         if (remoteMessage.data.isNotEmpty()) {
@@ -58,6 +54,16 @@ class FirebaseNotificationService: FirebaseMessagingService() {
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                     intent.putExtra("data-notif", notification)
                     startActivity(intent)
+
+
+//                    val intent2 = Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=6288261323037&text=Hallo Wingman"))
+//                    startActivity(intent2)
+//                    TriggerWhatsApp.openWhatsApp(
+//                        "6288261323037",
+//                        "Hallo Wingman, saya bisa tawar belanjaan saya pada nomor order ?",
+//                        this.packageManager,
+//                        this
+//                    )
                 } catch (e: Exception) { }
             }
 
@@ -69,6 +75,7 @@ class FirebaseNotificationService: FirebaseMessagingService() {
             showNotification(messageTitle, messageBody, messageImageUrl, remoteMessage.data)
         }
     }
+
 
 
     private fun showNotification(title: String?, messageBody: String?, imageUrl: String?, data: Map<String, String>? = null) {

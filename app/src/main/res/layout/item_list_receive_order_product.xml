@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/tvProductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Nama Produk"
+        android:theme="@style/TextViewReguler.OpenSans_15sp_020202"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvVariant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/grey_400"
+        android:theme="@style/TextViewReguler.OpenSans_15sp_020202"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPrice"
+        tools:text="1000 Gram" />
+
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:gravity="end"
+        android:theme="@style/TextViewSemiBold.OpenSans_15sp_020202"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvProductName"
+        app:layout_constraintTop_toTopOf="@+id/tvProductName"
+        tools:text="Rp. 100.000" />
+
+    <TextView
+        android:id="@+id/tvQty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/TextViewSemiBold.OpenSans_15sp_020202"
+        app:layout_constraintBottom_toBottomOf="@+id/tvVariant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvVariant"
+        tools:text="x1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,7 +37,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        handleAction()
+        handleViewAction()
+
+        mainViewModel.getSharedwingmanInfo.observe(viewLifecycleOwner, {
+            println("dgvdfgvdfgdfgdfgfgh $it")
+        })
     }
 
 
@@ -57,13 +61,31 @@ class HomeFragment : Fragment() {
         window.setStatusBarColor(Color.WHITE);
     }
 
-    private fun handleAction(){
+    private fun handleViewAction(){
         binding.incCardInfomration.cvFinishOrder.setOnClickListener {
             ProcessOrderActivity.newInstance(requireContext(), 3)
         }
 
-        binding.ivButtonChat.setOnClickListener {
-            ChatActivity.newInstance(requireContext())
+//        binding.ivButtonChat.setOnClickListener {
+//            ChatActivity.newInstance(requireContext())
+//        }
+
+
+
+
+
+        binding.switchActiveStatus.isChecked = true
+        binding.tvTitleActiveStatus.text = "Layanan Sedang Aktif"
+
+
+
+        binding.switchActiveStatus.setOnCheckedChangeListener { buttonView, isChecked ->
+            println("KJDHJDKHJKDHDKD $isChecked")
+            if(isChecked){
+                binding.tvTitleActiveStatus.text = "Layanan Sedang Aktif"
+            }else{
+                binding.tvTitleActiveStatus.text = "Layanan Sedang Tidak Aktif"
+            }
         }
 
         binding.incMenuWingman.PasarGroup.setOnClickListener {
