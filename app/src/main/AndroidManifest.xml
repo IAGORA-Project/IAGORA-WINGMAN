@@ -52,7 +52,7 @@
             android:name=".ui.chat.ChatActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.process_order.ProcessOrderFragment"
+            android:name=".ui.process_order.ProcessOrderActivity"
             android:exported="true" />
         <activity
             android:name=".ui.auth.splash_screen.SplashScreenActivity"

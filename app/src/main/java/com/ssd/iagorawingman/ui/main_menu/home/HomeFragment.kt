@@ -13,7 +13,6 @@ import com.ssd.iagorawingman.databinding.FragmentHomeBinding
 import com.ssd.iagorawingman.ui.chat.ChatActivity
 import com.ssd.iagorawingman.ui.main_menu.MainViewModel
 import com.ssd.iagorawingman.ui.pasar.list_pasar.ListPasarActivity
-import com.ssd.iagorawingman.ui.process_order.ProcessOrderFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -27,6 +26,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         binding = FragmentHomeBinding.bind(view)
         handleAction()
+
+
     }
 
 
@@ -48,20 +49,27 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun handleAction() {
         binding.incCardInfomration.cvFinishOrder.setOnClickListener {
-            findNavController().navigate(R.id.homeFragmentMoveToProcessFragment)
+            moveToProcessOrder(3)
         }
 
         binding.ivButtonChat.setOnClickListener {
             ChatActivity.newInstance(requireContext())
         }
 
-        binding.incMenuWingman.PasarGroup.setOnClickListener {
-//            ProcessOrderFragment.newInstance(requireContext(), 0)
+        binding.incMenuWingman.btnPesanan.setOnClickListener {
+            moveToProcessOrder(0)
         }
 
         binding.incMenuWingman.btnPasar.setOnClickListener {
             startActivity(Intent(context, ListPasarActivity::class.java))
         }
+    }
+
+    private fun moveToProcessOrder(startingTab: Int) {
+        findNavController().navigate(
+            HomeFragmentDirections.actionNavigationHomeToProcessOrderActivity()
+                .setPositionTab(startingTab)
+        )
     }
 
 

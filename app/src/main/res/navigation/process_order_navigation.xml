@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/process_order_navigation"
+    app:startDestination="@id/processOrderContainerFragment">
+
+    <fragment
+        android:id="@+id/processOrderContainerFragment"
+        android:name="com.ssd.iagorawingman.ui.process_order.ProcessOrderContainerFragment"
+        android:label="ProcessOrderContainerFragment"
+        tools:layout="@layout/fragment_process_order" >
+        <action
+            android:id="@+id/action_processOrderContainerFragment_to_detailOnProcessFragment"
+            app:destination="@id/detailOnProcessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailOnProcessFragment"
+        android:name="com.ssd.iagorawingman.ui.process_order.on_process.DetailOnProcessFragment"
+        android:label="DetailOnProcessFragment"
+        tools:layout="@layout/fragment_detail_on_process"
+        />
+</navigation>

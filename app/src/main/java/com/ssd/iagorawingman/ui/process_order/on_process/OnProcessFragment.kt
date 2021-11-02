@@ -58,7 +58,9 @@ class OnProcessFragment : Fragment(R.layout.fragment_on_process) {
 
 
                    adapter.setOnItemClickListener {
-                       findNavController().navigate(R.id.action_processOrderFragment_to_detailOnProcessFragment)
+                       findNavController().navigate(
+                           R.id.action_processOrderContainerFragment_to_detailOnProcessFragment
+                       )
                    }
 
 

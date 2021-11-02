@@ -1,15 +1,14 @@
 package com.ssd.iagorawingman.ui.process_order
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -18,34 +17,44 @@ import com.ssd.iagorawingman.databinding.FragmentProcessOrderBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.concurrent.atomic.AtomicBoolean
+import kotlin.properties.Delegates
 
-class ProcessOrderFragment : Fragment(R.layout.fragment_process_order) {
+class ProcessOrderContainerFragment : Fragment(R.layout.fragment_process_order) {
 
     private lateinit var binding: FragmentProcessOrderBinding
-
-
+    private var positionTab by Delegates.notNull<Int>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding = FragmentProcessOrderBinding.bind(view)
 
 
-        handleHeaderView()
+        positionTab = requireActivity().navArgs<ProcessOrderActivityArgs>().value.positionTab
         handleTabViewPager()
-
-
+        initStart()
     }
 
 
-    private fun handleHeaderView() {
-        binding.apply {
-            incHeader.ivBackButton.setOnClickListener {
-                findNavController().popBackStack()
-            }
-            incHeader.tvTitle.text = StringBuilder("Orderan Saya")
-            incHeader.containerToolbar.elevation = 0f
-        }
+
+    private fun initStart(){
+       binding.tabs.apply {
+           lifecycleScope.launch(Dispatchers.Main) {
+               repeatOnLifecycle(Lifecycle.State.STARTED) {
+                   delay(100)
+                  binding.vpTabs.setCurrentItem(positionTab,true)
+               }
+           }
+
+
+           addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+               override fun onTabSelected(tab: TabLayout.Tab?) {
+                   positionTab = tab?.position ?: positionTab
+               }
+
+               override fun onTabUnselected(tab: TabLayout.Tab?) {}
+               override fun onTabReselected(tab: TabLayout.Tab?) {}
+
+           })
+       }
     }
 
     private fun handleTabViewPager() {
@@ -63,16 +72,11 @@ class ProcessOrderFragment : Fragment(R.layout.fragment_process_order) {
             TabLayoutMediator(tabs, vpTabs) { tab, position ->
                 tab.text = tabTitle[position]
             }.attach()
-
-
-//            lifecycleScope.launch(Dispatchers.Main) {
-//                delay(100)
-//                binding.tabs.getTabAt(1)?.select()
-//            }
         }
     }
 
-
-
-
 }
+
+
+
+
