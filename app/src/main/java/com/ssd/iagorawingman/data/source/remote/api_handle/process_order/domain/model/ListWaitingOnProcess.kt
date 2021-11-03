@@ -1,4 +1,4 @@
-package com.ssd.iagorawingman.data.source.remote.api_handle.process_order.on_process.domain.model
+package com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model
 
 data class ListWaitingOnProcess(
     val status: Int,

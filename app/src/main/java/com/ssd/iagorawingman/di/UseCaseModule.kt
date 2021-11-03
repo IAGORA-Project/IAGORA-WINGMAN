@@ -1,9 +1,9 @@
 package com.ssd.iagorawingman.di
 
-import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.on_process.domain.usecase.OnProcessInteractor
-import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.on_process.domain.usecase.OnProcessUseCase
+import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.usecase.ProcessOrderOrderInteractor
+import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.usecase.ProcessOrderUseCase
 import org.koin.dsl.module
 
 val useCaseModule = module {
-    factory<OnProcessUseCase> { OnProcessInteractor(get()) }
+    factory<ProcessOrderUseCase> { ProcessOrderOrderInteractor(get()) }
 }

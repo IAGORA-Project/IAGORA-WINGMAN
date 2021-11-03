@@ -2,11 +2,20 @@ package com.ssd.iagorawingman.ui.process_order
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.navArgs
 import com.ssd.iagorawingman.databinding.ActivityProcessOrderBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProcessOrderActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProcessOrderBinding
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,6 +25,7 @@ class ProcessOrderActivity : AppCompatActivity() {
 
         handleHeaderView()
     }
+
 
 
     private fun handleHeaderView() {

@@ -14,47 +14,47 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.databinding.FragmentProcessOrderBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import kotlin.properties.Delegates
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProcessOrderContainerFragment : Fragment(R.layout.fragment_process_order) {
 
     private lateinit var binding: FragmentProcessOrderBinding
-    private var positionTab by Delegates.notNull<Int>()
+    private val viewModel: ProcessOrderViewModel by viewModel()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProcessOrderBinding.bind(view)
 
-
-        positionTab = requireActivity().navArgs<ProcessOrderActivityArgs>().value.positionTab
         handleTabViewPager()
-        initStart()
+        initStart(requireActivity().navArgs<ProcessOrderActivityArgs>().value.positionTab)
     }
 
 
+    private fun initStart(positionTab: Int) {
 
-    private fun initStart(){
-       binding.tabs.apply {
-           lifecycleScope.launch(Dispatchers.Main) {
-               repeatOnLifecycle(Lifecycle.State.STARTED) {
-                   delay(100)
-                  binding.vpTabs.setCurrentItem(positionTab,true)
-               }
-           }
+        binding.apply {
+            lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.initPositionTab.collect {
+                        vpTabs.setCurrentItem(it ?: positionTab, true)
+                    }
+                }
+            }
+            tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: TabLayout.Tab) {
+                    viewModel.setInitPositionTab(tab.position)
+                }
 
+                override fun onTabUnselected(tab: TabLayout.Tab?) {/* NO-ACTION */
+                }
 
-           addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-               override fun onTabSelected(tab: TabLayout.Tab?) {
-                   positionTab = tab?.position ?: positionTab
-               }
-
-               override fun onTabUnselected(tab: TabLayout.Tab?) {}
-               override fun onTabReselected(tab: TabLayout.Tab?) {}
-
-           })
-       }
+                override fun onTabReselected(tab: TabLayout.Tab?) {/* NO-ACTION */
+                }
+            })
+        }
     }
 
     private fun handleTabViewPager() {

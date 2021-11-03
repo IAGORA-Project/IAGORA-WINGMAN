@@ -1,18 +1,17 @@
-package com.ssd.iagorawingman.data.source.remote.api_handle.process_order.on_process.source
+package com.ssd.iagorawingman.data.source.remote.api_handle.process_order.source
 
 import android.util.Log
-import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.on_process.OnProcessApi
+import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.ProcessOrderApi
 import com.ssd.iagorawingman.data.source.remote.network.ApiResponse
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.shareIn
 import retrofit2.HttpException
 import java.io.IOException
 
-class OnProcessRemoteDataSource(
-    private val services: OnProcessApi,
+class ProcessOrderRemoteDataSource(
+    private val services: ProcessOrderApi,
     private val externalScope: CoroutineScope
 ) {
     fun getAllListWaiting(
@@ -28,5 +27,5 @@ class OnProcessRemoteDataSource(
             Log.e("RESPONSE_FAILURE", e.toString())
             emit(ApiResponse.Error(e.toString()))
         }
-    }.shareIn(externalScope, SharingStarted.WhileSubscribed(), 1)
+    }.shareIn(externalScope, SharingStarted.WhileSubscribed(), 0)
 }

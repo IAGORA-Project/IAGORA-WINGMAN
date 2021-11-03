@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ssd.iagorawingman.R
-import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.on_process.domain.model.ListWaitingOnProcess
+import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ListWaitingOnProcess
 import com.ssd.iagorawingman.databinding.ItemListOnProcessBinding
 import com.ssd.iagorawingman.utils.FormatCurrency
 import com.ssd.iagorawingman.utils.SetImage.loadPhotoProfile

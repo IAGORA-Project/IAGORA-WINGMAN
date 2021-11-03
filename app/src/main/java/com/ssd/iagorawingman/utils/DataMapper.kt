@@ -1,6 +1,6 @@
 package com.ssd.iagorawingman.utils
 
-import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.on_process.domain.model.ListWaitingOnProcess
+import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ListWaitingOnProcess
 import com.ssd.iagorawingman.data.source.remote.response.ResGetListWaitingOnProcessOrder
 
 object DataMapper {
