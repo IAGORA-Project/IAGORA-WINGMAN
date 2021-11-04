@@ -98,6 +98,13 @@
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
+
+    <style name="TextViewSemiBold.OpenSans_18sp_020202">
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
     <style name="TextViewSemiBold.OpenSans_20sp_020202">
         <item name="android:fontFamily">@font/open_sans_semibold</item>
         <item name="android:textSize">20sp</item>
@@ -184,6 +191,11 @@
         <item name="cornerSizeTopRight">8dp</item>
     </style>
 
+
+
+    <style name="hintSize16sp" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">16sp</item>
+    </style>
 
     <!-- Progress Bar-->
     <style name="ProgessBar">

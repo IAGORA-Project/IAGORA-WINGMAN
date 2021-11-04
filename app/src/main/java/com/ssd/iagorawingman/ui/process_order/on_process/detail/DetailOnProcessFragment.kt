@@ -10,7 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
-import com.ssd.iagorawingman.databinding.FragmentDetailOnProcessBinding
+import com.ssd.iagorawingman.databinding.FragmentOnProcessDetailBinding
 import com.ssd.iagorawingman.utils.FormatCurrency
 import com.ssd.iagorawingman.utils.FormatCurrency.formatPrice
 import com.ssd.iagorawingman.utils.SetImage.loadPhotoProfile
@@ -20,16 +20,16 @@ import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
-class DetailOnProcessFragment : Fragment(R.layout.fragment_detail_on_process) {
+class DetailOnProcessFragment : Fragment(R.layout.fragment_on_process_detail) {
 
-    private lateinit var binding: FragmentDetailOnProcessBinding
+    private lateinit var binding: FragmentOnProcessDetailBinding
     private lateinit var adapter: DetailOnProcessProductAdapter
     private val args by navArgs<DetailOnProcessFragmentArgs>()
     private val viewModel: OnProcessDetailViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentDetailOnProcessBinding.bind(view)
+        binding = FragmentOnProcessDetailBinding.bind(view)
 
 
         viewModel.setIdTransaction(args.idTransaction)

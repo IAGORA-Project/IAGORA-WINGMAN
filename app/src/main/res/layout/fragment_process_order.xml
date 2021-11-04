@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="14dp"
+        android:overScrollMode="never"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tabGravity="start"
@@ -18,9 +19,10 @@
         app:tabMinWidth="90dp"
         app:tabMode="scrollable"
         app:tabPaddingBottom="-5dp"
-
+        app:tabRippleColor="@color/transparent_600"
         app:tabTextAppearance="@style/TextViewSemiBold.OpenSans_15sp_020202"
-        app:tabTextColor="@color/text_primary" />
+        app:tabTextColor="@color/text_primary"
+        app:tabUnboundedRipple="false" />
 
 
     <androidx.viewpager2.widget.ViewPager2

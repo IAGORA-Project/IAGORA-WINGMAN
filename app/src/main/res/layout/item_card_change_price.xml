@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/tvNameItem"
@@ -34,31 +34,31 @@
         android:id="@+id/tilPriceBargain"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:hint="@string/text_price_bargaining"
-        app:hintTextAppearance="@style/hintSize16sp"
         app:boxStrokeWidthFocused="1dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvItemPrice">
+        app:layout_constraintTop_toBottomOf="@+id/tvNameItem">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:maxLength="15"
-            android:theme="@style/TextViewReguler.OpenSans_14sp_020202" />
+            android:theme="@style/TextViewReguler.OpenSans_15sp_020202" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnBargain"
-        android:layout_width="120dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="110dp"
+        android:layout_height="45dp"
         android:insetTop="0dp"
+        android:layout_marginTop="7dp"
         android:insetBottom="0dp"
         android:text="@string/text_bargain"
+        android:textAllCaps="true"
         android:textStyle="bold"
         app:cornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/tilPriceBargain"
@@ -67,9 +67,13 @@
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="321dp" />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

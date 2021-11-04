@@ -1,7 +1,6 @@
 package com.ssd.iagorawingman.ui.process_order
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -15,7 +14,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.databinding.FragmentProcessOrderBinding
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
