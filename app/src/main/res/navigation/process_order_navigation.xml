@@ -19,5 +19,9 @@
         android:name="com.ssd.iagorawingman.ui.process_order.on_process.DetailOnProcessFragment"
         android:label="DetailOnProcessFragment"
         tools:layout="@layout/fragment_detail_on_process"
-        />
+        >
+        <argument
+            android:name="id_transaction"
+            app:argType="string" />
+    </fragment>
 </navigation>

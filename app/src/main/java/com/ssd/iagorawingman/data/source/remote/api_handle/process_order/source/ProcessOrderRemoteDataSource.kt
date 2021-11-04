@@ -28,4 +28,20 @@ class ProcessOrderRemoteDataSource(
             emit(ApiResponse.Error(e.toString()))
         }
     }.shareIn(externalScope, SharingStarted.WhileSubscribed(), 0)
+
+    fun getDetailWaiting(
+        token: String,
+        idTransaction: String
+    ) = flow {
+        try {
+            val response = services.getDetailListWaiting("Bearer $token", idTransaction)
+            emit(ApiResponse.Success(response))
+        } catch (e: IOException) {
+            Log.e("RESPONSE_FAILURE", e.toString())
+            emit(ApiResponse.Error(e.toString()))
+        } catch (e: HttpException) {
+            Log.e("RESPONSE_FAILURE", e.toString())
+            emit(ApiResponse.Error(e.toString()))
+        }
+    }.shareIn(externalScope, SharingStarted.WhileSubscribed(), 0)
 }

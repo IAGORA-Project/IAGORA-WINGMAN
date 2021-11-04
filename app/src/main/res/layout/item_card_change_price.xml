@@ -12,6 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="18sp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/tvItemPrice"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvItemPriceDiscount"
@@ -23,7 +24,7 @@
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:textColor="@color/grey_400"
-
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvItemPrice"
         app:layout_constraintTop_toTopOf="parent"
@@ -40,7 +41,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilPrice"
+        android:id="@+id/tilPriceBargain"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -63,12 +64,16 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnBargain"
         android:layout_width="100dp"
-        android:layout_height="65dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="5dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
         android:text="@string/text_bargain"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tilPrice"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tilPriceBargain"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tilPrice" />
+        app:layout_constraintTop_toTopOf="@+id/tilPriceBargain" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"

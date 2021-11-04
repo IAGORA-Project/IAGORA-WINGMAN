@@ -1,9 +1,10 @@
 package com.ssd.iagorawingman.ui.process_order
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.usecase.ProcessOrderUseCase
+import com.ssd.iagorawingman.utils.Resource
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -13,11 +14,24 @@ class ProcessOrderViewModel(
 
     fun vmGetWaitingList() = orderUseCase.getAllListWaiting()
 
-    init {
-        setInitPositionTab()
+    private val _vmGetDetailWaitingOnProcess: MutableSharedFlow<Resource<ProcessOrder.DetailWaitingOnProcess>> =
+        MutableSharedFlow()
+    val vmGetDetailWaitingOnProcess = _vmGetDetailWaitingOnProcess.asSharedFlow()
 
+
+
+    fun setIdTransaction(idTransaction: String) {
+        viewModelScope.launch {
+            orderUseCase.getDetailListWaiting(idTransaction).collectLatest {
+                _vmGetDetailWaitingOnProcess.emit(it)
+            }
+        }
     }
 
+//    init {
+//        setInitPositionTab()
+//
+//    }
 
     private val _totalWaitingList: MutableStateFlow<Int> = MutableStateFlow(0)
     val totalWaitingList: StateFlow<Int> = _totalWaitingList

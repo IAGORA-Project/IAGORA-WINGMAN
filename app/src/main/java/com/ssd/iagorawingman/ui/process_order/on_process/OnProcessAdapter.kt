@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ssd.iagorawingman.R
-import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ListWaitingOnProcess
+import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
 import com.ssd.iagorawingman.databinding.ItemListOnProcessBinding
 import com.ssd.iagorawingman.utils.FormatCurrency
 import com.ssd.iagorawingman.utils.SetImage.loadPhotoProfile
@@ -24,7 +24,7 @@ class OnProcessAdapter : RecyclerView.Adapter<OnProcessAdapter.OnProcessViewHold
 
     inner class OnProcessViewHolder(val binding: ItemListOnProcessBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(success: ListWaitingOnProcess.Success) {
+        fun bind(success: ProcessOrder.ListWaitingOnProcess.Success) {
             with(binding) {
                 with(success) {
                     with(dataUser) {
@@ -58,17 +58,17 @@ class OnProcessAdapter : RecyclerView.Adapter<OnProcessAdapter.OnProcessViewHold
     }
 
     private val differCallback =
-        object : DiffUtil.ItemCallback<ListWaitingOnProcess.Success>() {
+        object : DiffUtil.ItemCallback<ProcessOrder.ListWaitingOnProcess.Success>() {
             override fun areItemsTheSame(
-                oldItem: ListWaitingOnProcess.Success,
-                newItem: ListWaitingOnProcess.Success
+                oldItem: ProcessOrder.ListWaitingOnProcess.Success,
+                newItem: ProcessOrder.ListWaitingOnProcess.Success
             ): Boolean {
                 return oldItem.idTransaction == newItem.idTransaction
             }
 
             override fun areContentsTheSame(
-                oldItem: ListWaitingOnProcess.Success,
-                newItem: ListWaitingOnProcess.Success
+                oldItem: ProcessOrder.ListWaitingOnProcess.Success,
+                newItem: ProcessOrder.ListWaitingOnProcess.Success
             ): Boolean {
                 return oldItem == newItem
             }

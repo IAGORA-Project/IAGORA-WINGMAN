@@ -9,6 +9,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.databinding.FragmentOnProcessBinding
+import com.ssd.iagorawingman.ui.process_order.ProcessOrderContainerFragmentDirections
 import com.ssd.iagorawingman.ui.process_order.ProcessOrderViewModel
 import com.ssd.iagorawingman.utils.Status
 import kotlinx.coroutines.flow.collect
@@ -58,9 +59,11 @@ class OnProcessFragment : Fragment(R.layout.fragment_on_process) {
                     }
 
 
-                    adapter.setOnItemClickListener {
+                    adapter.setOnItemClickListener { idTransaction ->
                         findNavController().navigate(
-                            R.id.action_processOrderContainerFragment_to_detailOnProcessFragment
+                            ProcessOrderContainerFragmentDirections.actionProcessOrderContainerFragmentToDetailOnProcessFragment(
+                                idTransaction
+                            )
                         )
                     }
 
