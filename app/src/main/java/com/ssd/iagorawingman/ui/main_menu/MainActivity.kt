@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.Toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -48,7 +49,14 @@ class MainActivity : AppCompatActivity()   {
 
 
         getWingmanInfo()
+        handleStatusBar()
 //        readChanges() // read realtime-database firebase
+    }
+
+    private fun handleStatusBar(){
+        val window = this.window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.statusBarColor = this.getColor(R.color.redPrimary)
     }
 
 

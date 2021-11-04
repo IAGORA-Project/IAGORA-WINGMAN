@@ -1,8 +1,7 @@
-package com.ssd.iagorawingman.ui.process_order.on_process
+package com.ssd.iagorawingman.ui.process_order.on_process.detail
 
 import android.os.Bundle
 import android.telephony.PhoneNumberUtils
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -12,7 +11,6 @@ import androidx.navigation.fragment.navArgs
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
 import com.ssd.iagorawingman.databinding.FragmentDetailOnProcessBinding
-import com.ssd.iagorawingman.ui.process_order.ProcessOrderViewModel
 import com.ssd.iagorawingman.utils.FormatCurrency
 import com.ssd.iagorawingman.utils.FormatCurrency.formatPrice
 import com.ssd.iagorawingman.utils.SetImage.loadPhotoProfile
@@ -26,20 +24,18 @@ class DetailOnProcessFragment : Fragment(R.layout.fragment_detail_on_process) {
 
     private lateinit var binding: FragmentDetailOnProcessBinding
     private lateinit var adapter: DetailOnProcessProductAdapter
-    private val viewModel: ProcessOrderViewModel by viewModel()
     private val args by navArgs<DetailOnProcessFragmentArgs>()
+    private val viewModel: OnProcessDetailViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentDetailOnProcessBinding.bind(view)
-        try {
 
-            viewModel.setIdTransaction(args.idTransaction)
-            handleAdapter()
-            subscribeToViewModel()
-        } catch (e: Exception) {
-            Log.e("ERROR_DETAIL", e.toString())
-        }
+
+        viewModel.setIdTransaction(args.idTransaction)
+        handleAdapter()
+        subscribeToViewModel()
+
     }
 
 

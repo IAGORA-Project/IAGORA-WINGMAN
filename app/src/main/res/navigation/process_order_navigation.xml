@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailOnProcessFragment"
-        android:name="com.ssd.iagorawingman.ui.process_order.on_process.DetailOnProcessFragment"
+        android:name="com.ssd.iagorawingman.ui.process_order.on_process.detail.DetailOnProcessFragment"
         android:label="DetailOnProcessFragment"
         tools:layout="@layout/fragment_detail_on_process"
         >

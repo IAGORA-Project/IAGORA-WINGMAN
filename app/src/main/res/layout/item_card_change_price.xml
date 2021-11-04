@@ -3,41 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="10dp"
-    android:paddingBottom="20dp">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tvNameItem"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/tvItemPrice"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvItemPriceDiscount"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Wortel Berastagi" />
 
-    <TextView
-        android:id="@+id/tvItemPriceDiscount"
-        style="@style/TextViewBold.OpenSans_15sp_020202"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:textColor="@color/grey_400"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tvItemPrice"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/dummy_item_price_discount" />
 
     <TextView
         android:id="@+id/tvItemPrice"
-        style="@style/TextViewBold.OpenSans_20sp_020202"
+        style="@style/TextViewBold.OpenSans_18sp_020202"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lines="2"
+        app:layout_constraintBottom_toBottomOf="@+id/tvNameItem"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvItemPriceDiscount"
-        tools:text="@string/dummy_item_price" />
+        app:layout_constraintTop_toTopOf="@+id/tvNameItem"
+        tools:text="@string/dummy_price" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -45,8 +35,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:hint="@string/text_price_bargaining"
+        app:hintTextAppearance="@style/hintSize16sp"
         app:boxStrokeWidthFocused="1dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,13 +48,12 @@
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:maxLength="15"
-            android:paddingVertical="14dp"
             android:theme="@style/TextViewReguler.OpenSans_14sp_020202" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnBargain"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="55dp"
         android:layout_marginTop="5dp"
         android:insetTop="0dp"

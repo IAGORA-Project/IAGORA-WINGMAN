@@ -31,21 +31,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
 
-    override fun onResume() {
-        super.onResume()
-
-        val window = requireActivity().window
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.statusBarColor = requireActivity().getColor(R.color.redPrimary)
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-        val window = requireActivity().window
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.statusBarColor = Color.WHITE;
-    }
 
     private fun handleAction() {
         binding.incCardInfomration.cvFinishOrder.setOnClickListener {

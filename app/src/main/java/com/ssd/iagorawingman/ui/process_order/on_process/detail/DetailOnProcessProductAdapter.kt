@@ -1,11 +1,12 @@
-package com.ssd.iagorawingman.ui.process_order.on_process
+package com.ssd.iagorawingman.ui.process_order.on_process.detail
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
+import androidx.core.text.HtmlCompat.fromHtml
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
 import com.ssd.iagorawingman.databinding.ItemCardChangePriceBinding
 import com.ssd.iagorawingman.utils.FormatCurrency
@@ -25,11 +26,11 @@ class DetailOnProcessProductAdapter :
             binding.apply {
                 with(product) {
                     tvNameItem.text = productName
-                    tvItemPrice.text = String.format(
-                        itemView.resources.getString(R.string.format_item_price),
-                        FormatCurrency.getCurrencyRp(bargainPrice.toDouble()),
-                        unit
-                    )
+                    tvItemPrice.text =
+                        fromHtml(
+                            "${FormatCurrency.getCurrencyRp(bargainPrice.toDouble())}/<sub>$unit</sub>",
+                            HtmlCompat.FROM_HTML_MODE_COMPACT
+                        )
                     tilPriceBargain.editText?.text?.toString()?.run {
                         btnBargain.setOnClickListener {
                             onItemClickListener?.let { click ->

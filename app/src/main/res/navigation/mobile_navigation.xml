@@ -13,7 +13,11 @@
 
         <action
             android:id="@+id/action_navigation_home_to_processOrderActivity"
-            app:destination="@id/processOrderActivity" />
+            app:destination="@id/processOrderActivity"
+            app:enterAnim="@anim/screen_new_in"
+            app:exitAnim="@anim/screen_old_out"
+            app:popEnterAnim="@anim/screen_old_in"
+            app:popExitAnim="@anim/screen_new_out" />
     </fragment>
 
     <fragment

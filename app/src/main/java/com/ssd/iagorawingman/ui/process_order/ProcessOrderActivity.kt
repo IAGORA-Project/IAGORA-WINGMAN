@@ -1,6 +1,8 @@
 package com.ssd.iagorawingman.ui.process_order
 
+import android.graphics.Color
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -17,12 +19,10 @@ class ProcessOrderActivity : AppCompatActivity() {
 
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProcessOrderBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         handleHeaderView()
     }
 

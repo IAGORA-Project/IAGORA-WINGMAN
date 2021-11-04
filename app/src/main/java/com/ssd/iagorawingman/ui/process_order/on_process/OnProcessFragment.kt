@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.databinding.FragmentOnProcessBinding
 import com.ssd.iagorawingman.ui.process_order.ProcessOrderContainerFragmentDirections
-import com.ssd.iagorawingman.ui.process_order.ProcessOrderViewModel
 import com.ssd.iagorawingman.utils.Status
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
@@ -21,7 +20,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class OnProcessFragment : Fragment(R.layout.fragment_on_process) {
     private lateinit var binding: FragmentOnProcessBinding
     private lateinit var adapter: OnProcessAdapter
-    private val viewModel: ProcessOrderViewModel by viewModel()
+    private val viewModel: OnProcessViewModel by viewModel()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
