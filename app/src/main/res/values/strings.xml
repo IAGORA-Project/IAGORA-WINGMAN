@@ -39,10 +39,25 @@
         <item>Gram</item>
         <item>Pcs</item>
     </string-array>
+
+    <string-array name="path_response_waiting_list">
+        <item>WAITING_CONFIRMATION</item>
+        <item>WAITING_PAYMENT</item>
+    </string-array>
+
+    <string-array name="tab_title_waiting_list">
+        <item>Persetujuan</item>
+        <item>Pembayaran</item>
+    </string-array>
     <string-array name="tab_title_order">
         <item>Dalam proses</item>
         <item>Telah dibayar</item>
         <item>Dikirm</item>
         <item>Selesai</item>
+    </string-array>
+
+    <string-array name="path_type_action_transaction">
+        <item>accept</item>
+        <item>decline</item>
     </string-array>
 </resources>

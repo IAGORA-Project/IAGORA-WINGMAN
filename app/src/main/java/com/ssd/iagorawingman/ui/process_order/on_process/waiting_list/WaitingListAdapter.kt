@@ -1,4 +1,4 @@
-package com.ssd.iagorawingman.ui.process_order.on_process
+package com.ssd.iagorawingman.ui.process_order.on_process.waiting_list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,7 +14,7 @@ import com.ssd.iagorawingman.utils.FormatCurrency
 import com.ssd.iagorawingman.utils.SetImage.loadPhotoProfile
 
 
-class OnProcessAdapter : RecyclerView.Adapter<OnProcessAdapter.OnProcessViewHolder>() {
+class WaitingListAdapter : RecyclerView.Adapter<WaitingListAdapter.OnProcessViewHolder>() {
     private var onItemClickListener: ((String) -> Unit)? = null
 
     fun setOnItemClickListener(listener: (String) -> Unit) {
@@ -80,7 +80,7 @@ class OnProcessAdapter : RecyclerView.Adapter<OnProcessAdapter.OnProcessViewHold
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): OnProcessAdapter.OnProcessViewHolder = OnProcessViewHolder(
+    ): OnProcessViewHolder = OnProcessViewHolder(
         ItemListOnProcessBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -88,7 +88,7 @@ class OnProcessAdapter : RecyclerView.Adapter<OnProcessAdapter.OnProcessViewHold
         )
     )
 
-    override fun onBindViewHolder(holder: OnProcessAdapter.OnProcessViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: OnProcessViewHolder, position: Int) =
         holder.bind(differ.currentList[position])
 
 

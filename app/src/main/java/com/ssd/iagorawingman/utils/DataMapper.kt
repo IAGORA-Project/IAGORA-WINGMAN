@@ -5,6 +5,13 @@ import com.ssd.iagorawingman.data.source.remote.response.ResGetProcessOrder
 
 
 object DataMapper {
+    fun mapResponseBargainPriceToDomainBargainPrice(input: ResGetProcessOrder.ResGlobal) =
+        ProcessOrder.Global(
+            input.status ?: 404,
+            input.success ?: ""
+        )
+
+
     fun mapResponseWaitingListToDomainWaitingList(input: ResGetProcessOrder.ResGetListWaitingOnProcessOrder) =
         ProcessOrder.ListWaitingOnProcess(
             status = input.status ?: 404,

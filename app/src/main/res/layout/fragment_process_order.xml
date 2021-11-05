@@ -19,7 +19,7 @@
         app:tabMinWidth="90dp"
         app:tabMode="scrollable"
         app:tabPaddingBottom="-5dp"
-        app:tabRippleColor="@color/transparent_600"
+        app:tabRippleColor="@null"
         app:tabTextAppearance="@style/TextViewSemiBold.OpenSans_15sp_020202"
         app:tabTextColor="@color/text_primary"
         app:tabUnboundedRipple="false" />

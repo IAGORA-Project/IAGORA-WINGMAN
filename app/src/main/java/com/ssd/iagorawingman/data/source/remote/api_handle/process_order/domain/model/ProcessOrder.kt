@@ -3,7 +3,8 @@ package com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain
 
 data class ProcessOrder(
     val listWaitingListOnProcessOrder: ListWaitingOnProcess,
-    val DetailWaitingListOnProcessOrder: DetailWaitingOnProcess
+    val detailWaitingListOnProcessOrder: DetailWaitingOnProcess,
+    val global: Global
 ) {
     data class ListWaitingOnProcess(
         val status: Int,
@@ -49,6 +50,12 @@ data class ProcessOrder(
     data class StoreInfo(
         val idStore: String,
         val storeName: String
+    )
+
+
+    data class Global(
+        val status: Int,
+        val success: String
     )
 
 

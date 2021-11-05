@@ -8,8 +8,8 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/shapeIvPerson"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:theme="@style/ShapeAppearanceOverlay.Circle"
         app:layout_constraintBottom_toBottomOf="@+id/tvItemTotal"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +18,7 @@
 
     <TextView
         android:id="@+id/tvNamePerson"
-        style="@style/TextViewBold.OpenSans_20sp_020202"
+        style="@style/TextViewBold.OpenSans_17sp_020202"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -32,9 +32,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:textColor="@color/text_primary"
-        android:textSize="16sp"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
         app:layout_constraintEnd_toStartOf="@+id/imageButton"
         app:layout_constraintStart_toEndOf="@+id/shapeIvPerson"
         app:layout_constraintTop_toBottomOf="@+id/tvNamePerson"
@@ -47,8 +47,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:textColor="@color/text_primary"
-       style="@style/TextViewReguler.OpenSans_16sp_020202"
-
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
         app:layout_constraintEnd_toEndOf="@+id/tvItem"
         app:layout_constraintStart_toEndOf="@+id/shapeIvPerson"
         app:layout_constraintTop_toBottomOf="@+id/tvItem"

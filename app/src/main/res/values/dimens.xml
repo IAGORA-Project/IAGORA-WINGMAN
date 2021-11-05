@@ -5,4 +5,6 @@
     <dimen name="activity_vertical_margin">15dp</dimen>
     <dimen name="all_padding">15dp</dimen>
     <dimen name="all_margin">15dp</dimen>
+    <dimen name="dimen_10dp">10dp</dimen>
+    <dimen name="dimen_30dp">30dp</dimen>
 </resources>

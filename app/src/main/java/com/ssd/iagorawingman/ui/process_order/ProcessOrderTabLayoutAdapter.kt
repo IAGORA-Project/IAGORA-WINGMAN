@@ -6,6 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.ui.process_order.finished.FinishedFragment
 import com.ssd.iagorawingman.ui.process_order.on_process.OnProcessFragment
+import com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.WaitingListFragment
 import com.ssd.iagorawingman.ui.process_order.paid.PaidFragment
 import com.ssd.iagorawingman.ui.process_order.sent.SentFragment
 

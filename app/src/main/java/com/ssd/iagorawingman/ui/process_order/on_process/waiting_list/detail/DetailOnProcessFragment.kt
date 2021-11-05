@@ -1,20 +1,25 @@
-package com.ssd.iagorawingman.ui.process_order.on_process.detail
+package com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail
 
 import android.os.Bundle
 import android.telephony.PhoneNumberUtils
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
+import com.ssd.iagorawingman.data.source.remote.body.BargainBody
 import com.ssd.iagorawingman.databinding.FragmentOnProcessDetailBinding
 import com.ssd.iagorawingman.utils.FormatCurrency
 import com.ssd.iagorawingman.utils.FormatCurrency.formatPrice
+import com.ssd.iagorawingman.utils.Resource
 import com.ssd.iagorawingman.utils.SetImage.loadPhotoProfile
 import com.ssd.iagorawingman.utils.Status
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -35,7 +40,8 @@ class DetailOnProcessFragment : Fragment(R.layout.fragment_on_process_detail) {
         viewModel.setIdTransaction(args.idTransaction)
         handleAdapter()
         subscribeToViewModel()
-
+        getFeedBackPost(viewModel.vmGetFeedBackBargainPrice)
+        getFeedBackPost(viewModel.vmGetFeedBackActionTransaction)
     }
 
 
@@ -53,15 +59,70 @@ class DetailOnProcessFragment : Fragment(R.layout.fragment_on_process_detail) {
                             Status.SUCCESS -> {
                                 if (data != null) {
                                     handleUISuccess(data.success)
+                                    postBargain(data.success.idTransaction)
                                 }
                             }
 
                             Status.LOADING -> {
-
+                                Toast.makeText(requireContext(), "LOADING", Toast.LENGTH_SHORT)
+                                    .show()
                             }
 
                             Status.ERROR -> {
 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun postBargain(idTransaction: String) {
+        adapter.setOnItemClickListener { body ->
+            viewModel.sendBargainPrice(
+                BargainBody(
+                    idProduct = body.idProduct,
+                    idTransaction = idTransaction,
+                    uom = body.uom,
+                    newBargain = body.newBargain
+                )
+            )
+        }
+    }
+
+    private fun postActionTransaction(idTransaction: String, typeAction: String) {
+        viewModel.sendActionTransaction(idTransaction, typeAction)
+    }
+
+    private fun getFeedBackPost(vmFeedback: SharedFlow<Resource<ProcessOrder.Global>>) {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                vmFeedback.collectLatest { res ->
+                    res.apply {
+                        when (res.status) {
+                            Status.SUCCESS -> {
+                                Snackbar.make(
+                                    requireView(),
+                                    data?.success ?: "Success",
+                                    Snackbar.LENGTH_SHORT
+                                )
+                                    .show()
+                            }
+                            Status.LOADING -> {
+                                Snackbar.make(
+                                    requireView(),
+                                    res.message ?: "loading",
+                                    Snackbar.LENGTH_SHORT
+                                )
+                                    .show()
+                            }
+                            Status.ERROR -> {
+                                Snackbar.make(
+                                    requireView(),
+                                    res.message ?: "error",
+                                    Snackbar.LENGTH_SHORT
+                                ).show()
                             }
                         }
                     }
@@ -108,6 +169,8 @@ class DetailOnProcessFragment : Fragment(R.layout.fragment_on_process_detail) {
                     }
                 }
 
+
+
                 containerListBill.apply {
                     tvTotalPriceProductValue.formatPrice(totalPriceProduct.toString())
                     tvDiscountVoucherValue.text =
@@ -117,6 +180,21 @@ class DetailOnProcessFragment : Fragment(R.layout.fragment_on_process_detail) {
                     tvHandlingFeeValue.formatPrice(handlingFee.toString())
                     tvPlatformFeeValue.formatPrice(platformFee.toString())
                     tvGrandTotalValue.formatPrice(grandTotal.toString())
+                }
+
+
+
+                containerActionOrder.apply {
+
+                    val typeAction =
+                        requireActivity().resources.getStringArray(R.array.path_type_action_transaction)
+                    btnAcceptOrder.setOnClickListener {
+                        postActionTransaction(idTransaction, "accept")
+                    }
+
+                    btnCancelOrder.setOnClickListener {
+                        postActionTransaction(idTransaction, typeAction[1])
+                    }
                 }
             }
         }

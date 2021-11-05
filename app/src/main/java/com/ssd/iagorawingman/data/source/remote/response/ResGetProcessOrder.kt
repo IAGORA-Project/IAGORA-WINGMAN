@@ -5,7 +5,8 @@ import com.google.gson.annotations.SerializedName
 
 data class ResGetProcessOrder(
     var resGetListWaitingOnProcessOrder: ResGetListWaitingOnProcessOrder? = null,
-    var resGetDetailWaitingListOnProcessOrder: ResGetDetailWaitingListOnProcessOrder? = null
+    var resGetDetailWaitingListOnProcessOrder: ResGetDetailWaitingListOnProcessOrder? = null,
+    var resGlobal: ResGlobal? = null
 ) {
     data class ResGetListWaitingOnProcessOrder(
         @SerializedName("status") var status: Int? = null,
@@ -39,12 +40,17 @@ data class ResGetProcessOrder(
             @SerializedName("status") var status: String? = null,
             @SerializedName("transaction_date") var transactionDate: Long? = null,
             @SerializedName("pasar_info") var storeInfo: StoreInfo? = null,
-            @SerializedName("biaya_platform") var platformFee:  Long? = null,
+            @SerializedName("biaya_platform") var platformFee: Long? = null,
             @SerializedName("discount") var discount: Long? = null,
             @SerializedName("ongkir") var deliveryFee: Long? = null,
             @SerializedName("sub_total") var subTotal: Long? = null,
         )
     }
+
+    data class ResGlobal(
+        @SerializedName("status") var status: Int? = null,
+        @SerializedName("success") var success: String? = null
+    )
 
 
     data class StoreInfo(

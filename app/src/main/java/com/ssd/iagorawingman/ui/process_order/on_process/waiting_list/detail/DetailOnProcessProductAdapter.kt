@@ -1,21 +1,23 @@
-package com.ssd.iagorawingman.ui.process_order.on_process.detail
+package com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
 import androidx.core.text.HtmlCompat.fromHtml
+import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
+import com.ssd.iagorawingman.data.source.remote.body.BargainBody
 import com.ssd.iagorawingman.databinding.ItemCardChangePriceBinding
 import com.ssd.iagorawingman.utils.FormatCurrency
 
 class DetailOnProcessProductAdapter :
     RecyclerView.Adapter<DetailOnProcessProductAdapter.DetailOnProcessProductViewHolder>() {
-    private var onItemClickListener: ((String) -> Unit)? = null
+    private var onItemClickListener: ((BargainBody) -> Unit)? = null
 
-    fun setOnItemClickListener(listener: (String) -> Unit) {
+    fun setOnItemClickListener(listener: (BargainBody) -> Unit) {
         onItemClickListener = listener
     }
 
@@ -31,13 +33,29 @@ class DetailOnProcessProductAdapter :
                             "${FormatCurrency.getCurrencyRp(bargainPrice.toDouble())}/<sub>$unit</sub>",
                             HtmlCompat.FROM_HTML_MODE_COMPACT
                         )
-                    tilPriceBargain.editText?.text?.toString()?.run {
-                        btnBargain.setOnClickListener {
-                            onItemClickListener?.let { click ->
-                                click(this)
-                            }
+
+
+                    tilPriceBargain.editText?.doOnTextChanged { _, _, _, count ->
+                        btnBargain.isEnabled = count > 0
+                        if (tilPriceBargain.editText?.text.toString().isEmpty()
+                        )
+                            tilPriceBargain.editText?.clearFocus()
+
+                    }
+
+                    btnBargain.setOnClickListener {
+                        onItemClickListener?.let { click ->
+                            click(
+                                BargainBody(
+                                    idProduct = idProduct,
+                                    uom = uom,
+                                    newBargain = tilPriceBargain.editText?.text.toString().toInt()
+                                )
+                            )
+                            tilPriceBargain.editText?.clearFocus()
                         }
                     }
+
 
                 }
             }

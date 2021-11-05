@@ -13,10 +13,13 @@
         <action
             android:id="@+id/action_processOrderContainerFragment_to_detailOnProcessFragment"
             app:destination="@id/detailOnProcessFragment" />
+        <action
+            android:id="@+id/action_processOrderContainerFragment_to_finishedFragment"
+            app:destination="@id/finishedFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailOnProcessFragment"
-        android:name="com.ssd.iagorawingman.ui.process_order.on_process.detail.DetailOnProcessFragment"
+        android:name="com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail.DetailOnProcessFragment"
         android:label="DetailOnProcessFragment"
         tools:layout="@layout/fragment_on_process_detail"
         >
@@ -24,4 +27,9 @@
             android:name="id_transaction"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/finishedFragment"
+        android:name="com.ssd.iagorawingman.ui.process_order.finished.FinishedFragment"
+        android:label="fragment_finished"
+        tools:layout="@layout/fragment_finished" />
 </navigation>

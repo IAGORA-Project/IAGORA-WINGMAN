@@ -2,6 +2,7 @@ package com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain
 
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.repository.IProcessOrderRepository
+import com.ssd.iagorawingman.data.source.remote.body.BargainBody
 import com.ssd.iagorawingman.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
@@ -9,10 +10,19 @@ class ProcessOrderOrderInteractor(
     private val iOrderRepository: IProcessOrderRepository
 ) : ProcessOrderUseCase {
 
-    override fun getAllListWaiting(): Flow<Resource<ProcessOrder.ListWaitingOnProcess>> =
-        iOrderRepository.getAllListWaiting()
+    override fun getAllListWaiting(typeWaiting: String): Flow<Resource<ProcessOrder.ListWaitingOnProcess>> =
+        iOrderRepository.getAllListWaiting(typeWaiting)
 
     override fun getDetailListWaiting(idTransaction: String): Flow<Resource<ProcessOrder.DetailWaitingOnProcess>> =
         iOrderRepository.getDetailListWaiting(idTransaction)
+
+    override fun postActionTransaction(
+        idTransaction: String,
+        typeAction: String
+    ): Flow<Resource<ProcessOrder.Global>> =
+        iOrderRepository.postActionTransaction(idTransaction, typeAction)
+
+    override fun postBargainPrice(body: BargainBody): Flow<Resource<ProcessOrder.Global>> =
+        iOrderRepository.postBargainPrice(body)
 
 }

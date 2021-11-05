@@ -5,6 +5,7 @@ import com.ssd.iagorawingman.data.source.local.shared_handle.auth.SharedAuthRepo
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.repository.IProcessOrderRepository
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.source.ProcessOrderRemoteDataSource
+import com.ssd.iagorawingman.data.source.remote.body.BargainBody
 import com.ssd.iagorawingman.data.source.remote.network.ApiResponse
 import com.ssd.iagorawingman.utils.DataMapper
 import com.ssd.iagorawingman.utils.Resource
@@ -17,13 +18,15 @@ class ProcessOrderRepository(
     sharedAuth: SharedAuthRepository
 ) : IProcessOrderRepository {
 
+
     private val token = sharedAuth.getAuth(BuildConfig.KEY_SHARED_PREFERENCE_AUTH)
 
-    override fun getAllListWaiting(): Flow<Resource<ProcessOrder.ListWaitingOnProcess>> =
+    override fun getAllListWaiting(typeWaiting: String): Flow<Resource<ProcessOrder.ListWaitingOnProcess>> =
         flow {
             emit(Resource.loading("true", null))
             when (val response =
-                orderRemoteDataSource.getAllListWaiting(token?.success?.token!!).first()) {
+                orderRemoteDataSource.getAllListWaiting(token?.success?.token!!, typeWaiting)
+                    .first()) {
                 is ApiResponse.Success -> emit(
                     Resource.success(
                         DataMapper.mapResponseWaitingListToDomainWaitingList(response.data)
@@ -32,6 +35,7 @@ class ProcessOrderRepository(
                 is ApiResponse.Error -> emit(Resource.error(response.errorMessage, null))
             }
         }
+
 
     override fun getDetailListWaiting(idTransaction: String): Flow<Resource<ProcessOrder.DetailWaitingOnProcess>> =
         flow {
@@ -50,4 +54,40 @@ class ProcessOrderRepository(
             }
         }
 
+    override fun postBargainPrice(body: BargainBody): Flow<Resource<ProcessOrder.Global>> =
+        flow {
+            emit(Resource.loading("true", null))
+            when (val response =
+                orderRemoteDataSource.postBargainPrice(token?.success?.token!!, body).first()) {
+                is ApiResponse.Success -> emit(
+                    Resource.success(
+                        DataMapper.mapResponseBargainPriceToDomainBargainPrice(response.data)
+                    )
+                )
+                is ApiResponse.Error -> emit(Resource.error(response.errorMessage, null))
+            }
+        }
+
+    override fun postActionTransaction(
+        idTransaction: String,
+        typeAction: String
+    ): Flow<Resource<ProcessOrder.Global>> =
+
+        flow {
+            emit(Resource.loading("true", null))
+            when (val response =
+                orderRemoteDataSource.postActionTransaction(
+                    token?.success?.token!!,
+                    idTransaction,
+                    typeAction
+                )
+                    .first()) {
+                is ApiResponse.Success -> emit(
+                    Resource.success(
+                        DataMapper.mapResponseBargainPriceToDomainBargainPrice(response.data)
+                    )
+                )
+                is ApiResponse.Error -> emit(Resource.error(response.errorMessage, null))
+            }
+        }
 }
