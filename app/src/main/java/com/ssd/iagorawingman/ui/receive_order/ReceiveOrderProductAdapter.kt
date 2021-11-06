@@ -20,7 +20,7 @@ class ReceiveOrderProductAdapter(
 
         holder.binding.tvProductName.text = data.nameProduct
         holder.binding.tvVariant.text = data.uom.toString() + "Gram"
-        holder.binding.tvPrice.formatPrice(data.price.toString())
+        holder.binding.tvPrice.formatPrice(data.bergainPrice.toString())
         holder.binding.tvQty.text = "x${data.qty}"
     }
 

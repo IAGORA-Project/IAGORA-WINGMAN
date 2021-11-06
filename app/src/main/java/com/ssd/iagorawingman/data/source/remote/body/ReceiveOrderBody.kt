@@ -23,9 +23,9 @@ data class ReceiveOrderBody(
     data class Product(
         @SerializedName("id_product") var idProduct: String? = null,
         @SerializedName("name_product") var nameProduct: String? = null,
+        @SerializedName("bergain_price") var bergainPrice : Int = 0,
         @SerializedName("qty") var qty: Int? = null,
         @SerializedName("satuan") var satuan: String? = null,
-        @SerializedName("uom") var uom: Int? = null,
-        @SerializedName("price") var price: Int = 0
+        @SerializedName("uom") var uom: Int? = null
     ): Parcelable
 }

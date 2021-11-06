@@ -24,6 +24,7 @@ class ReceiveOrderActivity : AppCompatActivity() {
     private fun initBundle() {
         dataNotif = intent.getStringExtra("data-notif").toString()
         receiveOrderBody = Gson().fromJson(dataNotif, ReceiveOrderBody::class.java)
+
         receiveOrderBody?.let{ data -> handleViewAction(data) }
         receiveOrderBody?.listProduct?.let { listProduct -> handleAdapterListProduct(listProduct) }
         Log.d("dataNotifdataNotif", receiveOrderBody.toString())
@@ -66,6 +67,7 @@ class ReceiveOrderActivity : AppCompatActivity() {
 
 
     private fun receiverOrderAccepted(receiveOrderBody: ReceiveOrderBody) {
+        println("JDHJDHDJHD ${receiveOrderBody}")
         receiveOrderViewModel.vmAcceptedReceiverOrder(receiveOrderBody).observe(this, {
             it.getContentIfNotHandled().let { res ->
                 when(res?.status){
