@@ -2,10 +2,8 @@ package com.ssd.iagorawingman.ui.main_menu.home
 
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ssd.iagorawingman.R
@@ -31,7 +29,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
 
-
     private fun handleAction() {
         binding.incCardInfomration.cvFinishOrder.setOnClickListener {
             moveToProcessOrder(3)
@@ -52,8 +49,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun moveToProcessOrder(startingTab: Int) {
         findNavController().navigate(
-            HomeFragmentDirections.actionNavigationHomeToProcessOrderActivity()
-                .setPositionTab(startingTab)
+            HomeFragmentDirections.actionNavigationHomeToProcessOrderActivity(startingTab)
         )
     }
 
