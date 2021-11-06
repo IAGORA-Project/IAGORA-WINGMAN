@@ -24,10 +24,11 @@
             tools:text="Pasaraya MMTC" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/rvItemProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
+            android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@+id/tvStoreName" />
 
@@ -37,11 +38,11 @@
             android:layout_height="10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/shape_line_dashed"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/rvItemProduct" />
 
         <include
-            layout="@layout/item_card_total_bill"
+            android:id="@+id/containerHandlingFee"
+            layout="@layout/item_card_change_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

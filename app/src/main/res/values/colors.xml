@@ -11,14 +11,21 @@
     <color name="redPrimary">#F94F4F</color>
     <color name="white">#FFFFFF</color>
     <color name="grey_100">#EEEEEE</color>
-    <color name="grey_400">#B4B0B0</color>
+    <color name="grey_400">#D8D6D6</color>
     <color name="DividerColor">#C2C2C2</color>
     <color name="shimmerColor">#C2C2C2</color>
     <color name="transparent_600">#003A3939</color>
     <color name="background_grey">#F5F5F9</color>
+    <color name="green">#11C747</color>
 
     <!--Font-->
     <color name="fontGrey">#C4C4C4</color>
     <color name="text_primary">#020202</color>
+
+    <!--    chip tab layout-->
+    <color name="colorBg">@color/white</color>
+    <color name="colorText">@color/redPrimary</color>
+    <color name="colorTextSelected">@color/white</color>
+    <color name="colorBgTabSelected">@color/redPrimary</color>
 
 </resources>

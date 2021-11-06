@@ -11,35 +11,41 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 
 interface NetworkService {
     companion object {
         operator fun invoke(): Retrofit {
             fun loggingInterceptor(): Interceptor {
                 val httpLoggingInterceptor = HttpLoggingInterceptor()
-                httpLoggingInterceptor.level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
-                return  httpLoggingInterceptor
+                httpLoggingInterceptor.level =
+                    if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
+                return httpLoggingInterceptor
             }
 
             fun okHttpClientBuilder(builder: OkHttpClient.Builder): OkHttpClient.Builder =
-                builder.addInterceptor(loggingInterceptor()).addInterceptor(ContentTypeInterceptor())
+                builder.addInterceptor(loggingInterceptor())
+                    .addInterceptor(ContentTypeInterceptor())
 
             fun provideClient(): OkHttpClient = okHttpClientBuilder(OkHttpClient.Builder())
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)
-                .writeTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout( 60, TimeUnit.SECONDS)
                 .build()
 
             fun gsonHandler(builder: GsonBuilder): GsonBuilder {
-                return  builder
+                return builder
             }
 
-            val gson = gsonHandler(GsonBuilder().setPrettyPrinting()).setDateFormat("yyyy-MM-dd\'T\'hh:mm:ssZ").create()
+            val gson =
+                gsonHandler(GsonBuilder().setPrettyPrinting()).setDateFormat("yyyy-MM-dd\'T\'hh:mm:ssZ")
+                    .create()
 
             return Retrofit.Builder()
                 .client(provideClient())
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .build()
         }
 

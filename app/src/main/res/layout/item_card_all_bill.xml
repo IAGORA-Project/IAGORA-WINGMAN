@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/shape_white_rounded_20"
     android:padding="20dp">
 
@@ -15,8 +16,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
-        android:id="@+id/tvShoppingTitle"
+        android:id="@+id/tvTotalPriceProductTitle"
         style="@style/TextViewReguler.OpenSans_15sp_020202"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,6 +28,17 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTotalTitle" />
 
     <TextView
+        android:id="@+id/tvTotalPriceProductValue"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineAmount"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalTitle"
+        tools:text="@string/dummy_price" />
+
+    <TextView
         android:id="@+id/tvDiscountVoucherTitle"
         style="@style/TextViewReguler.OpenSans_15sp_020202"
         android:layout_width="wrap_content"
@@ -33,7 +46,19 @@
         android:layout_marginTop="8dp"
         android:text="@string/text_discount_voucher_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvShoppingTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalPriceProductTitle" />
+
+    <TextView
+        android:id="@+id/tvDiscountVoucherValue"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineAmount"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalPriceProductTitle"
+        tools:text="- Rp.2,000" />
 
     <TextView
         android:id="@+id/tvSubTotalTitle"
@@ -46,7 +71,18 @@
         app:layout_constraintTop_toBottomOf="@+id/tvDiscountVoucherTitle" />
 
     <TextView
-        android:id="@+id/tvPriceDeliveryTitle"
+        android:id="@+id/tvSubTotalValue"
+        style="@style/TextViewSemiBold.OpenSans_15sp_020202"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineAmount"
+        app:layout_constraintTop_toBottomOf="@+id/tvDiscountVoucherTitle"
+        tools:text="Rp.4,000" />
+
+    <TextView
+        android:id="@+id/tvDeliveryFeeTitle"
         style="@style/TextViewReguler.OpenSans_15sp_020202"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -56,38 +92,110 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSubTotalTitle" />
 
     <TextView
-        android:id="@+id/tvServiceChargeTitle"
+        android:id="@+id/tvDeliveryFeeValue"
         style="@style/TextViewReguler.OpenSans_15sp_020202"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:drawablePadding="10dp"
-        android:text="@string/text_services_charge_title"
-        app:drawableEndCompat="@drawable/ic_info_mini"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPriceDeliveryTitle" />
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineAmount"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubTotalTitle"
+        tools:text="Rp.-" />
 
     <TextView
-        android:id="@+id/tvPlatformChargeTitle"
+        android:id="@+id/tvHandlingFeeTitle"
         style="@style/TextViewReguler.OpenSans_15sp_020202"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:drawablePadding="10dp"
-        android:text="@string/text_platform_charge_title"
+        android:text="@string/text_handling_fee_title"
         app:drawableEndCompat="@drawable/ic_info_mini"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvServiceChargeTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDeliveryFeeTitle" />
+
+    <TextView
+        android:id="@+id/tvHandlingFeeValue"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineAmount"
+        app:layout_constraintTop_toBottomOf="@+id/tvDeliveryFeeTitle"
+        tools:text="@string/dummy_price" />
+
+    <TextView
+        android:id="@+id/tvPlatformFeeTitle"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawablePadding="10dp"
+        android:text="@string/text_platform_fee_title"
+        app:drawableEndCompat="@drawable/ic_info_mini"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHandlingFeeTitle" />
+
+    <TextView
+        android:id="@+id/tvPlatformFeeValue"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineAmount"
+        app:layout_constraintTop_toBottomOf="@+id/tvHandlingFeeTitle"
+        tools:text="@string/dummy_price" />
+
+    <TextView
+        android:id="@+id/tvGrandTotalValue"
+        style="@style/TextViewBold.OpenSans_15sp_020202"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        tools:text="@string/dummy_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineAmount"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlatformFeeTitle" />
 
     <TextView
         android:id="@+id/tvGrandTotalTitle"
-        style="@style/TextViewSemiBold.OpenSans_15sp_020202"
+        style="@style/TextViewBold.OpenSans_15sp_020202"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
         android:text="@string/text_grand_total_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPlatformChargeTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPlatformFeeTitle" />
+
+    <TextView
+        android:id="@+id/tvPaymentStatus"
+        style="@style/TextViewSemiBold.OpenSans_15sp_020202"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/text_payment_status_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvGrandTotalTitle" />
+
+    <TextView
+        android:id="@+id/tvPaymentStatusValue"
+        style="@style/TextViewSemiBold.OpenSans_15sp_020202"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/text_payment_status_value_false"
+        android:textColor="@color/redPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPaymentStatus" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="237dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
