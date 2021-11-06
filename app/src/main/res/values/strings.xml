@@ -52,7 +52,7 @@
     <string-array name="tab_title_order">
         <item>Dalam proses</item>
         <item>Telah dibayar</item>
-        <item>Dikirm</item>
+        <item>Dikirim</item>
         <item>Selesai</item>
     </string-array>
 

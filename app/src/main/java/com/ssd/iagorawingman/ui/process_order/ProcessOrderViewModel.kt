@@ -12,7 +12,6 @@ class ProcessOrderViewModel: ViewModel() {
 
     init {
         setInitPositionTab()
-
     }
 
     private val _initPositionTab: MutableSharedFlow<Int?> = MutableSharedFlow()

@@ -32,7 +32,6 @@ class ProcessOrderContainerFragment : Fragment(R.layout.fragment_process_order) 
 
 
     private fun initStart(positionTab: Int) {
-
         binding.apply {
             lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {

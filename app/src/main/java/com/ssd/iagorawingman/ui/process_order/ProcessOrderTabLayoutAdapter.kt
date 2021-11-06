@@ -28,7 +28,7 @@ class ProcessOrderTabLayoutAdapter(
                 0 -> fragment = OnProcessFragment()
                 1 -> fragment = PaidFragment()
                 2 -> fragment = SentFragment()
-                3 -> fragment = FinishedFragment()
+                5 -> fragment = FinishedFragment()
             }
             fragment as Fragment
         }

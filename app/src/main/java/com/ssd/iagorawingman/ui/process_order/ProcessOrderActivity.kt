@@ -18,14 +18,12 @@ class ProcessOrderActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProcessOrderBinding
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProcessOrderBinding.inflate(layoutInflater)
         setContentView(binding.root)
         handleHeaderView()
     }
-
 
 
     private fun handleHeaderView() {
