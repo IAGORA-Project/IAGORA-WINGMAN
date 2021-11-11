@@ -25,14 +25,10 @@ class ProcessOrderRepository(
         flow {
             emit(Resource.loading("true", null))
             when (val response =
-<<<<<<< HEAD
                 orderRemoteDataSource.getAllListWaiting(
                     token?.success?.token as String,
                     typeWaiting
                 )
-=======
-                orderRemoteDataSource.getAllListWaiting(token?.success?.token!!, typeWaiting)
->>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
                     .first()) {
                 is ApiResponse.Success -> emit(
                     Resource.success(
@@ -52,11 +48,7 @@ class ProcessOrderRepository(
             emit(Resource.loading("true", null))
             when (val response =
                 orderRemoteDataSource.getDetailWaiting(
-<<<<<<< HEAD
                     token?.success?.token as String,
-=======
-                    token?.success?.token!!,
->>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
                     idTransaction,
                     typeWaiting
                 )
@@ -76,12 +68,8 @@ class ProcessOrderRepository(
         flow {
             emit(Resource.loading("true", null))
             when (val response =
-<<<<<<< HEAD
                 orderRemoteDataSource.postBargainPrice(token?.success?.token as String, body)
                     .first()) {
-=======
-                orderRemoteDataSource.postBargainPrice(token?.success?.token!!, body).first()) {
->>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
                 is ApiResponse.Success -> emit(
                     Resource.success(
                         DataMapper.mapResponseBargainPriceToDomainBargainPrice(response.data)
@@ -100,11 +88,7 @@ class ProcessOrderRepository(
             emit(Resource.loading("true", null))
             when (val response =
                 orderRemoteDataSource.postActionTransaction(
-<<<<<<< HEAD
                     token?.success?.token as String,
-=======
-                    token?.success?.token!!,
->>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
                     idTransaction,
                     typeAction
                 )

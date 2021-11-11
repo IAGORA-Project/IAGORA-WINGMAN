@@ -54,11 +54,7 @@ class HomeFragment : Fragment() {
 
         val window = requireActivity().window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-<<<<<<< HEAD
         window.statusBarColor = Color.WHITE;
-=======
-        window.setStatusBarColor(Color.WHITE);
->>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
     }
 
     private fun handleViewAction() {
@@ -66,13 +62,7 @@ class HomeFragment : Fragment() {
             moveToProcessOrder(3)
         }
 
-<<<<<<< HEAD
-=======
-//        binding.ivButtonChat.setOnClickListener {
-//            ChatActivity.newInstance(requireContext())
-//        }
 
->>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
 
         binding.switchActiveStatus.isChecked = true
         binding.tvTitleActiveStatus.text = "Layanan Sedang Aktif"
@@ -92,11 +82,7 @@ class HomeFragment : Fragment() {
             moveToProcessOrder(0)
         }
 
-<<<<<<< HEAD
         binding.incMenuWingman.btnPasar.setOnClickListener {
-=======
-        binding.incMenuWingman.PasarGroup.setOnClickListener {
->>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
             startActivity(Intent(context, ListPasarActivity::class.java))
         }
     }

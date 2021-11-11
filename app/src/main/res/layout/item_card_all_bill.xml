@@ -38,31 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTotalTitle"
         tools:text="@string/dummy_price" />
 
-<<<<<<< HEAD
 
-=======
-    <TextView
-        android:id="@+id/tvDiscountVoucherTitle"
-        style="@style/TextViewReguler.OpenSans_15sp_020202"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/text_discount_voucher_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTotalPriceProductTitle" />
-
-    <TextView
-        android:id="@+id/tvDiscountVoucherValue"
-        style="@style/TextViewReguler.OpenSans_15sp_020202"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/green"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guidelineAmount"
-        app:layout_constraintTop_toBottomOf="@+id/tvTotalPriceProductTitle"
-        tools:text="- Rp.2,000" />
->>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
 
     <TextView
         android:id="@+id/tvSubTotalTitle"
@@ -72,86 +48,39 @@
         android:layout_marginTop="10dp"
         android:text="@string/text_sub_total_title"
         app:layout_constraintStart_toStartOf="parent"
-<<<<<<< HEAD
         app:layout_constraintTop_toBottomOf="@+id/tvTotalPriceProductTitle" />
-=======
-        app:layout_constraintTop_toBottomOf="@+id/tvDiscountVoucherTitle" />
->>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
 
     <TextView
         android:id="@+id/tvSubTotalValue"
         style="@style/TextViewSemiBold.OpenSans_15sp_020202"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guidelineAmount"
         app:layout_constraintTop_toTopOf="@+id/tvSubTotalTitle"
         tools:text="Rp.4,000" />
 
-=======
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guidelineAmount"
-        app:layout_constraintTop_toBottomOf="@+id/tvDiscountVoucherTitle"
-        tools:text="Rp.4,000" />
-
-    <TextView
-        android:id="@+id/tvDeliveryFeeTitle"
-        style="@style/TextViewReguler.OpenSans_15sp_020202"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text_price_delivery_title"
-        android:layout_marginTop="40dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSubTotalTitle" />
-
-    <TextView
-        android:id="@+id/tvDeliveryFeeValue"
-        style="@style/TextViewReguler.OpenSans_15sp_020202"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guidelineAmount"
-        app:layout_constraintTop_toTopOf="@+id/tvDeliveryFeeTitle"
-        tools:text="Rp.-" />
->>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
 
     <TextView
         android:id="@+id/tvHandlingFeeTitle"
         style="@style/TextViewReguler.OpenSans_15sp_020202"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:layout_marginTop="30dp"
-=======
-        android:layout_marginTop="8dp"
->>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
         android:drawablePadding="10dp"
         android:text="@string/text_handling_fee_title"
         app:drawableEndCompat="@drawable/ic_info_mini"
         app:layout_constraintStart_toStartOf="parent"
-<<<<<<< HEAD
         app:layout_constraintTop_toBottomOf="@+id/tvSubTotalTitle" />
-=======
-        app:layout_constraintTop_toBottomOf="@+id/tvDeliveryFeeTitle" />
->>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
 
     <TextView
         android:id="@+id/tvHandlingFeeValue"
         style="@style/TextViewReguler.OpenSans_15sp_020202"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guidelineAmount"
         app:layout_constraintTop_toTopOf="@+id/tvHandlingFeeTitle"
-=======
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guidelineAmount"
-        app:layout_constraintTop_toBottomOf="@+id/tvDeliveryFeeTitle"
->>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
         tools:text="@string/dummy_price" />
 
     <TextView

@@ -30,12 +30,8 @@
             android:layout_marginTop="20dp"
             android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-<<<<<<< HEAD
             app:layout_constraintTop_toBottomOf="@+id/tvStoreName"
             tools:listitem="@layout/item_card_price" />
-=======
-            app:layout_constraintTop_toBottomOf="@+id/tvStoreName" />
->>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
 
         <View
             android:id="@+id/view3"
@@ -46,11 +42,7 @@
 
         <include
             android:id="@+id/containerHandlingFee"
-<<<<<<< HEAD
             layout="@layout/item_handle_fee"
-=======
-            layout="@layout/item_card_change_price"
->>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
