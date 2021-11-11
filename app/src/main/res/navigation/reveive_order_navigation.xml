@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reveive_order_navigation"
+    app:startDestination="@id/receiveOrderFragment">
+
+    <fragment
+        android:id="@+id/receiveOrderFragment"
+        android:name="com.ssd.iagorawingman.ui.receive_order.ReceiveOrderFragment"
+        android:label="ReceiveOrderFragment">
+        <action
+            android:id="@+id/action_receiveOrderFragment_to_processOrderActivity"
+            app:destination="@id/processOrderActivity"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/mainActivity"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <activity
+        android:id="@+id/processOrderActivity"
+        android:name="com.ssd.iagorawingman.ui.process_order.ProcessOrderActivity"
+        android:label="activity_process_order"
+        tools:layout="@layout/activity_process_order">
+        <argument
+            android:name="positionTab"
+            app:argType="integer" />
+    </activity>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.ssd.iagorawingman.ui.main_menu.MainActivity"
+        android:label="MainActivity" />
+</navigation>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.ssd.iagorawingman.ui.main_menu.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_navigation_home_to_processOrderActivity"
+            app:destination="@id/processOrderActivity"
+            app:enterAnim="@anim/screen_new_in"
+            app:exitAnim="@anim/screen_old_out"
+            app:popEnterAnim="@anim/screen_old_in"
+            app:popExitAnim="@anim/screen_new_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_akun"
+        android:name="com.ssd.iagorawingman.ui.main_menu.akun.AkunFragment"
+        android:label="@string/title_akun"
+        tools:layout="@layout/fragment_akun" />
+
+    <activity
+        android:id="@+id/processOrderActivity"
+        android:name="com.ssd.iagorawingman.ui.process_order.ProcessOrderActivity"
+        android:label="fragment_process_order"
+        tools:layout="@layout/activity_process_order">
+        <argument
+            android:name="positionTab"
+            app:argType="integer" />
+    </activity>
+</navigation>

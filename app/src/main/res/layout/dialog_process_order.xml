@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_white_rounded_20"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/TextViewSemiBold.OpenSans_18sp_020202"
+        android:layout_width="0dp"
+        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Apakah kamu yakin untuk membatalkan pesanan ?" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCancelOrder"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_semibold"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:textAllCaps="false"
+        android:textColor="@color/redPrimary"
+        android:textSize="18sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/btnAcceptOrder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnAcceptOrder"
+        app:layout_constraintTop_toTopOf="@+id/btnAcceptOrder"
+        app:strokeColor="@color/redPrimary"
+        tools:text="Kembali" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAcceptOrder"
+        style="@style/TextViewSemiBold.OpenSans_18sp_020202"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:insetTop="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:insetBottom="0dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:cornerRadius="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnCancelOrder"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:text="Ya" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+=======
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_white_rounded_20"
+    android:padding="20dp">
+
+>>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
+
+</androidx.constraintlayout.widget.ConstraintLayout>

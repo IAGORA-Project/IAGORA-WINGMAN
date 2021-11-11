@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/process_order_navigation"
+    app:startDestination="@id/processOrderContainerFragment">
+
+    <fragment
+        android:id="@+id/processOrderContainerFragment"
+        android:name="com.ssd.iagorawingman.ui.process_order.ProcessOrderContainerFragment"
+        android:label="ProcessOrderContainerFragment"
+        tools:layout="@layout/fragment_process_order">
+        <action
+            android:id="@+id/moveToFinishFragment"
+            app:destination="@id/finishedFragment" />
+        <action
+            android:id="@+id/moveToConfirmation"
+            app:destination="@id/confirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/finishedFragment"
+        android:name="com.ssd.iagorawingman.ui.process_order.finished.FinishedFragment"
+        android:label="fragment_finished"
+        tools:layout="@layout/fragment_finished" />
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail.confirmation.ConfirmationFragment"
+        android:label="ConfirmationFragment"
+        tools:layout="@layout/fragment_on_process_waiting_list_detail_confirmation">
+        <argument
+            android:name="id_transaction"
+            app:argType="string" />
+    </fragment>
+</navigation>

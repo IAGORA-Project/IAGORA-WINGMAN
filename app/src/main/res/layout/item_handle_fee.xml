@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="30dp">
+
+    <TextView
+        android:id="@+id/tvNameItem"
+        style="@style/TextViewReguler.OpenSans_18sp_020202"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/text_handling_fee_title" />
+
+
+    <TextView
+        android:id="@+id/tvItemPrice"
+        style="@style/TextViewSemiBold.OpenSans_16sp_020202"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/tvNameItem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvNameItem"
+        tools:text="@string/dummy_price" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

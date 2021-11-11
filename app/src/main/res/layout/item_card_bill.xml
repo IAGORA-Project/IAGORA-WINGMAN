@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_white_rounded_20"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvStoreName"
+            style="@style/TextViewSemiBold.OpenSans_15sp_020202"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            app:drawableStartCompat="@drawable/ic_toko"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Pasaraya MMTC" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvItemProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+<<<<<<< HEAD
+            app:layout_constraintTop_toBottomOf="@+id/tvStoreName"
+            tools:listitem="@layout/item_card_price" />
+=======
+            app:layout_constraintTop_toBottomOf="@+id/tvStoreName" />
+>>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/shape_line_dashed"
+            app:layout_constraintTop_toBottomOf="@+id/rvItemProduct" />
+
+        <include
+            android:id="@+id/containerHandlingFee"
+<<<<<<< HEAD
+            layout="@layout/item_handle_fee"
+=======
+            layout="@layout/item_card_change_price"
+>>>>>>> 115d2f0db44d1a74226682896bcbdd9845ef69a6
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
