@@ -43,14 +43,14 @@
 
     <string-array name="path_response_waiting_list">
         <item>WAITING_CONFIRMATION</item>
-        <item>WAITING_CONFIRMED</item>
+        <item>CONFIRMATION</item>
         <item>WAITING_PAYMENT</item>
     </string-array>
 
     <string-array name="tab_title_waiting_list">
-        <item>Belum disetujui</item>
-        <item>Telah disetujui</item>
-        <item>Belum dibayar</item>
+        <item>Menunggu Persetujuan</item>
+        <item>Disetujui</item>
+        <item>Menunggu Bayaran</item>
     </string-array>
 
     <string-array name="text_dialog_action_transaction">

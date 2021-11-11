@@ -16,6 +16,9 @@
         <action
             android:id="@+id/moveToConfirmation"
             app:destination="@id/confirmationFragment" />
+        <action
+            android:id="@+id/moveToConfirmed"
+            app:destination="@id/confirmedFragment" />
     </fragment>
     <fragment
         android:id="@+id/finishedFragment"
@@ -27,6 +30,25 @@
         android:name="com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail.confirmation.ConfirmationFragment"
         android:label="ConfirmationFragment"
         tools:layout="@layout/fragment_on_process_waiting_list_detail_confirmation">
+        <argument
+            android:name="id_transaction"
+            app:argType="string" />
+        <action
+            android:id="@+id/moveToConfirmed"
+            app:destination="@id/confirmedFragment"
+            app:enterAnim="@anim/screen_new_in"
+            app:exitAnim="@anim/screen_old_out"
+            app:popEnterAnim="@anim/screen_old_in"
+            app:popExitAnim="@anim/screen_new_out"
+            app:popUpTo="@id/processOrderContainerFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmedFragment"
+        android:name="com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail.confirmed.ConfirmedFragment"
+        android:label="ConfirmedFragment"
+        tools:layout="@layout/fragment_on_process_waiting_list_detail_confirmed"
+        >
         <argument
             android:name="id_transaction"
             app:argType="string" />

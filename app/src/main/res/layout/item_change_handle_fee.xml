@@ -7,7 +7,7 @@
     android:layout_marginBottom="30dp">
 
     <TextView
-        android:id="@+id/tvNameItem"
+        android:id="@+id/tvHandlingFeeTitle"
         style="@style/TextViewReguler.OpenSans_18sp_020202"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -17,29 +17,29 @@
 
 
     <TextView
-        android:id="@+id/tvItemPrice"
+        android:id="@+id/tvHandlingFeeValue"
         style="@style/TextViewSemiBold.OpenSans_16sp_020202"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="end"
         android:textAlignment="textEnd"
-        app:layout_constraintBottom_toBottomOf="@+id/tvNameItem"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHandlingFeeTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvNameItem"
+        app:layout_constraintTop_toTopOf="@+id/tvHandlingFeeTitle"
         tools:text="@string/dummy_price" />
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilPriceBargain"
+        android:id="@+id/tilHandlingFeeBargain"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="15dp"
         android:hint="@string/text_hint_handling_fee"
         app:boxStrokeWidthFocused="1dp"
-        app:layout_constraintEnd_toEndOf="@+id/btnBargain"
+        app:layout_constraintEnd_toEndOf="@+id/btnHandlingFeeBargain"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvItemPrice">
+        app:layout_constraintTop_toBottomOf="@+id/tvHandlingFeeTitle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -52,7 +52,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnBargain"
+        android:id="@+id/btnHandlingFeeBargain"
         android:layout_width="110dp"
         android:layout_height="45dp"
         android:layout_marginTop="5dp"
@@ -63,9 +63,9 @@
         android:textAllCaps="true"
         android:textStyle="bold"
         app:cornerRadius="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tilPriceBargain"
+        app:layout_constraintBottom_toBottomOf="@+id/tilHandlingFeeBargain"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tilPriceBargain" />
+        app:layout_constraintTop_toTopOf="@+id/tilHandlingFeeBargain" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

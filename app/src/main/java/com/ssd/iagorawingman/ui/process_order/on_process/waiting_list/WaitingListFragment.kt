@@ -53,9 +53,10 @@ class WaitingListFragment : Fragment(R.layout.fragment_on_process_waiting_list) 
                         ProcessOrderContainerFragmentDirections.moveToConfirmation(idTransaction)
                     )
                 }
-
                 WAITING_CONFIRMED -> {
-
+                    findNavController().navigate(
+                        ProcessOrderContainerFragmentDirections.moveToConfirmed(idTransaction)
+                    )
                 }
 
                 WAITING_PAYMENT -> {

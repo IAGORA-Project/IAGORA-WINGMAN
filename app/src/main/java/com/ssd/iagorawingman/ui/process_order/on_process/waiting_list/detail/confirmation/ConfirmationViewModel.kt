@@ -1,6 +1,5 @@
 package com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail.confirmation
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
@@ -56,7 +55,6 @@ class ConfirmationViewModel(
         viewModelScope.launch {
             orderUseCase.postActionTransaction(idTransaction, typeAction).collectLatest { fed ->
                 _vmGetFeedBackActionTransaction.emit(fed)
-                Log.e("FEED2", fed.data.toString())
             }
         }
     }

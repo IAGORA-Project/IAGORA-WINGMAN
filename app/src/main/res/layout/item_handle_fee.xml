@@ -7,25 +7,25 @@
     android:layout_marginBottom="30dp">
 
     <TextView
-        android:id="@+id/tvNameItem"
+        android:id="@+id/tvHandlingFeeTitle"
         style="@style/TextViewReguler.OpenSans_18sp_020202"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:text="@string/text_handling_fee_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="@string/text_handling_fee_title" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
-        android:id="@+id/tvItemPrice"
+        android:id="@+id/tvHandleFeeValue"
         style="@style/TextViewSemiBold.OpenSans_16sp_020202"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="end"
         android:textAlignment="textEnd"
-        app:layout_constraintBottom_toBottomOf="@+id/tvNameItem"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHandlingFeeTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvNameItem"
+        app:layout_constraintTop_toTopOf="@+id/tvHandlingFeeTitle"
         tools:text="@string/dummy_price" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

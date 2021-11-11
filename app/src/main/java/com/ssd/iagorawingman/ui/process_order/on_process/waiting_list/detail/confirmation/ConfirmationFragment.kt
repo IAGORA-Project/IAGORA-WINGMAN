@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
@@ -60,10 +61,7 @@ class ConfirmationFragment :
                     res.apply {
                         when (status) {
                             Status.SUCCESS -> {
-                                if (data != null) {
-                                    handleUISuccess(data.success)
-                                    postBargain(data.success.idTransaction)
-                                }
+                                handleUISuccess(data?.success as ProcessOrder.DetailWaitingOnProcess.Success)
                             }
 
                             Status.LOADING -> {
@@ -82,11 +80,14 @@ class ConfirmationFragment :
     }
 
     private fun handleUISuccess(data: ProcessOrder.DetailWaitingOnProcess.Success) {
-        binding.apply {
-            with(data) {
-                adapter.differ.submitList(listProduct)
 
-                Log.e("ID", idTransaction)
+        with(data) {
+
+            adapter.differ.submitList(listProduct)
+            postBargain(idTransaction)
+
+            binding.apply {
+
                 containerPerson.apply {
                     with(data.dataUser) {
                         tvNamePerson.text = fullName
@@ -102,8 +103,8 @@ class ConfirmationFragment :
                     tvStoreName.text = data.storeInfo.storeName
 
                     containerHandlingFee.apply {
-                        tilPriceBargain.editText?.setupTextWithBtn(btnBargain)
-                        tvItemPrice.formatPrice(handlingFee.toString())
+                        tilHandlingFeeBargain.editText?.setupTextWithBtn(btnHandlingFeeBargain)
+                        tvHandlingFeeValue.formatPrice(handlingFee.toString())
                     }
                 }
 
@@ -128,46 +129,56 @@ class ConfirmationFragment :
         }
     }
 
-    private fun postActionTransaction(idTransaction: String, typeAction: String) {
+    private fun postActionTransaction(idTransaction: String, typeAction: String, pos: Int) {
         viewModel.sendActionTransaction(idTransaction, typeAction)
-        getFeedActionTransaction()
+        getFeedActionTransaction(typeAction, idTransaction)
     }
 
-    private fun getFeedActionTransaction() {
+    private fun getFeedActionTransaction(typeAction: String, idTransaction: String) {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
                 viewModel.vmGetFeedBackActionTransaction.collectLatest { res ->
-                    res.apply {
-                        when (res.status) {
-                            Status.SUCCESS -> {
-                                Snackbar.make(
-                                    requireView(),
-                                    data?.success ?: "Success",
-                                    Snackbar.LENGTH_SHORT
-                                )
-                                    .show()
-
-                            }
-                            Status.LOADING -> {
-                                Snackbar.make(
-                                    requireView(),
-                                    res.message ?: "loading",
-                                    Snackbar.LENGTH_SHORT
-                                )
-                                    .show()
-                            }
-                            Status.ERROR -> {
-                                Snackbar.make(
-                                    requireView(),
-                                    res.message ?: "error",
-                                    Snackbar.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
-                    }
+                    setFeedBackActionTransaction(res, typeAction, idTransaction)
                 }
             }
         }
+    }
+
+    private fun setFeedBackActionTransaction(
+        res: Resource<ProcessOrder.Global>,
+        typeAction: String,
+        idTransaction: String
+    ) {
+        res.apply {
+            when (res.status) {
+                Status.SUCCESS -> {
+                    moveToAnotherPager(typeAction, idTransaction)
+                }
+                Status.LOADING -> {
+                }
+                Status.ERROR -> {
+                    Snackbar.make(
+                        requireView(),
+                        res.message ?: "error",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
+
+    private fun moveToAnotherPager(typeAction: String, idTransaction: String) {
+
+        if (typeAction == "accept") {
+            findNavController().navigate(
+                ConfirmationFragmentDirections.moveToConfirmed(
+                    idTransaction
+                )
+            )
+        } else {
+            findNavController().popBackStack()
+        }
+
     }
 
 
@@ -185,7 +196,7 @@ class ConfirmationFragment :
         ).setMessage(message[pos])
             .setTitle(title[pos])
             .setPositiveButton(requireActivity().resources.getString(R.string.text_positive_button)) { dialogInterface, _ ->
-                postActionTransaction(idTransaction, typeAction[pos])
+                postActionTransaction(idTransaction, typeAction[pos], pos)
                 dialogInterface.dismiss()
             }
             .setNegativeButton(requireActivity().resources.getString(R.string.text_negative_button)) { dialogInterface, _ ->

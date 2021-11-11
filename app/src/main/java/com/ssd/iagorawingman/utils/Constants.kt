@@ -16,6 +16,9 @@ object Constants {
     const val ACTION_STOP_SERVICE = "ACTION_STOP_SERVICE"
 
     const val WAITING_CONFIRMATION = "WAITING_CONFIRMATION"
-    const val WAITING_CONFIRMED = "WAITING_CONFIRMED"
+    const val WAITING_CONFIRMED = "CONFIRMATION"
     const val WAITING_PAYMENT = "WAITING_PAYMENT"
+
+    const val ACCEPT = "accept"
+    const val DECLINE = "decline"
 }

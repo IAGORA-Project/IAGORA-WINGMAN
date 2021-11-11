@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.usecase.ProcessOrderUseCase
-import com.ssd.iagorawingman.utils.Constants
+import com.ssd.iagorawingman.utils.Constants.WAITING_CONFIRMED
 import com.ssd.iagorawingman.utils.Resource
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -25,9 +25,9 @@ class ConfirmedViewModel(
         }.buffer(1, BufferOverflow.DROP_OLDEST)
 
 
-    fun setIdTransaction(idTransaction: String, typeWaiting:String) {
+    fun setIdTransaction(idTransaction: String) {
         viewModelScope.launch {
-            orderUseCase.getDetailListWaiting(idTransaction, typeWaiting)
+            orderUseCase.getDetailListWaiting(idTransaction, WAITING_CONFIRMED)
                 .collectLatest {
                     _vmGetDetailConfirmed.emit(it)
                 }
