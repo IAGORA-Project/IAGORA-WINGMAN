@@ -1,5 +1,6 @@
 package com.ssd.iagorawingman.ui.process_order
 
+
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ssd.iagorawingman.databinding.ActivityProcessOrderBinding
@@ -13,6 +14,7 @@ class ProcessOrderActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityProcessOrderBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         handleHeaderView()
     }
 
@@ -26,4 +28,9 @@ class ProcessOrderActivity : AppCompatActivity() {
             incHeader.containerToolbar.elevation = 0f
         }
     }
+
+    companion object {
+        const val POST_TAB = "positionTab"
+    }
+
 }

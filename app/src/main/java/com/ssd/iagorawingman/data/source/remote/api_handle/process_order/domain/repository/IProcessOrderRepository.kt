@@ -3,6 +3,7 @@ package com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain
 
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
 import com.ssd.iagorawingman.data.source.remote.body.BargainBody
+import com.ssd.iagorawingman.data.source.remote.body.HandlingFeeBody
 import com.ssd.iagorawingman.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
@@ -14,6 +15,9 @@ interface IProcessOrderRepository {
     ): Flow<Resource<ProcessOrder.DetailWaitingOnProcess>>
 
     fun postBargainPrice(body: BargainBody): Flow<Resource<ProcessOrder.Global>>
+    fun postNewHandlingFee(
+        idTransaction: String, handlingFeeBody: HandlingFeeBody,
+    ): Flow<Resource<ProcessOrder.Global>>
     fun postActionTransaction(
         idTransaction: String,
         typeAction: String,

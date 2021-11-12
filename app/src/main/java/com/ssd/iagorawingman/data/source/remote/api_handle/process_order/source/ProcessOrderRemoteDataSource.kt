@@ -3,6 +3,7 @@ package com.ssd.iagorawingman.data.source.remote.api_handle.process_order.source
 import android.util.Log
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.ProcessOrderApi
 import com.ssd.iagorawingman.data.source.remote.body.BargainBody
+import com.ssd.iagorawingman.data.source.remote.body.HandlingFeeBody
 import com.ssd.iagorawingman.data.source.remote.network.ApiResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.SharingStarted
@@ -65,10 +66,28 @@ class ProcessOrderRemoteDataSource(
         }
     }.shareIn(externalScope, SharingStarted.WhileSubscribed(), 0)
 
+    fun postNewHandlingFee(
+        token: String,
+        idTransaction: String,
+        handlingFeeBody: HandlingFeeBody,
+    ) = flow {
+        try {
+            val response =
+                services.postNewHandlingFee("Bearer $token", idTransaction, handlingFeeBody)
+            emit(ApiResponse.Success(response))
+        } catch (e: IOException) {
+            Log.e("RESPONSE_FAILURE", e.toString())
+            emit(ApiResponse.Error(e.toString()))
+        } catch (e: HttpException) {
+            Log.e("RESPONSE_FAILURE", e.toString())
+            emit(ApiResponse.Error(e.toString()))
+        }
+    }.shareIn(externalScope, SharingStarted.WhileSubscribed(), 0)
+
     fun postActionTransaction(
         token: String,
         idTransaction: String,
-        typeAction: String
+        typeAction: String,
     ) = flow {
         try {
             val response =

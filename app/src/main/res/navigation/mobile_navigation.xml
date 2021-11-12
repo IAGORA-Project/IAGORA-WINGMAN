@@ -16,6 +16,7 @@
             app:destination="@id/processOrderActivity"
             app:enterAnim="@anim/screen_new_in"
             app:exitAnim="@anim/screen_old_out"
+            app:launchSingleTop="true"
             app:popEnterAnim="@anim/screen_old_in"
             app:popExitAnim="@anim/screen_new_out" />
     </fragment>

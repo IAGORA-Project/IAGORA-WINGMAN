@@ -1,8 +1,7 @@
-package com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail.confirmation
+package com.ssd.iagorawingman.ui.process_order.waiting_list.confirmation.detail
 
 import android.os.Bundle
 import android.telephony.PhoneNumberUtils
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -18,26 +17,34 @@ import com.google.android.material.textfield.TextInputLayout
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
 import com.ssd.iagorawingman.data.source.remote.body.BargainBody
+import com.ssd.iagorawingman.data.source.remote.body.HandlingFeeBody
 import com.ssd.iagorawingman.databinding.FragmentOnProcessWaitingListDetailConfirmationBinding
+import com.ssd.iagorawingman.ui.process_order.waiting_list.confirmation.ConfirmationViewModel
+import com.ssd.iagorawingman.ui.process_order.waiting_list.confirmed.ConfirmedViewModel
 import com.ssd.iagorawingman.utils.FormatCurrency.formatPrice
+import com.ssd.iagorawingman.utils.Other
 import com.ssd.iagorawingman.utils.Other.setupTextWithBtn
 import com.ssd.iagorawingman.utils.Resource
 import com.ssd.iagorawingman.utils.SetImage.loadPhotoProfile
 import com.ssd.iagorawingman.utils.Status
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
-class ConfirmationFragment :
+class ConfirmationDetailFragment :
     Fragment(R.layout.fragment_on_process_waiting_list_detail_confirmation) {
 
     private var _binding: FragmentOnProcessWaitingListDetailConfirmationBinding? = null
     private val binding get() = _binding as FragmentOnProcessWaitingListDetailConfirmationBinding
-    private val viewModel: ConfirmationViewModel by viewModel()
-    private val args by navArgs<ConfirmationFragmentArgs>()
 
-    lateinit var adapter: ConfirmationAdapter
+    private val viewModel: ConfirmationDetailViewModel by viewModel()
+    private val confirmationViewModel: ConfirmationViewModel by sharedViewModel()
+    private val confirmedViewModel: ConfirmedViewModel by sharedViewModel()
+
+    private val args by navArgs<ConfirmationDetailFragmentArgs>()
+    private lateinit var detailAdapter: ConfirmationDetailAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,8 +55,8 @@ class ConfirmationFragment :
     }
 
     private fun handleAdapter() {
-        adapter = ConfirmationAdapter()
-        binding.containerListItem.rvItemProduct.adapter = adapter
+        detailAdapter = ConfirmationDetailAdapter()
+        binding.containerListItem.rvItemProduct.adapter = detailAdapter
         viewModel.setIdTransaction(args.idTransaction)
     }
 
@@ -83,7 +90,7 @@ class ConfirmationFragment :
 
         with(data) {
 
-            adapter.differ.submitList(listProduct)
+            detailAdapter.differ.submitList(listProduct)
             postBargain(idTransaction)
 
             binding.apply {
@@ -105,6 +112,18 @@ class ConfirmationFragment :
                     containerHandlingFee.apply {
                         tilHandlingFeeBargain.editText?.setupTextWithBtn(btnHandlingFeeBargain)
                         tvHandlingFeeValue.formatPrice(handlingFee.toString())
+
+
+
+                        btnHandlingFeeBargain.setOnClickListener {
+                            postHandlingFee(idTransaction,
+                                HandlingFeeBody(tilHandlingFeeBargain.editText?.text.toString()
+                                    .toLong()))
+
+                            Other.clearFocus(tilHandlingFeeBargain.editText)
+
+
+                        }
                     }
                 }
 
@@ -129,7 +148,45 @@ class ConfirmationFragment :
         }
     }
 
-    private fun postActionTransaction(idTransaction: String, typeAction: String, pos: Int) {
+    private fun postHandlingFee(idTransaction: String, handlingFeeBody: HandlingFeeBody) {
+        viewModel.sendNewHandlingFee(idTransaction, handlingFeeBody)
+        getFeedHandlingFee()
+    }
+
+    private fun getFeedHandlingFee() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                viewModel.vmGetFeedBackChangeHandlingFee.collectLatest { res ->
+                    setFeedBackHandlingFee(res)
+                }
+            }
+        }
+    }
+
+    private fun setFeedBackHandlingFee(res: Resource<ProcessOrder.Global>) {
+        res.apply {
+            when (status) {
+                Status.SUCCESS -> {
+                    binding.containerListItem.containerHandlingFee.apply {
+                        tilHandlingFeeBargain.apply {
+                            tvHandlingFeeValue.formatPrice(editText?.text.toString()).run {
+                                editText?.text?.clear()
+                            }
+                        }
+
+                    }
+                }
+                Status.LOADING -> {
+
+                }
+                Status.ERROR -> {
+
+                }
+            }
+        }
+    }
+
+    private fun postActionTransaction(idTransaction: String, typeAction: String) {
         viewModel.sendActionTransaction(idTransaction, typeAction)
         getFeedActionTransaction(typeAction, idTransaction)
     }
@@ -147,7 +204,7 @@ class ConfirmationFragment :
     private fun setFeedBackActionTransaction(
         res: Resource<ProcessOrder.Global>,
         typeAction: String,
-        idTransaction: String
+        idTransaction: String,
     ) {
         res.apply {
             when (res.status) {
@@ -167,20 +224,23 @@ class ConfirmationFragment :
         }
     }
 
+
     private fun moveToAnotherPager(typeAction: String, idTransaction: String) {
+        confirmationViewModel.initViewModelConfirmation().run {
+            if (typeAction == "accept") {
+                confirmedViewModel.initViewModelConfirmed().run {
+                    findNavController().navigate(
+                        ConfirmationDetailFragmentDirections.moveToConfirmed(
+                            idTransaction
+                        )
+                    )
+                }
+            } else {
+                findNavController().popBackStack()
 
-        if (typeAction == "accept") {
-            findNavController().navigate(
-                ConfirmationFragmentDirections.moveToConfirmed(
-                    idTransaction
-                )
-            )
-        } else {
-            findNavController().popBackStack()
+            }
         }
-
     }
-
 
     private fun showDialog(pos: Int, idTransaction: String) {
         val typeAction =
@@ -196,7 +256,7 @@ class ConfirmationFragment :
         ).setMessage(message[pos])
             .setTitle(title[pos])
             .setPositiveButton(requireActivity().resources.getString(R.string.text_positive_button)) { dialogInterface, _ ->
-                postActionTransaction(idTransaction, typeAction[pos], pos)
+                postActionTransaction(idTransaction, typeAction[pos])
                 dialogInterface.dismiss()
             }
             .setNegativeButton(requireActivity().resources.getString(R.string.text_negative_button)) { dialogInterface, _ ->
@@ -206,7 +266,7 @@ class ConfirmationFragment :
 
 
     private fun postBargain(idTransaction: String) {
-        adapter.setOnItemClickListener { body, textInputLayout, textView ->
+        detailAdapter.setOnItemClickListener { body, textInputLayout, textView ->
             viewModel.sendBargainPrice(
                 BargainBody(
                     idProduct = body.idProduct,
@@ -222,7 +282,7 @@ class ConfirmationFragment :
     private fun getFeedBackBargainPrice(
         textInputLayout: TextInputLayout,
         textView: TextView,
-        oldPrice: String
+        oldPrice: String,
     ) {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
@@ -238,7 +298,7 @@ class ConfirmationFragment :
         res: Resource<ProcessOrder.Global>,
         textInputLayout: TextInputLayout,
         textView: TextView,
-        oldPrice: String
+        oldPrice: String,
     ) {
         res.apply {
             when (status) {
@@ -248,8 +308,9 @@ class ConfirmationFragment :
                         ) {
                             textView.formatPrice(
                                 editText?.text?.toString() as String
-                            )
-                            editText?.text?.clear()
+                            ).run {
+                                editText?.text?.clear()
+                            }
                         }
                     }
                 }

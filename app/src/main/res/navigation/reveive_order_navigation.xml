@@ -10,10 +10,9 @@
         android:name="com.ssd.iagorawingman.ui.receive_order.ReceiveOrderFragment"
         android:label="ReceiveOrderFragment">
         <action
-            android:id="@+id/action_receiveOrderFragment_to_processOrderActivity"
+            android:id="@+id/moveToProcessOrder"
             app:destination="@id/processOrderActivity"
             app:launchSingleTop="true"
-            app:popUpTo="@id/mainActivity"
             app:popUpToInclusive="true" />
     </fragment>
     <activity
@@ -25,8 +24,4 @@
             android:name="positionTab"
             app:argType="integer" />
     </activity>
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.ssd.iagorawingman.ui.main_menu.MainActivity"
-        android:label="MainActivity" />
 </navigation>

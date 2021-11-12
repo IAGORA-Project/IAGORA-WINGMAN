@@ -1,4 +1,4 @@
-package com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail.confirmed
+package com.ssd.iagorawingman.ui.process_order.waiting_list.confirmed.detail
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
 import com.ssd.iagorawingman.databinding.ItemCardPriceBinding
-import com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail.DifferDetail
+import com.ssd.iagorawingman.ui.process_order.waiting_list.DifferDetail
 import com.ssd.iagorawingman.utils.FormatCurrency.formatPrice
 
 
-class ConfirmedAdapter : RecyclerView.Adapter<ConfirmedAdapter.ConfirmedViewHolder>() {
+class ConfirmedDetailAdapter : RecyclerView.Adapter<ConfirmedDetailAdapter.ConfirmedViewHolder>() {
 
     val differ = AsyncListDiffer(this, DifferDetail)
 
@@ -37,8 +37,8 @@ class ConfirmedAdapter : RecyclerView.Adapter<ConfirmedAdapter.ConfirmedViewHold
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
-    ): ConfirmedAdapter.ConfirmedViewHolder = ConfirmedViewHolder(
+        viewType: Int,
+    ): ConfirmedViewHolder = ConfirmedViewHolder(
         ItemCardPriceBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -47,8 +47,8 @@ class ConfirmedAdapter : RecyclerView.Adapter<ConfirmedAdapter.ConfirmedViewHold
     )
 
     override fun onBindViewHolder(
-        holder: ConfirmedAdapter.ConfirmedViewHolder,
-        position: Int
+        holder: ConfirmedViewHolder,
+        position: Int,
     ) =
         holder.bind(differ.currentList[position])
 

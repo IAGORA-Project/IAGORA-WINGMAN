@@ -1,7 +1,5 @@
-package com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail
+package com.ssd.iagorawingman.ui.process_order.waiting_list
 
-import android.widget.Adapter
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
 

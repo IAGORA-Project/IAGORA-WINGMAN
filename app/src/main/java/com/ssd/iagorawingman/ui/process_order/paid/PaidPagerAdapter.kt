@@ -1,14 +1,13 @@
-package com.ssd.iagorawingman.ui.process_order.on_process
+package com.ssd.iagorawingman.ui.process_order.paid
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.ssd.iagorawingman.R
-import com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.WaitingListFragment
 
-class OnProcessPagerAdapter(
-    private val activity: AppCompatActivity
+class PaidPagerAdapter(
+    activity: AppCompatActivity,
 ) : FragmentStateAdapter(activity) {
 
     private val pageType = activity.resources.getStringArray(R.array.path_response_waiting_list)
@@ -17,9 +16,9 @@ class OnProcessPagerAdapter(
 
     override fun createFragment(pos: Int): Fragment {
 
-        val fragment = WaitingListFragment()
+        val fragment = DeliveryTypeFragment()
         fragment.arguments = Bundle().apply {
-            putString(WaitingListFragment.PAGE_TYPE, pageType[pos])
+            putString(DeliveryTypeFragment.TYPE_DELIVERY, pageType[pos])
         }
 
         return fragment

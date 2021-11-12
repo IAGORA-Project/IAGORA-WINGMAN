@@ -1,4 +1,4 @@
-package com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail.confirmed
+package com.ssd.iagorawingman.ui.process_order.waiting_list.confirmed.detail
 
 import android.os.Bundle
 import android.telephony.PhoneNumberUtils
@@ -21,14 +21,15 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 
-class ConfirmedFragment : Fragment(R.layout.fragment_on_process_waiting_list_detail_confirmed) {
+class ConfirmedDetailFragment :
+    Fragment(R.layout.fragment_on_process_waiting_list_detail_confirmed) {
 
     private var _binding: FragmentOnProcessWaitingListDetailConfirmedBinding? = null
     private val binding get() = _binding as FragmentOnProcessWaitingListDetailConfirmedBinding
-    private val viewModel: ConfirmedViewModel by viewModel()
-    private val args by navArgs<ConfirmedFragmentArgs>()
+    private val detailViewModel: ConfirmedDetailViewModel by viewModel()
+    private val args by navArgs<ConfirmedDetailFragmentArgs>()
 
-    lateinit var adapter: ConfirmedAdapter
+    private lateinit var detailAdapter: ConfirmedDetailAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,15 +41,15 @@ class ConfirmedFragment : Fragment(R.layout.fragment_on_process_waiting_list_det
 
 
     private fun handleAdapter() {
-        adapter = ConfirmedAdapter()
-        binding.containerListItem.rvItemProduct.adapter = adapter
-        viewModel.setIdTransaction(args.idTransaction)
+        detailAdapter = ConfirmedDetailAdapter()
+        binding.containerListItem.rvItemProduct.adapter = detailAdapter
+        detailViewModel.setIdTransaction(args.idTransaction)
     }
 
     private fun subscribeToViewModel() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
-                viewModel.vmGetDetailConfirmed.collectLatest { res ->
+                detailViewModel.vmGetDetailConfirmed.collectLatest { res ->
                     res.apply {
                         when (status) {
                             Status.SUCCESS -> {
@@ -74,7 +75,7 @@ class ConfirmedFragment : Fragment(R.layout.fragment_on_process_waiting_list_det
 
         with(data) {
 
-            adapter.differ.submitList(listProduct)
+            detailAdapter.differ.submitList(listProduct)
 
             binding.apply {
 
@@ -104,12 +105,6 @@ class ConfirmedFragment : Fragment(R.layout.fragment_on_process_waiting_list_det
                     tvHandlingFeeValue.formatPrice(handlingFee.toString())
                     tvPlatformFeeValue.formatPrice(platformFee.toString())
                     tvGrandTotalValue.formatPrice(grandTotal.toString())
-                }
-
-                containerActionOrder.apply {
-                    btnAcceptOrder.setOnClickListener {
-
-                    }
                 }
             }
         }

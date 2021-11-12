@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
-    tools:context=".ui.process_order.on_process.waiting_list.WaitingListFragment">
+    tools:context=".ui.process_order.waiting_list.WaitingListFragment">
 
     <View
         android:id="@+id/view"

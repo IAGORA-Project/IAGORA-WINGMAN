@@ -1,4 +1,4 @@
-package com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail.confirmation
+package com.ssd.iagorawingman.ui.process_order.waiting_list.confirmation.detail
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,12 +10,13 @@ import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
 import com.ssd.iagorawingman.data.source.remote.body.BargainBody
 import com.ssd.iagorawingman.databinding.ItemCardChangePriceBinding
-import com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail.DifferDetail
+import com.ssd.iagorawingman.ui.process_order.waiting_list.DifferDetail
 import com.ssd.iagorawingman.utils.FormatCurrency.formatPrice
 import com.ssd.iagorawingman.utils.Other
+import com.ssd.iagorawingman.utils.Other.clearFocus
 import com.ssd.iagorawingman.utils.Other.setupTextWithBtn
 
-class ConfirmationAdapter : RecyclerView.Adapter<ConfirmationAdapter.ConfirmationViewHolder>() {
+class ConfirmationDetailAdapter : RecyclerView.Adapter<ConfirmationDetailAdapter.ConfirmationViewHolder>() {
 
     val differ = AsyncListDiffer(this, DifferDetail)
 
@@ -57,7 +58,7 @@ class ConfirmationAdapter : RecyclerView.Adapter<ConfirmationAdapter.Confirmatio
                                 tvItemPrice
                             )
                         }
-                        Other.clearFocus(tilPriceBargain.editText)
+                        clearFocus(tilPriceBargain.editText)
                     }
                 }
             }
@@ -68,7 +69,7 @@ class ConfirmationAdapter : RecyclerView.Adapter<ConfirmationAdapter.Confirmatio
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ConfirmationAdapter.ConfirmationViewHolder = ConfirmationViewHolder(
+    ): ConfirmationViewHolder = ConfirmationViewHolder(
         ItemCardChangePriceBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -77,7 +78,7 @@ class ConfirmationAdapter : RecyclerView.Adapter<ConfirmationAdapter.Confirmatio
     )
 
     override fun onBindViewHolder(
-        holder: ConfirmationAdapter.ConfirmationViewHolder,
+        holder: ConfirmationViewHolder,
         position: Int
     ) =
         holder.bind(differ.currentList[position])

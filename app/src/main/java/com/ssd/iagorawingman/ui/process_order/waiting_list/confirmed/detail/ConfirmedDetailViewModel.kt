@@ -1,10 +1,10 @@
-package com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail.confirmed
+package com.ssd.iagorawingman.ui.process_order.waiting_list.confirmed.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.usecase.ProcessOrderUseCase
-import com.ssd.iagorawingman.utils.Constants.WAITING_CONFIRMED
+import com.ssd.iagorawingman.utils.FlowProcessOrder
 import com.ssd.iagorawingman.utils.Resource
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -13,8 +13,8 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
-class ConfirmedViewModel(
-    private val orderUseCase: ProcessOrderUseCase
+class ConfirmedDetailViewModel(
+    private val orderUseCase: ProcessOrderUseCase,
 ) : ViewModel() {
 
     private val _vmGetDetailConfirmed: MutableSharedFlow<Resource<ProcessOrder.DetailWaitingOnProcess>> =
@@ -27,7 +27,7 @@ class ConfirmedViewModel(
 
     fun setIdTransaction(idTransaction: String) {
         viewModelScope.launch {
-            orderUseCase.getDetailListWaiting(idTransaction, WAITING_CONFIRMED)
+            orderUseCase.getDetailListWaiting(idTransaction, FlowProcessOrder.CONFIRMATION.name)
                 .collectLatest {
                     _vmGetDetailConfirmed.emit(it)
                 }

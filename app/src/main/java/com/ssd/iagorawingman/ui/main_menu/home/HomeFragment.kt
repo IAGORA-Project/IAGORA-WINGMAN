@@ -14,6 +14,7 @@ import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.databinding.FragmentHomeBinding
 import com.ssd.iagorawingman.ui.main_menu.MainViewModel
 import com.ssd.iagorawingman.ui.pasar.list_pasar.ListPasarActivity
+import com.ssd.iagorawingman.utils.FlowProcessOrder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
@@ -24,7 +25,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -59,7 +60,7 @@ class HomeFragment : Fragment() {
 
     private fun handleViewAction() {
         binding.incCardInfomration.cvFinishOrder.setOnClickListener {
-            moveToProcessOrder(3)
+            moveToProcessOrder(FlowProcessOrder.FINISH.ordinal)
         }
 
 
@@ -79,7 +80,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.incMenuWingman.btnPesanan.setOnClickListener {
-            moveToProcessOrder(0)
+            moveToProcessOrder(FlowProcessOrder.WAITING_CONFIRMATION.ordinal)
         }
 
         binding.incMenuWingman.btnPasar.setOnClickListener {

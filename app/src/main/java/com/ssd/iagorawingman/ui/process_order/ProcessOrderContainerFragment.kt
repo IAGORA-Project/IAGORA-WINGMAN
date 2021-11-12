@@ -60,7 +60,6 @@ class ProcessOrderContainerFragment : Fragment(R.layout.fragment_process_order) 
             ProcessOrderTabLayoutAdapter(requireActivity() as AppCompatActivity)
 
         binding.apply {
-
             vpTabs.apply {
                 adapter = sectionsPagerAdapter
                 getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER

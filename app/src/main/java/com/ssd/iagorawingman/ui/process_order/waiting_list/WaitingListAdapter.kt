@@ -1,4 +1,4 @@
-package com.ssd.iagorawingman.ui.process_order.on_process.waiting_list
+package com.ssd.iagorawingman.ui.process_order.waiting_list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

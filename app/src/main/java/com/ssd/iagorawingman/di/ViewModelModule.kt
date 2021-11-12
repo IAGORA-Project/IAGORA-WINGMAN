@@ -5,9 +5,11 @@ import com.ssd.iagorawingman.ui.auth.AuthViewModel
 import com.ssd.iagorawingman.ui.main_menu.MainViewModel
 import com.ssd.iagorawingman.ui.pasar.PasarViewModel
 import com.ssd.iagorawingman.ui.process_order.ProcessOrderViewModel
-import com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.WaitingListViewModel
-import com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail.confirmation.ConfirmationViewModel
-import com.ssd.iagorawingman.ui.process_order.on_process.waiting_list.detail.confirmed.ConfirmedViewModel
+import com.ssd.iagorawingman.ui.process_order.waiting_list.confirmation.ConfirmationViewModel
+import com.ssd.iagorawingman.ui.process_order.waiting_list.confirmation.detail.ConfirmationDetailViewModel
+import com.ssd.iagorawingman.ui.process_order.waiting_list.confirmed.ConfirmedViewModel
+import com.ssd.iagorawingman.ui.process_order.waiting_list.confirmed.detail.ConfirmedDetailViewModel
+import com.ssd.iagorawingman.ui.process_order.waiting_list.payment.PaymentViewModel
 import com.ssd.iagorawingman.ui.receive_order.ReceiveOrderViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -18,8 +20,10 @@ val ViewModelModule = module {
     viewModel { AuthViewModel(get(), get(), get()) }
     viewModel { PasarViewModel(get(), get()) }
     viewModel { ReceiveOrderViewModel(get(), get()) }
-    viewModel { WaitingListViewModel(get()) }
     viewModel { ConfirmationViewModel(get()) }
     viewModel { ConfirmedViewModel(get()) }
+    viewModel { PaymentViewModel(get()) }
+    viewModel { ConfirmationDetailViewModel(get()) }
+    viewModel { ConfirmedDetailViewModel(get()) }
     viewModel { ProcessOrderViewModel() }
 }

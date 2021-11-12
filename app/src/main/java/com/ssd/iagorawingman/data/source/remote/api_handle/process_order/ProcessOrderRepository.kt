@@ -6,6 +6,7 @@ import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.repository.IProcessOrderRepository
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.source.ProcessOrderRemoteDataSource
 import com.ssd.iagorawingman.data.source.remote.body.BargainBody
+import com.ssd.iagorawingman.data.source.remote.body.HandlingFeeBody
 import com.ssd.iagorawingman.data.source.remote.network.ApiResponse
 import com.ssd.iagorawingman.utils.DataMapper
 import com.ssd.iagorawingman.utils.Resource
@@ -38,6 +39,7 @@ class ProcessOrderRepository(
                 is ApiResponse.Error -> emit(Resource.error(response.errorMessage, null))
             }
         }
+
 
 
     override fun getDetailListWaiting(
@@ -79,9 +81,29 @@ class ProcessOrderRepository(
             }
         }
 
+
+    override fun postNewHandlingFee(
+        idTransaction: String,
+        handlingFeeBody: HandlingFeeBody,
+    ): Flow<Resource<ProcessOrder.Global>> = flow {
+        emit(Resource.loading("true", null))
+        when (val response =
+            orderRemoteDataSource.postNewHandlingFee(token?.success?.token as String,
+                idTransaction,
+                handlingFeeBody)
+                .first()) {
+            is ApiResponse.Success -> emit(
+                Resource.success(
+                    DataMapper.mapResponseBargainPriceToDomainBargainPrice(response.data)
+                )
+            )
+            is ApiResponse.Error -> emit(Resource.error(response.errorMessage, null))
+        }
+    }
+
     override fun postActionTransaction(
         idTransaction: String,
-        typeAction: String
+        typeAction: String,
     ): Flow<Resource<ProcessOrder.Global>> =
 
         flow {

@@ -72,11 +72,12 @@ class ReceiveOrderFragment : Fragment(R.layout.fragment_receive_order) {
 
     private fun moveToProcessOrder() {
         findNavController().navigate(
-            ReceiveOrderFragmentDirections.actionReceiveOrderFragmentToProcessOrderActivity(
+            ReceiveOrderFragmentDirections.moveToProcessOrder(
                 0
             )
-        )
-        requireActivity().finish()
+        ).run {
+            requireActivity().finish()
+        }
     }
 
     private fun receiverOrderAccepted(receiveOrderBody: ReceiveOrderBody) {
@@ -115,7 +116,7 @@ class ReceiveOrderFragment : Fragment(R.layout.fragment_receive_order) {
                         Status.SUCCESS -> {
                             println("KJDBHJDHDJHDD ${res.data}")
                             Loader.progressDialog?.dismiss()
-                            moveToProcessOrder()
+                            requireActivity().finish()
                         }
                         Status.ERROR -> {
                             Loader.progressDialog?.dismiss()
