@@ -25,22 +25,6 @@ class ProcessOrderActivity : AppCompatActivity() {
     }
 
 
-    override fun onBackPressed() {
-
-        val isFromReceiver = intent.getBooleanExtra(IS_FROM_RECEIVER, false)
-        if (isFromReceiver) {
-            backStep -= 1
-            Log.e("back", backStep.toString())
-
-            if (backStep < 1) {
-                startActivity(Intent(this, MainActivity::class.java))
-            }
-        }else{
-            super.onBackPressed()
-        }
-
-    }
-
 
     private fun handleHeaderView() {
         binding.apply {

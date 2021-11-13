@@ -1,6 +1,5 @@
 package com.ssd.iagorawingman.ui.process_order
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -14,7 +13,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.databinding.FragmentProcessOrderBinding
-import com.ssd.iagorawingman.ui.main_menu.MainActivity
+import com.ssd.iagorawingman.utils.Other.reduceDragSensitivity
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -53,6 +52,7 @@ class ProcessOrderContainerFragment : Fragment(R.layout.fragment_process_order) 
                 override fun onTabReselected(tab: TabLayout.Tab?) {/* NO-ACTION */
                 }
             })
+            vpTabs.reduceDragSensitivity()
         }
     }
 

@@ -84,7 +84,7 @@ class ReceiveOrderActivity : AppCompatActivity() {
                         println("KJDBHJDHDJHDD ${res.data}")
                         Loader.progressDialog?.dismiss()
                         startActivity(Intent(this, ProcessOrderActivity::class.java).apply {
-                            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                             putExtra(ProcessOrderActivity.POST_TAB, 0)
                             putExtra(ProcessOrderActivity.IS_FROM_RECEIVER, true)
                         })
