@@ -6,8 +6,8 @@ import retrofit2.Call
 
 interface ReceiveOrderDataSource {
 
-    fun postAcceptedOrder(token: String, receiveOrderBody: ReceiveOrderBody): Call<ResAcceptedOrder>
+    fun postAcceptedOrder(receiveOrderBody: ReceiveOrderBody): Call<ResAcceptedOrder>
 
-    fun postCancelledOrder(token: String, receiveOrderBody: ReceiveOrderBody): Call<ResAcceptedOrder>
+    fun postCancelledOrder(receiveOrderBody: ReceiveOrderBody): Call<ResAcceptedOrder>
 
 }

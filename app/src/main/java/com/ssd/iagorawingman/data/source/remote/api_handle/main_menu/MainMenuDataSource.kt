@@ -5,6 +5,6 @@ import retrofit2.Call
 
 interface MainMenuDataSource {
 
-    fun getWingmanInfo(token: String): Call<ResGetWingmanInfo>
+    fun getWingmanInfo(): Call<ResGetWingmanInfo>
 
 }

@@ -1,7 +1,5 @@
 package com.ssd.iagorawingman.data.source.remote.api_handle.process_order
 
-import com.ssd.iagorawingman.BuildConfig
-import com.ssd.iagorawingman.data.source.local.shared_handle.auth.SharedAuthRepository
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.repository.IProcessOrderRepository
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.source.ProcessOrderRemoteDataSource
@@ -16,18 +14,14 @@ import kotlinx.coroutines.flow.flow
 
 class ProcessOrderRepository(
     private val orderRemoteDataSource: ProcessOrderRemoteDataSource,
-    sharedAuth: SharedAuthRepository
 ) : IProcessOrderRepository {
 
-
-    private val token = sharedAuth.getAuth(BuildConfig.KEY_SHARED_PREFERENCE_AUTH)
 
     override fun getAllListWaiting(typeWaiting: String): Flow<Resource<ProcessOrder.ListWaitingOnProcess>> =
         flow {
             emit(Resource.loading("true", null))
             when (val response =
                 orderRemoteDataSource.getAllListWaiting(
-                    token?.success?.token as String,
                     typeWaiting
                 )
                     .first()) {
@@ -50,7 +44,6 @@ class ProcessOrderRepository(
             emit(Resource.loading("true", null))
             when (val response =
                 orderRemoteDataSource.getDetailWaiting(
-                    token?.success?.token as String,
                     idTransaction,
                     typeWaiting
                 )
@@ -70,7 +63,7 @@ class ProcessOrderRepository(
         flow {
             emit(Resource.loading("true", null))
             when (val response =
-                orderRemoteDataSource.postBargainPrice(token?.success?.token as String, body)
+                orderRemoteDataSource.postBargainPrice(body)
                     .first()) {
                 is ApiResponse.Success -> emit(
                     Resource.success(
@@ -88,7 +81,7 @@ class ProcessOrderRepository(
     ): Flow<Resource<ProcessOrder.Global>> = flow {
         emit(Resource.loading("true", null))
         when (val response =
-            orderRemoteDataSource.postNewHandlingFee(token?.success?.token as String,
+            orderRemoteDataSource.postNewHandlingFee(
                 idTransaction,
                 handlingFeeBody)
                 .first()) {
@@ -110,7 +103,7 @@ class ProcessOrderRepository(
             emit(Resource.loading("true", null))
             when (val response =
                 orderRemoteDataSource.postActionTransaction(
-                    token?.success?.token as String,
+
                     idTransaction,
                     typeAction
                 )

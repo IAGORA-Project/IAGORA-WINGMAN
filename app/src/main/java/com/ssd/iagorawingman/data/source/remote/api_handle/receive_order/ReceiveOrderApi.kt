@@ -11,14 +11,12 @@ interface ReceiveOrderApi {
 
     @POST("accepted")
     fun post_acceptedOrder(
-        @Header("Authorization") authorization: String,
         @Body receiveOrderBody: ReceiveOrderBody
     ): Call<ResAcceptedOrder>
 
 
     @POST("canceled")
     fun post_cancelledOrder(
-        @Header("Authorization") authorization: String,
         @Body receiveOrderBody: ReceiveOrderBody
     ): Call<ResAcceptedOrder>
 }

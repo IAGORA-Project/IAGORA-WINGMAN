@@ -83,5 +83,6 @@ class ConfirmationDetailAdapter : RecyclerView.Adapter<ConfirmationDetailAdapter
     ) =
         holder.bind(differ.currentList[position])
 
+
     override fun getItemCount(): Int = differ.currentList.size
 }

@@ -17,11 +17,10 @@ class ProcessOrderRemoteDataSource(
     private val externalScope: CoroutineScope
 ) {
     fun getAllListWaiting(
-        token: String,
         typeWaiting: String
     ) = flow {
         try {
-            val response = services.getAllListWaiting("Bearer $token", typeWaiting)
+            val response = services.getAllListWaiting(typeWaiting)
             emit(ApiResponse.Success(response))
         } catch (e: IOException) {
             Log.e("RESPONSE_FAILURE", e.toString())
@@ -33,13 +32,12 @@ class ProcessOrderRemoteDataSource(
     }.shareIn(externalScope, SharingStarted.WhileSubscribed(), 0)
 
     fun getDetailWaiting(
-        token: String,
         idTransaction: String,
         typeWaiting: String
     ) = flow {
         try {
             val response =
-                services.getDetailListWaiting("Bearer $token", idTransaction, typeWaiting)
+                services.getDetailListWaiting(idTransaction, typeWaiting)
             emit(ApiResponse.Success(response))
         } catch (e: IOException) {
             Log.e("RESPONSE_FAILURE", e.toString())
@@ -51,11 +49,10 @@ class ProcessOrderRemoteDataSource(
     }.shareIn(externalScope, SharingStarted.WhileSubscribed(), 0)
 
     fun postBargainPrice(
-        token: String,
         bargainBody: BargainBody,
     ) = flow {
         try {
-            val response = services.postBargainPrice("Bearer $token", bargainBody)
+            val response = services.postBargainPrice(bargainBody)
             emit(ApiResponse.Success(response))
         } catch (e: IOException) {
             Log.e("RESPONSE_FAILURE", e.toString())
@@ -67,13 +64,12 @@ class ProcessOrderRemoteDataSource(
     }.shareIn(externalScope, SharingStarted.WhileSubscribed(), 0)
 
     fun postNewHandlingFee(
-        token: String,
         idTransaction: String,
         handlingFeeBody: HandlingFeeBody,
     ) = flow {
         try {
             val response =
-                services.postNewHandlingFee("Bearer $token", idTransaction, handlingFeeBody)
+                services.postNewHandlingFee(idTransaction, handlingFeeBody)
             emit(ApiResponse.Success(response))
         } catch (e: IOException) {
             Log.e("RESPONSE_FAILURE", e.toString())
@@ -85,13 +81,12 @@ class ProcessOrderRemoteDataSource(
     }.shareIn(externalScope, SharingStarted.WhileSubscribed(), 0)
 
     fun postActionTransaction(
-        token: String,
         idTransaction: String,
         typeAction: String,
     ) = flow {
         try {
             val response =
-                services.postActionTransaction("Bearer $token", idTransaction, typeAction)
+                services.postActionTransaction(idTransaction, typeAction)
             emit(ApiResponse.Success(response))
         } catch (e: IOException) {
             Log.e("RESPONSE_FAILURE", e.toString())

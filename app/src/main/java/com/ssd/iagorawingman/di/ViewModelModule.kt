@@ -16,10 +16,10 @@ import org.koin.dsl.module
 
 val ViewModelModule = module {
     single { SharedViewModel() }
-    viewModel { MainViewModel(get(), get(), get()) }
+    viewModel { MainViewModel(get(), get()) }
     viewModel { AuthViewModel(get(), get(), get()) }
-    viewModel { PasarViewModel(get(), get()) }
-    viewModel { ReceiveOrderViewModel(get(), get()) }
+    viewModel { PasarViewModel(get()) }
+    viewModel { ReceiveOrderViewModel(get()) }
     viewModel { ConfirmationViewModel(get()) }
     viewModel { ConfirmedViewModel(get()) }
     viewModel { PaymentViewModel(get()) }

@@ -4,7 +4,7 @@ import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
 
-class ContentTypeInterceptor(): Interceptor {
+class ContentTypeInterceptor: Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         return chain.proceed(addHeader(chain.request()))
     }

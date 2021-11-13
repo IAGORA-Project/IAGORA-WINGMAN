@@ -86,6 +86,7 @@ class ReceiveOrderActivity : AppCompatActivity() {
                         startActivity(Intent(this, ProcessOrderActivity::class.java).apply {
                             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                             putExtra(ProcessOrderActivity.POST_TAB, 0)
+                            putExtra(ProcessOrderActivity.IS_FROM_RECEIVER, true)
                         })
                         finish()
                     }

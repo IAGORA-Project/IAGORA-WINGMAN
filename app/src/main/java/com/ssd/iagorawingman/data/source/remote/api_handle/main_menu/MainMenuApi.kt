@@ -10,6 +10,5 @@ interface MainMenuApi {
 
     @GET("info")
     fun get_wingmanInfo(
-        @Header("Authorization") authorization: String,
     ): Call<ResGetWingmanInfo>
 }

@@ -17,17 +17,15 @@ import retrofit2.Response
 
 class ReceiveOrderViewModel(
     private val receiveOrderRepository: ReceiveOrderRepository,
-    private val sharedAuthRepository: SharedAuthRepository
 ): ViewModel() {
 
     val receiveOrderAcceptedResult: MutableLiveData<EventWrapper<Resource<ResAcceptedOrder>>> = MutableLiveData()
     val receiveOrderCancelledResult: MutableLiveData<EventWrapper<Resource<ResAcceptedOrder>>> = MutableLiveData()
 
     fun vmAcceptedReceiverOrder(receiveOrderBody: ReceiveOrderBody): LiveData<EventWrapper<Resource<ResAcceptedOrder>>>{
-        val token = sharedAuthRepository.getAuth(BuildConfig.KEY_SHARED_PREFERENCE_AUTH)
         receiveOrderAcceptedResult.postValue(EventWrapper(Resource.loading("true", null)))
 
-        receiveOrderRepository.postAcceptedOrder(token?.success?.token!!, receiveOrderBody).enqueue(object : Callback<ResAcceptedOrder> {
+        receiveOrderRepository.postAcceptedOrder(receiveOrderBody).enqueue(object : Callback<ResAcceptedOrder> {
             override fun onResponse(call: Call<ResAcceptedOrder>, response: Response<ResAcceptedOrder>) {
                 val body = response.body()
 
@@ -50,10 +48,9 @@ class ReceiveOrderViewModel(
 
 
     fun vmCancelledReceiverOrder(receiveOrderBody: ReceiveOrderBody): LiveData<EventWrapper<Resource<ResAcceptedOrder>>>{
-        val token = sharedAuthRepository.getAuth(BuildConfig.KEY_SHARED_PREFERENCE_AUTH)
         receiveOrderCancelledResult.postValue(EventWrapper(Resource.loading("true", null)))
 
-        receiveOrderRepository.postCancelledOrder(token?.success?.token!!, receiveOrderBody).enqueue(object : Callback<ResAcceptedOrder> {
+        receiveOrderRepository.postCancelledOrder(receiveOrderBody).enqueue(object : Callback<ResAcceptedOrder> {
             override fun onResponse(call: Call<ResAcceptedOrder>, response: Response<ResAcceptedOrder>) {
                 val body = response.body()
 

@@ -12,29 +12,33 @@ class PasarRepository(
     private val pasarApi: PasarApi
 ): PasarDataSource {
 
-    override fun getListPasar(token: String): Call<ResGetListPasar> {
-        return pasarApi.get_listPasar("Bearer $token")
+    override fun getListPasar(): Call<ResGetListPasar> {
+        return pasarApi.get_listPasar()
     }
 
-    override fun getListProductPasar(token: String, idPasar: String): Call<ResGetListProductPasar> {
-        return pasarApi.get_listProductPasar("Bearer $token", idPasar)
+    override fun getListProductPasar(idPasar: String): Call<ResGetListProductPasar> {
+        return pasarApi.get_listProductPasar(idPasar)
     }
 
-    override fun getListTypeAndCategory(token: String): Call<ResGetListTypeAndCategory> {
-        return pasarApi.get_listTypeAndCategory("Bearer $token")
+    override fun getListTypeAndCategory(): Call<ResGetListTypeAndCategory> {
+        return pasarApi.get_listTypeAndCategory()
     }
 
-    override fun postAddProduct(token: String, addProductBody: AddProductBody): Call<ResAddProduct> {
-        val idPasar: RequestBody = addProductBody.idPasar!!.toRequestBody("text/plain".toMediaTypeOrNull())
-        val productName: RequestBody = addProductBody.namaProduk!!.toRequestBody("text/plain".toMediaTypeOrNull())
-        val itemCategories: RequestBody = addProductBody.itemCategories!!.toRequestBody("text/plain".toMediaTypeOrNull())
-        val itemType: RequestBody = addProductBody.itemType!!.toRequestBody("text/plain".toMediaTypeOrNull())
+    override fun postAddProduct(addProductBody: AddProductBody): Call<ResAddProduct> {
+        val idPasar: RequestBody =
+            addProductBody.idPasar!!.toRequestBody("text/plain".toMediaTypeOrNull())
+        val productName: RequestBody =
+            addProductBody.namaProduk!!.toRequestBody("text/plain".toMediaTypeOrNull())
+        val itemCategories: RequestBody =
+            addProductBody.itemCategories!!.toRequestBody("text/plain".toMediaTypeOrNull())
+        val itemType: RequestBody =
+            addProductBody.itemType!!.toRequestBody("text/plain".toMediaTypeOrNull())
         val variant = addProductBody.variant
-        val desc: RequestBody = addProductBody.desc!!.toRequestBody("text/plain".toMediaTypeOrNull())
+        val desc: RequestBody =
+            addProductBody.desc!!.toRequestBody("text/plain".toMediaTypeOrNull())
 
 
         return pasarApi.post_addProduct(
-            "Bearer $token",
             addProductBody.image,
             idPasar,
             productName,

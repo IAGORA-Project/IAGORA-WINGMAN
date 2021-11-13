@@ -22,6 +22,6 @@ val repositoryModule = module {
     factory { PasarRepository(get()) }
     factory { ReceiveOrderRepository(get()) }
     single<IProcessOrderRepository> {
-        ProcessOrderRepository(get(), get())
+        ProcessOrderRepository(get())
     }
 }

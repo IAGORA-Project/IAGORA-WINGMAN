@@ -22,7 +22,6 @@ import retrofit2.Response
 class MainViewModel(
     private val mainMenuRepository: MainMenuRepository,
     private val sharedWingmanInfoRepository: SharedWingmanInfoRepository,
-    private val sharedAuthRepository: SharedAuthRepository
 ): ViewModel() {
 
     val wingmanInfo: MutableLiveData<EventWrapper<Resource<ResGetWingmanInfo>>> = MutableLiveData()
@@ -42,11 +41,10 @@ class MainViewModel(
 
 
     fun vmGetWingmanInfo(): LiveData<EventWrapper<Resource<ResGetWingmanInfo>>> {
-        val token = sharedAuthRepository.getAuth(BuildConfig.KEY_SHARED_PREFERENCE_AUTH)
         wingmanInfo.postValue(EventWrapper(Resource.loading("true", null)))
 
         try {
-            mainMenuRepository.getWingmanInfo(token?.success?.token!!).enqueue(object: Callback<ResGetWingmanInfo> {
+            mainMenuRepository.getWingmanInfo().enqueue(object: Callback<ResGetWingmanInfo> {
                 override fun onResponse(call: Call<ResGetWingmanInfo>, response: Response<ResGetWingmanInfo>) {
                     val body = response.body()
 

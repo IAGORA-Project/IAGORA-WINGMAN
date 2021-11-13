@@ -71,7 +71,7 @@ class AuthViewModel(
                     saveAuthUserLogin(body!!)
                     loginResult.postValue(EventWrapper(Resource.success(body)))
                 }else{
-                    val json = JSONObject(response.errorBody()?.string())
+                    val json = JSONObject(response.errorBody().toString())
                     loginResult.postValue(EventWrapper(Resource.error("ERROR-LOGIN", null)))
                 }
             }

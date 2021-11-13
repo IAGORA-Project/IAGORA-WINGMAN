@@ -7,8 +7,8 @@ class MainMenuRepository(
     private val mainMenuApi: MainMenuApi
 ): MainMenuDataSource {
 
-    override fun getWingmanInfo(token: String): Call<ResGetWingmanInfo> {
-       return mainMenuApi.get_wingmanInfo("Bearer $token")
+    override fun getWingmanInfo(): Call<ResGetWingmanInfo> {
+       return mainMenuApi.get_wingmanInfo()
     }
 
 }

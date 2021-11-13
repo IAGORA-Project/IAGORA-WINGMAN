@@ -7,13 +7,13 @@ import retrofit2.Call
 
 interface PasarDataSource {
 
-    fun getListPasar(token: String): Call<ResGetListPasar>
+    fun getListPasar(): Call<ResGetListPasar>
 
-    fun getListProductPasar(token: String, idPasar: String): Call<ResGetListProductPasar>
+    fun getListProductPasar(idPasar: String): Call<ResGetListProductPasar>
 
-    fun getListTypeAndCategory(token: String): Call<ResGetListTypeAndCategory>
+    fun getListTypeAndCategory(): Call<ResGetListTypeAndCategory>
 
-    fun postAddProduct(token: String, addProductBody: AddProductBody): Call<ResAddProduct>
+    fun postAddProduct(addProductBody: AddProductBody): Call<ResAddProduct>
 
     fun postAddPhoto(photo: ArrayList<MultipartBody.Part>): Call<ResAddPhoto>
 }

@@ -8,12 +8,12 @@ class ReceiveOrderRepository(
     private val receiveOrderApi: ReceiveOrderApi
 ): ReceiveOrderDataSource {
 
-    override fun postAcceptedOrder(token: String, receiveOrderBody: ReceiveOrderBody): Call<ResAcceptedOrder> {
-        return receiveOrderApi.post_acceptedOrder("Bearer $token", receiveOrderBody)
+    override fun postAcceptedOrder(receiveOrderBody: ReceiveOrderBody): Call<ResAcceptedOrder> {
+        return receiveOrderApi.post_acceptedOrder( receiveOrderBody)
     }
 
-    override fun postCancelledOrder(token: String, receiveOrderBody: ReceiveOrderBody): Call<ResAcceptedOrder> {
-        return receiveOrderApi.post_cancelledOrder("Bearer $token", receiveOrderBody)
+    override fun postCancelledOrder(receiveOrderBody: ReceiveOrderBody): Call<ResAcceptedOrder> {
+        return receiveOrderApi.post_cancelledOrder(receiveOrderBody)
     }
 
 }

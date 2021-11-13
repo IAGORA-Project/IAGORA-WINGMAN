@@ -71,6 +71,8 @@
         <item>Selesai</item>
     </string-array>
 
+    <string name="title_toolbar_process_order">Orderan Saya</string>
+
     <string name="text_positive_button">Ya</string>
     <string name="text_negative_button">Kembali</string>
     <string-array name="path_type_action_transaction">

@@ -11,24 +11,20 @@ interface PasarApi {
 
     @GET("getPasar")
     fun get_listPasar(
-        @Header("Authorization") authorization: String,
     ): Call<ResGetListPasar>
 
     @GET("getProduct/{id_pasar}")
     fun get_listProductPasar(
-        @Header("Authorization") authorization: String,
         @Path("id_pasar") idPasar: String
     ): Call<ResGetListProductPasar>
 
     @GET("product/typeAndCategory")
     fun get_listTypeAndCategory(
-        @Header("Authorization") authorization: String,
     ): Call<ResGetListTypeAndCategory>
 
     @Multipart
     @POST("product/add")
     fun post_addProduct(
-        @Header("Authorization") authorization: String,
         @Part imageProduct: ArrayList<MultipartBody.Part>,
         @Part("id_pasar") id_pasar: RequestBody? = null,
         @Part("nama_produk") product_name: RequestBody? = null,
