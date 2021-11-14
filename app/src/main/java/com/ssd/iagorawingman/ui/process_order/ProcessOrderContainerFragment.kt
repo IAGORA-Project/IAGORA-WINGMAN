@@ -103,7 +103,7 @@ class ProcessOrderContainerFragment : Fragment(R.layout.fragment_process_order) 
 
     private fun Flow<Int>.setNumberBadge(badgeDrawable: BadgeDrawable) {
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
                 this@setNumberBadge.collectLatest { size ->
                     badgeDrawable.number = size
                     badgeDrawable.isVisible = size > 0
