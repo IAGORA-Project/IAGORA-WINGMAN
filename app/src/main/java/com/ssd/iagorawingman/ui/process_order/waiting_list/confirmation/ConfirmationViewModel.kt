@@ -1,5 +1,6 @@
 package com.ssd.iagorawingman.ui.process_order.waiting_list.confirmation
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
@@ -29,6 +30,8 @@ class ConfirmationViewModel(
                     _vmGetConfirmationList.emit(res)
                     _vmCountSizeConfirmationList.emit(res.data?.success?.size ?: 0)
                 }
+
+            Log.e("LAUNCH","CONFIRMATION")
         }
 
     }

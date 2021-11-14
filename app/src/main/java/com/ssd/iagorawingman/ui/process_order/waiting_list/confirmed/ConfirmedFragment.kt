@@ -51,8 +51,8 @@ class ConfirmedFragment : Fragment(R.layout.fragment_on_process_waiting_list) {
 
     private fun subscribeToViewModel() {
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                Log.e("ON","CONFIRMED")
                 viewModel.vmGetConfirmedList.collectLatest { res ->
                     when (res.status) {
                         Status.LOADING -> {

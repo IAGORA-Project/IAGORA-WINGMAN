@@ -10,7 +10,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.databinding.FragmentOnProcessWaitingListBinding
-import com.ssd.iagorawingman.ui.process_order.ProcessOrderActivity
 import com.ssd.iagorawingman.ui.process_order.ProcessOrderContainerFragmentDirections
 import com.ssd.iagorawingman.ui.process_order.waiting_list.WaitingListAdapter
 import com.ssd.iagorawingman.utils.Status
@@ -51,21 +50,21 @@ class ConfirmationFragment : Fragment(R.layout.fragment_on_process_waiting_list)
 
     private fun subscribeToViewModel() {
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                Log.e("ON", "CONFIRMATION")
                 viewModel.vmGetConfirmationList.collectLatest { res ->
                     when (res.status) {
                         Status.LOADING -> {
-                            Log.e("LOADING","CONFIRMATION")
+                            Log.e("LOADING", "CONFIRMATION")
                         }
                         Status.SUCCESS -> {
                             adapter.differ.submitList(res.data?.success)
                             binding.tvNumberOfOrder.text = res.data?.success?.size.toString()
-                            Log.e("SUCCESS","CONFIRMATION")
+                            Log.e("SUCCESS", "CONFIRMATION")
                         }
 
                         Status.ERROR -> {
-                            Log.e("ERROR","CONFIRMATION")
+                            Log.e("ERROR", "CONFIRMATION")
                         }
                     }
 
