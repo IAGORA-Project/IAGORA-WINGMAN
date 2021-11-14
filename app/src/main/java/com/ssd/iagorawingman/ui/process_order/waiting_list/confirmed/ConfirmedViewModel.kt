@@ -7,7 +7,6 @@ import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.
 import com.ssd.iagorawingman.utils.FlowProcessOrder
 import com.ssd.iagorawingman.utils.Resource
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -19,11 +18,16 @@ class ConfirmedViewModel(
         MutableSharedFlow()
     val vmGetConfirmedList = _vmGetConfirmedList.distinctUntilChanged()
 
+    private val _vmCountSizeConfirmedList: MutableSharedFlow<Int> = MutableSharedFlow()
+    val vmCountSizeConfirmedList = _vmCountSizeConfirmedList.distinctUntilChanged()
+
+
     fun initViewModelConfirmed() {
         viewModelScope.launch {
             orderUseCase.getAllListWaiting(FlowProcessOrder.CONFIRMATION.name)
                 .collectLatest { res ->
                     _vmGetConfirmedList.emit(res)
+                    _vmCountSizeConfirmedList.emit(res.data?.success?.size ?: 0)
                 }
         }
 

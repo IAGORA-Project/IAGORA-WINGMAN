@@ -1,6 +1,7 @@
 package com.ssd.iagorawingman.ui.process_order.waiting_list.confirmation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -38,7 +39,6 @@ class ConfirmationFragment : Fragment(R.layout.fragment_on_process_waiting_list)
     private fun handleAdapter() {
         adapter = WaitingListAdapter()
         binding.rvListOrder.adapter = adapter
-        viewModel.initViewModelConfirmation()
     }
 
     private fun setupDestinationToDetail() {
@@ -56,15 +56,16 @@ class ConfirmationFragment : Fragment(R.layout.fragment_on_process_waiting_list)
                 viewModel.vmGetConfirmationList.collectLatest { res ->
                     when (res.status) {
                         Status.LOADING -> {
-
+                            Log.e("LOADING","CONFIRMATION")
                         }
                         Status.SUCCESS -> {
                             adapter.differ.submitList(res.data?.success)
                             binding.tvNumberOfOrder.text = res.data?.success?.size.toString()
+                            Log.e("SUCCESS","CONFIRMATION")
                         }
 
                         Status.ERROR -> {
-
+                            Log.e("ERROR","CONFIRMATION")
                         }
                     }
 
@@ -76,8 +77,8 @@ class ConfirmationFragment : Fragment(R.layout.fragment_on_process_waiting_list)
 
 
     override fun onDestroy() {
-        super.onDestroy()
         _binding = null
+        super.onDestroy()
     }
 
 }

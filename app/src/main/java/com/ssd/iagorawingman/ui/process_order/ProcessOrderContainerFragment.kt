@@ -9,30 +9,42 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.navArgs
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.badge.BadgeDrawable
+import com.google.android.material.badge.BadgeDrawable.TOP_END
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.databinding.FragmentProcessOrderBinding
+import com.ssd.iagorawingman.ui.process_order.waiting_list.confirmation.ConfirmationViewModel
+import com.ssd.iagorawingman.ui.process_order.waiting_list.confirmed.ConfirmedViewModel
+import com.ssd.iagorawingman.utils.FlowProcessOrder
 import com.ssd.iagorawingman.utils.Other.reduceDragSensitivity
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.sharedStateViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProcessOrderContainerFragment : Fragment(R.layout.fragment_process_order) {
 
     private lateinit var binding: FragmentProcessOrderBinding
     private val viewModel: ProcessOrderViewModel by viewModel()
+    private val confirmationViewModel: ConfirmationViewModel by sharedStateViewModel()
+    private val confirmedViewModel: ConfirmedViewModel by sharedStateViewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentProcessOrderBinding.bind(view)
 
+
         handleTabViewPager()
-        initStart(requireActivity().navArgs<ProcessOrderActivityArgs>().value.positionTab)
+        initUI(requireActivity().navArgs<ProcessOrderActivityArgs>().value.positionTab)
     }
 
 
-    private fun initStart(positionTab: Int) {
+
+    private fun initUI(positionTab: Int) {
         binding.apply {
             lifecycleScope.launch {
                 repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -69,9 +81,42 @@ class ProcessOrderContainerFragment : Fragment(R.layout.fragment_process_order) 
 
             TabLayoutMediator(tabs, vpTabs) { tab, position ->
                 tab.text = tabTitle[position]
+                val badgeDrawable = tab.setupBadgeDrawable()
+                when (position) {
+                    FlowProcessOrder.WAITING_CONFIRMATION.ordinal -> {
+                        confirmationViewModel.vmCountSizeConfirmationList.setNumberBadge(
+                            badgeDrawable
+                        )
+                    }
+                    FlowProcessOrder.CONFIRMATION.ordinal -> {
+                        confirmedViewModel.vmCountSizeConfirmedList.setNumberBadge(badgeDrawable)
+                    }
+                }
+
             }.attach()
         }
     }
+
+    private fun Flow<Int>.setNumberBadge(badgeDrawable: BadgeDrawable) {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                this@setNumberBadge.collectLatest { size ->
+                    badgeDrawable.number = size
+                    badgeDrawable.isVisible = size > 0
+                }
+            }
+        }
+    }
+
+    private fun TabLayout.Tab.setupBadgeDrawable(): BadgeDrawable =
+        this.orCreateBadge.apply {
+            isVisible = false
+            badgeGravity = TOP_END
+            backgroundColor =
+                requireActivity().resources.getColor(R.color.redPrimary, null)
+
+        }
+
 }
 
 

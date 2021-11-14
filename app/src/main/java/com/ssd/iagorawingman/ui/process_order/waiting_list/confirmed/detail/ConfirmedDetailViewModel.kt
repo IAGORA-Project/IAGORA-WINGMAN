@@ -24,12 +24,11 @@ class ConfirmedDetailViewModel(
             old.data?.success?.idTransaction != new.data?.success?.idTransaction
         }.buffer(1, BufferOverflow.DROP_OLDEST)
 
-
     fun setIdTransaction(idTransaction: String) {
         viewModelScope.launch {
             orderUseCase.getDetailListWaiting(idTransaction, FlowProcessOrder.CONFIRMATION.name)
-                .collectLatest {
-                    _vmGetDetailConfirmed.emit(it)
+                .collectLatest {res->
+                    _vmGetDetailConfirmed.emit(res)
                 }
         }
     }
