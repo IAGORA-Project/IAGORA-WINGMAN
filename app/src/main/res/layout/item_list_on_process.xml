@@ -2,9 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/ripple_item_for_white_background"
     android:layout_width="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+
     android:layout_height="wrap_content"
-    android:paddingVertical="10dp">
+    android:padding="10dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/shapeIvPerson"
@@ -45,21 +49,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="2dp"
         android:textColor="@color/text_primary"
         style="@style/TextViewReguler.OpenSans_15sp_020202"
         app:layout_constraintEnd_toEndOf="@+id/tvItem"
         app:layout_constraintStart_toEndOf="@+id/shapeIvPerson"
         app:layout_constraintTop_toBottomOf="@+id/tvItem"
         tools:text="@string/dummy_text_total_item" />
-
-    <View
-        android:id="@+id/view2"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/strike_line"
-        app:layout_constraintTop_toBottomOf="@+id/tvItemTotal" />
 
     <ImageButton
         android:id="@+id/imageButton"

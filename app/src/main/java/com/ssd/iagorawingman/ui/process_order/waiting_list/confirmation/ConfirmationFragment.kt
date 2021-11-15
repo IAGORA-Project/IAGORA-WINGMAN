@@ -4,17 +4,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.databinding.FragmentOnProcessWaitingListBinding
 import com.ssd.iagorawingman.ui.process_order.ProcessOrderContainerFragmentDirections
 import com.ssd.iagorawingman.ui.process_order.waiting_list.WaitingListAdapter
+import com.ssd.iagorawingman.utils.Other.collectWhenStarted
 import com.ssd.iagorawingman.utils.Status
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ConfirmationFragment : Fragment(R.layout.fragment_on_process_waiting_list) {
@@ -49,19 +45,16 @@ class ConfirmationFragment : Fragment(R.layout.fragment_on_process_waiting_list)
     }
 
     private fun subscribeToViewModel() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.CREATED) {
-                Log.e("ON", "CONFIRMATION")
-                viewModel.vmGetConfirmationList.collectLatest { res ->
-                    when (res.status) {
-                        Status.LOADING -> {
-                            Log.e("LOADING", "CONFIRMATION")
-                        }
-                        Status.SUCCESS -> {
-                            adapter.differ.submitList(res.data?.success)
-                            binding.tvNumberOfOrder.text = res.data?.success?.size.toString()
-                            Log.e("SUCCESS", "CONFIRMATION")
-                        }
+
+        viewModel.vmGetConfirmationList.collectWhenStarted(this) { res ->
+            when (res.status) {
+                Status.LOADING -> {
+                    Log.e("LOADING", "CONFIRMATION")
+                }
+                Status.SUCCESS -> {
+                    adapter.differ.submitList(res.data?.success)
+                    Log.e("SUCCESS", "CONFIRMATION")
+                }
 
                         Status.ERROR -> {
                             Log.e("ERROR", "CONFIRMATION")
@@ -69,9 +62,6 @@ class ConfirmationFragment : Fragment(R.layout.fragment_on_process_waiting_list)
                     }
 
                 }
-
-            }
-        }
     }
 
 

@@ -7,6 +7,7 @@ import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.usecase.ProcessOrderUseCase
 import com.ssd.iagorawingman.utils.FlowProcessOrder
 import com.ssd.iagorawingman.utils.Resource
+import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -17,7 +18,7 @@ class ConfirmationViewModel(
 ) : ViewModel() {
 
     private val _vmGetConfirmationList: MutableSharedFlow<Resource<ProcessOrder.ListWaitingOnProcess>> =
-        MutableSharedFlow()
+        MutableSharedFlow(1,0, BufferOverflow.DROP_OLDEST)
     val vmGetConfirmationList = _vmGetConfirmationList.distinctUntilChanged()
 
     private val _vmCountSizeConfirmationList: MutableSharedFlow<Int> = MutableSharedFlow()

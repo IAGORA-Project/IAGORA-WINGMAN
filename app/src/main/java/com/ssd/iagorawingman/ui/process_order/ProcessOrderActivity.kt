@@ -31,7 +31,6 @@ class ProcessOrderActivity : AppCompatActivity() {
 
     companion object {
         const val POST_TAB = "positionTab"
-        const val IS_FROM_RECEIVER = "fromReceiver"
     }
 
     override fun onDestroy() {

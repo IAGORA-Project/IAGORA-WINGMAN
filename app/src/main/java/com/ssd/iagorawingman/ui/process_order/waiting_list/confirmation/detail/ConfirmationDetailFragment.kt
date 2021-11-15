@@ -6,9 +6,6 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -23,12 +20,11 @@ import com.ssd.iagorawingman.ui.process_order.waiting_list.confirmation.Confirma
 import com.ssd.iagorawingman.ui.process_order.waiting_list.confirmed.ConfirmedViewModel
 import com.ssd.iagorawingman.utils.FormatCurrency.formatPrice
 import com.ssd.iagorawingman.utils.Other
+import com.ssd.iagorawingman.utils.Other.collectWhenStarted
 import com.ssd.iagorawingman.utils.Other.setupTextWithBtn
 import com.ssd.iagorawingman.utils.Resource
 import com.ssd.iagorawingman.utils.SetImage.loadPhotoProfile
 import com.ssd.iagorawingman.utils.Status
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
@@ -62,28 +58,26 @@ class ConfirmationDetailFragment :
 
 
     private fun subscribeToViewModel() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.CREATED) {
-                viewModel.vmGetDetailConfirmation.collectLatest { res ->
-                    res.apply {
-                        when (status) {
-                            Status.SUCCESS -> {
-                                handleUISuccess(data?.success as ProcessOrder.DetailWaitingOnProcess.Success)
-                            }
 
-                            Status.LOADING -> {
-                                Toast.makeText(requireContext(), "LOADING", Toast.LENGTH_SHORT)
-                                    .show()
-                            }
+        viewModel.vmGetDetailConfirmation.collectWhenStarted(this) { res ->
+            res.apply {
+                when (status) {
+                    Status.SUCCESS -> {
+                        handleUISuccess(data?.success as ProcessOrder.DetailWaitingOnProcess.Success)
+                    }
 
-                            Status.ERROR -> {
+                    Status.LOADING -> {
+                        Toast.makeText(requireContext(), "LOADING", Toast.LENGTH_SHORT)
+                            .show()
+                    }
 
-                            }
-                        }
+                    Status.ERROR -> {
+
                     }
                 }
-            }
-        }
+                    }
+                }
+
     }
 
     private fun handleUISuccess(data: ProcessOrder.DetailWaitingOnProcess.Success) {
@@ -154,12 +148,8 @@ class ConfirmationDetailFragment :
     }
 
     private fun getFeedHandlingFee() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.CREATED) {
-                viewModel.vmGetFeedBackChangeHandlingFee.collectLatest { res ->
-                    setFeedBackHandlingFee(res)
-                }
-            }
+        viewModel.vmGetFeedBackChangeHandlingFee.collectWhenStarted(this) { res ->
+            setFeedBackHandlingFee(res)
         }
     }
 
@@ -192,12 +182,8 @@ class ConfirmationDetailFragment :
     }
 
     private fun getFeedActionTransaction(typeAction: String, idTransaction: String) {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.CREATED) {
-                viewModel.vmGetFeedBackActionTransaction.collectLatest { res ->
-                    setFeedBackActionTransaction(res, typeAction, idTransaction)
-                }
-            }
+        viewModel.vmGetFeedBackActionTransaction.collectWhenStarted(this) { res ->
+            setFeedBackActionTransaction(res, typeAction, idTransaction)
         }
     }
 
@@ -284,14 +270,9 @@ class ConfirmationDetailFragment :
         textView: TextView,
         oldPrice: String,
     ) {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.CREATED) {
-                viewModel.vmGetFeedBackBargainPrice.collectLatest { res ->
-                    setFeedBackBargainPrice(res, textInputLayout, textView, oldPrice)
-                }
-            }
+        viewModel.vmGetFeedBackBargainPrice.collectWhenStarted(this) { res ->
+            setFeedBackBargainPrice(res, textInputLayout, textView, oldPrice)
         }
-
     }
 
     private fun setFeedBackBargainPrice(

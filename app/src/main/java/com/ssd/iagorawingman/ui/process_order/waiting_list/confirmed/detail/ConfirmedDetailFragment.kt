@@ -5,18 +5,14 @@ import android.telephony.PhoneNumberUtils
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
 import com.ssd.iagorawingman.databinding.FragmentOnProcessWaitingListDetailConfirmedBinding
 import com.ssd.iagorawingman.utils.FormatCurrency.formatPrice
+import com.ssd.iagorawingman.utils.Other.collectWhenStarted
 import com.ssd.iagorawingman.utils.SetImage.loadPhotoProfile
 import com.ssd.iagorawingman.utils.Status
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -47,59 +43,50 @@ class ConfirmedDetailFragment :
     }
 
     private fun subscribeToViewModel() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.CREATED) {
-                detailViewModel.vmGetDetailConfirmed.collectLatest { res ->
-                    res.apply {
-                        when (status) {
-                            Status.SUCCESS -> {
-                                handleUISuccess(data?.success as ProcessOrder.DetailWaitingOnProcess.Success)
-                            }
+        detailViewModel.vmGetDetailConfirmed.collectWhenStarted(this) { res ->
+            res.apply {
+                when (status) {
+                    Status.SUCCESS -> {
+                        data?.success?.handleUISuccess()
+                    }
 
-                            Status.LOADING -> {
-                                Toast.makeText(requireContext(), "LOADING", Toast.LENGTH_SHORT)
-                                    .show()
-                            }
+                    Status.LOADING -> {
+                        Toast.makeText(requireContext(), "LOADING", Toast.LENGTH_SHORT)
+                            .show()
+                    }
 
-                            Status.ERROR -> {
+                    Status.ERROR -> {
 
-                            }
-                        }
                     }
                 }
-            }
-        }
+                    }
+                }
+
     }
 
-    private fun handleUISuccess(data: ProcessOrder.DetailWaitingOnProcess.Success) {
-
-        with(data) {
-
-            detailAdapter.differ.submitList(listProduct)
-
-            binding.apply {
-
-                containerPerson.apply {
-                    with(data.dataUser) {
-                        tvNamePerson.text = fullName
-                        tvPhoneNumberPerson.text = PhoneNumberUtils.formatNumber(
-                            phoneNumber,
-                            Locale.getDefault().country
-                        )
-                        shapeIvPerson.loadPhotoProfile(imgProfile)
-                    }
+    private fun ProcessOrder.DetailWaitingOnProcess.Success.handleUISuccess() {
+        detailAdapter.differ.submitList(listProduct)
+        binding.apply {
+            containerPerson.apply {
+                with(this@handleUISuccess.dataUser) {
+                    tvNamePerson.text = fullName
+                    tvPhoneNumberPerson.text = PhoneNumberUtils.formatNumber(
+                        phoneNumber,
+                        Locale.getDefault().country
+                    )
+                    shapeIvPerson.loadPhotoProfile(imgProfile)
                 }
+            }
 
-                containerListItem.apply {
-                    tvStoreName.text = data.storeInfo.storeName
+            containerListItem.apply {
+                tvStoreName.text = this@handleUISuccess.storeInfo.storeName
 
-                    containerHandlingFee.apply {
-                        tvHandleFeeValue.formatPrice(handlingFee.toString())
-                    }
+                containerHandlingFee.apply {
+                    tvHandleFeeValue.formatPrice(handlingFee.toString())
                 }
+            }
 
-
-                containerListBill.apply {
+            containerListBill.apply {
                     tvTotalPriceProductValue.formatPrice(totalPriceProduct.toString())
                     tvSubTotalValue.formatPrice(subTotal.toString())
                     tvHandlingFeeValue.formatPrice(handlingFee.toString())
@@ -107,7 +94,7 @@ class ConfirmedDetailFragment :
                     tvGrandTotalValue.formatPrice(grandTotal.toString())
                 }
             }
-        }
+
     }
 
 

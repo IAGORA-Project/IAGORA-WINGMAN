@@ -1,4 +1,4 @@
-package com.ssd.iagorawingman.ui.process_order.paid
+package com.ssd.iagorawingman.ui.process_order.waiting_list.paid
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +10,7 @@ class PaidPagerAdapter(
     activity: AppCompatActivity,
 ) : FragmentStateAdapter(activity) {
 
-    private val pageType = activity.resources.getStringArray(R.array.path_response_waiting_list)
+    private val pageType = activity.resources.getStringArray(R.array.tab_title_paid)
 
     override fun getItemCount(): Int = pageType.size
 

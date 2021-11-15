@@ -72,7 +72,7 @@ class ReceiveOrderActivity : AppCompatActivity() {
     }
 
     private fun receiverOrderAccepted(receiveOrderBody: ReceiveOrderBody) {
-        println("JDHJDHDJHD ${receiveOrderBody}")
+        println("JDHJDHDJHD $receiveOrderBody")
         receiveOrderViewModel.vmAcceptedReceiverOrder(receiveOrderBody).observe(this, {
             it.getContentIfNotHandled().let { res ->
                 when (res?.status) {
@@ -86,7 +86,6 @@ class ReceiveOrderActivity : AppCompatActivity() {
                         startActivity(Intent(this, ProcessOrderActivity::class.java).apply {
                             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                             putExtra(ProcessOrderActivity.POST_TAB, 0)
-                            putExtra(ProcessOrderActivity.IS_FROM_RECEIVER, true)
                         })
                         finish()
                     }

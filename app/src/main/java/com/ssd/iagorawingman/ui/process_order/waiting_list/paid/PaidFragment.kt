@@ -1,4 +1,4 @@
-package com.ssd.iagorawingman.ui.process_order.paid
+package com.ssd.iagorawingman.ui.process_order.waiting_list.paid
 
 import android.os.Bundle
 import android.view.View
@@ -9,11 +9,11 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.databinding.FragmentPaidBinding
-import com.ssd.iagorawingman.utils.Other
+import com.ssd.iagorawingman.utils.Other.dpToPx
 
 class PaidFragment : Fragment(R.layout.fragment_paid) {
     private var _binding: FragmentPaidBinding? = null
-    private val binding get() = _binding
+    private val binding get() = _binding as FragmentPaidBinding
     private lateinit var pagerAdapter: PaidPagerAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,7 +27,7 @@ class PaidFragment : Fragment(R.layout.fragment_paid) {
         val tabTitle = requireActivity().resources.getStringArray(R.array.tab_title_paid)
         pagerAdapter = PaidPagerAdapter(requireActivity() as AppCompatActivity)
 
-        binding?.apply {
+        binding.apply {
             vpOnProcess.apply {
                 adapter = pagerAdapter
                 isUserInputEnabled = false
@@ -55,7 +55,11 @@ class PaidFragment : Fragment(R.layout.fragment_paid) {
                 for (i in 0 until tabCount) {
                     val tab = (getChildAt(0) as ViewGroup).getChildAt(i)
                     val p = tab.layoutParams as ViewGroup.MarginLayoutParams
-                    p.setMargins(Other.dpToPx(5), 0, Other.dpToPx(5), 0)
+                    p.setMargins(
+                        dpToPx(15), // left
+                        dpToPx(20), // top
+                        dpToPx(5), // right
+                        dpToPx(5))  // bottom
                     tab.requestLayout()
                 }
             }
@@ -64,8 +68,8 @@ class PaidFragment : Fragment(R.layout.fragment_paid) {
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
         _binding = null
+        super.onDestroyView()
     }
 }

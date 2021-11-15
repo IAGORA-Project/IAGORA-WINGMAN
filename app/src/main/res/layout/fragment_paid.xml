@@ -7,25 +7,26 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabOnProcess"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:animateLayoutChanges="true"
+        android:layout_height="50dp"
         android:overScrollMode="never"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tabBackground="@drawable/bg_tab"
         app:tabGravity="start"
-        app:tabIndicatorColor="@color/transparent_600"
-        app:tabMode="fixed"
+        app:tabIndicatorColor="@null"
+        app:tabMode="scrollable"
         app:tabRippleColor="@null"
         app:tabSelectedTextColor="@color/colorTextSelected"
         app:tabTextAppearance="@style/TextViewReguler.OpenSans_14sp_020202"
-        app:tabTextColor="@color/colorText" />
+        app:tabTextColor="@color/colorText"
+        />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vpOnProcess"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/background_grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,4 +1,4 @@
-package com.ssd.iagorawingman.ui.process_order.paid
+package com.ssd.iagorawingman.ui.process_order.waiting_list.paid
 
 import android.os.Bundle
 import android.view.View

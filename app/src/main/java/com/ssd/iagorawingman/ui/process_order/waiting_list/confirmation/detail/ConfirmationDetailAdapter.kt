@@ -12,7 +12,6 @@ import com.ssd.iagorawingman.data.source.remote.body.BargainBody
 import com.ssd.iagorawingman.databinding.ItemCardChangePriceBinding
 import com.ssd.iagorawingman.ui.process_order.waiting_list.DifferDetail
 import com.ssd.iagorawingman.utils.FormatCurrency.formatPrice
-import com.ssd.iagorawingman.utils.Other
 import com.ssd.iagorawingman.utils.Other.clearFocus
 import com.ssd.iagorawingman.utils.Other.setupTextWithBtn
 

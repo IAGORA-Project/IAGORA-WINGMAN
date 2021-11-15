@@ -19,7 +19,7 @@ class ConfirmedViewModel(
 
 
     private val _vmGetConfirmedList: MutableSharedFlow<Resource<ProcessOrder.ListWaitingOnProcess>> =
-        MutableSharedFlow(1,1,BufferOverflow.DROP_OLDEST)
+        MutableSharedFlow(1, 0, BufferOverflow.DROP_OLDEST)
     val vmGetConfirmedList = _vmGetConfirmedList.distinctUntilChanged()
 
     private val _vmCountSizeConfirmedList: MutableSharedFlow<Int> = MutableSharedFlow()

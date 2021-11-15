@@ -8,15 +8,43 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.button.MaterialButton
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.EmptyCoroutineContext
 
 object Other {
     fun dpToPx(dp: Int): Int {
-        return ((dp * Resources.getSystem().displayMetrics.density).toInt());
+        return ((dp * Resources.getSystem().displayMetrics.density).toInt())
+    }
+
+    inline fun <T> Flow<T>.collectWhenStarted(
+        lifecycleOwner: LifecycleOwner,
+        crossinline action: suspend (value: T) -> Unit,
+    ) {
+        lifecycleOwner.addRepeatingJob(Lifecycle.State.STARTED) {
+            collect(action)
+        }
+    }
+
+    fun LifecycleOwner.addRepeatingJob(
+        state: Lifecycle.State,
+        coroutineContext: CoroutineContext = EmptyCoroutineContext,
+        block: suspend CoroutineScope.() -> Unit,
+    ) = lifecycleScope.launch(coroutineContext) {
+        lifecycle.repeatOnLifecycle(state, block)
     }
 
 
@@ -26,6 +54,14 @@ object Other {
 
     fun Activity.hideKeyboard() {
         hideKeyboard(currentFocus ?: View(this))
+    }
+
+    fun View.hide() {
+        this.isVisible = false
+    }
+
+    fun View.show() {
+        this.isVisible = true
     }
 
     private fun Context.hideKeyboard(view: View) {

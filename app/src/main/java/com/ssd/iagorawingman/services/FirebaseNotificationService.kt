@@ -51,7 +51,7 @@ class FirebaseNotificationService: FirebaseMessagingService() {
                 try {
                     val notification = remoteMessage.data["details"]
                     val intent = Intent(this, ReceiveOrderActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                     intent.putExtra("data-notif", notification)
                     startActivity(intent)
 
