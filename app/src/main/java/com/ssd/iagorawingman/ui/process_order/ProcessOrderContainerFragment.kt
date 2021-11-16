@@ -120,7 +120,6 @@ class ProcessOrderContainerFragment : Fragment(R.layout.fragment_process_order) 
                     val tab = (getChildAt(0) as ViewGroup).getChildAt(i)
                     val p = tab.layoutParams as ViewGroup.MarginLayoutParams
 
-
                     tab.setPadding(
                         0,
                         0,
@@ -130,9 +129,9 @@ class ProcessOrderContainerFragment : Fragment(R.layout.fragment_process_order) 
 
                     p.setMargins(
                         dpToPx(10), // left
-                        dpToPx(0), // top
+                        0, // top
                         dpToPx(5), // right
-                        dpToPx(0))  // bottom
+                        0)  // bottom
                     tab.requestLayout()
 
                 }

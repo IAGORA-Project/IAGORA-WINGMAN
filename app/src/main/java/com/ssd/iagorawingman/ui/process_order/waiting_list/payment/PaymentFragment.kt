@@ -7,11 +7,10 @@ import androidx.navigation.fragment.findNavController
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.databinding.FragmentOnProcessWaitingListBinding
 import com.ssd.iagorawingman.ui.process_order.ProcessOrderContainerFragmentDirections
+import com.ssd.iagorawingman.ui.process_order.waiting_list.WaitingList.handleUI
 import com.ssd.iagorawingman.ui.process_order.waiting_list.WaitingListAdapter
 import com.ssd.iagorawingman.utils.Other.collectWhenStarted
-import com.ssd.iagorawingman.utils.Status
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PaymentFragment : Fragment(R.layout.fragment_on_process_waiting_list) {
 
@@ -46,23 +45,8 @@ class PaymentFragment : Fragment(R.layout.fragment_on_process_waiting_list) {
 
     private fun subscribeToViewModel() {
         viewModel.vmGetPaymentList.collectWhenStarted(this) { res ->
-            when (res.status) {
-                Status.SUCCESS -> {
-                    adapter.differ.submitList(res.data?.success)
-                }
-
-                Status.LOADING -> {
-
-                }
-
-
-                Status.ERROR -> {
-
-                }
-            }
-
-                }
-
+            binding.handleUI(res, adapter)
+        }
     }
 
 

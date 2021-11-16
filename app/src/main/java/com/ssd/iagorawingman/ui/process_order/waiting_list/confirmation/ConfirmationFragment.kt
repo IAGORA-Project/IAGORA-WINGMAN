@@ -1,16 +1,15 @@
 package com.ssd.iagorawingman.ui.process_order.waiting_list.confirmation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ssd.iagorawingman.R
 import com.ssd.iagorawingman.databinding.FragmentOnProcessWaitingListBinding
 import com.ssd.iagorawingman.ui.process_order.ProcessOrderContainerFragmentDirections
+import com.ssd.iagorawingman.ui.process_order.waiting_list.WaitingList.handleUI
 import com.ssd.iagorawingman.ui.process_order.waiting_list.WaitingListAdapter
 import com.ssd.iagorawingman.utils.Other.collectWhenStarted
-import com.ssd.iagorawingman.utils.Status
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ConfirmationFragment : Fragment(R.layout.fragment_on_process_waiting_list) {
@@ -45,23 +44,9 @@ class ConfirmationFragment : Fragment(R.layout.fragment_on_process_waiting_list)
     }
 
     private fun subscribeToViewModel() {
-
         viewModel.vmGetConfirmationList.collectWhenStarted(this) { res ->
-            when (res.status) {
-                Status.LOADING -> {
-                    Log.e("LOADING", "CONFIRMATION")
-                }
-                Status.SUCCESS -> {
-                    adapter.differ.submitList(res.data?.success)
-                    Log.e("SUCCESS", "CONFIRMATION")
-                }
-
-                        Status.ERROR -> {
-                            Log.e("ERROR", "CONFIRMATION")
-                        }
-                    }
-
-                }
+            binding.handleUI(res, adapter)
+        }
     }
 
 
