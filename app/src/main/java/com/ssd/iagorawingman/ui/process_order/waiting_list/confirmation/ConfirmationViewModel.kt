@@ -1,6 +1,5 @@
 package com.ssd.iagorawingman.ui.process_order.waiting_list.confirmation
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ssd.iagorawingman.data.source.remote.api_handle.process_order.domain.model.ProcessOrder
@@ -18,10 +17,11 @@ class ConfirmationViewModel(
 ) : ViewModel() {
 
     private val _vmGetConfirmationList: MutableSharedFlow<Resource<ProcessOrder.ListWaitingOnProcess>> =
-        MutableSharedFlow(1,0, BufferOverflow.DROP_OLDEST)
+        MutableSharedFlow(1, 0, BufferOverflow.DROP_LATEST)
     val vmGetConfirmationList = _vmGetConfirmationList.distinctUntilChanged()
 
-    private val _vmCountSizeConfirmationList: MutableSharedFlow<Int> = MutableSharedFlow()
+    private val _vmCountSizeConfirmationList: MutableSharedFlow<Int> =
+        MutableSharedFlow()
     val vmCountSizeConfirmationList = _vmCountSizeConfirmationList.distinctUntilChanged()
 
     fun initViewModelConfirmation() {
@@ -31,8 +31,6 @@ class ConfirmationViewModel(
                     _vmGetConfirmationList.emit(res)
                     _vmCountSizeConfirmationList.emit(res.data?.success?.size ?: 0)
                 }
-
-            Log.e("LAUNCH","CONFIRMATION")
         }
 
     }

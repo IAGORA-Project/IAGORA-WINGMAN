@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.telephony.PhoneNumberUtils
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -21,7 +20,9 @@ import com.ssd.iagorawingman.ui.process_order.waiting_list.confirmed.ConfirmedVi
 import com.ssd.iagorawingman.utils.FormatCurrency.formatPrice
 import com.ssd.iagorawingman.utils.Other
 import com.ssd.iagorawingman.utils.Other.collectWhenStarted
+import com.ssd.iagorawingman.utils.Other.hide
 import com.ssd.iagorawingman.utils.Other.setupTextWithBtn
+import com.ssd.iagorawingman.utils.Other.show
 import com.ssd.iagorawingman.utils.Resource
 import com.ssd.iagorawingman.utils.SetImage.loadPhotoProfile
 import com.ssd.iagorawingman.utils.Status
@@ -52,32 +53,38 @@ class ConfirmationDetailFragment :
 
     private fun handleAdapter() {
         detailAdapter = ConfirmationDetailAdapter()
-        binding.containerListItem.rvItemProduct.adapter = detailAdapter
+        binding.containerMainLayoutConfirmation.containerListItem.rvItemProduct.adapter =
+            detailAdapter
         viewModel.setIdTransaction(args.idTransaction)
     }
 
 
     private fun subscribeToViewModel() {
+          viewModel.vmGetDetailConfirmation.collectWhenStarted(this) { res ->
+            binding.handleUI(res)
+        }
+    }
 
-        viewModel.vmGetDetailConfirmation.collectWhenStarted(this) { res ->
-            res.apply {
-                when (status) {
-                    Status.SUCCESS -> {
-                        handleUISuccess(data?.success as ProcessOrder.DetailWaitingOnProcess.Success)
-                    }
-
-                    Status.LOADING -> {
-                        Toast.makeText(requireContext(), "LOADING", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-
-                    Status.ERROR -> {
-
-                    }
-                }
+    private fun FragmentOnProcessWaitingListDetailConfirmationBinding.handleUI(res: Resource<ProcessOrder.DetailWaitingOnProcess>) {
+        res.apply {
+            when (status) {
+                Status.SUCCESS -> {
+                    containerLoadingConfirmation.root.hide().run {
+                        containerMainLayoutConfirmation.root.show().run {
+                            handleUISuccess(data?.success as ProcessOrder.DetailWaitingOnProcess.Success)
+                        }
                     }
                 }
 
+                Status.LOADING -> {
+                    containerLoadingConfirmation.root.show()
+                }
+
+                Status.ERROR -> {
+                    containerLoadingConfirmation.root.hide()
+                }
+            }
+        }
     }
 
     private fun handleUISuccess(data: ProcessOrder.DetailWaitingOnProcess.Success) {
@@ -87,7 +94,7 @@ class ConfirmationDetailFragment :
             detailAdapter.differ.submitList(listProduct)
             postBargain(idTransaction)
 
-            binding.apply {
+            binding.containerMainLayoutConfirmation.apply {
 
                 containerPerson.apply {
                     with(data.dataUser) {
@@ -157,7 +164,7 @@ class ConfirmationDetailFragment :
         res.apply {
             when (status) {
                 Status.SUCCESS -> {
-                    binding.containerListItem.containerHandlingFee.apply {
+                    binding.containerMainLayoutConfirmation.containerListItem.containerHandlingFee.apply {
                         tilHandlingFeeBargain.apply {
                             tvHandlingFeeValue.formatPrice(editText?.text.toString()).run {
                                 editText?.text?.clear()

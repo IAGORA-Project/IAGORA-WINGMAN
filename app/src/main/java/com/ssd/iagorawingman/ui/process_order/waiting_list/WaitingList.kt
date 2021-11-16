@@ -15,18 +15,21 @@ object WaitingList {
         res.apply {
             when (res.status) {
                 Status.LOADING -> {
-                    containerLoadingListOrder.root.show()
+                    rvListOrder.hide().run {
+                        containerLoadingListOrder.root.show()
+                    }
                 }
                 Status.SUCCESS -> {
                     adapter.differ.submitList(res.data?.success).run {
-//                        containerLoadingListOrder.root.hide().run {
-//                            rvListOrder.show()
-//                        }
+                        containerLoadingListOrder.root.hide().run {
+                            rvListOrder.show()
+                        }
                     }
                 }
 
                 Status.ERROR -> {
                     containerLoadingListOrder.root.hide()
+                    rvListOrder.hide()
                 }
             }
         }

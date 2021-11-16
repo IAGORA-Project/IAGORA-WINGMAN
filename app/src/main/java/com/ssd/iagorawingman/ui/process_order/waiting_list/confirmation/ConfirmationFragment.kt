@@ -16,7 +16,10 @@ class ConfirmationFragment : Fragment(R.layout.fragment_on_process_waiting_list)
 
     private var _binding: FragmentOnProcessWaitingListBinding? = null
     private val binding get() = _binding as FragmentOnProcessWaitingListBinding
-    private lateinit var adapter: WaitingListAdapter
+
+    private var _adapter: WaitingListAdapter? = null
+    private val adapter get() = _adapter as WaitingListAdapter
+
     private val viewModel: ConfirmationViewModel by sharedViewModel()
 
 
@@ -24,14 +27,16 @@ class ConfirmationFragment : Fragment(R.layout.fragment_on_process_waiting_list)
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentOnProcessWaitingListBinding.bind(view)
 
+
         handleAdapter()
         subscribeToViewModel()
         setupDestinationToDetail()
     }
 
 
+
     private fun handleAdapter() {
-        adapter = WaitingListAdapter()
+        _adapter = WaitingListAdapter()
         binding.rvListOrder.adapter = adapter
     }
 
@@ -50,9 +55,10 @@ class ConfirmationFragment : Fragment(R.layout.fragment_on_process_waiting_list)
     }
 
 
-    override fun onDestroy() {
+    override fun onDestroyView() {
         _binding = null
-        super.onDestroy()
+        _adapter = null
+        super.onDestroyView()
     }
 
 }
