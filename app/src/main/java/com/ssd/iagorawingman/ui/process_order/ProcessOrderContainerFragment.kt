@@ -42,16 +42,10 @@ class ProcessOrderContainerFragment : Fragment(R.layout.fragment_process_order) 
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentProcessOrderBinding.bind(view)
 
-        initData()
         handleTabViewPager()
         binding.initUI(requireActivity().navArgs<ProcessOrderActivityArgs>().value.positionTab)
     }
 
-    private fun initData() {
-        confirmedViewModel.initViewModelConfirmed()
-        confirmationViewModel.initViewModelConfirmation()
-        paymentViewModel.initViewModelPayment()
-    }
 
 
     private fun FragmentProcessOrderBinding.initUI(positionTab: Int) {

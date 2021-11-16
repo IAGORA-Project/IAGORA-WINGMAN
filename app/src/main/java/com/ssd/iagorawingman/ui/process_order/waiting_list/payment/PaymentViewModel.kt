@@ -23,6 +23,10 @@ class PaymentViewModel(
     private val _vmCountSizePaymentList: MutableSharedFlow<Int> = MutableSharedFlow()
     val vmCountSizePaymentList = _vmCountSizePaymentList.distinctUntilChanged()
 
+    init {
+        initViewModelPayment()
+    }
+
     fun initViewModelPayment() = viewModelScope.launch {
         orderUseCase.getAllListWaiting(FlowProcessOrder.WAITING_PAYMENT.name).collectLatest { res ->
             _vmGetPaymentList.emit(res)

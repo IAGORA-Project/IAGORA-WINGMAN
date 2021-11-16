@@ -21,8 +21,12 @@ class ConfirmationViewModel(
     val vmGetConfirmationList = _vmGetConfirmationList.distinctUntilChanged()
 
     private val _vmCountSizeConfirmationList: MutableSharedFlow<Int> =
-        MutableSharedFlow()
+        MutableSharedFlow(1, 0, BufferOverflow.DROP_LATEST)
     val vmCountSizeConfirmationList = _vmCountSizeConfirmationList.distinctUntilChanged()
+
+    init {
+        initViewModelConfirmation()
+    }
 
     fun initViewModelConfirmation() {
         viewModelScope.launch {
