@@ -17,11 +17,11 @@ class ConfirmationViewModel(
 ) : ViewModel() {
 
     private val _vmGetConfirmationList: MutableSharedFlow<Resource<ProcessOrder.ListWaitingOnProcess>> =
-        MutableSharedFlow(1, 0, BufferOverflow.DROP_LATEST)
+        MutableSharedFlow(1, 0, BufferOverflow.DROP_OLDEST)
     val vmGetConfirmationList = _vmGetConfirmationList.distinctUntilChanged()
 
     private val _vmCountSizeConfirmationList: MutableSharedFlow<Int> =
-        MutableSharedFlow(1, 0, BufferOverflow.DROP_LATEST)
+        MutableSharedFlow(1, 0, BufferOverflow.DROP_OLDEST)
     val vmCountSizeConfirmationList = _vmCountSizeConfirmationList.distinctUntilChanged()
 
     init {

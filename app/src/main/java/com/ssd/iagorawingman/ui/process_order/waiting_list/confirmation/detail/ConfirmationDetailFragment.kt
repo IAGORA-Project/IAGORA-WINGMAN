@@ -71,7 +71,7 @@ class ConfirmationDetailFragment :
                 Status.SUCCESS -> {
                     containerLoadingConfirmation.root.hide().run {
                         containerMainLayoutConfirmation.root.show().run {
-                            handleUISuccess(data?.success as ProcessOrder.DetailWaitingOnProcess.Success)
+                            data?.success?.handleUISuccess()
                         }
                     }
                 }
@@ -87,41 +87,40 @@ class ConfirmationDetailFragment :
         }
     }
 
-    private fun handleUISuccess(data: ProcessOrder.DetailWaitingOnProcess.Success) {
+    private fun ProcessOrder.DetailWaitingOnProcess.Success.handleUISuccess() {
 
-        with(data) {
 
-            detailAdapter.differ.submitList(listProduct)
-            postBargain(idTransaction)
+        detailAdapter.differ.submitList(listProduct)
+        postBargain(idTransaction)
 
-            binding.containerMainLayoutConfirmation.apply {
+        binding.containerMainLayoutConfirmation.apply {
 
-                containerPerson.apply {
-                    with(data.dataUser) {
-                        tvNamePerson.text = fullName
-                        tvPhoneNumberPerson.text = PhoneNumberUtils.formatNumber(
-                            phoneNumber,
-                            Locale.getDefault().country
-                        )
-                        shapeIvPerson.loadPhotoProfile(imgProfile)
-                    }
+            containerPerson.apply {
+                with(this@handleUISuccess.dataUser) {
+                    tvNamePerson.text = fullName
+                    tvPhoneNumberPerson.text = PhoneNumberUtils.formatNumber(
+                        phoneNumber,
+                        Locale.getDefault().country
+                    )
+                    shapeIvPerson.loadPhotoProfile(imgProfile)
                 }
+            }
 
-                containerListItem.apply {
-                    tvStoreName.text = data.storeInfo.storeName
+            containerListItem.apply {
+                tvStoreName.text = this@handleUISuccess.storeInfo.storeName
 
-                    containerHandlingFee.apply {
-                        tilHandlingFeeBargain.editText?.setupTextWithBtn(btnHandlingFeeBargain)
-                        tvHandlingFeeValue.formatPrice(handlingFee.toString())
+                containerHandlingFee.apply {
+                    tilHandlingFeeBargain.editText?.setupTextWithBtn(btnHandlingFeeBargain)
+                    tvHandlingFeeValue.formatPrice(handlingFee.toString())
 
 
 
-                        btnHandlingFeeBargain.setOnClickListener {
-                            postHandlingFee(idTransaction,
-                                HandlingFeeBody(tilHandlingFeeBargain.editText?.text.toString()
-                                    .toLong()))
+                    btnHandlingFeeBargain.setOnClickListener {
+                        postHandlingFee(idTransaction,
+                            HandlingFeeBody(tilHandlingFeeBargain.editText?.text.toString()
+                                .toLong()))
 
-                            Other.clearFocus(tilHandlingFeeBargain.editText)
+                        Other.clearFocus(tilHandlingFeeBargain.editText)
 
 
                         }
@@ -146,7 +145,7 @@ class ConfirmationDetailFragment :
                     }
                 }
             }
-        }
+
     }
 
     private fun postHandlingFee(idTransaction: String, handlingFeeBody: HandlingFeeBody) {
@@ -211,7 +210,9 @@ class ConfirmationDetailFragment :
                         requireView(),
                         res.message ?: "error",
                         Snackbar.LENGTH_SHORT
-                    ).show()
+                    ).show().run {
+                        confirmationViewModel.initViewModelConfirmation()
+                    }
                 }
             }
         }

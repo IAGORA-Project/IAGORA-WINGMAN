@@ -16,6 +16,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.ViewBindings
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.button.MaterialButton
 import kotlinx.coroutines.CoroutineScope

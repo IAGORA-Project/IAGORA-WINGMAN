@@ -26,14 +26,13 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProcessOrderContainerFragment : Fragment(R.layout.fragment_process_order) {
 
     private var _binding: FragmentProcessOrderBinding? = null
     private val binding get() = _binding as FragmentProcessOrderBinding
 
-    private val viewModel: ProcessOrderViewModel by viewModel()
+    private val viewModel: ProcessOrderViewModel by sharedViewModel()
     private val confirmationViewModel: ConfirmationViewModel by sharedViewModel()
     private val confirmedViewModel: ConfirmedViewModel by sharedViewModel()
     private val paymentViewModel: PaymentViewModel by sharedViewModel()

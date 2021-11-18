@@ -17,7 +17,7 @@ class PaymentViewModel(
 ) : ViewModel() {
 
     private val _vmGetPaymentList: MutableSharedFlow<Resource<ProcessOrder.ListWaitingOnProcess>> =
-        MutableSharedFlow(1, 1, BufferOverflow.DROP_OLDEST)
+        MutableSharedFlow(1, 0, BufferOverflow.DROP_OLDEST)
     val vmGetPaymentList = _vmGetPaymentList.distinctUntilChanged()
 
     private val _vmCountSizePaymentList: MutableSharedFlow<Int> = MutableSharedFlow()

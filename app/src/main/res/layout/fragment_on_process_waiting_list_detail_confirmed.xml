@@ -1,39 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:overScrollMode="never"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background_grey"
-        android:padding="10dp">
+        android:layout_height="match_parent">
 
         <include
-            android:id="@+id/containerPerson"
-            layout="@layout/item_card_person"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-          />
+            android:id="@+id/containerMainLayoutConfirmed"
+            layout="@layout/layout_on_process_waiting_list_detail_confirmed"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <include
-            android:id="@+id/containerListItem"
-            layout="@layout/item_card_bill"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/containerPerson" />
-
-
-        <include
-            android:id="@+id/containerListBill"
-            layout="@layout/item_card_all_bill"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/containerListItem" />
+            android:id="@+id/containerLoadingConfirmed"
+            layout="@layout/layout_on_process_waiting_list_detail_shimmer"
+            tools:visibility="gone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.core.widget.NestedScrollView>

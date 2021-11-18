@@ -21,7 +21,7 @@ class ConfirmedViewModel(
         MutableSharedFlow(1, 0, BufferOverflow.DROP_OLDEST)
     val vmGetConfirmedList = _vmGetConfirmedList.distinctUntilChanged()
 
-    private val _vmCountSizeConfirmedList: MutableSharedFlow<Int> = MutableSharedFlow(1, 0, BufferOverflow.DROP_LATEST)
+    private val _vmCountSizeConfirmedList: MutableSharedFlow<Int> = MutableSharedFlow(1, 0, BufferOverflow.DROP_OLDEST)
     val vmCountSizeConfirmedList = _vmCountSizeConfirmedList.distinctUntilChanged()
 
     init {
