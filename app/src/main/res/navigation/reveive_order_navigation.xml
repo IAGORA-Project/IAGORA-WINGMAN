@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/receiveOrderFragment"
-        android:name="com.ssd.iagorawingman.ui.receive_order.ReceiveOrderFragment"
+        android:name="com.iagora.wingman.app.ui.receive_order.ReceiveOrderFragment"
         android:label="ReceiveOrderFragment">
         <action
             android:id="@+id/moveToProcessOrder"
@@ -17,7 +17,7 @@
     </fragment>
     <activity
         android:id="@+id/processOrderActivity"
-        android:name="com.ssd.iagorawingman.ui.process_order.ProcessOrderActivity"
+        android:name="com.iagora.wingman.process_order.features.main_features.ProcessOrderActivity"
         android:label="activity_process_order"
         tools:layout="@layout/activity_process_order">
         <argument

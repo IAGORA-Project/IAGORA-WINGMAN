@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/Theme.IAGORAWingman"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_white_rounded_20"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvStoreNameShimmer"
+            style="@style/TextViewSemiBold.OpenSans_15sp_020202"
+            android:layout_width="180dp"
+            android:layout_height="25dp"
+            android:background="@drawable/shape_shimmer_rounded_50"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            app:drawableStartCompat="@drawable/ic_toko_shimmer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/listProductShimmer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/tvStoreNameShimmer">
+            <include layout="@layout/item_card_change_price_shimmer_1" />
+            <include layout="@layout/item_card_change_price_shimmer_3" />
+            <include layout="@layout/item_card_change_price_shimmer_2" />
+            <include layout="@layout/item_card_change_price_shimmer_3" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/shape_line_dashed_shimmer"
+            app:layout_constraintTop_toBottomOf="@+id/listProductShimmer" />
+
+        <include
+            android:id="@+id/containerHandlingFeeShimmer"
+            layout="@layout/item_change_handle_fee_shimmer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">IAGORA Wingman</string>
+    <string name="title_activity_main_app">MainAppActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_akun">Akun</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_order_not_processed">Order belum diproses</string>
+    <string name="dummy_text_total_item">Total belanja : <b>Rp.7,000</b></string>
+    <string name="text_total_item_cart">Total belanja</string>
+    <string name="format_text_item">%1$s dan %2$d item lainnya</string>
+    <string name="dummy_item_price_discount"><strike>Rp.6000/<sub>kg</sub></strike></string>
+    <string name="format_item_price_discount"><strike>%1$d/<sub>%2$d</sub></strike></string>
+    <string name="dummy_item_price">Rp.6,000/<sub>kg</sub></string>
+    <string name="format_uom">%1$s %2$s</string>
+    <string name="text_price_bargaining">Harga Tawaran</string>
+    <string name="text_bargain">Tawar</string>
+    <string name="text_hint_handling_fee">Ubah biaya penanganan</string>
+    <string name="text_button_detail">button detail</string>
+    <string name="text_delivery_services">Layanan Pengiriman</string>
+    <string name="text_Location">Lokasi Pengiriman</string>
+    <string name="dummy_price">Rp.6,000</string>
+    <string name="text_total_title">Total</string>
+    <string name="text_shopping_title">Belanja</string>
+    <string name="text_discount_voucher_title">Diskon Voucher</string>
+    <string name="text_sub_total_title">Sub-total</string>
+    <string name="text_price_delivery_title">Ongkir</string>
+    <string name="text_handling_fee_title">Biaya penanganan</string>
+    <string name="text_platform_fee_title">Biaya platform</string>
+    <string name="text_grand_total_title">Grand total</string>
+    <string name="text_payment_status_title">Status pembayaran</string>
+    <string name="text_payment_status_value_false">Belum dibayar</string>
+    <string name="text_warning_order">Pastikan produk tidak dalam keadaan rusak dan harga sesuai dengan tawaran pedagang dan persetujuan pelanggan</string>
+    <string name="text_btn_cancel_order">Batalkan pesanan</string>
+    <string name="text_btn_accept_order">Setujui harga</string>
+    <string name="text_change">Ubah</string>
+    <string name="format_quantity_text">x %1$s</string>
+    <string name="image_btn_chat_description">Move To Chat</string>
+    <string-array name="satuan">
+        <item>Gram</item>
+        <item>Pcs</item>
+    </string-array>
+
+    <string-array name="path_response_waiting_list">
+        <item>WAITING_CONFIRMATION</item>
+        <item>CONFIRMATION</item>
+        <item>WAITING_PAYMENT</item>
+    </string-array>
+
+    <string-array name="text_dialog_action_transaction">
+        <item>Pastikan kamu sudah benar - benar menyetujuinya</item>
+        <item>Apakah kamu yakin untuk membatalkan pesanan ?</item>
+    </string-array>
+
+    <string-array name="title_dialog_action_transaction">
+        <item>@string/text_btn_accept_order</item>
+        <item>@string/text_btn_cancel_order</item>
+    </string-array>
+
+    <string-array name="tab_title_paid">
+        <item>Ekspress</item>
+        <item>Same day</item>
+    </string-array>
+
+    <string-array name="tab_title_order">
+        <item>Belum disetujui</item>
+        <item>Telah disetujui</item>
+        <item>Belum dibayar</item>
+        <item>Telah dibayar</item>
+        <item>Dikirim</item>
+        <item>Selesai</item>
+    </string-array>
+
+    <string name="title_toolbar_process_order">Orderan Saya</string>
+
+    <string name="text_positive_button">Ya</string>
+    <string name="text_negative_button">Kembali</string>
+    <string name="des_back_arrow">back_arrow</string>
+    <string-array name="path_type_action_transaction">
+        <item>accept</item>
+        <item>decline</item>
+    </string-array>
+</resources>

@@ -7,7 +7,7 @@
     android:clipChildren="false"
     android:clipToPadding="false"
     android:paddingHorizontal="@dimen/activity_horizontal_padding"
-    tools:context=".ui.main_menu.home.HomeFragment">
+    tools:context="com.iagora.wingman.app.ui.main_menu.home.HomeFragment">
 
     <ImageView
         android:id="@+id/imageView"

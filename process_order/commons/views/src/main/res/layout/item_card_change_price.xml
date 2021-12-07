@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:theme="@style/Theme.IAGORAWingman"
+    android:layout_marginBottom="30dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvNameItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+     style="@style/TextViewReguler.OpenSans_18sp_020202"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Wortel Berastagi" />
+
+    <TextView
+        android:id="@+id/tvUom"
+        android:layout_width="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameItem"
+        tools:text="200 gram" />
+
+
+    <TextView
+        android:id="@+id/tvItemPrice"
+        style="@style/TextViewSemiBold.OpenSans_16sp_020202"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/tvNameItem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvNameItem"
+        tools:text="@string/dummy_price" />
+
+    <TextView
+        android:id="@+id/tvQty"
+        style="@style/TextViewSemiBold.OpenSans_15sp_020202"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/tvUom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvUom"
+        tools:text="x 1" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPriceBargain"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:hint="@string/text_price_bargaining"
+        android:layout_marginTop="15dp"
+        app:boxStrokeWidthFocused="1dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnBargain"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvUom">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            android:maxLength="15"
+            android:paddingVertical="10dp"
+            android:theme="@style/TextViewReguler.OpenSans_15sp_020202" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBargain"
+        android:layout_width="110dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="5dp"
+        android:enabled="false"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/text_bargain"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        app:cornerRadius="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tilPriceBargain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tilPriceBargain" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

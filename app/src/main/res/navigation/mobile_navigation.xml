@@ -7,28 +7,33 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.ssd.iagorawingman.ui.main_menu.home.HomeFragment"
+        android:name="com.iagora.wingman.app.ui.main_menu.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home">
 
         <action
-            android:id="@+id/action_navigation_home_to_processOrderActivity"
+            android:id="@+id/homeNavigateToProcessOrder"
             app:destination="@id/processOrderActivity"
             app:enterAnim="@anim/screen_new_in"
             app:exitAnim="@anim/screen_old_out"
             app:popEnterAnim="@anim/screen_old_in"
-            app:popExitAnim="@anim/screen_new_out" />
+            app:popExitAnim="@anim/screen_new_out" >
+
+            <argument
+                android:name="positionTab"
+                app:argType="integer" />
+        </action>
     </fragment>
 
     <fragment
         android:id="@+id/navigation_akun"
-        android:name="com.ssd.iagorawingman.ui.main_menu.akun.AkunFragment"
+        android:name="com.iagora.wingman.app.ui.main_menu.akun.ProfileFragment"
         android:label="@string/title_akun"
-        tools:layout="@layout/fragment_akun" />
+        tools:layout="@layout/fragment_profile" />
 
     <activity
         android:id="@+id/processOrderActivity"
-        android:name="com.ssd.iagorawingman.ui.process_order.ProcessOrderActivity"
+        android:name="com.iagora.wingman.process_order.features.main_features.ProcessOrderActivity"
         android:label="activity_process_order"
         tools:layout="@layout/activity_process_order">
         <argument

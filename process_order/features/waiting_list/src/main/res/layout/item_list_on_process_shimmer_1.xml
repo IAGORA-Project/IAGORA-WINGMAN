@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ripple_item_for_white_background"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="10dp">
+
+    <View
+        android:id="@+id/shapeIvPersonShimmer1"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:background="@drawable/shape_shimmer_circle"
+        app:layout_constraintBottom_toBottomOf="@+id/tvItemTotalShimmer1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvNamePersonShimmer1" />
+
+    <TextView
+        android:id="@+id/tvNamePersonShimmer1"
+        style="@style/TextViewBold.OpenSans_17sp_020202"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/shape_shimmer_rounded_50"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonShimmer1"
+        app:layout_constraintStart_toEndOf="@+id/shapeIvPersonShimmer1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvItemShimmer1"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
+        android:layout_width="180dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/shape_shimmer_rounded_50"
+        android:textColor="@color/text_primary"
+        app:layout_constraintStart_toEndOf="@+id/shapeIvPersonShimmer1"
+        app:layout_constraintTop_toBottomOf="@+id/tvNamePersonShimmer1" />
+
+    <TextView
+        android:id="@+id/tvItemTotalShimmer1"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
+        android:layout_width="200dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/shape_shimmer_rounded_50"
+        android:textColor="@color/text_primary"
+        app:layout_constraintStart_toEndOf="@+id/shapeIvPersonShimmer1"
+        app:layout_constraintTop_toBottomOf="@+id/tvItemShimmer1" />
+
+    <ImageButton
+        android:id="@+id/imageButtonShimmer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:background="@color/transparent_600"
+        android:contentDescription="@string/text_button_detail"
+        android:src="@drawable/ic_arrow_right_shimmer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
