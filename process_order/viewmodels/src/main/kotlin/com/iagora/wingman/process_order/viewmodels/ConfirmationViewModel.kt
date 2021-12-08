@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
 class ConfirmationViewModel(
-    private val orderUseCase: ProcessOrderUseCase,
+    private val processOrderUseCase: ProcessOrderUseCase,
 ) : ViewModel() {
 
     private val _vmGetConfirmationList: MutableSharedFlow<Resource<ProcessOrder.ListWaitingOnProcess>> =
@@ -30,7 +30,7 @@ class ConfirmationViewModel(
 
     fun initViewModelConfirmation() {
         viewModelScope.launch {
-            orderUseCase.getAllListWaiting(FlowProcessOrder.WAITING_CONFIRMATION.name)
+            processOrderUseCase.getAllListWaiting(FlowProcessOrder.WAITING_CONFIRMATION.name)
                 .collectLatest { res ->
                     _vmGetConfirmationList.emit(res)
                     _vmCountSizeConfirmationList.emit(res.data?.success?.size ?: 0)

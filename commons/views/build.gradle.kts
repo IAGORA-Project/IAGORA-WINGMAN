@@ -26,7 +26,6 @@ dependencies {
         implementation(NAVIGATION_UI)
         implementation(NAVIGATION_FRAGMENT)
         implementation(CONSTRAIN_LAYOUT)
-        implementation(RECYCLE_VIEW)
         implementation(GLIDE)
     }
 }

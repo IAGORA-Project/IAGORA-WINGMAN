@@ -90,7 +90,7 @@ class ConfirmationDetailFragment :
     private fun ProcessOrder.DetailWaitingOnProcess.Success.handleUISuccess() {
 
 
-        detailAdapter.differ.submitList(listProduct)
+        detailAdapter.submitList(listProduct)
         postBargain(idTransaction)
 
         binding.containerMainLayoutConfirmation.apply {

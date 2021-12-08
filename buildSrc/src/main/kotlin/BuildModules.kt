@@ -25,6 +25,11 @@ object BuildModules {
         }
     }
 
+    object ReceiveOrder {
+        const val CORE = ":receive_order:core"
+        const val MAIN = ":receive_order:main_features"
+    }
+
     object Commons {
         const val UI = ":commons:ui"
         const val VIEWS = ":commons:views"

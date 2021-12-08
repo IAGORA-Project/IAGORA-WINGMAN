@@ -41,11 +41,7 @@
         <item>Pcs</item>
     </string-array>
 
-    <string-array name="path_response_waiting_list">
-        <item>WAITING_CONFIRMATION</item>
-        <item>CONFIRMATION</item>
-        <item>WAITING_PAYMENT</item>
-    </string-array>
+
 
     <string-array name="text_dialog_action_transaction">
         <item>Pastikan kamu sudah benar - benar menyetujuinya</item>
@@ -76,8 +72,7 @@
     <string name="text_positive_button">Ya</string>
     <string name="text_negative_button">Kembali</string>
     <string name="des_back_arrow">back_arrow</string>
-    <string-array name="path_type_action_transaction">
-        <item>accept</item>
-        <item>decline</item>
-    </string-array>
+    <string name="action_accept">accept</string>
+    <string name="action_decline">decline</string>
+    <string name="action_canceled">canceled</string>
 </resources>

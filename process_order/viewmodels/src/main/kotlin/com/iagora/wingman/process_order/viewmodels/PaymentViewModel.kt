@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
 class PaymentViewModel(
-    private val orderUseCase: ProcessOrderUseCase,
+    private val processOrderUseCase: ProcessOrderUseCase,
 ) : ViewModel() {
 
     private val _vmGetPaymentList: MutableSharedFlow<Resource<ProcessOrder.ListWaitingOnProcess>> =
@@ -28,7 +28,7 @@ class PaymentViewModel(
     }
 
     fun initViewModelPayment() = viewModelScope.launch {
-        orderUseCase.getAllListWaiting(FlowProcessOrder.WAITING_PAYMENT.name).collectLatest { res ->
+        processOrderUseCase.getAllListWaiting(FlowProcessOrder.WAITING_PAYMENT.name).collectLatest { res ->
             _vmGetPaymentList.emit(res)
             _vmCountSizePaymentList.emit(res.data?.success?.size ?: 0)
 

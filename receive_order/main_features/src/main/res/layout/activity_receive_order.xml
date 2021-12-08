@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.iagora.wingman.app.ui.receive_order.ReceiveOrderActivity">
+    tools:context="com.iagora.wingman.receive_order.main_features.ReceiveOrderActivity">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivPicUser"

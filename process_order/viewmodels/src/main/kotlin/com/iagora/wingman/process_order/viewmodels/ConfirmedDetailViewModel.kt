@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
 class ConfirmedDetailViewModel(
-    private val orderUseCase: ProcessOrderUseCase,
+    private val processOrderUseCase: ProcessOrderUseCase,
 ) : ViewModel() {
 
     private val _vmGetDetailConfirmed: MutableSharedFlow<Resource<ProcessOrder.DetailWaitingOnProcess>> =
@@ -26,7 +26,7 @@ class ConfirmedDetailViewModel(
 
     fun setIdTransaction(idTransaction: String) {
         viewModelScope.launch {
-            orderUseCase.getDetailListWaiting(idTransaction,
+            processOrderUseCase.getDetailListWaiting(idTransaction,
                 FlowProcessOrder.CONFIRMATION.name)
                 .collectLatest { res ->
                     _vmGetDetailConfirmed.emit(res)

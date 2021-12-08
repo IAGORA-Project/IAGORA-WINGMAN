@@ -1,27 +1,24 @@
-package com.iagora.wingman.app.ui.receive_order
+package com.iagora.wingman.receive_order.main_features
 
 import android.content.Intent
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
-import com.iagora.wingman.app.databinding.ActivityReceiveOrderBinding
-import com.iagora.wingman.app.utils.Loader
 import com.iagora.wingman.commons.ui.base.BaseActivity
-import com.iagora.wingman.receive_order.core.data.remote.body.ReceiveOrderBody
-import com.iagora.wingman.helper.set
-import com.iagora.wingman.process_order.features.main_features.ProcessOrderActivity
+import com.iagora.wingman.helper.model.Product
+import com.iagora.wingman.receive_order.core.model.body.ReceiveOrder
+import com.iagora.wingman.receive_order.main_features.databinding.ActivityReceiveOrderBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class ReceiveOrderActivity :
     BaseActivity<ActivityReceiveOrderBinding>({ ActivityReceiveOrderBinding.inflate(it) }) {
 
     private val receiveOrderViewModel: ReceiveOrderViewModel by viewModel()
-    private lateinit var receiveOrderProductAdapter: ReceiveOrderProductAdapter
+    private lateinit var receiveOrderProductAdapter: ReceiveOrderAdapter
     private var dataNotify: String = ""
-    private var receiveOrderBody: com.iagora.wingman.receive_order.core.data.remote.body.ReceiveOrderBody? = null
+    private var body: ReceiveOrder? = null
 
     private fun initBundle() {
         dataNotify = intent.getStringExtra(KEY_DATA_NOTIFY).toString()
-        receiveOrderBody = Gson().fromJson(dataNotify, com.iagora.wingman.receive_order.core.data.remote.body.ReceiveOrderBody::class.java)
+        receiveOrderBody = Gson().fromJson(dataNotify, ReceiveOrder::class.java)
 
         receiveOrderBody?.let { data -> handleViewAction(data) }
         receiveOrderBody?.listProduct?.let { listProduct -> handleAdapterListProduct(listProduct) }
@@ -57,8 +54,8 @@ class ReceiveOrderActivity :
 
     }
 
-    private fun handleAdapterListProduct(data: ArrayList<com.iagora.wingman.receive_order.core.data.remote.body.ReceiveOrderBody.Product>) {
-        receiveOrderProductAdapter = ReceiveOrderProductAdapter(data)
+    private fun handleAdapterListProduct(data: List<Product>) {
+        receiveOrderProductAdapter = ReceiveOrderAdapter(data)
         binding.rvListProduct.apply {
             adapter = receiveOrderProductAdapter
             layoutManager = LinearLayoutManager(context)

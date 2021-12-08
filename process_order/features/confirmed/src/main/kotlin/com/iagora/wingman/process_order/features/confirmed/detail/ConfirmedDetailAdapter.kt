@@ -4,16 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
-import com.iagora.wingman.commons.views.helper.FormatCurrency.formatPrice
 import com.iagora.wingman.process_order.commons.views.databinding.ItemCardPriceBinding
-import com.iagora.wingman.process_order.features.confirmed.R
-import com.iagora.wingman.process_order.helper.DifferDetail
+import com.iagora.wingman.helper.differ.DifferProduct
 import com.iagora.wingman.process_order.helper.model.response.ProcessOrder
 
 
 class ConfirmedDetailAdapter : RecyclerView.Adapter<ConfirmedDetailAdapter.ConfirmedViewHolder>() {
 
-    val differ = AsyncListDiffer(this, DifferDetail)
+    val differ = AsyncListDiffer(this, DifferProduct)
 
 
     inner class ConfirmedViewHolder(private val binding: ItemCardPriceBinding) :

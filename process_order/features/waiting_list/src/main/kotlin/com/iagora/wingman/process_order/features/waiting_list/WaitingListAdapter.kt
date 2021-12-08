@@ -5,16 +5,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_COMPACT
 import androidx.core.text.HtmlCompat.fromHtml
-import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.iagora.wingman.commons.ui.base.BaseListAdapter
+import com.iagora.wingman.commons.ui.base.BaseViewHolder
 import com.iagora.wingman.commons.views.helper.FormatCurrency
 import com.iagora.wingman.commons.views.helper.SetImage.loadPhotoProfile
 import com.iagora.wingman.process_order.features.waiting_list.databinding.ItemListOnProcessBinding
 import com.iagora.wingman.process_order.helper.model.response.ProcessOrder
 
 
-class WaitingListAdapter : RecyclerView.Adapter<WaitingListAdapter.OnProcessViewHolder>() {
+class WaitingListAdapter : BaseListAdapter<ProcessOrder.ListWaitingOnProcess.Success>(
+    itemsSame = { old, new -> old.idTransaction == new.idTransaction },
+    contentsSame = { old, new -> old == new }
+) {
     private var onItemClickListener: ((String) -> Unit)? = null
 
     fun setOnItemClickListener(listener: (String) -> Unit) {
@@ -22,8 +25,11 @@ class WaitingListAdapter : RecyclerView.Adapter<WaitingListAdapter.OnProcessView
     }
 
 
-    inner class OnProcessViewHolder(private val binding: ItemListOnProcessBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class WaitingListViewHolder(inflater: LayoutInflater) :
+        BaseViewHolder<ItemListOnProcessBinding>(
+            ItemListOnProcessBinding.inflate(inflater)) {
+
+
         fun bind(success: ProcessOrder.ListWaitingOnProcess.Success) {
             with(binding) {
                 with(success) {
@@ -61,40 +67,17 @@ class WaitingListAdapter : RecyclerView.Adapter<WaitingListAdapter.OnProcessView
 
     }
 
-    private val differCallback =
-        object : DiffUtil.ItemCallback<ProcessOrder.ListWaitingOnProcess.Success>() {
-            override fun areItemsTheSame(
-                oldItem: ProcessOrder.ListWaitingOnProcess.Success,
-                newItem: ProcessOrder.ListWaitingOnProcess.Success
-            ): Boolean {
-                return oldItem.idTransaction == newItem.idTransaction
-            }
 
-            override fun areContentsTheSame(
-                oldItem: ProcessOrder.ListWaitingOnProcess.Success,
-                newItem: ProcessOrder.ListWaitingOnProcess.Success
-            ): Boolean {
-                return oldItem == newItem
-            }
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is WaitingListViewHolder -> holder.bind(getItem(position))
         }
+    }
 
-
-    val differ = AsyncListDiffer(this, differCallback)
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
-    ): OnProcessViewHolder = OnProcessViewHolder(
-        ItemListOnProcessBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
-    )
-
-    override fun onBindViewHolder(holder: OnProcessViewHolder, position: Int) =
-        holder.bind(differ.currentList[position])
-
-
-    override fun getItemCount(): Int = differ.currentList.size
+        inflater: LayoutInflater,
+        viewType: Int,
+    ): RecyclerView.ViewHolder = WaitingListViewHolder(inflater)
 }

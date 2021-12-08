@@ -3,20 +3,22 @@ package com.iagora.wingman.process_order.features.confirmation.detail
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputLayout
+import com.iagora.wingman.commons.ui.base.BaseListAdapter
+import com.iagora.wingman.commons.ui.base.BaseViewHolder
 import com.iagora.wingman.commons.views.helper.FormatCurrency.formatPrice
 import com.iagora.wingman.commons.views.helper.Util.clearFocus
 import com.iagora.wingman.commons.views.helper.Util.setupTextWithBtn
+import com.iagora.wingman.helper.model.Product
 import com.iagora.wingman.process_order.commons.views.databinding.ItemCardChangePriceBinding
 import com.iagora.wingman.process_order.features.confirmation.R
-import com.iagora.wingman.process_order.helper.DifferDetail
-import com.iagora.wingman.process_order.helper.model.response.ProcessOrder
 
-class ConfirmationDetailAdapter : RecyclerView.Adapter<ConfirmationDetailAdapter.ConfirmationViewHolder>() {
+class ConfirmationDetailAdapter : BaseListAdapter<Product>(
+    itemsSame = { old, new -> old.idProduct == new.idProduct },
+    contentsSame = { old, new -> old == new }
+) {
 
-    val differ = AsyncListDiffer(this, DifferDetail)
 
     private var onItemClickListener: ((BargainTemp, TextInputLayout, TextView) -> Unit)? = null
     fun setOnItemClickListener(listener: (BargainTemp, TextInputLayout, TextView) -> Unit) {
@@ -30,14 +32,15 @@ class ConfirmationDetailAdapter : RecyclerView.Adapter<ConfirmationDetailAdapter
     )
 
 
-    inner class ConfirmationViewHolder(private val binding: ItemCardChangePriceBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(product: ProcessOrder.Product) {
+    inner class ConfirmationViewHolder(inflater: LayoutInflater) :
+        BaseViewHolder<ItemCardChangePriceBinding>(ItemCardChangePriceBinding.inflate(
+            inflater)) {
+        fun bind(data: Product) {
             binding.apply {
 
                 tilPriceBargain.editText?.setupTextWithBtn(btnBargain)
 
-                with(product) {
+                with(data) {
 
                     tvNameItem.text = productName
                     tvItemPrice.formatPrice(bargainPrice.toString())
@@ -72,21 +75,13 @@ class ConfirmationDetailAdapter : RecyclerView.Adapter<ConfirmationDetailAdapter
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
-    ): ConfirmationViewHolder = ConfirmationViewHolder(
-        ItemCardChangePriceBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
-    )
+        inflater: LayoutInflater,
+        viewType: Int,
+    ): RecyclerView.ViewHolder = ConfirmationViewHolder(inflater)
 
-    override fun onBindViewHolder(
-        holder: ConfirmationViewHolder,
-        position: Int
-    ) =
-        holder.bind(differ.currentList[position])
-
-
-    override fun getItemCount(): Int = differ.currentList.size
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is ConfirmationViewHolder -> holder.bind(getItem(position))
+        }
+    }
 }

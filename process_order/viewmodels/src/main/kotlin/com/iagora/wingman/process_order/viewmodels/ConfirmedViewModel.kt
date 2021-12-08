@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
 class ConfirmedViewModel(
-    private val orderUseCase: ProcessOrderUseCase,
+    private val processOrderUseCase: ProcessOrderUseCase,
 ) : ViewModel() {
 
 
@@ -32,7 +32,7 @@ class ConfirmedViewModel(
 
     fun initViewModelConfirmed() {
         viewModelScope.launch {
-            orderUseCase.getAllListWaiting(FlowProcessOrder.CONFIRMATION.name)
+            processOrderUseCase.getAllListWaiting(FlowProcessOrder.CONFIRMATION.name)
                 .collectLatest { res ->
                     _vmGetConfirmedList.emit(res)
                     _vmCountSizeConfirmedList.emit(res.data?.success?.size ?: 0)

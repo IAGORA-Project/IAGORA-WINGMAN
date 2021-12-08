@@ -5,6 +5,7 @@ include(
     ":commons:ui",
     ":commons:views",
     ":receive_order:core",
+    ":receive_order:main_features",
     ":process_order:core",
     ":process_order:helper",
     ":process_order:viewmodels",

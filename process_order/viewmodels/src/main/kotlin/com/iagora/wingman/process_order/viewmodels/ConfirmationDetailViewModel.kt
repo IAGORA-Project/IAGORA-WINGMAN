@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
 class ConfirmationDetailViewModel(
-    private val orderUseCase: ProcessOrderUseCase,
+    private val processOrderUseCase: ProcessOrderUseCase,
 ) : ViewModel() {
 
 
@@ -30,7 +30,7 @@ class ConfirmationDetailViewModel(
 
     fun setIdTransaction(idTransaction: String) {
         viewModelScope.launch {
-            orderUseCase.getDetailListWaiting(idTransaction,
+            processOrderUseCase.getDetailListWaiting(idTransaction,
                 FlowProcessOrder.WAITING_CONFIRMATION.name)
                 .collectLatest {
                     _vmGetDetailConfirmation.emit(it)
@@ -43,7 +43,7 @@ class ConfirmationDetailViewModel(
     val vmGetFeedBackBargainPrice = _vmGetFeedBackBargainPrice.distinctUntilChanged()
     fun sendBargainPrice(body: Bargain) {
         viewModelScope.launch {
-            orderUseCase.postBargainPrice(body).collectLatest { fed ->
+            processOrderUseCase.postBargainPrice(body).collectLatest { fed ->
                 _vmGetFeedBackBargainPrice.emit(fed)
             }
         }
@@ -56,7 +56,7 @@ class ConfirmationDetailViewModel(
 
     fun sendActionTransaction(idTransaction: String, typeAction: String) {
         viewModelScope.launch {
-            orderUseCase.postActionTransaction(idTransaction, typeAction).collectLatest { fed ->
+            processOrderUseCase.postActionTransaction(idTransaction, typeAction).collectLatest { fed ->
                 _vmGetFeedBackActionTransaction.emit(fed)
             }
         }
@@ -73,7 +73,7 @@ class ConfirmationDetailViewModel(
         handlingFee: HandlingFee,
     ) =
         viewModelScope.launch {
-            orderUseCase.postNewHandlingFee(idTransaction, handlingFee).collectLatest { fed ->
+            processOrderUseCase.postNewHandlingFee(idTransaction, handlingFee).collectLatest { fed ->
                 _vmGetFeedBackChangeHandlingFee.emit(fed)
             }
         }

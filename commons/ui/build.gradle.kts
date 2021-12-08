@@ -30,5 +30,8 @@ dependencies {
         // lifecycle
         implementation(LIFECYCLE_SERVICE)
         implementation(LIFECYCLE_RUNTIME)
+
+        // ui
+        implementation(RECYCLE_VIEW)
     }
 }

@@ -36,7 +36,7 @@
         android:theme="@style/Theme.IAGORAWingman">
         <activity
             android:screenOrientation="sensorPortrait"
-            android:name="com.iagora.wingman.app.ui.receive_order.ReceiveOrderActivity"
+            android:name="com.iagora.wingman.app.com.iagora.wingman.receive_order.main_features.ReceiveOrderActivity"
             android:exported="true"
             tools:ignore="LockedOrientationActivity" />
         <activity

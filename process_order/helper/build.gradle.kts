@@ -9,5 +9,4 @@ junitJacoco {
 
 dependencies {
     implementation(project(BuildModules.HELPER))
-    implementation(Dependencies.RECYCLE_VIEW)
 }

@@ -16,7 +16,7 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.iagora.wingman.app.R
 import com.iagora.wingman.app.ui.main_menu.MainActivity
-import com.iagora.wingman.app.ui.receive_order.ReceiveOrderActivity
+import com.iagora.wingman.receive_order.main_features.ReceiveOrderActivity
 import org.json.JSONObject
 import kotlin.random.Random
 
@@ -50,7 +50,7 @@ class FirebaseNotificationService: FirebaseMessagingService() {
             if(remoteMessage.data["type"] == "new-order") {
                 try {
                     val notification = remoteMessage.data["details"]
-                    val intent = Intent(this, ReceiveOrderActivity::class.java)
+                    val intent = Intent(this, com.iagora.wingman.receive_order.main_features.ReceiveOrderActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                     intent.putExtra("data-notif", notification)
                     startActivity(intent)
@@ -155,7 +155,7 @@ class FirebaseNotificationService: FirebaseMessagingService() {
     // Open Receive Order Activity
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun openReceiveOrder(notificationID: Int, data: String): PendingIntent {
-        val intent = Intent(this, ReceiveOrderActivity::class.java)
+        val intent = Intent(this, com.iagora.wingman.receive_order.main_features.ReceiveOrderActivity::class.java)
         intent.putExtra("data-notif", data)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         return  PendingIntent.getActivity(this, notificationID /* Request code */, intent, PendingIntent.FLAG_ONE_SHOT)

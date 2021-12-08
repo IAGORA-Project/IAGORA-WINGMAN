@@ -15,6 +15,4 @@ class ReceiveOrderRemoteDataSource(
         receiveOrderBody: ReceiveOrderBody,
     ) = services.postActionOrder(action, receiveOrderBody).flowCollector(externalScope)
 
-
-
 }

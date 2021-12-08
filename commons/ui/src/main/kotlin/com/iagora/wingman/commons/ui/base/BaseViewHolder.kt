@@ -1,4 +1,4 @@
-package com.iagora.wingman.commons.views.base
+package com.iagora.wingman.commons.ui.base
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
