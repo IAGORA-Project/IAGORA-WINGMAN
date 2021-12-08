@@ -87,6 +87,18 @@ class ProcessOrderContainerFragment :
 
         }
 
+        addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                processOrderViewModel.setPosTab(tab.position)
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {/* NO-ACTION */
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {/* NO-ACTION */
+            }
+        })
+
     }
 
     private fun ViewPager2.setup() {
