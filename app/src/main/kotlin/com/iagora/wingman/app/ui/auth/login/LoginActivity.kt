@@ -10,7 +10,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.iagora.wingman.app.databinding.ActivityLoginBinding
 import com.iagora.wingman.app.ui.auth.AuthViewModel
 import com.iagora.wingman.app.ui.main_menu.MainActivity
-import com.iagora.wingman.app.utils.Loader
+import com.iagora.wingman.commons.views.helper.Loader
 
 import com.iagora.wingman.core.source.remote.body.LoginBody
 import com.iagora.wingman.helper.Status

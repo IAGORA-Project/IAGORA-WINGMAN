@@ -1,7 +1,7 @@
 package com.iagora.wingman.receive_order.core
 
-import com.iagora.wingman.receive_order.core.data.remote.body.ReceiveOrderBody
-import com.iagora.wingman.receive_order.core.data.remote.response.ResAcceptedOrder
+import com.iagora.wingman.receive_order.helper.data.remote.body.ReceiveOrderBody
+import com.iagora.wingman.receive_order.helper.data.remote.response.ResAcceptedOrder
 import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.http.Path

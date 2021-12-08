@@ -9,7 +9,7 @@ plugins {
 dependencies {
     implementation(project(BuildModules.CORE))
     implementation(project(BuildModules.HELPER))
-
+    implementation(project(BuildModules.ReceiveOrder.HELPER))
     Dependencies.apply {
         // dependency
         implementation(KOIN_ANDROID)
@@ -18,8 +18,7 @@ dependencies {
         // lifecycle
         implementation(LIFECYCLE_VIEWMODEL)
 
-        // remote
-        implementation(RETROFIT_GSON)
+
 
         // common ui
         implementation(RECYCLE_VIEW)

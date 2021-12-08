@@ -65,7 +65,7 @@ class ConfirmedDetailFragment :
 
 
     private fun ProcessOrder.DetailWaitingOnProcess.Success.handleUISuccess() {
-        detailAdapter.differ.submitList(listProduct)
+        detailAdapter.submitList(listProduct)
         binding.containerMainLayoutConfirmed.apply {
             containerPerson.apply {
                 with(this@handleUISuccess.dataUser) {

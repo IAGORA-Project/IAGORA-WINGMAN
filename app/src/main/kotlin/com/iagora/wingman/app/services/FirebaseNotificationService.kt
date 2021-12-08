@@ -14,19 +14,22 @@ import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.google.gson.Gson
 import com.iagora.wingman.app.R
 import com.iagora.wingman.app.ui.main_menu.MainActivity
-import com.iagora.wingman.receive_order.main_features.ReceiveOrderActivity
+import com.iagora.wingman.receive_order.features.main_features.ReceiveOrderActivity
+import com.iagora.wingman.receive_order.features.main_features.ReceiveOrderActivity.Companion.KEY_DATA_NOTIFY
+import com.iagora.wingman.receive_order.helper.data.remote.body.ReceiveOrderBody
 import org.json.JSONObject
 import kotlin.random.Random
 
 
 class FirebaseNotificationService: FirebaseMessagingService() {
 
+
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
 
-        println("DJDHJDKHDKJDHJD $remoteMessage")
 
         var pendingIntent: PendingIntent? = null
         val notificationID = Random.nextInt()
@@ -42,7 +45,7 @@ class FirebaseNotificationService: FirebaseMessagingService() {
             messageImageUrl = remoteMessage.notification!!.imageUrl.toString()
         }
 
-        println("DKJDJKDHJKDDJ $remoteMessage")
+        Log.e("REMOTE_MESSAGE", remoteMessage.toString())
         val ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 5469
 
         // Check if message contains a data payload.
@@ -50,9 +53,13 @@ class FirebaseNotificationService: FirebaseMessagingService() {
             if(remoteMessage.data["type"] == "new-order") {
                 try {
                     val notification = remoteMessage.data["details"]
-                    val intent = Intent(this, com.iagora.wingman.receive_order.main_features.ReceiveOrderActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                    intent.putExtra("data-notif", notification)
+
+                    val intent = Intent(this, ReceiveOrderActivity::class.java).apply {
+                        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                        putExtra(KEY_DATA_NOTIFY,
+                            Gson().fromJson(notification, ReceiveOrderBody::class.java))
+                    }
+
                     startActivity(intent)
 
 
@@ -64,10 +71,14 @@ class FirebaseNotificationService: FirebaseMessagingService() {
 //                        this.packageManager,
 //                        this
 //                    )
-                } catch (e: Exception) { }
+
+                    Log.e("NOTIFY", notification.toString())
+                } catch (e: Throwable) {
+                    Log.e("ERROR_SET", e.toString())
+                }
             }
 
-            Log.d("CEKDDATAAAA", "Message data: " + remoteMessage.data)
+            Log.d("CEKDDATAAAA", "Message data: " + remoteMessage.data["details"])
         }
 
 
@@ -102,7 +113,7 @@ class FirebaseNotificationService: FirebaseMessagingService() {
             notificationManager.createNotificationChannel(mChannel)
         }
 
-        if (data?.get("type") == "new-order") {
+        if (data["type"] == "new-order") {
             pendingIntent =
                 dataNotification?.let { dataNotif -> openReceiveOrder(notificationID, dataNotif) }
         } else {
@@ -124,9 +135,10 @@ class FirebaseNotificationService: FirebaseMessagingService() {
             .setOngoing(false)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(pendingIntent)
-            .setLargeIcon(imageNotifToBitmap(json.getString("image"))) // untuk icon gambar samping kanan
+            .setLargeIcon(imageNotifyToBitmap(json.getString("image"))) // untuk icon gambar samping kanan
             .setStyle(
-                if(json.getString("image").length > 4)  NotificationCompat.BigPictureStyle().bigPicture(imageNotifToBitmap(json.getString("image")))
+                if (json.getString("image").length > 4) NotificationCompat.BigPictureStyle()
+                    .bigPicture(imageNotifyToBitmap(json.getString("image")))
                 else null
             ) // untuk gambar besar di body
 
@@ -135,17 +147,18 @@ class FirebaseNotificationService: FirebaseMessagingService() {
     }
 
 
-    private fun imageNotifToBitmap(imageUrl: String): Bitmap? {
+    private fun imageNotifyToBitmap(imageUrl: String): Bitmap? {
         var bitmap: Bitmap? = null
 
-        try{
+        try {
             val futureTarget = Glide
                 .with(this)
                 .asBitmap()
                 .load(imageUrl)
                 .submit()
             bitmap = futureTarget.get()
-        }catch (e: Exception) {}
+        } catch (e: Exception) {
+        }
 
         return bitmap
     }
@@ -155,10 +168,15 @@ class FirebaseNotificationService: FirebaseMessagingService() {
     // Open Receive Order Activity
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun openReceiveOrder(notificationID: Int, data: String): PendingIntent {
-        val intent = Intent(this, com.iagora.wingman.receive_order.main_features.ReceiveOrderActivity::class.java)
-        intent.putExtra("data-notif", data)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        return  PendingIntent.getActivity(this, notificationID /* Request code */, intent, PendingIntent.FLAG_ONE_SHOT)
+        val intent = Intent(this, ReceiveOrderActivity::class.java).apply {
+            putExtra(KEY_DATA_NOTIFY, ReceiveOrderMapper.(Gson().fromJson(data, ReceiveOrderBody::class.java)))
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        }
+
+        return PendingIntent.getActivity(this,
+            notificationID /* Request code */,
+            intent,
+            PendingIntent.FLAG_ONE_SHOT)
     }
 
     override fun onNewToken(token: String) {

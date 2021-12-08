@@ -14,7 +14,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.iagora.wingman.app.databinding.ActivityAlbumCameraBinding
 import com.iagora.wingman.app.ui.album_camera.albums.AlbumsFragment
 import com.iagora.wingman.app.ui.album_camera.camera.CameraFragment
-import com.iagora.wingman.app.utils.Loader
+import com.iagora.wingman.commons.views.helper.Loader
 import com.iagora.wingman.core.source.local.model.ImageModel
 import com.iagora.wingman.core.source.local.shared_view_model.SharedViewModel
 import com.iagora.wingman.process_order.features.main_features.ProcessOrderTabLayoutAdapter

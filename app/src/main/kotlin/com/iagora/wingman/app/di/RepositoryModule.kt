@@ -7,7 +7,7 @@ import com.iagora.wingman.core.source.local.shared_handle.wingman_info.SharedWin
 import com.iagora.wingman.core.source.remote.api_handle.auth.AuthReposiroty
 import com.iagora.wingman.core.source.remote.api_handle.main_menu.MainMenuRepository
 import com.iagora.wingman.core.source.remote.api_handle.pasar.PasarRepository
-import com.iagora.wingman.core.source.remote.api_handle.receive_order.ReceiveOrderRepository
+
 import org.koin.dsl.module
 
 val repositoryModule = module {
@@ -18,5 +18,4 @@ val repositoryModule = module {
     factory { MainMenuRepository(get()) }
     factory { AuthReposiroty(get()) }
     factory { PasarRepository(get()) }
-    factory { ReceiveOrderRepository(get()) }
 }

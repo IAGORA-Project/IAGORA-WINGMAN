@@ -96,10 +96,15 @@ android {
 dependencies {
     implementation(project(BuildModules.CORE))
     implementation(project(BuildModules.HELPER))
+
     implementation(project(BuildModules.Commons.UI))
     implementation(project(BuildModules.Commons.VIEWS))
-    implementation(project(BuildModules.ProcessOrder.HELPER))
+
     implementation(project(BuildModules.ProcessOrder.Features.MAIN))
+    implementation(project(BuildModules.ProcessOrder.HELPER))
+
+    implementation(project(BuildModules.ReceiveOrder.Features.MAIN))
+    implementation(project(BuildModules.ReceiveOrder.HELPER))
 
 
     with(Dependencies) {

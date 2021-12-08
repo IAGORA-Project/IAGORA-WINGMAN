@@ -9,5 +9,5 @@ junitJacoco {
 }
 
 dependencies{
-    implementation(Dependencies.RECYCLE_VIEW)
+    implementation(Dependencies.RETROFIT_GSON)
 }

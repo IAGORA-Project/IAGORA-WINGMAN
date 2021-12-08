@@ -4,6 +4,7 @@ import android.app.Application
 import com.iagora.wingman.app.di.*
 import com.iagora.wingman.core.di.networkModule
 import com.iagora.wingman.process_order.features.main_features.di.processOrderModule
+import com.iagora.wingman.receive_order.features.main_features.di.receiveOrderModule
 //import com.iagora.wingman.process_order.features.main_features.di.processOrderViewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.loadKoinModules
@@ -26,6 +27,7 @@ class WingmanApp : Application() {
                 )
             )
             processOrderModule
+            receiveOrderModule
         }
     }
 }

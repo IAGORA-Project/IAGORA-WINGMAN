@@ -40,7 +40,7 @@ abstract class WaitingListFragment :
         res.apply {
             set(
                 success = {
-                    adapter.differ.submitList(data?.success).run {
+                    adapter.submitList(data?.success).run {
                         containerLoadingListOrder.root.hide().also {
                             rvListOrder.show()
                         }

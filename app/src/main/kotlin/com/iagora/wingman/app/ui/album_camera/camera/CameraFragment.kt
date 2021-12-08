@@ -17,7 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.iagora.wingman.app.R
 import com.iagora.wingman.app.databinding.FragmentCameraBinding
 import com.iagora.wingman.app.utils.Constants
-import com.iagora.wingman.app.utils.Loader
+import com.iagora.wingman.commons.views.helper.Loader
 import com.iagora.wingman.app.utils.Permission
 import com.iagora.wingman.commons.ui.base.BaseFragment
 import com.iagora.wingman.core.source.local.model.ImageModel

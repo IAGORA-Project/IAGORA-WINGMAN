@@ -2,9 +2,9 @@ package com.iagora.wingman.process_order.core.data.remote.response
 
 
 import com.google.gson.annotations.SerializedName
-import com.iagora.wingman.core.data.remote.RemAddressUser
-import com.iagora.wingman.core.data.remote.RemDataUser
-import com.iagora.wingman.core.data.remote.RemProduct
+import com.iagora.wingman.helper.data.remote.RemAddressUser
+import com.iagora.wingman.helper.data.remote.RemDataUser
+import com.iagora.wingman.helper.data.remote.RemProduct
 
 data class ResGetProcessOrder(
     var resGetListWaitingOnProcessOrder: ResGetListWaitingOnProcessOrder? = null,

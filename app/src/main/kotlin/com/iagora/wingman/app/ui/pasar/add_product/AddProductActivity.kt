@@ -14,7 +14,7 @@ import com.iagora.wingman.app.R
 import com.iagora.wingman.app.databinding.ActivityAddProductBinding
 import com.iagora.wingman.app.ui.album_camera.AlbumsCameraActivity
 import com.iagora.wingman.app.ui.pasar.PasarViewModel
-import com.iagora.wingman.app.utils.Loader
+import com.iagora.wingman.commons.views.helper.Loader
 import com.iagora.wingman.app.utils.getImageResized
 import com.iagora.wingman.app.utils.persistImage
 import com.iagora.wingman.commons.ui.base.BaseActivity

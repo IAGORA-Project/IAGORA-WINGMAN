@@ -1,8 +1,8 @@
 package com.iagora.wingman.process_order.core.helper
 
-import com.iagora.wingman.core.helper.DataMapper.mapRemAddressUserToModelAddressUser
-import com.iagora.wingman.core.helper.DataMapper.mapRemDataUserToModelDataUser
-import com.iagora.wingman.core.helper.DataMapper.mapRemProductToListRemProduct
+import com.iagora.wingman.helper.mapper.DataMapper.mapRemAddressUserToModelAddressUser
+import com.iagora.wingman.helper.mapper.DataMapper.mapRemDataUserToModelDataUser
+import com.iagora.wingman.helper.mapper.DataMapper.mapRemProductToListRemProduct
 import com.iagora.wingman.process_order.core.data.remote.body.BargainBody
 import com.iagora.wingman.process_order.core.data.remote.body.HandlingFeeBody
 import com.iagora.wingman.process_order.core.data.remote.response.ResGetProcessOrder
