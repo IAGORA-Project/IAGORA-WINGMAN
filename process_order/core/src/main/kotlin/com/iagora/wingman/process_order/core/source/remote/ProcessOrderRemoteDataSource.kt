@@ -1,9 +1,9 @@
-package com.iagora.wingman.process_order.core.data.remote
+package com.iagora.wingman.process_order.core.source.remote
 
 import com.iagora.wingman.core.source.remote.network.flowCollector
 import com.iagora.wingman.process_order.core.ProcessOrderApi
-import com.iagora.wingman.process_order.core.data.remote.body.BargainBody
-import com.iagora.wingman.process_order.core.data.remote.body.HandlingFeeBody
+import com.iagora.wingman.process_order.helper.data.remote.body.BargainBody
+import com.iagora.wingman.process_order.helper.data.remote.body.HandlingFeeBody
 import kotlinx.coroutines.CoroutineScope
 
 class ProcessOrderRemoteDataSource(

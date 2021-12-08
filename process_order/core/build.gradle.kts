@@ -19,9 +19,6 @@ dependencies {
         // lifecycle
         implementation(LIFECYCLE_VIEWMODEL)
 
-        // remote
-        implementation(RETROFIT_GSON)
-
         // common ui
         implementation(RECYCLE_VIEW)
     }

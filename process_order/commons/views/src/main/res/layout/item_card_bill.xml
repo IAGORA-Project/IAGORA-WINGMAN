@@ -29,16 +29,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:overScrollMode="never"
+            tools:itemCount="3"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@+id/tvStoreName"
             tools:listitem="@layout/item_product" />
 
-        <View
-            android:id="@+id/view3"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@drawable/shape_line_dashed"
-            app:layout_constraintTop_toBottomOf="@+id/rvItemProduct" />
 
         <include
             android:id="@+id/containerHandlingFee"
@@ -48,7 +43,7 @@
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view3" />
+            app:layout_constraintTop_toBottomOf="@+id/rvItemProduct" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

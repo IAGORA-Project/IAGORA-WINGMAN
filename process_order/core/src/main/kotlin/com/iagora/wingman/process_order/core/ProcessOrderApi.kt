@@ -1,9 +1,9 @@
 package com.iagora.wingman.process_order.core
 
 
-import com.iagora.wingman.process_order.core.data.remote.body.BargainBody
-import com.iagora.wingman.process_order.core.data.remote.body.HandlingFeeBody
-import com.iagora.wingman.process_order.core.data.remote.response.ResGetProcessOrder
+import com.iagora.wingman.process_order.helper.data.remote.body.BargainBody
+import com.iagora.wingman.process_order.helper.data.remote.body.HandlingFeeBody
+import com.iagora.wingman.process_order.helper.data.remote.response.ResGetProcessOrder
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST

@@ -2,13 +2,13 @@ package com.iagora.wingman.process_order.core
 
 import com.iagora.wingman.core.source.remote.network.ApiResponse
 import com.iagora.wingman.helper.Resource
-import com.iagora.wingman.process_order.core.data.remote.ProcessOrderRemoteDataSource
+import com.iagora.wingman.process_order.core.source.remote.ProcessOrderRemoteDataSource
 import com.iagora.wingman.process_order.core.domain.repository.IProcessOrderRepository
-import com.iagora.wingman.process_order.core.helper.DataMapperProcessOrder.mapBargainToBargainBody
-import com.iagora.wingman.process_order.core.helper.DataMapperProcessOrder.mapHandlingFeeToHandlingFeeBody
-import com.iagora.wingman.process_order.core.helper.DataMapperProcessOrder.mapResponseBargainPriceToModelBargainPrice
-import com.iagora.wingman.process_order.core.helper.DataMapperProcessOrder.mapResponseGetDetailWaitingListOnProcessOrderToModelDetailWaitingOnProcess
-import com.iagora.wingman.process_order.core.helper.DataMapperProcessOrder.mapResponseWaitingListToModelWaitingList
+import com.iagora.wingman.process_order.helper.mapper.DataMapperProcessOrder.mapBargainToBargainBody
+import com.iagora.wingman.process_order.helper.mapper.DataMapperProcessOrder.mapHandlingFeeToHandlingFeeBody
+import com.iagora.wingman.process_order.helper.mapper.DataMapperProcessOrder.mapResponseBargainPriceToModelBargainPrice
+import com.iagora.wingman.process_order.helper.mapper.DataMapperProcessOrder.mapResponseGetDetailWaitingListOnProcessOrderToModelDetailWaitingOnProcess
+import com.iagora.wingman.process_order.helper.mapper.DataMapperProcessOrder.mapResponseWaitingListToModelWaitingList
 import com.iagora.wingman.process_order.helper.model.body.Bargain
 import com.iagora.wingman.process_order.helper.model.body.HandlingFee
 import com.iagora.wingman.process_order.helper.model.response.ProcessOrder

@@ -1,4 +1,4 @@
-package com.iagora.wingman.process_order.core.data.remote.body
+package com.iagora.wingman.process_order.helper.data.remote.body
 
 
 import com.google.gson.annotations.SerializedName

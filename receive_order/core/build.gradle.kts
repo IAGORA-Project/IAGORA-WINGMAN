@@ -18,8 +18,6 @@ dependencies {
         // lifecycle
         implementation(LIFECYCLE_VIEWMODEL)
 
-
-
         // common ui
         implementation(RECYCLE_VIEW)
     }

@@ -30,26 +30,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:overScrollMode="never"
+            tools:itemCount="3"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_card_change_price"
             app:layout_constraintTop_toBottomOf="@+id/tvStoreName" />
 
-        <View
-            android:id="@+id/view3"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@drawable/shape_line_dashed"
-            app:layout_constraintTop_toBottomOf="@+id/rvItemProduct" />
+
 
         <include
             android:id="@+id/containerHandlingFee"
             layout="@layout/item_change_handle_fee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view3" />
+            app:layout_constraintTop_toBottomOf="@+id/rvItemProduct" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
