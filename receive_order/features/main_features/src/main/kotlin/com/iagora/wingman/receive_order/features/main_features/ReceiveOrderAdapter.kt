@@ -5,9 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.iagora.wingman.commons.ui.base.BaseListAdapter
 import com.iagora.wingman.commons.ui.base.BaseViewHolder
+import com.iagora.wingman.commons.views.databinding.ItemProductBinding
 import com.iagora.wingman.commons.views.helper.FormatCurrency.formatPrice
 import com.iagora.wingman.helper.model.Product
-import com.iagora.wingman.receive_order.features.main_features.databinding.ItemListReceiveOrderProductBinding
+
 
 class ReceiveOrderAdapter : BaseListAdapter<Product>(
     itemsSame = { old, new -> old.idProduct == new.idProduct },
@@ -15,18 +16,24 @@ class ReceiveOrderAdapter : BaseListAdapter<Product>(
 ) {
 
 
-    inner class ReceiveOrderViewHolder(inflater: LayoutInflater) :
-        BaseViewHolder<ItemListReceiveOrderProductBinding>(
-            ItemListReceiveOrderProductBinding.inflate(
-                inflater)) {
+    inner class ReceiveOrderViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
+        BaseViewHolder<ItemProductBinding>(
+            ItemProductBinding.inflate(
+                inflater, parent, false
+            )
+        ) {
 
-        fun bind(data: Product) {
+        fun bind(product: Product) {
             binding.apply {
-                with(data) {
-                    tvProductName.text = productName
-                    tvVariant.text = StringBuilder(data.uom.toString() + "Gram")
-                    tvPrice.formatPrice(bargainPrice.toString())
-                    tvQty.text = StringBuilder("x${data.qty}")
+                with(product) {
+                    tvNameItem.text = productName
+                    tvItemPrice.formatPrice(bargainPrice.toString())
+                    tvQty.text = String.format(
+                        itemView.resources.getString(R.string.format_quantity_text),
+                        qty
+                    )
+                    tvUom.text =
+                        String.format(itemView.resources.getString(R.string.format_uom), uom, unit)
                 }
             }
         }
@@ -43,7 +50,7 @@ class ReceiveOrderAdapter : BaseListAdapter<Product>(
         parent: ViewGroup,
         inflater: LayoutInflater,
         viewType: Int,
-    ): RecyclerView.ViewHolder = ReceiveOrderViewHolder(inflater)
+    ): RecyclerView.ViewHolder = ReceiveOrderViewHolder(inflater, parent)
 
 
 }

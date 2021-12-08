@@ -20,11 +20,12 @@ import com.iagora.wingman.app.ui.main_menu.MainActivity
 import com.iagora.wingman.receive_order.features.main_features.ReceiveOrderActivity
 import com.iagora.wingman.receive_order.features.main_features.ReceiveOrderActivity.Companion.KEY_DATA_NOTIFY
 import com.iagora.wingman.receive_order.helper.data.remote.body.ReceiveOrderBody
+import com.iagora.wingman.receive_order.helper.mapper.DataMapperReceiveOrder.mapReceiveOrderBodyToModelReceiveOrder
 import org.json.JSONObject
 import kotlin.random.Random
 
 
-class FirebaseNotificationService: FirebaseMessagingService() {
+class FirebaseNotificationService : FirebaseMessagingService() {
 
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
@@ -50,14 +51,21 @@ class FirebaseNotificationService: FirebaseMessagingService() {
 
         // Check if message contains a data payload.
         if (remoteMessage.data.isNotEmpty()) {
-            if(remoteMessage.data["type"] == "new-order") {
+            if (remoteMessage.data["type"] == "new-order") {
                 try {
                     val notification = remoteMessage.data["details"]
 
                     val intent = Intent(this, ReceiveOrderActivity::class.java).apply {
                         flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                        putExtra(KEY_DATA_NOTIFY,
-                            Gson().fromJson(notification, ReceiveOrderBody::class.java))
+                        putExtra(
+                            KEY_DATA_NOTIFY,
+                            mapReceiveOrderBodyToModelReceiveOrder(
+                                Gson().fromJson(
+                                    notification,
+                                    ReceiveOrderBody::class.java
+                                )
+                            )
+                        )
                     }
 
                     startActivity(intent)
@@ -82,18 +90,24 @@ class FirebaseNotificationService: FirebaseMessagingService() {
         }
 
 
-        if(messageBody != null && messageTitle != null){
+        if (messageBody != null && messageTitle != null) {
             showNotification(messageTitle, messageBody, messageImageUrl, remoteMessage.data)
         }
     }
 
 
     @SuppressLint("UnspecifiedImmutableFlag")
-    private fun showNotification(title: String?, messageBody: String?, imageUrl: String?, data: Map<String, String>? = null) {
+    private fun showNotification(
+        title: String?,
+        messageBody: String?,
+        imageUrl: String?,
+        data: Map<String, String>? = null
+    ) {
         val channelId = "push-notification-Iagora-Wingman"
         val channelName = "Iagora-Wingman-Notification"
 
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notificationID = Random.nextInt()
 
         var pendingIntent: PendingIntent? = null
@@ -104,12 +118,14 @@ class FirebaseNotificationService: FirebaseMessagingService() {
         val json = JSONObject(notification as String)
 
 //        val soundUri: Uri = Uri.parse("android.resource://" + applicationContext.packageName + "/" + R.raw.sound_notification)
-        val soundUriEcek = Uri.parse("android.resource://" +  applicationContext.packageName + "/" + R.raw.sound)
+        val soundUriEcek =
+            Uri.parse("android.resource://" + applicationContext.packageName + "/" + R.raw.sound)
 
 
         // create notification channel
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            val mChannel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
+            val mChannel =
+                NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
             notificationManager.createNotificationChannel(mChannel)
         }
 
@@ -117,10 +133,12 @@ class FirebaseNotificationService: FirebaseMessagingService() {
             pendingIntent =
                 dataNotification?.let { dataNotif -> openReceiveOrder(notificationID, dataNotif) }
         } else {
-            pendingIntent = PendingIntent.getActivity(this,
+            pendingIntent = PendingIntent.getActivity(
+                this,
                 notificationID /* Request code */,
                 intent,
-                PendingIntent.FLAG_ONE_SHOT)
+                PendingIntent.FLAG_ONE_SHOT
+            )
         }
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -164,19 +182,28 @@ class FirebaseNotificationService: FirebaseMessagingService() {
     }
 
 
-
     // Open Receive Order Activity
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun openReceiveOrder(notificationID: Int, data: String): PendingIntent {
         val intent = Intent(this, ReceiveOrderActivity::class.java).apply {
-            putExtra(KEY_DATA_NOTIFY, ReceiveOrderMapper.(Gson().fromJson(data, ReceiveOrderBody::class.java)))
+            putExtra(
+                KEY_DATA_NOTIFY,
+                mapReceiveOrderBodyToModelReceiveOrder(
+                    Gson().fromJson(
+                        data,
+                        ReceiveOrderBody::class.java
+                    )
+                )
+            )
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         }
 
-        return PendingIntent.getActivity(this,
+        return PendingIntent.getActivity(
+            this,
             notificationID /* Request code */,
             intent,
-            PendingIntent.FLAG_ONE_SHOT)
+            PendingIntent.FLAG_ONE_SHOT
+        )
     }
 
     override fun onNewToken(token: String) {

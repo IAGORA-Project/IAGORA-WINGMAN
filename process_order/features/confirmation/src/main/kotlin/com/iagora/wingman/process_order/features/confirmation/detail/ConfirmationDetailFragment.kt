@@ -111,39 +111,42 @@ class ConfirmationDetailFragment :
 
                 containerHandlingFee.apply {
                     tilHandlingFeeBargain.editText?.setupTextWithBtn(btnHandlingFeeBargain)
-                    tvHandlingFeeValue.formatPrice(handlingFee.toString())
+                    containerItemHandlingFee.tvHandleFeeValue.formatPrice(handlingFee.toString())
 
 
 
                     btnHandlingFeeBargain.setOnClickListener {
-                        postHandlingFee(idTransaction,
+                        postHandlingFee(
+                            idTransaction,
                             HandlingFee(
                                 tilHandlingFeeBargain.editText?.text.toString()
-                                    .toLong()))
+                                    .toLong()
+                            )
+                        )
 
                         clearFocus(tilHandlingFeeBargain.editText)
 
-                        }
                     }
                 }
+            }
 
 
-                containerListBill.apply {
-                    tvTotalPriceProductValue.formatPrice(totalPriceProduct.toString())
-                    tvSubTotalValue.formatPrice(subTotal.toString())
-                    tvHandlingFeeValue.formatPrice(handlingFee.toString())
-                    tvPlatformFeeValue.formatPrice(platformFee.toString())
-                    tvGrandTotalValue.formatPrice(grandTotal.toString())
+            containerListBill.apply {
+                tvTotalPriceProductValue.formatPrice(totalPriceProduct.toString())
+                tvSubTotalValue.formatPrice(subTotal.toString())
+                tvHandlingFeeValue.formatPrice(handlingFee.toString())
+                tvPlatformFeeValue.formatPrice(platformFee.toString())
+                tvGrandTotalValue.formatPrice(grandTotal.toString())
+            }
+
+            containerActionOrder.apply {
+                btnAcceptOrder.setOnClickListener {
+                    showDialog(0, idTransaction)
                 }
-
-                containerActionOrder.apply {
-                    btnAcceptOrder.setOnClickListener {
-                        showDialog(0, idTransaction)
-                    }
-                    btnCancelOrder.setOnClickListener {
-                        showDialog(1, idTransaction)
-                    }
+                btnCancelOrder.setOnClickListener {
+                    showDialog(1, idTransaction)
                 }
+            }
         }
 
     }
@@ -168,7 +171,7 @@ class ConfirmationDetailFragment :
                 success = {
                     binding.containerMainLayoutConfirmation.containerListItem.containerHandlingFee.apply {
                         tilHandlingFeeBargain.apply {
-                            tvHandlingFeeValue.formatPrice(editText?.text.toString()).run {
+                           containerItemHandlingFee.tvHandleFeeValue.formatPrice(editText?.text.toString()).run {
                                 editText?.text?.clear()
                             }
                         }

@@ -32,24 +32,33 @@ class ConfirmationDetailAdapter : BaseListAdapter<Product>(
     )
 
 
-    inner class ConfirmationViewHolder(inflater: LayoutInflater) :
-        BaseViewHolder<ItemCardChangePriceBinding>(ItemCardChangePriceBinding.inflate(
-            inflater)) {
+    inner class ConfirmationViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
+        BaseViewHolder<ItemCardChangePriceBinding>(
+            ItemCardChangePriceBinding.inflate(
+                inflater, parent, false
+            )
+        ) {
         fun bind(data: Product) {
             binding.apply {
 
                 tilPriceBargain.editText?.setupTextWithBtn(btnBargain)
 
                 with(data) {
+                    containerItemProduct.apply {
 
-                    tvNameItem.text = productName
-                    tvItemPrice.formatPrice(bargainPrice.toString())
-                    tvQty.text = String.format(
-                        itemView.resources.getString(R.string.format_quantity_text),
-                        qty
-                    )
-                    tvUom.text =
-                        String.format(itemView.resources.getString(R.string.format_uom), uom, unit)
+                        tvNameItem.text = productName
+                        tvItemPrice.formatPrice(bargainPrice.toString())
+                        tvQty.text = String.format(
+                            itemView.resources.getString(R.string.format_quantity_text),
+                            qty
+                        )
+                        tvUom.text =
+                            String.format(
+                                itemView.resources.getString(R.string.format_uom),
+                                uom,
+                                unit
+                            )
+                    }
 
 
                     btnBargain.setOnClickListener {
@@ -62,7 +71,7 @@ class ConfirmationDetailAdapter : BaseListAdapter<Product>(
                                         .toInt(),
                                 ),
                                 tilPriceBargain,
-                                tvItemPrice
+                                containerItemProduct.tvItemPrice
                             )
                         }
                         clearFocus(tilPriceBargain.editText)
@@ -77,7 +86,7 @@ class ConfirmationDetailAdapter : BaseListAdapter<Product>(
         parent: ViewGroup,
         inflater: LayoutInflater,
         viewType: Int,
-    ): RecyclerView.ViewHolder = ConfirmationViewHolder(inflater)
+    ): RecyclerView.ViewHolder = ConfirmationViewHolder(inflater, parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/Theme.IAGORAWingman"
+
     tools:context="com.iagora.wingman.receive_order.features.main_features.ReceiveOrderActivity">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivPicUser"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginStart="15dp"
-        android:scaleType="centerCrop"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-        app:srcCompat="@drawable/ic_merchant" />
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvUserName"
@@ -26,24 +26,25 @@
         android:layout_marginHorizontal="15dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:theme="@style/TextViewSemiBold.OpenSans_15sp_020202"
+        android:theme="@style/TextViewSemiBold.OpenSans_20sp_020202"
         app:layout_constraintBottom_toBottomOf="@+id/ivPicUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivPicUser"
         app:layout_constraintTop_toTopOf="@+id/ivPicUser"
-        tools:text="Nama Lengkap " />
+        tools:text="@tools:sample/first_names" />
 
 
     <TextView
         android:id="@+id/tvTitleDaftarPesanan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:text="Daftar Pesanan"
-        android:theme="@style/TextViewSemiBold.OpenSans_16sp_020202"
+        android:paddingBottom="10dp"
+        android:text="@string/list_order_text"
+        android:theme="@style/TextViewSemiBold.OpenSans_18sp_020202"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivPicUser" />
 
@@ -52,20 +53,21 @@
         android:id="@+id/rvListProduct"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:paddingHorizontal="15dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="2"
-        tools:listitem="@layout/item_list_receive_order_product"
         app:layout_constraintBottom_toTopOf="@+id/incBottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitleDaftarPesanan" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleDaftarPesanan"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_product" />
 
 
     <include
         android:id="@+id/incBottom"
+        layout="@layout/layout_button_left_right_with_background"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        layout="@layout/layout_button_left_right_with_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

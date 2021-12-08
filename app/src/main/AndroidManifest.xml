@@ -27,52 +27,52 @@
     <application
         android:name="com.iagora.wingman.app.WingmanApp"
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:fullBackupContent="true"
         android:theme="@style/Theme.IAGORAWingman">
         <activity
-            android:screenOrientation="sensorPortrait"
-            android:name="com.iagora.wingman.app.com.iagora.wingman.receive_order.main_features.ReceiveOrderActivity"
+            android:name="com.iagora.wingman.receive_order.features.main_features.ReceiveOrderActivity"
             android:exported="true"
+            android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:screenOrientation="sensorPortrait"
             android:name="com.iagora.wingman.app.ui.album_camera.AlbumsCameraActivity"
             android:exported="true"
+            android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:screenOrientation="sensorPortrait"
             android:name="com.iagora.wingman.app.ui.pasar.add_product.AddProductActivity"
             android:exported="true"
+            android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:screenOrientation="sensorPortrait"
             android:name="com.iagora.wingman.app.ui.pasar.list_product_pasar.ListProductPasarActivity"
             android:exported="true"
+            android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:screenOrientation="sensorPortrait"
             android:name="com.iagora.wingman.app.ui.pasar.list_pasar.ListPasarActivity"
             android:exported="true"
+            android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:screenOrientation="sensorPortrait"
             android:name="com.iagora.wingman.app.ui.chat.ChatActivity"
             android:exported="true"
+            android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:screenOrientation="sensorPortrait"
             android:name="com.iagora.wingman.process_order.features.main_features.ProcessOrderActivity"
             android:exported="true"
+            android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:screenOrientation="sensorPortrait"
             android:name="com.iagora.wingman.app.ui.auth.splash_screen.SplashScreenActivity"
             android:exported="true"
+            android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -81,14 +81,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:screenOrientation="sensorPortrait"
             android:name="com.iagora.wingman.app.ui.auth.login.LoginActivity"
             android:exported="true"
+            android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:screenOrientation="sensorPortrait"
             android:name="com.iagora.wingman.app.ui.main_menu.MainActivity"
             android:exported="true"
+            android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
 
         <!-- Cloud Messaging Service -->

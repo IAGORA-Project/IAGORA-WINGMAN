@@ -1,32 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="30dp">
+    android:layout_marginBottom="30dp"
+    android:theme="@style/Theme.IAGORAWingman">
 
-    <TextView
-        android:id="@+id/tvHandlingFeeTitle"
-        style="@style/TextViewReguler.OpenSans_18sp_020202"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/text_handling_fee_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/tvHandlingFeeValue"
-        style="@style/TextViewSemiBold.OpenSans_16sp_020202"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:textAlignment="textEnd"
-        app:layout_constraintBottom_toBottomOf="@+id/tvHandlingFeeTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvHandlingFeeTitle"
-        tools:text="@string/dummy_price" />
+    <include
+        android:id="@+id/containerItemHandlingFee"
+        layout="@layout/item_handle_fee" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -34,12 +16,12 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="53dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:hint="@string/text_hint_handling_fee"
         app:boxStrokeWidthFocused="1dp"
         app:layout_constraintEnd_toEndOf="@+id/btnHandlingFeeBargain"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHandlingFeeTitle">
+        app:layout_constraintTop_toBottomOf="@+id/containerItemHandlingFee">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

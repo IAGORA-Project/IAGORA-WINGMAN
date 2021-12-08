@@ -14,7 +14,7 @@
 
         <TextView
             android:id="@+id/tvStoreName"
-            style="@style/TextViewSemiBold.OpenSans_15sp_020202"
+            style="@style/TextViewSemiBold.OpenSans_18sp_020202"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"

@@ -18,9 +18,9 @@
     <TextView
         android:id="@+id/tvUom"
         android:layout_width="0dp"
-        android:layout_marginTop="5dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="@+id/tvNameItem"
         app:layout_constraintTop_toBottomOf="@+id/tvNameItem"
         tools:text="200 gram" />
 
@@ -39,7 +39,7 @@
 
     <TextView
         android:id="@+id/tvQty"
-        style="@style/TextViewSemiBold.OpenSans_15sp_020202"
+        style="@style/TextViewSemiBold.OpenSans_14sp_020202"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/black"

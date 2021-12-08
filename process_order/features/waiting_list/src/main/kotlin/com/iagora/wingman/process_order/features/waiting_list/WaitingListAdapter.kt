@@ -25,9 +25,10 @@ class WaitingListAdapter : BaseListAdapter<ProcessOrder.ListWaitingOnProcess.Suc
     }
 
 
-    inner class WaitingListViewHolder(inflater: LayoutInflater) :
+    inner class WaitingListViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         BaseViewHolder<ItemListOnProcessBinding>(
-            ItemListOnProcessBinding.inflate(inflater)) {
+            ItemListOnProcessBinding.inflate(inflater, parent, false)
+        ) {
 
 
         fun bind(success: ProcessOrder.ListWaitingOnProcess.Success) {
@@ -79,5 +80,5 @@ class WaitingListAdapter : BaseListAdapter<ProcessOrder.ListWaitingOnProcess.Suc
         parent: ViewGroup,
         inflater: LayoutInflater,
         viewType: Int,
-    ): RecyclerView.ViewHolder = WaitingListViewHolder(inflater)
+    ): RecyclerView.ViewHolder = WaitingListViewHolder(inflater, parent)
 }

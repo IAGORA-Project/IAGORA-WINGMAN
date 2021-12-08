@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.iagora.wingman.commons.ui.base.BaseListAdapter
 import com.iagora.wingman.commons.ui.base.BaseViewHolder
+import com.iagora.wingman.commons.views.databinding.ItemProductBinding
 import com.iagora.wingman.commons.views.helper.FormatCurrency.formatPrice
 import com.iagora.wingman.helper.model.Product
-import com.iagora.wingman.process_order.commons.views.databinding.ItemCardPriceBinding
 import com.iagora.wingman.process_order.features.confirmed.R
 
 
@@ -17,8 +17,14 @@ class ConfirmedDetailAdapter : BaseListAdapter<Product>(
 ) {
 
 
-    inner class ConfirmedViewHolder(inflater: LayoutInflater) :
-        BaseViewHolder<ItemCardPriceBinding>(ItemCardPriceBinding.inflate(inflater)) {
+    inner class ConfirmedViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
+        BaseViewHolder<ItemProductBinding>(
+            ItemProductBinding.inflate(
+                inflater,
+                parent,
+                false
+            )
+        ) {
         fun bind(product: Product) {
             binding.apply {
                 with(product) {
@@ -39,7 +45,7 @@ class ConfirmedDetailAdapter : BaseListAdapter<Product>(
         parent: ViewGroup,
         inflater: LayoutInflater,
         viewType: Int,
-    ): RecyclerView.ViewHolder = ConfirmedViewHolder(inflater)
+    ): RecyclerView.ViewHolder = ConfirmedViewHolder(inflater, parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
