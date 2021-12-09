@@ -7,8 +7,6 @@ import com.iagora.wingman.commons.ui.base.BaseFragment
 class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_profile,{ FragmentProfileBinding.bind(it)}) {
 
     override fun setView() {
-        TODO("Not yet implemented")
+
     }
-
-
 }

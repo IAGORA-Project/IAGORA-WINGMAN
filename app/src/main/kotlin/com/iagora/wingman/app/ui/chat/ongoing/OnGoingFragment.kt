@@ -7,7 +7,7 @@ import com.iagora.wingman.commons.ui.base.BaseFragment
 
 class OnGoingFragment : BaseFragment<FragmentOnGoingBinding>(R.layout.fragment_on_going,{ FragmentOnGoingBinding.bind(it)}) {
     override fun setView() {
-        TODO("Not yet implemented")
+
     }
 
 

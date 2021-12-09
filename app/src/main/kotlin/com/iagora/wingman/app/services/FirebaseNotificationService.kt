@@ -47,7 +47,7 @@ class FirebaseNotificationService : FirebaseMessagingService() {
         }
 
         Log.e("REMOTE_MESSAGE", remoteMessage.toString())
-        val ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 5469
+
 
         // Check if message contains a data payload.
         if (remoteMessage.data.isNotEmpty()) {
@@ -55,18 +55,19 @@ class FirebaseNotificationService : FirebaseMessagingService() {
                 try {
                     val notification = remoteMessage.data["details"]
 
-                    val intent = Intent(this, ReceiveOrderActivity::class.java).apply {
-                        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
-                        putExtra(
-                            KEY_DATA_NOTIFY,
-                            mapReceiveOrderBodyToModelReceiveOrder(
-                                Gson().fromJson(
-                                    notification,
-                                    ReceiveOrderBody::class.java
+                    val intent =
+                        Intent(applicationContext, ReceiveOrderActivity::class.java).apply {
+                            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                            putExtra(
+                                KEY_DATA_NOTIFY,
+                                mapReceiveOrderBodyToModelReceiveOrder(
+                                    Gson().fromJson(
+                                        notification,
+                                        ReceiveOrderBody::class.java
+                                    )
                                 )
                             )
-                        )
-                    }
+                        }
 
                     startActivity(intent)
 
@@ -141,7 +142,7 @@ class FirebaseNotificationService : FirebaseMessagingService() {
             )
         }
 
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
 
 
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
@@ -185,7 +186,7 @@ class FirebaseNotificationService : FirebaseMessagingService() {
     // Open Receive Order Activity
     @SuppressLint("UnspecifiedImmutableFlag")
     private fun openReceiveOrder(notificationID: Int, data: String): PendingIntent {
-        val intent = Intent(this, ReceiveOrderActivity::class.java).apply {
+        val intent = Intent(applicationContext, ReceiveOrderActivity::class.java).apply {
             putExtra(
                 KEY_DATA_NOTIFY,
                 mapReceiveOrderBodyToModelReceiveOrder(
@@ -195,7 +196,7 @@ class FirebaseNotificationService : FirebaseMessagingService() {
                     )
                 )
             )
-            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
         }
 
         return PendingIntent.getActivity(
@@ -204,6 +205,10 @@ class FirebaseNotificationService : FirebaseMessagingService() {
             intent,
             PendingIntent.FLAG_ONE_SHOT
         )
+    }
+
+    companion object {
+        const val ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 5469
     }
 
     override fun onNewToken(token: String) {

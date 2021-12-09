@@ -65,7 +65,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home,
         }
 
         binding.incMenuWingman.btnPesanan.setOnClickListener {
-            moveToProcessOrder(com.iagora.wingman.process_order.helper.FlowProcessOrder.WAITING_CONFIRMATION.ordinal)
+            moveToProcessOrder(FlowProcessOrder.WAITING_CONFIRMATION.ordinal)
         }
 
         binding.incMenuWingman.btnPasar.setOnClickListener {

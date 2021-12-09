@@ -7,6 +7,7 @@ import com.iagora.wingman.process_order.features.finished.FinishedFragment
 import com.iagora.wingman.process_order.features.paid.PaidFragment
 import com.iagora.wingman.process_order.features.payment.PaymentFragment
 import com.iagora.wingman.process_order.features.sent.SentFragment
+import com.iagora.wingman.process_order.viewmodels.ProcessOrderViewModel
 
 class ProcessOrderTabLayoutAdapter(
     activity: AppCompatActivity,
