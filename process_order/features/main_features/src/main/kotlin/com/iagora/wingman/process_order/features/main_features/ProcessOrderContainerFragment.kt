@@ -10,7 +10,6 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.iagora.wingman.commons.ui.base.BaseFragment
 import com.iagora.wingman.commons.ui.extensions.collectWhenStarted
-import com.iagora.wingman.commons.ui.extensions.collectWithDelay
 import com.iagora.wingman.commons.views.helper.Util.dpToPx
 import com.iagora.wingman.commons.views.helper.Util.reduceDragSensitivity
 import com.iagora.wingman.process_order.features.main_features.databinding.FragmentProcessOrderBinding
@@ -19,6 +18,7 @@ import com.iagora.wingman.process_order.viewmodels.ConfirmationViewModel
 import com.iagora.wingman.process_order.viewmodels.ConfirmedViewModel
 import com.iagora.wingman.process_order.viewmodels.PaymentViewModel
 import com.iagora.wingman.process_order.viewmodels.ProcessOrderViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -37,6 +37,7 @@ class ProcessOrderContainerFragment :
             vpTabs.setup()
             tabs.setup(vpTabs)
         }
+        subscribeToViewModel()
     }
 
 
@@ -87,35 +88,36 @@ class ProcessOrderContainerFragment :
 
         }
 
-        addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                processOrderViewModel.setPosTab(tab.position)
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {/* NO-ACTION */
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {/* NO-ACTION */
-            }
-        })
-
     }
 
     private fun ViewPager2.setup() {
-        val positionTab = requireActivity().navArgs<ProcessOrderActivityArgs>().value.positionTab
+
         val sectionsPagerAdapter =
             ProcessOrderTabLayoutAdapter(requireActivity() as AppCompatActivity)
 
         adapter = sectionsPagerAdapter
-
         getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         reduceDragSensitivity()
+    }
 
-        processOrderViewModel.posTab.collectWithDelay(this@ProcessOrderContainerFragment,
-            10) {
-            setCurrentItem(if (it == 0) positionTab else it, true)
+    private fun subscribeToViewModel() {
+        val positionTab = requireActivity().navArgs<ProcessOrderActivityArgs>().value.positionTab
+
+        processOrderViewModel.posTab.collectWhenStarted(
+            this
+        ) { pos ->
+            if (pos >= 0) {
+                binding.vpTabs.currentItem =
+                    if (pos == 0) positionTab
+                    else {
+                        delay(TIME_CHANGE_POS)
+                        processOrderViewModel.setPosTab(-1)
+                        pos
+                    }
+            }
         }
     }
+
 
     private fun Flow<Int>.setNumberBadge(badgeDrawable: BadgeDrawable, pos: Int) {
         collectWhenStarted(this@ProcessOrderContainerFragment, { size ->
@@ -142,6 +144,10 @@ class ProcessOrderContainerFragment :
                 requireActivity().resources.getColor(R.color.redPrimary, null)
 
         }
+
+    companion object {
+        private const val TIME_CHANGE_POS = 5L
+    }
 
 
 }
