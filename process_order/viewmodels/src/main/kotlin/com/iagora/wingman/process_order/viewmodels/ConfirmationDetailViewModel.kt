@@ -1,23 +1,21 @@
 package com.iagora.wingman.process_order.viewmodels
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.iagora.wingman.commons.ui.base.BaseViewModel
 import com.iagora.wingman.helper.Resource
 import com.iagora.wingman.process_order.core.domain.usecase.ProcessOrderUseCase
 import com.iagora.wingman.process_order.helper.FlowProcessOrder
 import com.iagora.wingman.process_order.helper.model.body.Bargain
 import com.iagora.wingman.process_order.helper.model.body.HandlingFee
 import com.iagora.wingman.process_order.helper.model.response.ProcessOrder
-import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
 class ConfirmationDetailViewModel(
     private val processOrderUseCase: ProcessOrderUseCase,
-) : ViewModel() {
+) : BaseViewModel<ProcessOrder.DetailWaitingOnProcess>() {
 
 
     private val _vmGetDetailConfirmation: MutableSharedFlow<Resource<ProcessOrder.DetailWaitingOnProcess>> =
@@ -25,7 +23,7 @@ class ConfirmationDetailViewModel(
     val vmGetDetailConfirmation =
         _vmGetDetailConfirmation.distinctUntilChanged { old, new ->
             old.data?.success?.idTransaction != new.data?.success?.idTransaction
-        }.buffer(1, BufferOverflow.DROP_OLDEST)
+        }
 
 
     fun setIdTransaction(idTransaction: String) {

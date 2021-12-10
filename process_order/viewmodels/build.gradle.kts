@@ -12,6 +12,7 @@ dependencies {
     implementation(project(BuildModules.HELPER))
     implementation(project(BuildModules.ProcessOrder.CORE))
     implementation(project(BuildModules.ProcessOrder.HELPER))
+    implementation(project(BuildModules.Commons.UI))
 
     Dependencies.apply {
         // lifecycle

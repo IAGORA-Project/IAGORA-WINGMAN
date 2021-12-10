@@ -3,6 +3,7 @@ package com.iagora.wingman.process_order.features.confirmed.detail
 import android.telephony.PhoneNumberUtils
 import androidx.navigation.fragment.navArgs
 import com.iagora.wingman.commons.ui.base.BaseFragment
+import com.iagora.wingman.commons.ui.extensions.collectWhenCreated
 import com.iagora.wingman.commons.ui.extensions.collectWhenStarted
 import com.iagora.wingman.commons.views.helper.FormatCurrency.formatPrice
 import com.iagora.wingman.commons.views.helper.SetImage.loadPhotoProfile
@@ -22,7 +23,7 @@ class ConfirmedDetailFragment :
     BaseFragment<FragmentDetailConfirmedBinding>(R.layout.fragment_detail_confirmed,
         { FragmentDetailConfirmedBinding.bind(it) }) {
 
-    private val detailViewModel: ConfirmedDetailViewModel by viewModel()
+    private val viewModel: ConfirmedDetailViewModel by viewModel()
 
 
     private val args by navArgs<ConfirmedDetailFragmentArgs>()
@@ -30,7 +31,13 @@ class ConfirmedDetailFragment :
 
     override fun setView() {
         handleAdapter()
-        subscribeToViewModel()
+        viewModel.vmData.collectWhenCreated(this) { data ->
+            if (data == null) {
+                subscribeToViewModel()
+            } else {
+                data.success.handleUISuccess()
+            }
+        }
     }
 
 
@@ -38,11 +45,11 @@ class ConfirmedDetailFragment :
         detailAdapter = ConfirmedDetailAdapter()
         binding.containerMainLayoutConfirmed.containerListItem.rvItemProduct.adapter = detailAdapter
 
-        detailViewModel.setIdTransaction(args.idTransaction)
+        viewModel.setIdTransaction(args.idTransaction)
     }
 
     private fun subscribeToViewModel() {
-        detailViewModel.vmGetDetailConfirmed.collectWhenStarted(this) { res ->
+        viewModel.vmGetDetailConfirmed.collectWhenStarted(this) { res ->
             binding.handleUI(res)
         }
     }
@@ -51,11 +58,8 @@ class ConfirmedDetailFragment :
         res.apply {
             set(
                 success = {
-                    containerLoadingConfirmed.root.hide().run {
-                        containerMainLayoutConfirmed.root.show().run {
-                            data?.success?.handleUISuccess()
-                        }
-                    }
+                    viewModel.setData(data)
+                    data?.success?.handleUISuccess()
                 },
                 error = { containerLoadingConfirmed.root.hide() },
                 loading = { containerLoadingConfirmed.root.show() }
@@ -66,27 +70,33 @@ class ConfirmedDetailFragment :
 
     private fun ProcessOrder.DetailWaitingOnProcess.Success.handleUISuccess() {
         detailAdapter.submitList(listProduct)
-        binding.containerMainLayoutConfirmed.apply {
-            containerPerson.apply {
-                with(this@handleUISuccess.dataUser) {
-                    tvNamePerson.text = fullName
-                    tvPhoneNumberPerson.text = PhoneNumberUtils.formatNumber(
-                        phoneNumber,
-                        Locale.getDefault().country
-                    )
-                    shapeIvPerson.loadPhotoProfile(imgProfile)
+
+
+        with(binding) {
+            containerLoadingConfirmed.root.hide()
+            containerMainLayoutConfirmed.apply {
+                root.show()
+
+                containerPerson.apply {
+                    with(this@handleUISuccess.dataUser) {
+                        tvNamePerson.text = fullName
+                        tvPhoneNumberPerson.text = PhoneNumberUtils.formatNumber(
+                            phoneNumber,
+                            Locale.getDefault().country
+                        )
+                        shapeIvPerson.loadPhotoProfile(imgProfile)
+                    }
                 }
-            }
 
-            containerListItem.apply {
-                tvStoreName.text = this@handleUISuccess.storeInfo.storeName
+                containerListItem.apply {
+                    tvStoreName.text = this@handleUISuccess.storeInfo.storeName
 
-                containerHandlingFee.apply {
-                    tvHandleFeeValue.formatPrice(handlingFee.toString())
+                    containerHandlingFee.apply {
+                        tvHandleFeeValue.formatPrice(handlingFee.toString())
+                    }
                 }
-            }
 
-            containerListBill.apply {
+                containerListBill.apply {
                     tvTotalPriceProductValue.formatPrice(totalPriceProduct.toString())
                     tvSubTotalValue.formatPrice(subTotal.toString())
                     tvHandlingFeeValue.formatPrice(handlingFee.toString())
@@ -94,6 +104,8 @@ class ConfirmedDetailFragment :
                     tvGrandTotalValue.formatPrice(grandTotal.toString())
                 }
             }
+        }
+
 
     }
 

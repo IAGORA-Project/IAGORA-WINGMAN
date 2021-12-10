@@ -48,9 +48,16 @@ class ConfirmationDetailFragment :
 
     override fun setView() {
         handleAdapter()
-        subscribeToViewModel()
+        viewModel.vmData.collectWhenCreated(this) { data ->
+            if (data == null) {
+                subscribeToViewModel()
+            } else {
+                data.success.handleUISuccess()
+            }
+        }
     }
 
+    
     private fun handleAdapter() {
         detailAdapter = ConfirmationDetailAdapter()
         binding.containerMainLayoutConfirmation.containerListItem.rvItemProduct.adapter =
@@ -70,11 +77,8 @@ class ConfirmationDetailFragment :
         res.apply {
             set(
                 success = {
-                    containerLoadingConfirmation.root.hide().run {
-                        containerMainLayoutConfirmation.root.show().run {
-                            data?.success?.handleUISuccess()
-                        }
-                    }
+                    viewModel.setData(data)
+                    data?.success?.handleUISuccess()
                 },
                 loading = {
                     containerLoadingConfirmation.root.show()
@@ -88,66 +92,70 @@ class ConfirmationDetailFragment :
     }
 
     private fun ProcessOrder.DetailWaitingOnProcess.Success.handleUISuccess() {
-
-
         detailAdapter.submitList(listProduct)
         postBargain(idTransaction)
 
-        binding.containerMainLayoutConfirmation.apply {
+        with(binding) {
+            containerLoadingConfirmation.root.hide()
 
-            containerPerson.apply {
-                with(this@handleUISuccess.dataUser) {
-                    tvNamePerson.text = fullName
-                    tvPhoneNumberPerson.text = PhoneNumberUtils.formatNumber(
-                        phoneNumber,
-                        Locale.getDefault().country
-                    )
-                    shapeIvPerson.loadPhotoProfile(imgProfile)
-                }
-            }
+            containerMainLayoutConfirmation.apply {
+                root.show()
 
-            containerListItem.apply {
-                tvStoreName.text = this@handleUISuccess.storeInfo.storeName
-
-                containerHandlingFee.apply {
-                    tilHandlingFeeBargain.editText?.setupTextWithBtn(btnHandlingFeeBargain)
-                    containerItemHandlingFee.tvHandleFeeValue.formatPrice(handlingFee.toString())
-
-
-
-                    btnHandlingFeeBargain.setOnClickListener {
-                        postHandlingFee(
-                            idTransaction,
-                            HandlingFee(
-                                tilHandlingFeeBargain.editText?.text.toString()
-                                    .toLong()
-                            )
+                containerPerson.apply {
+                    with(this@handleUISuccess.dataUser) {
+                        tvNamePerson.text = fullName
+                        tvPhoneNumberPerson.text = PhoneNumberUtils.formatNumber(
+                            phoneNumber,
+                            Locale.getDefault().country
                         )
+                        shapeIvPerson.loadPhotoProfile(imgProfile)
+                    }
+                }
 
-                        clearFocus(tilHandlingFeeBargain.editText)
+                containerListItem.apply {
+                    tvStoreName.text = this@handleUISuccess.storeInfo.storeName
 
+                    containerHandlingFee.apply {
+                        tilHandlingFeeBargain.editText?.setupTextWithBtn(btnHandlingFeeBargain)
+                        containerItemHandlingFee.tvHandleFeeValue.formatPrice(handlingFee.toString())
+
+
+
+                        btnHandlingFeeBargain.setOnClickListener {
+                            postHandlingFee(
+                                idTransaction,
+                                HandlingFee(
+                                    tilHandlingFeeBargain.editText?.text.toString()
+                                        .toLong()
+                                )
+                            )
+
+                            clearFocus(tilHandlingFeeBargain.editText)
+
+                        }
+                    }
+                }
+
+
+                containerListBill.apply {
+                    tvTotalPriceProductValue.formatPrice(totalPriceProduct.toString())
+                    tvSubTotalValue.formatPrice(subTotal.toString())
+                    tvHandlingFeeValue.formatPrice(handlingFee.toString())
+                    tvPlatformFeeValue.formatPrice(platformFee.toString())
+                    tvGrandTotalValue.formatPrice(grandTotal.toString())
+                }
+
+                containerActionOrder.apply {
+                    btnAcceptOrder.setOnClickListener {
+                        showDialog(0, idTransaction)
+                    }
+                    btnCancelOrder.setOnClickListener {
+                        showDialog(1, idTransaction)
                     }
                 }
             }
-
-
-            containerListBill.apply {
-                tvTotalPriceProductValue.formatPrice(totalPriceProduct.toString())
-                tvSubTotalValue.formatPrice(subTotal.toString())
-                tvHandlingFeeValue.formatPrice(handlingFee.toString())
-                tvPlatformFeeValue.formatPrice(platformFee.toString())
-                tvGrandTotalValue.formatPrice(grandTotal.toString())
-            }
-
-            containerActionOrder.apply {
-                btnAcceptOrder.setOnClickListener {
-                    showDialog(0, idTransaction)
-                }
-                btnCancelOrder.setOnClickListener {
-                    showDialog(1, idTransaction)
-                }
-            }
         }
+
 
     }
 

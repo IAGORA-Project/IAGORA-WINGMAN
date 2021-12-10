@@ -1,7 +1,7 @@
 package com.iagora.wingman.process_order.viewmodels
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.iagora.wingman.commons.ui.base.BaseViewModel
 import com.iagora.wingman.helper.Resource
 import com.iagora.wingman.process_order.core.domain.usecase.ProcessOrderUseCase
 import com.iagora.wingman.process_order.helper.FlowProcessOrder
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 
 class ConfirmedDetailViewModel(
     private val processOrderUseCase: ProcessOrderUseCase,
-) : ViewModel() {
+) : BaseViewModel<ProcessOrder.DetailWaitingOnProcess>() {
 
     private val _vmGetDetailConfirmed: MutableSharedFlow<Resource<ProcessOrder.DetailWaitingOnProcess>> =
         MutableSharedFlow()

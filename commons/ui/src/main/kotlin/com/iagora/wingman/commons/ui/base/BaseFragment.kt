@@ -19,7 +19,6 @@ package com.iagora.wingman.commons.ui.base
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
@@ -50,30 +49,12 @@ abstract class BaseFragment<B : ViewBinding>(
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = bind.invoke(view)
+        _binding = bind(view)
         setView()
     }
 
     abstract fun setView()
 
-    /**
-     * Return the [AppCompatActivity] this fragment is currently associated with.
-     *
-     * @throws IllegalStateException if not currently associated with an activity or if associated
-     * only with a context.
-     * @throws TypeCastException if the currently associated activity don't extend [AppCompatActivity].
-     *
-     * @see requireActivity
-     */
-    fun requireCompatActivity(): AppCompatActivity {
-        requireActivity()
-        val activity = requireActivity()
-        if (activity is AppCompatActivity) {
-            return activity
-        } else {
-            throw TypeCastException("Main activity should extend from 'AppCompatActivity'")
-        }
-    }
 
     /**
      * @see _binding

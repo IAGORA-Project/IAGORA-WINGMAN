@@ -127,7 +127,7 @@ class ProcessOrderContainerFragment :
             if (size > 0) {
                 binding.tabs.apply {
                     val tab = (getChildAt(0) as ViewGroup).getChildAt(pos)
-                    tab.setPadding(0, 0, dpToPx(20), 0)
+                    tab.setPadding(0, 0, dpToPx(30), 0)
                     tab.requestLayout()
                 }
             }
