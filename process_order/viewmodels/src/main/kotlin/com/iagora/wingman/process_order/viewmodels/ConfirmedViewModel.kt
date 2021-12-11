@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.iagora.wingman.helper.Resource
 import com.iagora.wingman.process_order.core.domain.usecase.ProcessOrderUseCase
-import com.iagora.wingman.process_order.helper.FlowProcessOrder
+import com.iagora.wingman.helper.FlowProcessOrder
 import com.iagora.wingman.process_order.helper.model.response.ProcessOrder
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow

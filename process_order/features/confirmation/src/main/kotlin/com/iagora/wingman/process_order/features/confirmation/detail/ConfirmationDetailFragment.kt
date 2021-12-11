@@ -20,7 +20,7 @@ import com.iagora.wingman.helper.Status.*
 import com.iagora.wingman.helper.set
 import com.iagora.wingman.process_order.features.confirmation.R
 import com.iagora.wingman.process_order.features.confirmation.databinding.FragmentDetailConfirmationBinding
-import com.iagora.wingman.process_order.helper.FlowProcessOrder
+import com.iagora.wingman.helper.FlowProcessOrder
 import com.iagora.wingman.process_order.helper.model.body.Bargain
 import com.iagora.wingman.process_order.helper.model.body.HandlingFee
 import com.iagora.wingman.process_order.helper.model.response.ProcessOrder

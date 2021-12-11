@@ -6,7 +6,7 @@ import com.iagora.wingman.core.source.local.shared_handle.device_token.SharedDev
 import com.iagora.wingman.core.source.local.shared_handle.wingman_info.SharedWingmanInfoRepository
 import com.iagora.wingman.core.source.remote.api_handle.auth.AuthReposiroty
 import com.iagora.wingman.core.source.remote.api_handle.main_menu.MainMenuRepository
-import com.iagora.wingman.core.source.remote.api_handle.pasar.PasarRepository
+
 
 import org.koin.dsl.module
 
@@ -17,5 +17,4 @@ val repositoryModule = module {
     factory { SharedDeviceTokenRepository(get(), get()) }
     factory { MainMenuRepository(get()) }
     factory { AuthReposiroty(get()) }
-    factory { PasarRepository(get()) }
 }

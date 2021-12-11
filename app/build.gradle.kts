@@ -101,11 +101,8 @@ dependencies {
     implementation(project(BuildModules.Commons.VIEWS))
 
     implementation(project(BuildModules.ProcessOrder.Features.MAIN))
-    implementation(project(BuildModules.ProcessOrder.HELPER))
-
     implementation(project(BuildModules.ReceiveOrder.Features.MAIN))
-    implementation(project(BuildModules.ReceiveOrder.HELPER))
-
+    implementation(project(BuildModules.Market.Features.MAIN))
 
     with(Dependencies) {
         // common requirement
@@ -142,10 +139,11 @@ dependencies {
         implementation(RETROFIT_GSON)
 
         // firebase
+        implementation(FIREBASE_MESSAGING)
         implementation(FIREBASE_ANALYTICS)
         implementation(platform(FIREBASE_BOM))
         implementation(FIREBASE_DATABASE)
-        implementation(FIREBASE_MESSAGING)
+
 
         // google
         implementation(GOOGLE_PLAY_SERVICES_LOCATION)

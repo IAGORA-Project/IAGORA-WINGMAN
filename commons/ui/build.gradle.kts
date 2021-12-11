@@ -34,10 +34,5 @@ dependencies {
         // ui
         implementation(RECYCLE_VIEW)
         implementation(LIFECYCLE_VIEWMODEL)
-
-        //dependencies
-
-        implementation(KOIN_CORE)
-        implementation(KOIN_ANDROID)
     }
 }

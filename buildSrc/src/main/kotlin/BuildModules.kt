@@ -34,6 +34,15 @@ object BuildModules {
         }
     }
 
+    object Market{
+        const val CORE = ":market:core"
+        const val HELPER = ":market:helper"
+
+        object Features {
+            const val MAIN = ":market:features:main_features"
+        }
+    }
+
     object Commons {
         const val UI = ":commons:ui"
         const val VIEWS = ":commons:views"

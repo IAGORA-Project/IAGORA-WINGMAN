@@ -45,22 +45,22 @@
             android:exported="true"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:windowSoftInputMode="adjustPan"
-            android:name="com.iagora.wingman.app.ui.pasar.add_product.AddProductActivity"
-            android:exported="true"
-            android:screenOrientation="sensorPortrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name="com.iagora.wingman.app.ui.pasar.list_product_pasar.ListProductPasarActivity"
-            android:exported="true"
-            android:screenOrientation="sensorPortrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name="com.iagora.wingman.app.ui.pasar.list_pasar.ListPasarActivity"
-            android:exported="true"
-            android:screenOrientation="sensorPortrait"
-            tools:ignore="LockedOrientationActivity" />
+        <!--        <activity-->
+        <!--            android:windowSoftInputMode="adjustPan"-->
+        <!--            android:name="com.iagora.wingman.app.ui.pasar.add_product.AddProductActivity"-->
+        <!--            android:exported="true"-->
+        <!--            android:screenOrientation="sensorPortrait"-->
+        <!--            tools:ignore="LockedOrientationActivity" />-->
+        <!--        <activity-->
+        <!--            android:name="com.iagora.wingman.app.ui.pasar.list_product_pasar.ListProductPasarActivity"-->
+        <!--            android:exported="true"-->
+        <!--            android:screenOrientation="sensorPortrait"-->
+        <!--            tools:ignore="LockedOrientationActivity" />-->
+        <!--        <activity-->
+        <!--            android:name="com.iagora.wingman.app.com.iagora.wingman.market.features.main_features.ListPasarActivity"-->
+        <!--            android:exported="true"-->
+        <!--            android:screenOrientation="sensorPortrait"-->
+        <!--            tools:ignore="LockedOrientationActivity" />-->
         <activity
             android:windowSoftInputMode="adjustPan"
             android:name="com.iagora.wingman.app.ui.chat.ChatActivity"
@@ -89,6 +89,11 @@
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
+            android:name="com.iagora.wingman.market.features.main_features.MarketActivity"
+            android:exported="true"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
             android:name="com.iagora.wingman.app.ui.main_menu.MainActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait"
@@ -96,7 +101,7 @@
 
         <!-- Cloud Messaging Service -->
         <service
-            android:name="com.iagora.wingman.app.services.FirebaseNotificationService"
+            android:name="com.iagora.wingman.receive_order.features.main_features.services.FirebaseNotificationService"
             android:enabled="true"
             android:foregroundServiceType="location"
             android:exported="false">
@@ -114,7 +119,6 @@
         <meta-data
             android:name="firebase_messaging_auto_init_enabled"
             android:value="true" />
-
 
         <!-- Tracking Service -->
         <service

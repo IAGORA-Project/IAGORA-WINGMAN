@@ -39,8 +39,19 @@ dependencies {
         implementation(LIFECYCLE_RUNTIME)
         implementation(CONSTRAIN_LAYOUT)
         implementation(RECYCLE_VIEW)
+        implementation(GLIDE)
 
         // lifecycle
         implementation(LIFECYCLE_VIEWMODEL)
+
+
+        // firebase
+        implementation(FIREBASE_ANALYTICS)
+        implementation(platform(FIREBASE_BOM))
+        implementation(FIREBASE_DATABASE)
+        implementation(FIREBASE_MESSAGING)
+
+        // gson
+        implementation(RETROFIT_GSON)
     }
 }

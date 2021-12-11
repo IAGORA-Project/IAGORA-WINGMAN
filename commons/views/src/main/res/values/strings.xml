@@ -31,6 +31,7 @@
     <string name="text_payment_status_title">Status pembayaran</string>
     <string name="text_payment_status_value_false">Belum dibayar</string>
     <string name="text_warning_order">Pastikan produk tidak dalam keadaan rusak dan harga sesuai dengan tawaran pedagang dan persetujuan pelanggan</string>
+    <string name="text_market">Pasar</string>
     <string name="text_btn_cancel_order">Batalkan pesanan</string>
     <string name="text_btn_accept_order">Setujui harga</string>
     <string name="text_change">Ubah</string>
@@ -41,7 +42,7 @@
         <item>Pcs</item>
     </string-array>
 
-
+    <string name="des_right_arrow">right_arrow</string>
 
     <string-array name="text_dialog_action_transaction">
         <item>Pastikan kamu sudah benar - benar menyetujuinya</item>
