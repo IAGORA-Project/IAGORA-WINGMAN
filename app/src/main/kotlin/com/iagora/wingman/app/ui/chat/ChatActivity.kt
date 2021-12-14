@@ -8,7 +8,6 @@ import com.iagora.wingman.app.databinding.ActivityChatBinding
 import com.iagora.wingman.app.ui.chat.finished_chat.FinishedChatFragment
 import com.iagora.wingman.app.ui.chat.ongoing.OnGoingFragment
 import com.iagora.wingman.commons.ui.base.BaseActivity
-import com.iagora.wingman.process_order.features.main_features.ProcessOrderTabLayoutAdapter
 
 class ChatActivity : BaseActivity<ActivityChatBinding>({ ActivityChatBinding.inflate(it) }) {
 
@@ -28,12 +27,14 @@ class ChatActivity : BaseActivity<ActivityChatBinding>({ ActivityChatBinding.inf
         handleTabViewPager()
     }
 
-    private fun handleHeaderView(){
-        binding.incHeader.ivBackButton.setOnClickListener {
-            onBackPressed()
-        }
-        binding.incHeader.tvTitle.text = StringBuilder("Chat")
-        binding.incHeader.containerToolbar.elevation = 0f
+    private fun handleHeaderView() {
+
+
+//        binding.incHeader.ivBackButton.setOnClickListener {
+//            onBackPressed()
+//        }
+//        binding.incHeader.tvTitle.text = StringBuilder("Chat")
+//        binding.incHeader.containerToolbar.elevation = 0f
     }
 
     private fun handleTabViewPager() {
@@ -43,8 +44,8 @@ class ChatActivity : BaseActivity<ActivityChatBinding>({ ActivityChatBinding.inf
         titleTabLayout.add("Sedang Berlangsung")
         titleTabLayout.add("Selesai")
 
-        val sectionsPagerAdapter = ProcessOrderTabLayoutAdapter(this, listFragment)
-        binding.vpTabs.adapter = sectionsPagerAdapter
+//        val sectionsPagerAdapter = ProcessOrderTabLayoutAdapter(this, listFragment)
+//        binding.vpTabs.adapter = sectionsPagerAdapter
         TabLayoutMediator(binding.tabs, binding.vpTabs) { tab, position ->
             tab.text = titleTabLayout[position]
         }.attach()

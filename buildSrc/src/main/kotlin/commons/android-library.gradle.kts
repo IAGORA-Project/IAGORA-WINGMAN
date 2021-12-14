@@ -29,6 +29,7 @@ plugins {
     id("com.android.library")
     id("kotlin-parcelize")
     id("com.vanniktech.android.junit.jacoco")
+    id("com.vanniktech.dependency.graph.generator")
 }
 
 

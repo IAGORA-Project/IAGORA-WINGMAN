@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/containerItem"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/ripple_item_for_white_background"
+    android:clickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:paddingVertical="10dp"
+    android:paddingHorizontal="20dp">
+
+    <TextView
+        android:id="@+id/tvInitialName"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:background="@drawable/shape_red_rounded_50"
+        tools:text="K"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:theme="@style/TextViewBold.OpenSans_25sp_020202"
+        android:textAllCaps="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvPasarName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        tools:text="Petisah"
+        android:theme="@style/TextViewSemiBold.OpenSans_16sp_020202"
+        app:layout_constraintBottom_toBottomOf="@+id/tvInitialName"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/tvInitialName"
+        app:layout_constraintTop_toTopOf="@+id/tvInitialName" />
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_arrow_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/des_right_arrow" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

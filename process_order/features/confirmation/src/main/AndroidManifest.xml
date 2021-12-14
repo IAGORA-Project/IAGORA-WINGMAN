@@ -1,12 +1,2 @@
-<manifest xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.iagora.wingman.process_order.features.confirmation">
+<manifest package="com.iagora.wingman.process_order.features.confirmation" />
 
-    <dist:module
-        dist:instant="false"
-        dist:title="order_confirmation">
-        <dist:delivery>
-            <dist:on-demand />
-        </dist:delivery>
-        <dist:fusing dist:include="false" />
-    </dist:module>
-</manifest>

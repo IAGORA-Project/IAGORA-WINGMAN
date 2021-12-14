@@ -29,7 +29,7 @@ repositories {
 
 
 object PluginsVersions {
-    const val GRADLE_ANDROID = "7.0.3"
+    const val GRADLE_ANDROID = "7.0.4"
     const val KOTLIN = "1.6.0"
     const val GRADLE_VERSIONS = "0.33.0"
     const val NAVIGATION = "2.4.0-beta02"
@@ -43,7 +43,7 @@ object PluginsVersions {
 }
 
 dependencies {
-    implementation("com.android.tools.build:gradle:7.0.4")
+    implementation("com.android.tools.build:gradle:${PluginsVersions.GRADLE_ANDROID}")
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${PluginsVersions.KOTLIN}")
     implementation("com.github.ben-manes:gradle-versions-plugin:${PluginsVersions.GRADLE_VERSIONS}")
     implementation("androidx.navigation:navigation-safe-args-gradle-plugin:${PluginsVersions.NAVIGATION}")

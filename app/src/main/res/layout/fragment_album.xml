@@ -8,7 +8,7 @@
     tools:context="com.iagora.wingman.app.ui.album_camera.albums.AlbumsFragment">
 
     <ProgressBar
-        android:id="@+id/ProgressBar"
+        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"

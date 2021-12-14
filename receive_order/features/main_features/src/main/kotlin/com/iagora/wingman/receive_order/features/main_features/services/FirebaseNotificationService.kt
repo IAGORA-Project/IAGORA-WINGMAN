@@ -19,7 +19,7 @@ import com.iagora.wingman.receive_order.features.main_features.R
 import com.iagora.wingman.receive_order.features.main_features.ReceiveOrderActivity
 import com.iagora.wingman.receive_order.features.main_features.ReceiveOrderActivity.Companion.KEY_DATA_NOTIFY
 import com.iagora.wingman.receive_order.helper.data.remote.body.ReceiveOrderBody
-import com.iagora.wingman.receive_order.helper.mapper.DataMapperReceiveOrder.mapReceiveOrderBodyToModelReceiveOrder
+import com.iagora.wingman.receive_order.helper.mapper.MapperReceiveOrder.toModel
 import org.json.JSONObject
 import kotlin.random.Random
 
@@ -59,12 +59,10 @@ class FirebaseNotificationService : FirebaseMessagingService() {
                             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                             putExtra(
                                 KEY_DATA_NOTIFY,
-                                mapReceiveOrderBodyToModelReceiveOrder(
-                                    Gson().fromJson(
-                                        notification,
-                                        ReceiveOrderBody::class.java
-                                    )
-                                )
+                                Gson().fromJson(
+                                    notification,
+                                    ReceiveOrderBody::class.java
+                                ).toModel()
                             )
                         }
 
@@ -186,12 +184,10 @@ class FirebaseNotificationService : FirebaseMessagingService() {
         val intent = Intent(applicationContext, ReceiveOrderActivity::class.java).apply {
             putExtra(
                 KEY_DATA_NOTIFY,
-                mapReceiveOrderBodyToModelReceiveOrder(
-                    Gson().fromJson(
-                        data,
-                        ReceiveOrderBody::class.java
-                    )
-                )
+                Gson().fromJson(
+                    data,
+                    ReceiveOrderBody::class.java
+                ).toModel()
             )
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
         }

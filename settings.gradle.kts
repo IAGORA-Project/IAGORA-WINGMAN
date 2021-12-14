@@ -10,6 +10,8 @@ include(
     ":receive_order:features:main_features",
     ":market:core",
     ":market:helper",
+    ":market:viewmodels",
+    ":market:features:list_product_market",
     ":market:features:main_features",
     ":process_order:core",
     ":process_order:helper",

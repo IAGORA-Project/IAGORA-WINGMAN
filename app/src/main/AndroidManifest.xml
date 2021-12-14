@@ -40,11 +40,11 @@
             android:exported="true"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name="com.iagora.wingman.app.ui.album_camera.AlbumsCameraActivity"
-            android:exported="true"
-            android:screenOrientation="sensorPortrait"
-            tools:ignore="LockedOrientationActivity" />
+        <!--        <activity-->
+        <!--            android:name="com.iagora.wingman.app.ui.album_camera.AlbumsCameraActivity"-->
+        <!--            android:exported="true"-->
+        <!--            android:screenOrientation="sensorPortrait"-->
+        <!--            tools:ignore="LockedOrientationActivity" />-->
         <!--        <activity-->
         <!--            android:windowSoftInputMode="adjustPan"-->
         <!--            android:name="com.iagora.wingman.app.ui.pasar.add_product.AddProductActivity"-->
@@ -56,11 +56,11 @@
         <!--            android:exported="true"-->
         <!--            android:screenOrientation="sensorPortrait"-->
         <!--            tools:ignore="LockedOrientationActivity" />-->
-        <!--        <activity-->
-        <!--            android:name="com.iagora.wingman.app.com.iagora.wingman.market.features.main_features.ListPasarActivity"-->
-        <!--            android:exported="true"-->
-        <!--            android:screenOrientation="sensorPortrait"-->
-        <!--            tools:ignore="LockedOrientationActivity" />-->
+        <activity
+            android:name="com.iagora.wingman.market.features.main_features.MarketActivity"
+            android:exported="true"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:windowSoftInputMode="adjustPan"
             android:name="com.iagora.wingman.app.ui.chat.ChatActivity"
@@ -85,11 +85,6 @@
         </activity>
         <activity
             android:name="com.iagora.wingman.app.ui.auth.login.LoginActivity"
-            android:exported="true"
-            android:screenOrientation="sensorPortrait"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name="com.iagora.wingman.market.features.main_features.MarketActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />

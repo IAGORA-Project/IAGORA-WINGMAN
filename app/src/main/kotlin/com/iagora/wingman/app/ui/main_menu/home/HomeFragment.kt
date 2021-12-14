@@ -1,12 +1,10 @@
 package com.iagora.wingman.app.ui.main_menu.home
 
 
-import android.content.Intent
 import androidx.navigation.fragment.findNavController
 import com.iagora.wingman.app.R
 import com.iagora.wingman.app.databinding.FragmentHomeBinding
 import com.iagora.wingman.app.ui.main_menu.MainViewModel
-import com.iagora.wingman.market.features.main_features.ListMarketFragment
 import com.iagora.wingman.commons.ui.base.BaseFragment
 import com.iagora.wingman.helper.FlowProcessOrder
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -54,7 +52,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home,
 
 
         binding.switchActiveStatus.setOnCheckedChangeListener { _, isChecked ->
-            println("KJDHJDKHJKDHDKD $isChecked")
             if (isChecked) {
                 binding.tvTitleActiveStatus.text = StringBuilder("Layanan Sedang Aktif")
             } else {
@@ -67,7 +64,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home,
         }
 
         binding.incMenuWingman.btnPasar.setOnClickListener {
-            startActivity(Intent(context, ListMarketFragment::class.java))
+            findNavController().navigate(HomeFragmentDirections.homeNavigateToMarket())
         }
     }
 

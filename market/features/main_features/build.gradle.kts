@@ -17,6 +17,10 @@ dependencies {
     implementation(project(BuildModules.Commons.UI))
     implementation(project(BuildModules.Commons.VIEWS))
 
+    implementation(project(BuildModules.Market.HELPER))
+    implementation(project(BuildModules.Market.CORE))
+    implementation(project(BuildModules.Market.VIEWMODELS))
+
     Dependencies.apply {
         implementation(APPCOMPAT)
         implementation(FRAGMENT_KTX)

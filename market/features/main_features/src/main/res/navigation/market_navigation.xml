@@ -5,7 +5,6 @@
     android:id="@+id/market_navigation"
     app:startDestination="@id/listMarketFragment">
 
-
     <fragment
         android:id="@+id/listMarketFragment"
         android:name="com.iagora.wingman.market.features.main_features.ListMarketFragment"

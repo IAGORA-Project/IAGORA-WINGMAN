@@ -8,18 +8,10 @@ import com.iagora.wingman.process_order.features.main_features.databinding.Activ
 class ProcessOrderActivity :
     BaseActivity<ActivityProcessOrderBinding>({ ActivityProcessOrderBinding.inflate(it) }) {
 
-    override fun setView() {
-        handleHeaderView()
-    }
-
-    private fun handleHeaderView() {
-        binding.apply {
-            incHeader.ivBackButton.setOnClickListener {
-                onBackPressed()
-            }
-            incHeader.tvTitle.text = resources.getString(R.string.title_toolbar_process_order)
-            incHeader.containerToolbar.elevation = 0f
-        }
+    override fun setupToolbar() {
+        super.setupToolbar()
+        setSupportActionBar(binding.incHeader.toolbar)
+        supportActionBar?.title = getString(R.string.title_toolbar_process_order)
     }
 
     companion object {

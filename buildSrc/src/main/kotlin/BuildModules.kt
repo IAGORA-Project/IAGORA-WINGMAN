@@ -37,6 +37,7 @@ object BuildModules {
     object Market{
         const val CORE = ":market:core"
         const val HELPER = ":market:helper"
+        const val VIEWMODELS = ":market:viewmodels"
 
         object Features {
             const val MAIN = ":market:features:main_features"

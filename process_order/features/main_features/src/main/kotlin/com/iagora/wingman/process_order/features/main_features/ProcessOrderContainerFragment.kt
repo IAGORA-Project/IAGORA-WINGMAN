@@ -12,8 +12,8 @@ import com.iagora.wingman.commons.ui.base.BaseFragment
 import com.iagora.wingman.commons.ui.extensions.collectWhenStarted
 import com.iagora.wingman.commons.views.helper.Util.dpToPx
 import com.iagora.wingman.commons.views.helper.Util.reduceDragSensitivity
-import com.iagora.wingman.process_order.features.main_features.databinding.FragmentProcessOrderBinding
 import com.iagora.wingman.helper.FlowProcessOrder
+import com.iagora.wingman.process_order.features.main_features.databinding.FragmentProcessOrderBinding
 import com.iagora.wingman.process_order.viewmodels.ConfirmationViewModel
 import com.iagora.wingman.process_order.viewmodels.ConfirmedViewModel
 import com.iagora.wingman.process_order.viewmodels.PaymentViewModel

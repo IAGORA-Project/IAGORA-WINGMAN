@@ -21,6 +21,8 @@ object Util {
         return ((dp * Resources.getSystem().displayMetrics.density).toInt())
     }
 
+    fun String.capitalizeWords(): String =
+        split(" ").joinToString(" ") { it.replaceFirstChar(Char::uppercase) }
 
     fun Fragment.hideKeyboard() {
         view?.let { activity?.hideKeyboard(it) }

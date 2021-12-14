@@ -50,11 +50,13 @@ abstract class BaseFragment<B : ViewBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = bind(view)
+
+        setAdapter()
         setView()
     }
 
     abstract fun setView()
-
+    open fun setAdapter(){}
 
     /**
      * @see _binding

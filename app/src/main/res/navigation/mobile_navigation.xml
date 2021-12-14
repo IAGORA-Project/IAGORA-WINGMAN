@@ -17,12 +17,19 @@
             app:enterAnim="@anim/screen_new_in"
             app:exitAnim="@anim/screen_old_out"
             app:popEnterAnim="@anim/screen_old_in"
-            app:popExitAnim="@anim/screen_new_out" >
+            app:popExitAnim="@anim/screen_new_out">
 
             <argument
                 android:name="positionTab"
                 app:argType="integer" />
         </action>
+        <action
+            android:id="@+id/homeNavigateToMarket"
+            app:destination="@id/marketActivity"
+            app:enterAnim="@anim/screen_new_in"
+            app:exitAnim="@anim/screen_old_out"
+            app:popEnterAnim="@anim/screen_old_in"
+            app:popExitAnim="@anim/screen_new_out" />
     </fragment>
 
     <fragment
@@ -40,4 +47,8 @@
             android:name="positionTab"
             app:argType="integer" />
     </activity>
+    <activity
+        android:id="@+id/marketActivity"
+        android:name="com.iagora.wingman.market.features.main_features.MarketActivity"
+        android:label="MarketActivity" />
 </navigation>

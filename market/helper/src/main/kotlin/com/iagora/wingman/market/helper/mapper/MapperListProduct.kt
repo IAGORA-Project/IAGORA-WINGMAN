@@ -4,29 +4,29 @@ import com.iagora.wingman.market.helper.data.remote.response.ResGetListProduct
 import com.iagora.wingman.market.helper.model.response.ListProduct
 
 object MapperListProduct {
-    fun resListProductToModelListProduct(input: ResGetListProduct) =
+    fun ResGetListProduct.toModel() =
         ListProduct(
-            status = input.status ?: 404,
-            success = resSuccessToList(input.success)
+            status = this.status ?: 404,
+            success = this.success.toList()
         )
 
 
-    private fun resSuccessToList(input: List<ResGetListProduct.Success>? = null): MutableList<ListProduct.Success> {
+    private fun List<ResGetListProduct.Success>?.toList(): MutableList<ListProduct.Success> {
         val listSuccess = mutableListOf<ListProduct.Success>()
-        input?.forEach { success ->
-            listSuccess.add(resSuccessToModelSuccess(success))
+        this?.forEach { success ->
+            listSuccess.add(success.toModel())
         }
         return listSuccess
     }
 
-    private fun resSuccessToModelSuccess(input: ResGetListProduct.Success? = null) =
+    private fun ResGetListProduct.Success?.toModel() =
         ListProduct.Success(
-            idMarket = input?.idMarket ?: "0",
-            idProduct = input?.idProduct ?: "0",
-            productName = input?.productName ?: "none",
-            img = input?.img ?: "none",
-            price = input?.price ?: 0,
-            desc = input?.desc ?: "none",
-            characteristics = input?.characteristics ?: "none"
+            idMarket = this?.idMarket ?: "0",
+            idProduct = this?.idProduct ?: "0",
+            productName = this?.productName ?: "none",
+            img = this?.img ?: "none",
+            price = this?.price ?: 0,
+            desc = this?.desc ?: "none",
+            characteristics = this?.characteristics ?: "none"
         )
 }

@@ -54,6 +54,7 @@
         tools:layout="@layout/activity_process_order">
         <argument
             android:name="positionTab"
+            android:defaultValue="0"
             app:argType="integer" />
     </activity>
 

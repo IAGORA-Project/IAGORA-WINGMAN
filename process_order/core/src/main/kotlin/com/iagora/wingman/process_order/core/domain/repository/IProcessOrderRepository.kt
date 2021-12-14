@@ -14,7 +14,7 @@ interface IProcessOrderRepository {
         typeWaiting: String,
     ): Flow<Resource<ProcessOrder.DetailWaitingOnProcess>>
 
-    fun postBargainPrice(body: Bargain): Flow<Resource<ProcessOrder.Global>>
+    fun postBargainPrice(bargain: Bargain): Flow<Resource<ProcessOrder.Global>>
     fun postNewHandlingFee(
         idTransaction: String, handlingFee: HandlingFee,
     ): Flow<Resource<ProcessOrder.Global>>

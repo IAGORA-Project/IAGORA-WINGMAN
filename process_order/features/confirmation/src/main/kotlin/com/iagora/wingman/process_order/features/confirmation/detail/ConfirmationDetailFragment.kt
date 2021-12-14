@@ -47,7 +47,6 @@ class ConfirmationDetailFragment :
 
 
     override fun setView() {
-        handleAdapter()
         viewModel.vmData.collectWhenCreated(this) { data ->
             if (data == null) {
                 subscribeToViewModel()
@@ -57,13 +56,15 @@ class ConfirmationDetailFragment :
         }
     }
 
-    
-    private fun handleAdapter() {
+
+    override fun setAdapter() {
+        super.setAdapter()
         detailAdapter = ConfirmationDetailAdapter()
         binding.containerMainLayoutConfirmation.containerListItem.rvItemProduct.adapter =
             detailAdapter
         viewModel.setIdTransaction(args.idTransaction)
     }
+
 
 
     private fun subscribeToViewModel() {
@@ -231,9 +232,9 @@ class ConfirmationDetailFragment :
             if (typeAction == "accept") {
                 confirmedViewModel.initViewModelConfirmed().also {
                     findNavController().navigate(
-                        ConfirmationDetailFragmentDirections.moveToConfirmed(
-                            idTransaction
-                        )
+                      ConfirmationDetailFragmentDirections.moveToConfirmed(
+                          idTransaction
+                      )
                     )
                 }.also {
                     processOrderViewModel.setPosTab(FlowProcessOrder.CONFIRMATION.ordinal)

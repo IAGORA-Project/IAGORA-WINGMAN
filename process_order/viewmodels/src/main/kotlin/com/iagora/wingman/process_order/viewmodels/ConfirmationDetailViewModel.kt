@@ -39,9 +39,9 @@ class ConfirmationDetailViewModel(
     private val _vmGetFeedBackBargainPrice: MutableSharedFlow<Resource<ProcessOrder.Global>> =
         MutableSharedFlow()
     val vmGetFeedBackBargainPrice = _vmGetFeedBackBargainPrice.distinctUntilChanged()
-    fun sendBargainPrice(body: Bargain) {
+    fun sendBargainPrice(bargain: Bargain) {
         viewModelScope.launch {
-            processOrderUseCase.postBargainPrice(body).collectLatest { fed ->
+            processOrderUseCase.postBargainPrice(bargain).collectLatest { fed ->
                 _vmGetFeedBackBargainPrice.emit(fed)
             }
         }

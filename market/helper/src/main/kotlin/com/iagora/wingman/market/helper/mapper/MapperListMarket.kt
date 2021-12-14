@@ -5,37 +5,37 @@ import com.iagora.wingman.market.helper.model.response.ListMarket
 
 object MapperListMarket {
 
-    fun resGetListMarketToModelListMarket(input: ResGetListMarket) = ListMarket(
-        status = input.status ?: 404,
-        success = resSuccessToList(input.success)
+    fun ResGetListMarket.toModel() = ListMarket(
+        status = this.status ?: 404,
+        success = this.success.toList()
     )
 
 
-    private fun resSuccessToList(input: List<ResGetListMarket.Success>? = null): MutableList<ListMarket.Success> {
+    private fun List<ResGetListMarket.Success>?.toList(): MutableList<ListMarket.Success> {
         val listSuccess = mutableListOf<ListMarket.Success>()
-        input?.forEach { success ->
-            listSuccess.add(resSuccessToModelSuccess(success))
+        this?.forEach { success ->
+            listSuccess.add(success.toModel())
         }
 
         return listSuccess
     }
 
-    private fun resSuccessToModelSuccess(input: ResGetListMarket.Success? = null) =
+    private fun ResGetListMarket.Success?.toModel() =
         ListMarket.Success(
-            idMarket = input?.idMarket ?: "0",
-            infoAddress = resInfoAddressToModelInfoAddress(input?.infoAddress),
-            lat = input?.lat ?: "0",
-            long = input?.long ?: "0",
-            marketName = input?.marketName ?: "no-name"
+            idMarket = this?.idMarket ?: "0",
+            infoAddress = this?.infoAddress.toModel(),
+            lat = this?.lat ?: "0",
+            long = this?.long ?: "0",
+            marketName = this?.marketName ?: "no-name"
         )
 
 
-    private fun resInfoAddressToModelInfoAddress(input: ResGetListMarket.Success.InfoAddress? = null) =
+    private fun ResGetListMarket.Success.InfoAddress?.toModel() =
         ListMarket.Success.InfoAddress(
-            address = input?.address ?: "not-found",
-            city = input?.city ?: "not-found",
-            zip = input?.zip ?: "not-found",
-            main = input?.main ?: false,
-            province = input?.province ?: "not-found"
+            address = this?.address ?: "not-found",
+            city = this?.city ?: "not-found",
+            zip = this?.zip ?: "not-found",
+            main = this?.main ?: false,
+            province = this?.province ?: "not-found"
         )
 }

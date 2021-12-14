@@ -10,21 +10,21 @@ import retrofit2.http.*
 interface MarketApi {
 
     @GET("getPasar")
-    fun getListMarket(
+    suspend fun getListMarket(
     ): ResGetListMarket
 
     @GET("getProduct/{id_pasar}")
-    fun getListProduct(
+    suspend fun getListProduct(
         @Path("id_pasar") idMarket: String,
     ): ResGetListProduct
 
     @GET("product/typeAndCategory")
-    fun getListTypeAndCategory(
+    suspend fun getListTypeAndCategory(
     ): ResGetListTypeAndCategory
 
     @Multipart
     @POST("product/add")
-    fun postAddProduct(
+    suspend fun postAddProduct(
         @Body addProductBody: AddProductBody,
     ): ResAddProductFeedback
 

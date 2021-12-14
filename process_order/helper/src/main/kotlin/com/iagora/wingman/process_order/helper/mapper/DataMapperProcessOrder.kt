@@ -1,8 +1,8 @@
 package com.iagora.wingman.process_order.helper.mapper
 
-import com.iagora.wingman.helper.mapper.DataMapper.mapRemAddressUserToModelAddressUser
-import com.iagora.wingman.helper.mapper.DataMapper.mapRemDataUserToModelDataUser
-import com.iagora.wingman.helper.mapper.DataMapper.mapRemProductToListRemProduct
+import com.iagora.wingman.helper.mapper.MapperAddressUser.toModel
+import com.iagora.wingman.helper.mapper.MapperDataUser.toModel
+import com.iagora.wingman.helper.mapper.MapperProduct.toListModel
 import com.iagora.wingman.process_order.helper.data.remote.body.BargainBody
 import com.iagora.wingman.process_order.helper.data.remote.body.HandlingFeeBody
 import com.iagora.wingman.process_order.helper.data.remote.response.ResGetProcessOrder
@@ -14,52 +14,43 @@ import com.iagora.wingman.process_order.helper.model.response.ProcessOrder
 object DataMapperProcessOrder {
 
 
-    fun mapResponseBargainPriceToModelBargainPrice(input: ResGetProcessOrder.ResGlobal) =
+    fun ResGetProcessOrder.ResGlobal.toModel() =
         ProcessOrder.Global(
-            input.status ?: 404,
-            input.success ?: ""
+            status ?: 404,
+            success ?: ""
         )
 
 
-    fun mapBargainToBargainBody(input: Bargain) = BargainBody(
-        input.idProduct,
-        input.idTransaction,
-        input.newBargain,
-        input.uom
+    fun Bargain.toBody() = BargainBody(
+        idProduct,
+        idTransaction,
+        newBargain,
+        uom
     )
 
-    fun mapHandlingFeeToHandlingFeeBody(input: HandlingFee) = HandlingFeeBody(
-        price = input.price
+    fun HandlingFee.toBody() = HandlingFeeBody(
+        price = price
     )
 
-    fun mapResponseWaitingListToModelWaitingList(input: ResGetProcessOrder.ResGetListWaitingOnProcessOrder) =
+    fun ResGetProcessOrder.ResGetListWaitingOnProcessOrder.toModel() =
         ProcessOrder.ListWaitingOnProcess(
-            status = input.status ?: 404,
-            success = mapResponseWaitingListSuccessToModelWaitingListSuccess(
-                input.success
-            )
+            status = status ?: 404,
+            success = success.toList()
         )
 
 
-    private fun mapResponseWaitingListSuccessToModelWaitingListSuccess(
-        input: List<ResGetProcessOrder.ResGetListWaitingOnProcessOrder.Success?>?,
-    ): List<ProcessOrder.ListWaitingOnProcess.Success> {
+    private fun List<ResGetProcessOrder.ResGetListWaitingOnProcessOrder.Success?>?.toList(): List<ProcessOrder.ListWaitingOnProcess.Success> {
         val successList = mutableListOf<ProcessOrder.ListWaitingOnProcess.Success>()
 
-        input?.forEach { success ->
+        this?.forEach { success ->
             success?.apply {
                 successList.add(
                     ProcessOrder.ListWaitingOnProcess.Success(
-                        dataUser = mapRemDataUserToModelDataUser(
-                            dataUser
-                        ),
+                        dataUser = dataUser.toModel(),
                         grandTotal = grandTotal ?: 0,
                         idTransaction = idTransaction ?: "",
                         listProduct =
-                        mapRemProductToListRemProduct(
-                            listProduct
-
-                        ),
+                        listProduct.toListModel(),
                         noOrder = noOrder ?: "",
                         status = status ?: "",
                         transactionDate = transactionDate ?: 0
@@ -71,45 +62,37 @@ object DataMapperProcessOrder {
         return successList
     }
 
-    fun mapResponseGetDetailWaitingListOnProcessOrderToModelDetailWaitingOnProcess(input: ResGetProcessOrder.ResGetDetailWaitingListOnProcessOrder) =
+    fun ResGetProcessOrder.ResGetDetailWaitingListOnProcessOrder.toModel() =
         ProcessOrder.DetailWaitingOnProcess(
-            status = input.status ?: 404,
-            success = mapResponseGetDetailWaitingListOnProcessSuccessToModelDetailWaitingProcessSuccess(
-                input.success
-            )
+            status = status ?: 404,
+            success = success.toModel()
         )
 
-    private fun mapResponseGetDetailWaitingListOnProcessSuccessToModelDetailWaitingProcessSuccess(
-        input: ResGetProcessOrder.ResGetDetailWaitingListOnProcessOrder.Success? = null,
-    ) =
+    private fun ResGetProcessOrder.ResGetDetailWaitingListOnProcessOrder.Success?.toModel() =
         ProcessOrder.DetailWaitingOnProcess.Success(
-            address = mapRemAddressUserToModelAddressUser(
-                input?.address
-            ),
-            handlingFee = input?.handlingFee ?: 0,
-            totalPriceProduct = input?.totalPriceProduct ?: 0,
-            dataUser = mapRemDataUserToModelDataUser(
-                input?.dataUser
-            ),
-            grandTotal = input?.grandTotal ?: 0,
-            idTransaction = input?.idTransaction ?: "",
-            deliveryServices = input?.deliveryServices ?: "",
-            noOrder = input?.noOrder ?: "",
-            status = input?.status ?: "",
-            transactionDate = input?.transactionDate ?: 0,
-            listProduct = mapRemProductToListRemProduct(input?.listProduct),
-            storeInfo = mapResponseProcessOrderStoreInfoToModelProcessOrderStoreInfo(input?.storeInfo),
-            platformFee = input?.platformFee ?: 0,
-            discount = input?.discount ?: 0,
-            deliveryFee = input?.discount ?: 0,
-            subTotal = input?.subTotal ?: 0
+            address = this?.address.toModel(),
+            handlingFee = this?.handlingFee ?: 0,
+            totalPriceProduct = this?.totalPriceProduct ?: 0,
+            dataUser = this?.dataUser.toModel(),
+            grandTotal = this?.grandTotal ?: 0,
+            idTransaction = this?.idTransaction ?: "",
+            deliveryServices = this?.deliveryServices ?: "",
+            noOrder = this?.noOrder ?: "",
+            status = this?.status ?: "",
+            transactionDate = this?.transactionDate ?: 0,
+            listProduct = this?.listProduct.toListModel(),
+            storeInfo = this?.storeInfo.toModel(),
+            platformFee = this?.platformFee ?: 0,
+            discount = this?.discount ?: 0,
+            deliveryFee = this?.discount ?: 0,
+            subTotal = this?.subTotal ?: 0
         )
 
 
-    private fun mapResponseProcessOrderStoreInfoToModelProcessOrderStoreInfo(input: ResGetProcessOrder.StoreInfo? = null) =
+    private fun ResGetProcessOrder.StoreInfo?.toModel() =
         ProcessOrder.StoreInfo(
-            idStore = input?.idStore ?: "",
-            storeName = input?.storeName ?: ""
+            idStore = this?.idStore ?: "",
+            storeName = this?.storeName ?: ""
         )
 
 

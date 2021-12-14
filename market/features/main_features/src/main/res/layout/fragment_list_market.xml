@@ -8,7 +8,7 @@
     tools:context="com.iagora.wingman.market.features.main_features.ListMarketFragment">
 
     <ProgressBar
-        android:id="@+id/ProgressBar"
+        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
@@ -38,14 +38,15 @@
         android:id="@+id/rvListPasar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="15dp"
         android:clipChildren="false"
         android:clipToPadding="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="10"
         android:paddingVertical="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_list_pasar" />
+        tools:listitem="@layout/item_list_market" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

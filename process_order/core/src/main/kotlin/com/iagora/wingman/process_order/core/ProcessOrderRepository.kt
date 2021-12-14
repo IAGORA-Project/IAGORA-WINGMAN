@@ -2,13 +2,10 @@ package com.iagora.wingman.process_order.core
 
 import com.iagora.wingman.core.source.remote.network.ApiResponse
 import com.iagora.wingman.helper.Resource
-import com.iagora.wingman.process_order.core.source.remote.ProcessOrderRemoteDataSource
 import com.iagora.wingman.process_order.core.domain.repository.IProcessOrderRepository
-import com.iagora.wingman.process_order.helper.mapper.DataMapperProcessOrder.mapBargainToBargainBody
-import com.iagora.wingman.process_order.helper.mapper.DataMapperProcessOrder.mapHandlingFeeToHandlingFeeBody
-import com.iagora.wingman.process_order.helper.mapper.DataMapperProcessOrder.mapResponseBargainPriceToModelBargainPrice
-import com.iagora.wingman.process_order.helper.mapper.DataMapperProcessOrder.mapResponseGetDetailWaitingListOnProcessOrderToModelDetailWaitingOnProcess
-import com.iagora.wingman.process_order.helper.mapper.DataMapperProcessOrder.mapResponseWaitingListToModelWaitingList
+import com.iagora.wingman.process_order.core.source.remote.ProcessOrderRemoteDataSource
+import com.iagora.wingman.process_order.helper.mapper.DataMapperProcessOrder.toBody
+import com.iagora.wingman.process_order.helper.mapper.DataMapperProcessOrder.toModel
 import com.iagora.wingman.process_order.helper.model.body.Bargain
 import com.iagora.wingman.process_order.helper.model.body.HandlingFee
 import com.iagora.wingman.process_order.helper.model.response.ProcessOrder
@@ -23,7 +20,7 @@ class ProcessOrderRepository(
 
     override fun getAllListWaiting(typeWaiting: String): Flow<Resource<ProcessOrder.ListWaitingOnProcess>> =
         flow {
-            emit(Resource.loading("true", null))
+            emit(Resource.loading())
             when (val response =
                 processOrderRemoteDataSource.getAllListWaiting(
                     typeWaiting
@@ -31,7 +28,7 @@ class ProcessOrderRepository(
                     ) {
                 is ApiResponse.Success -> emit(
                     Resource.success(
-                        mapResponseWaitingListToModelWaitingList(response.data)
+                        response.data.toModel()
                     )
                 )
                 is ApiResponse.Error -> emit(Resource.error(
@@ -46,7 +43,7 @@ class ProcessOrderRepository(
         typeWaiting: String,
     ): Flow<Resource<ProcessOrder.DetailWaitingOnProcess>> =
         flow {
-            emit(Resource.loading("true", null))
+            emit(Resource.loading())
             when (val response =
                 processOrderRemoteDataSource.getDetailWaiting(
                     idTransaction,
@@ -55,9 +52,7 @@ class ProcessOrderRepository(
                     .first()) {
                 is ApiResponse.Success -> emit(
                     Resource.success(
-                        mapResponseGetDetailWaitingListOnProcessOrderToModelDetailWaitingOnProcess(
-                            response.data
-                        )
+                        response.data.toModel()
                     )
                 )
                 is ApiResponse.Error -> emit(Resource.error(
@@ -66,15 +61,15 @@ class ProcessOrderRepository(
             }
         }
 
-    override fun postBargainPrice(body: Bargain): Flow<Resource<ProcessOrder.Global>> =
+    override fun postBargainPrice(bargain: Bargain): Flow<Resource<ProcessOrder.Global>> =
         flow {
-            emit(Resource.loading("true", null))
+            emit(Resource.loading())
             when (val response =
-                processOrderRemoteDataSource.postBargainPrice(mapBargainToBargainBody(body))
+                processOrderRemoteDataSource.postBargainPrice(bargain.toBody())
                     .first()) {
                 is ApiResponse.Success -> emit(
                     Resource.success(
-                        mapResponseBargainPriceToModelBargainPrice(response.data)
+                        response.data.toModel()
                     )
                 )
                 is ApiResponse.Error -> emit(Resource.error(
@@ -92,11 +87,11 @@ class ProcessOrderRepository(
         when (val response =
             processOrderRemoteDataSource.postNewHandlingFee(
                 idTransaction,
-                mapHandlingFeeToHandlingFeeBody(handlingFee))
+                handlingFee.toBody())
                 .first()) {
             is ApiResponse.Success -> emit(
                 Resource.success(
-                    mapResponseBargainPriceToModelBargainPrice(response.data)
+                    response.data.toModel()
                 )
             )
             is ApiResponse.Error -> emit(Resource.error(
@@ -121,7 +116,7 @@ class ProcessOrderRepository(
                     .first()) {
                 is ApiResponse.Success -> emit(
                     Resource.success(
-                        mapResponseBargainPriceToModelBargainPrice(response.data)
+                        response.data.toModel()
                     )
                 )
                 is ApiResponse.Error -> emit(Resource.error(

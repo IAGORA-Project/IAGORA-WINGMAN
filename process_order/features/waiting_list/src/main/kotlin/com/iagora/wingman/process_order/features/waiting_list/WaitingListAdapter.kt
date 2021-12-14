@@ -31,9 +31,9 @@ class WaitingListAdapter : BaseListAdapter<ProcessOrder.ListWaitingOnProcess.Suc
         ) {
 
 
-        fun bind(success: ProcessOrder.ListWaitingOnProcess.Success) {
+        fun bind(data: ProcessOrder.ListWaitingOnProcess.Success) {
             with(binding) {
-                with(success) {
+                with(data) {
                     with(dataUser) {
                         shapeIvPerson.loadPhotoProfile(imgProfile)
                         tvNamePerson.text = fullName
