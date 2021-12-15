@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.album_camera.camera.CameraFragment">
+    tools:context="com.iagora.wingman.app.ui.album_camera.camera.CameraFragment">
 
 
     <include

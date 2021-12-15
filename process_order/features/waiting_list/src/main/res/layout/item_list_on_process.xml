@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/ripple_item_for_white_background"
+    android:layout_width="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shapeIvPerson"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:theme="@style/ShapeAppearanceOverlay.Circle"
+        app:layout_constraintBottom_toBottomOf="@+id/tvItemTotal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvNamePerson"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvNamePerson"
+        style="@style/TextViewBold.OpenSans_17sp_020202"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvItem"
+        app:layout_constraintStart_toEndOf="@+id/shapeIvPerson"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@tools:sample/first_names" />
+
+    <TextView
+        android:id="@+id/tvItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/text_primary"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/shapeIvPerson"
+        app:layout_constraintTop_toBottomOf="@+id/tvNamePerson"
+        tools:text="Wortel Berastagi dan 2 item lainnya" />
+
+    <TextView
+        android:id="@+id/tvItemTotal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/text_primary"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
+        app:layout_constraintEnd_toEndOf="@+id/tvItem"
+        app:layout_constraintStart_toEndOf="@+id/shapeIvPerson"
+        app:layout_constraintTop_toBottomOf="@+id/tvItem"
+        tools:text="@string/dummy_text_total_item" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:background="@color/transparent_600"
+        android:src="@drawable/ic_arrow_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/text_button_detail" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

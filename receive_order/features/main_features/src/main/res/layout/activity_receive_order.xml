@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.IAGORAWingman"
+
+    tools:context="com.iagora.wingman.receive_order.features.main_features.ReceiveOrderActivity">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivPicUser"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+       android:layout_marginStart="10dp"
+        android:layout_marginEnd="15dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:theme="@style/TextViewSemiBold.OpenSans_20sp_020202"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPicUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivPicUser"
+        app:layout_constraintTop_toTopOf="@+id/ivPicUser"
+        tools:text="@tools:sample/first_names" />
+
+
+    <TextView
+        android:id="@+id/tvListOrderTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:paddingBottom="10dp"
+        android:text="@string/list_order_text"
+        android:theme="@style/TextViewSemiBold.OpenSans_18sp_020202"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivPicUser" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListProduct"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingHorizontal="15dp"
+        android:overScrollMode="never"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/incBottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvListOrderTitle"
+        tools:itemCount="2"
+        tools:listitem="@layout/item_product" />
+
+
+    <include
+        android:id="@+id/incBottom"
+        layout="@layout/layout_button_left_right_with_background"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

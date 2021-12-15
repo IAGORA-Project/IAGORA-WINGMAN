@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
-    tools:context=".ui.auth.splash_screen.SplashScreenActivity">
+    tools:context="com.iagora.wingman.app.ui.auth.splash_screen.SplashScreenActivity">
 
     <TextView
         android:id="@+id/tvTitleSplashScreen"

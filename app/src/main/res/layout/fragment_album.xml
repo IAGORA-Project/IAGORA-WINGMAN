@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.album_camera.albums.AlbumsFragment">
+    tools:context="com.iagora.wingman.app.ui.album_camera.albums.AlbumsFragment">
 
     <ProgressBar
-        android:id="@+id/ProgressBar"
+        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"

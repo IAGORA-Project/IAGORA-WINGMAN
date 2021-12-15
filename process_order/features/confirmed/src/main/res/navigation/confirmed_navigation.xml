@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/confirmed_navigation"
+    app:startDestination="@id/confirmedDetailFragment">
+
+    <fragment
+        android:id="@+id/confirmedDetailFragment"
+        android:name="com.iagora.wingman.process_order.features.confirmed.detail.ConfirmedDetailFragment"
+        android:label="ConfirmedFragment"
+        tools:layout="@layout/fragment_detail_confirmed">
+        <argument
+            android:name="id_transaction"
+            app:argType="string" />
+    </fragment>
+</navigation>
