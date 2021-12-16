@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/list_product_nav"
+    app:startDestination="@id/listProductFragment">
+
+    <fragment
+        android:id="@+id/listProductFragment"
+        android:name="com.iagora.wingman.market.features.list_product_market.ListProductFragment"
+        android:label="ListProductFragment">
+        <argument
+            android:name="idMarket"
+            app:argType="string" />
+    </fragment>
+</navigation>

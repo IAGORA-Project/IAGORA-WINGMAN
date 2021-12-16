@@ -10,7 +10,7 @@ data class ListProduct(
         val idMarket: String,
         val productName: String,
         val img: String,
-        val price: Int,
+        val price: Long,
         val desc: String,
         val characteristics: String,
     )

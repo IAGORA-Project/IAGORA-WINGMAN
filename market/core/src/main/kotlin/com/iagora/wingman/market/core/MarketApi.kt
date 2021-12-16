@@ -1,10 +1,10 @@
 package com.iagora.wingman.market.core
 
-import com.iagora.wingman.market.helper.data.remote.body.AddProductBody
-import com.iagora.wingman.market.helper.data.remote.response.ResAddProductFeedback
-import com.iagora.wingman.market.helper.data.remote.response.ResGetListMarket
-import com.iagora.wingman.market.helper.data.remote.response.ResGetListProduct
-import com.iagora.wingman.market.helper.data.remote.response.ResGetListTypeAndCategory
+import com.iagora.wingman.market.core.data.remote.body.AddProductBody
+import com.iagora.wingman.market.core.data.remote.response.ResAddProductFeedback
+import com.iagora.wingman.market.core.data.remote.response.ResGetListMarket
+import com.iagora.wingman.market.core.data.remote.response.ResGetListProduct
+import com.iagora.wingman.market.core.data.remote.response.ResGetListTypeAndCategory
 import retrofit2.http.*
 
 interface MarketApi {

@@ -33,9 +33,8 @@ class ProcessOrderContainerFragment :
     private val processOrderViewModel: ProcessOrderViewModel by sharedViewModel()
 
     override fun setView() {
-        with(binding) {
-            vpTabs.setup()
-            tabs.setup(vpTabs)
+        binding.apply {
+            tabs.setup(vpTabs.setup())
         }
         subscribeToViewModel()
     }
@@ -67,7 +66,6 @@ class ProcessOrderContainerFragment :
             }
 
         }.attach()
-
         for (i in 0 until tabCount) {
             val tab = (getChildAt(0) as ViewGroup).getChildAt(i)
             val p = tab.layoutParams as ViewGroup.MarginLayoutParams
@@ -83,14 +81,14 @@ class ProcessOrderContainerFragment :
                 dpToPx(10), // left
                 0, // top
                 dpToPx(5), // right
-                0)  // bottom
+                0
+            )  // bottom
             tab.requestLayout()
 
         }
-
     }
 
-    private fun ViewPager2.setup() {
+    private fun ViewPager2.setup(): ViewPager2 {
 
         val sectionsPagerAdapter =
             ProcessOrderTabLayoutAdapter(requireActivity() as AppCompatActivity)
@@ -98,6 +96,8 @@ class ProcessOrderContainerFragment :
         adapter = sectionsPagerAdapter
         getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         reduceDragSensitivity()
+
+        return this
     }
 
     private fun subscribeToViewModel() {

@@ -16,6 +16,7 @@ android{
 }
 
 dependencies {
+    implementation(project(BuildModules.HELPER))
 
     Dependencies.apply {
         // common requirement
@@ -34,5 +35,8 @@ dependencies {
         // ui
         implementation(RECYCLE_VIEW)
         implementation(LIFECYCLE_VIEWMODEL)
+
+        // di
+        implementation(KOIN_ANDROID)
     }
 }

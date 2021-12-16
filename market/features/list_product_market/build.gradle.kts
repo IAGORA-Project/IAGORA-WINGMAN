@@ -3,6 +3,7 @@ import extensions.implementation
 
 plugins {
     id(BuildPlugins.ANDROID_LIBRARY_COSTUME)
+    id(BuildPlugins.NAVIGATION_SAFE_ARGS)
 }
 
 android {

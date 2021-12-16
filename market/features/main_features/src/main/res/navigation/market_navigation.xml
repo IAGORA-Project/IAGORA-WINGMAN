@@ -9,5 +9,15 @@
         android:id="@+id/listMarketFragment"
         android:name="com.iagora.wingman.market.features.main_features.ListMarketFragment"
         android:label="fragment_list_market"
-        tools:layout="@layout/fragment_list_market" />
+        tools:layout="@layout/fragment_list_market">
+        <action
+            android:id="@+id/moveToListProduct"
+            app:destination="@id/list_product_nav">
+            <argument
+                android:name="idMarket"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <include app:graph="@navigation/list_product_nav" />
 </navigation>

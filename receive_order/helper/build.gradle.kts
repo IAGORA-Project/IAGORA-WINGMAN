@@ -11,7 +11,4 @@ junitJacoco {
 
 dependencies{
     implementation(project(BuildModules.HELPER))
-
-    // remote
-    implementation(Dependencies.RETROFIT_GSON)
 }

@@ -41,6 +41,7 @@ object BuildModules {
 
         object Features {
             const val MAIN = ":market:features:main_features"
+            const val LIST_PRODUCT = ":market:features:list_product_market"
         }
     }
 

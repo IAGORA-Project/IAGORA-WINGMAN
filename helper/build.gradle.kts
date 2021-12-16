@@ -7,7 +7,3 @@ plugins {
 junitJacoco {
     excludes = listOf("**/extensions/NavigationExtensions*.*")
 }
-
-dependencies{
-    implementation(Dependencies.RETROFIT_GSON)
-}

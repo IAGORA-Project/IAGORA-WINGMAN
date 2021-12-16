@@ -19,6 +19,8 @@ package com.iagora.wingman.commons.ui.base
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 
@@ -50,13 +52,14 @@ abstract class BaseFragment<B : ViewBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = bind(view)
-
+        setTitleToolbar((requireActivity() as AppCompatActivity?)?.supportActionBar)
         setAdapter()
         setView()
     }
 
+    open fun setTitleToolbar(supportActionBar: ActionBar?) {}
     abstract fun setView()
-    open fun setAdapter(){}
+    open fun setAdapter() {}
 
     /**
      * @see _binding

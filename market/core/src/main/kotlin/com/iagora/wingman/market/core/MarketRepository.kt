@@ -4,11 +4,11 @@ import com.iagora.wingman.core.source.remote.network.ApiResponse
 import com.iagora.wingman.helper.Resource
 import com.iagora.wingman.market.core.domain.repository.IMarketRepository
 import com.iagora.wingman.market.core.source.remote.MarketRemoteDataSource
-import com.iagora.wingman.market.helper.mapper.MapperAddProduct.toBody
-import com.iagora.wingman.market.helper.mapper.MapperAddProductFeedback.toModel
-import com.iagora.wingman.market.helper.mapper.MapperListMarket.toModel
-import com.iagora.wingman.market.helper.mapper.MapperListProduct.toModel
-import com.iagora.wingman.market.helper.mapper.MapperListTypeAndCategory.toModel
+import com.iagora.wingman.market.core.mapper.MapperAddProduct.toBody
+import com.iagora.wingman.market.core.mapper.MapperAddProductFeedback.toModel
+import com.iagora.wingman.market.core.mapper.MapperListMarket.toModel
+import com.iagora.wingman.market.core.mapper.MapperListProduct.toModel
+import com.iagora.wingman.market.core.mapper.MapperListTypeAndCategory.toModel
 import com.iagora.wingman.market.helper.model.body.AddProduct
 import com.iagora.wingman.market.helper.model.response.AddProductFeedBack
 import com.iagora.wingman.market.helper.model.response.ListMarket

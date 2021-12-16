@@ -3,7 +3,7 @@ package com.iagora.wingman.core.source.local.shared_handle.device_token
 import android.content.Context
 import com.google.gson.Gson
 import com.iagora.wingman.core.BuildConfig.KEY_SHARED_PREFERENCE_DT
-import com.iagora.wingman.core.helper.ChCrypto
+import com.iagora.wingman.core.ChCrypto
 import com.iagora.wingman.core.source.local.shared_preference.SharedPreference
 
 class SharedDeviceTokenRepository(

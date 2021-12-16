@@ -4,8 +4,8 @@ import com.iagora.wingman.core.source.remote.network.ApiResponse
 import com.iagora.wingman.helper.Resource
 import com.iagora.wingman.process_order.core.domain.repository.IProcessOrderRepository
 import com.iagora.wingman.process_order.core.source.remote.ProcessOrderRemoteDataSource
-import com.iagora.wingman.process_order.helper.mapper.DataMapperProcessOrder.toBody
-import com.iagora.wingman.process_order.helper.mapper.DataMapperProcessOrder.toModel
+import com.iagora.wingman.process_order.core.mapper.DataMapperProcessOrder.toBody
+import com.iagora.wingman.process_order.core.mapper.DataMapperProcessOrder.toModel
 import com.iagora.wingman.process_order.helper.model.body.Bargain
 import com.iagora.wingman.process_order.helper.model.body.HandlingFee
 import com.iagora.wingman.process_order.helper.model.response.ProcessOrder

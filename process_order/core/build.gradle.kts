@@ -21,5 +21,8 @@ dependencies {
 
         // common ui
         implementation(RECYCLE_VIEW)
+
+        // remote
+        implementation(RETROFIT_GSON)
     }
 }

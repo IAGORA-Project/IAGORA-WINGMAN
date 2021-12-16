@@ -2,7 +2,7 @@ package com.iagora.wingman.market.core.source.remote
 
 import com.iagora.wingman.core.source.remote.network.flowCollector
 import com.iagora.wingman.market.core.MarketApi
-import com.iagora.wingman.market.helper.data.remote.body.AddProductBody
+import com.iagora.wingman.market.core.data.remote.body.AddProductBody
 import kotlinx.coroutines.CoroutineScope
 
 class MarketRemoteDataSource(

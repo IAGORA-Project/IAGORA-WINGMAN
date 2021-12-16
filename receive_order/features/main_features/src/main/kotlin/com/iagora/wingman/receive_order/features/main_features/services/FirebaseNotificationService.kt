@@ -18,8 +18,8 @@ import com.google.gson.Gson
 import com.iagora.wingman.receive_order.features.main_features.R
 import com.iagora.wingman.receive_order.features.main_features.ReceiveOrderActivity
 import com.iagora.wingman.receive_order.features.main_features.ReceiveOrderActivity.Companion.KEY_DATA_NOTIFY
-import com.iagora.wingman.receive_order.helper.data.remote.body.ReceiveOrderBody
-import com.iagora.wingman.receive_order.helper.mapper.MapperReceiveOrder.toModel
+import com.iagora.wingman.receive_order.core.data.remote.body.ReceiveOrderBody
+import com.iagora.wingman.receive_order.core.mapper.MapperReceiveOrder.toModel
 import org.json.JSONObject
 import kotlin.random.Random
 

@@ -3,6 +3,7 @@ import extensions.implementation
 
 plugins {
     id(BuildPlugins.ANDROID_LIBRARY_COSTUME)
+    id(BuildPlugins.NAVIGATION_SAFE_ARGS)
 }
 
 android {
@@ -20,6 +21,8 @@ dependencies {
     implementation(project(BuildModules.Market.HELPER))
     implementation(project(BuildModules.Market.CORE))
     implementation(project(BuildModules.Market.VIEWMODELS))
+
+    implementation(project(BuildModules.Market.Features.LIST_PRODUCT))
 
     Dependencies.apply {
         implementation(APPCOMPAT)

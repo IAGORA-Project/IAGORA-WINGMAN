@@ -1,5 +1,6 @@
 package com.iagora.wingman.market.features.main_features
 
+import androidx.appcompat.app.ActionBar
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.iagora.wingman.commons.ui.base.BaseFragment
@@ -16,6 +17,12 @@ class ListMarketFragment : BaseFragment<FragmentListMarketBinding>(R.layout.frag
 
     private val viewModel: ListMarketViewModel by viewModel()
     private lateinit var adapter: ListMarketAdapter
+
+    override fun setTitleToolbar(supportActionBar: ActionBar?) {
+        super.setTitleToolbar(supportActionBar)
+        supportActionBar?.title = resources.getString(R.string.text_market)
+    }
+
 
     override fun setView() {
         viewModel.vmData.collectWhenCreated(this) { data ->
@@ -51,8 +58,8 @@ class ListMarketFragment : BaseFragment<FragmentListMarketBinding>(R.layout.frag
     private fun handleUISuccess(data: List<ListMarket.Success>?) {
         adapter.apply {
             submitList(data)
-            setOnItemClickListener {idMarket ->
-
+            setOnItemClickListener { idMarket ->
+                findNavController().navigate(ListMarketFragmentDirections.moveToListProduct(idMarket))
             }
         }
         setVisibilityLayout(true)
