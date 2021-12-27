@@ -22,7 +22,9 @@ dependencies {
     implementation(project(BuildModules.Market.CORE))
     implementation(project(BuildModules.Market.VIEWMODELS))
 
+    implementation(project(BuildModules.Market.Commons.VIEWS))
     implementation(project(BuildModules.Market.Features.LIST_PRODUCT))
+
 
     Dependencies.apply {
         implementation(APPCOMPAT)

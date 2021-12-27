@@ -2,6 +2,7 @@ package com.iagora.wingman.market.features.list_product_market
 
 import androidx.appcompat.app.ActionBar
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.iagora.wingman.commons.ui.base.BaseFragment
 import com.iagora.wingman.commons.ui.extensions.collectWhenCreated
@@ -32,6 +33,7 @@ class ListProductFragment :
 
         binding.rvListProduct.adapter = adapter
         viewModel.setIdMarket(idMarket)
+        moveToAddProduct(idMarket)
     }
 
     override fun setView() {
@@ -50,16 +52,15 @@ class ListProductFragment :
         }
     }
 
-    private fun handleUI(res: Resource<Any>) {
+    private fun handleUI(res: Resource<ListProduct>) {
         res.apply {
             set(
                 error = {
                     setVisibilityLayout(false, error = true)
                 },
                 success = {
-                    val data = data as ListProduct
                     viewModel.setData(data)
-                    handleUISuccess(data.success)
+                    handleUISuccess(data?.success)
                 },
                 loading = {
                     setVisibilityLayout(false)
@@ -68,19 +69,25 @@ class ListProductFragment :
         }
     }
 
-    private fun handleUISuccess(data: List<ListProduct.Success>) {
+    private fun handleUISuccess(data: List<ListProduct.Success>?) {
         adapter.submitList(data)
         setVisibilityLayout(true)
+    }
+
+    private fun moveToAddProduct(idMarket: String) {
+        binding.btnAddProduct.setOnClickListener {
+            findNavController().navigate(ListProductFragmentDirections.moveToAddProduct(idMarket))
+        }
     }
 
     private fun setVisibilityLayout(isVisible: Boolean, error: Boolean = false) {
         binding.apply {
             if (error) {
-                btnAddproduct.isVisible = isVisible
+                btnAddProduct.isVisible = isVisible
                 rvListProduct.isVisible = isVisible
                 progressBar.isVisible = isVisible
             } else {
-                btnAddproduct.isVisible = isVisible
+                btnAddProduct.isVisible = isVisible
                 rvListProduct.isVisible = isVisible
                 progressBar.isVisible = !isVisible
             }

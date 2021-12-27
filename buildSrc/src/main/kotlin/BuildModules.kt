@@ -3,50 +3,67 @@ object BuildModules {
     const val CORE = ":core"
     const val HELPER = ":helper"
 
-    object ProcessOrder {
-        const val CORE = ":process_order:core"
-        const val HELPER = ":process_order:helper"
-        const val VIEWMODELS = ":process_order:viewmodels"
-
-        object Commons {
-            const val UI = ":process_order:commons:ui"
-            const val VIEWS = ":process_order:commons:views"
-        }
-
-        object Features {
-            const val MAIN = ":process_order:features:main_features"
-            const val CONFIRMATION = ":process_order:features:confirmation"
-            const val CONFIRMED = ":process_order:features:confirmed"
-            const val PAYMENT = ":process_order:features:payment"
-            const val PAID = ":process_order:features:paid"
-            const val SENT = ":process_order:features:sent"
-            const val FINISHED = ":process_order:features:finished"
-            const val WAITING_LIST = ":process_order:features:waiting_list"
-        }
-    }
-
-    object ReceiveOrder {
-        const val CORE = ":receive_order:core"
-        const val HELPER = ":receive_order:helper"
-
-        object Features {
-            const val MAIN = ":receive_order:features:main_features"
-        }
-    }
-
-    object Market{
-        const val CORE = ":market:core"
-        const val HELPER = ":market:helper"
-        const val VIEWMODELS = ":market:viewmodels"
-
-        object Features {
-            const val MAIN = ":market:features:main_features"
-            const val LIST_PRODUCT = ":market:features:list_product_market"
-        }
-    }
+    private const val VIEWMODELS = ":viewmodels"
+    private const val FEATURES = ":features"
+    private const val MAIN_FEATURES = ":main_features"
 
     object Commons {
         const val UI = ":commons:ui"
         const val VIEWS = ":commons:views"
     }
+
+    object ProcessOrder {
+        private const val NAME = ":process_order"
+
+        const val CORE = "$NAME${BuildModules.CORE}"
+        const val HELPER = "$NAME${BuildModules.HELPER}"
+        const val VIEWMODELS = "$NAME${BuildModules.VIEWMODELS}"
+
+        object Commons {
+            const val UI = "$NAME${BuildModules.Commons.UI}"
+            const val VIEWS = "$NAME${BuildModules.Commons.VIEWS}"
+        }
+
+        object Features {
+            const val MAIN = "$NAME$FEATURES$MAIN_FEATURES"
+            const val CONFIRMATION = "$NAME$FEATURES:confirmation"
+            const val CONFIRMED = "$NAME$FEATURES:confirmed"
+            const val PAYMENT = "$NAME$FEATURES:payment"
+            const val PAID = "$NAME$FEATURES:paid"
+            const val SENT = "$NAME$FEATURES:sent"
+            const val FINISHED = "$NAME$FEATURES:finished"
+            const val WAITING_LIST = "$NAME$FEATURES:waiting_list"
+        }
+    }
+
+    object ReceiveOrder {
+        private const val NAME = ":receive_order"
+
+        const val CORE = "$NAME${BuildModules.CORE}"
+        const val HELPER = "$NAME${BuildModules.HELPER}"
+
+        object Features {
+            const val MAIN = "$NAME$FEATURES$MAIN_FEATURES"
+        }
+    }
+
+    object Market {
+        private const val NAME = ":market"
+
+        const val CORE = "$NAME${BuildModules.CORE}"
+        const val HELPER = "$NAME${BuildModules.HELPER}"
+        const val VIEWMODELS = "$NAME${BuildModules.VIEWMODELS}"
+
+        object Features {
+            const val MAIN = "$NAME$FEATURES$MAIN_FEATURES"
+            const val ADD_PRODUCT = "$NAME$FEATURES:add_product"
+            const val LIST_PRODUCT = "$NAME$FEATURES:list_product_market"
+        }
+
+        object Commons {
+            const val VIEWS = "$NAME${BuildModules.Commons.VIEWS}"
+        }
+    }
+
+
 }

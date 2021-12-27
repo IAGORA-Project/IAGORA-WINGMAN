@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/Theme.IAGORAWingman"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:elevation="3dp"
+    android:paddingHorizontal="15dp"
+    android:paddingVertical="10dp">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnPrimary"
@@ -14,7 +19,8 @@
         android:insetBottom="0dp"
         android:paddingVertical="14dp"
         app:cornerRadius="7dp"
-        android:text="Masuk"
+        android:text="@string/text_enter"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

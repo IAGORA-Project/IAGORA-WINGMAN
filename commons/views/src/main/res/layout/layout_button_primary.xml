@@ -3,11 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:elevation="3dp"
-    android:paddingHorizontal="15dp"
-    android:paddingVertical="10dp">
+    android:layout_height="wrap_content">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnPrimary"
@@ -18,8 +14,7 @@
         android:insetBottom="0dp"
         android:paddingVertical="14dp"
         app:cornerRadius="7dp"
-        android:text="Masuk"
-        android:enabled="false"
+        android:text="@string/text_enter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -21,7 +21,6 @@ dependencies {
     implementation(project(BuildModules.Market.HELPER))
     implementation(project(BuildModules.Market.VIEWMODELS))
 
-    implementation(project(BuildModules.Market.Features.ADD_PRODUCT))
     implementation(project(BuildModules.Market.Commons.VIEWS))
 
     Dependencies.apply {

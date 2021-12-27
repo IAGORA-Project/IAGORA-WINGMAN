@@ -3,6 +3,7 @@ package com.iagora.wingman.commons.views.helper
 import android.app.Activity
 import android.content.Context
 import android.content.res.Resources
+import android.text.Editable
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -94,6 +95,7 @@ object Util {
             return@setOnEditorActionListener false
         }
     }
+
     fun ViewPager2.reduceDragSensitivity() {
         val recyclerViewField = ViewPager2::class.java.getDeclaredField("mRecyclerView")
         recyclerViewField.isAccessible = true
@@ -102,6 +104,11 @@ object Util {
         val touchSlopField = RecyclerView::class.java.getDeclaredField("mTouchSlop")
         touchSlopField.isAccessible = true
         val touchSlop = touchSlopField.get(recyclerView) as Int
-        touchSlopField.set(recyclerView, touchSlop* 2)       // "2" was obtained experimentally
+        touchSlopField.set(recyclerView, touchSlop * 2)       // "2" was obtained experimentally
+    }
+
+    fun Editable.convertToLong(): Long {
+        val textValue = this.toString()
+        return if (textValue.isEmpty() || textValue.isBlank()) 0 else textValue.toLong()
     }
 }

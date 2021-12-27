@@ -23,7 +23,7 @@ import kotlinx.coroutines.flow.Flow
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
-class ProcessOrderContainerFragment :
+class  ProcessOrderContainerFragment :
     BaseFragment<FragmentProcessOrderBinding>(R.layout.fragment_process_order,
         { FragmentProcessOrderBinding.bind(it) }) {
 

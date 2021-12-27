@@ -12,14 +12,5 @@ data class AddProductBody(
     @SerializedName("item_categories") val itemCategories: String,
     @SerializedName("item_type") val itemType: String,
     @SerializedName("satuan") val unit: String,
-    @SerializedName("variant") val variant: List<Variant>
-) {
-    data class Variant(
-        @SerializedName("id_list") val idList: Int,
-        @SerializedName("avg_price") val avgPrice: Int,
-        @SerializedName("highest_price") val highestPrice: Int,
-        @SerializedName("low_price") val lowPrice: Int,
-        @SerializedName("satuan") val unit: String,
-        @SerializedName("uom") val uom: Int
-    )
-}
+    @SerializedName("variant") val listVariantBody: List<VariantBody>
+)

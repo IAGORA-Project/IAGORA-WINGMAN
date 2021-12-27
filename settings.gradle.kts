@@ -11,6 +11,8 @@ include(
     ":market:core",
     ":market:helper",
     ":market:viewmodels",
+    ":market:commons:views",
+    ":market:features:add_product",
     ":market:features:list_product_market",
     ":market:features:main_features",
     ":process_order:core",

@@ -1,22 +1,15 @@
 package com.iagora.wingman.commons.ui.base
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.channels.BufferOverflow
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 abstract class BaseViewModel<T> : ViewModel() {
-    private val _vmData: MutableSharedFlow<T?> =
-        MutableSharedFlow(1, 0, BufferOverflow.DROP_OLDEST)
-    val vmData = _vmData.distinctUntilChanged()
+    private val _vmData: MutableStateFlow<T?> = MutableStateFlow(null)
 
-    init {
-        setData(null)
-    }
+    val vmData = _vmData.asStateFlow()
 
-    fun setData(data: T?) = viewModelScope.launch {
-        _vmData.emit(data)
+    fun setData(data: T?) {
+        _vmData.value = data
     }
 }

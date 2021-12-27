@@ -19,10 +19,10 @@
     <action
         android:id="@+id/moveToConfirmed"
         app:destination="@id/confirmed_navigation"
-        app:enterAnim="@anim/screen_new_in"
-        app:exitAnim="@anim/screen_old_out"
-        app:popEnterAnim="@anim/screen_old_in"
-        app:popExitAnim="@anim/screen_new_out"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"
         app:popUpTo="@id/confirmation_navigation">
 
         <argument

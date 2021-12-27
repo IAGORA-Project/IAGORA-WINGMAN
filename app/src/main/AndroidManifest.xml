@@ -40,23 +40,8 @@
             android:exported="true"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
-        <!--        <activity-->
-        <!--            android:name="com.iagora.wingman.app.ui.album_camera.AlbumsCameraActivity"-->
-        <!--            android:exported="true"-->
-        <!--            android:screenOrientation="sensorPortrait"-->
-        <!--            tools:ignore="LockedOrientationActivity" />-->
-        <!--        <activity-->
-        <!--            android:windowSoftInputMode="adjustPan"-->
-        <!--            android:name="com.iagora.wingman.app.ui.pasar.add_product.AddProductActivity"-->
-        <!--            android:exported="true"-->
-        <!--            android:screenOrientation="sensorPortrait"-->
-        <!--            tools:ignore="LockedOrientationActivity" />-->
-        <!--        <activity-->
-        <!--            android:name="com.iagora.wingman.app.ui.pasar.list_product_pasar.ListProductPasarActivity"-->
-        <!--            android:exported="true"-->
-        <!--            android:screenOrientation="sensorPortrait"-->
-        <!--            tools:ignore="LockedOrientationActivity" />-->
         <activity
+            android:windowSoftInputMode="adjustPan"
             android:name="com.iagora.wingman.market.features.main_features.MarketActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait"
@@ -71,6 +56,8 @@
             android:windowSoftInputMode="adjustPan"
             android:name="com.iagora.wingman.process_order.features.main_features.ProcessOrderActivity"
             android:exported="true"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity"
             />
         <activity
             android:name="com.iagora.wingman.app.ui.auth.splash_screen.SplashScreenActivity"

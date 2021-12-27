@@ -39,9 +39,11 @@
     <string name="text_change">Ubah</string>
     <string name="format_quantity_text">x %1$s</string>
     <string name="image_btn_chat_description">Move To Chat</string>
-    <string-array name="satuan">
-        <item>Gram</item>
-        <item>Pcs</item>
+    <string name="text_gram">Gram</string>
+    <string name="text_pcs">Pcs</string>
+    <string-array name="unit">
+        <item>@string/text_gram</item>
+        <item>@string/text_pcs</item>
     </string-array>
 
     <string name="des_right_arrow">right_arrow</string>
@@ -78,4 +80,5 @@
     <string name="action_accept">accept</string>
     <string name="action_decline">decline</string>
     <string name="action_canceled">canceled</string>
+    <string name="text_enter">Masuk</string>
 </resources>

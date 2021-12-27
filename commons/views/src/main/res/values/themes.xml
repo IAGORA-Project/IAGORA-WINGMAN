@@ -241,7 +241,7 @@
     </style>
 
     <!-- Progress Bar-->
-    <style name="ProgessBar">
+    <style name="progressBar">
         <item name="colorAccent">@color/redPrimary</item> <!-- Whatever color you want-->
     </style>
 </resources>
