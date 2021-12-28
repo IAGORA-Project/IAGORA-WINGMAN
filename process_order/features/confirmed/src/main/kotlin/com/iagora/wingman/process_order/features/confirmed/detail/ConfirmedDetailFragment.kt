@@ -24,8 +24,7 @@ class ConfirmedDetailFragment :
         { FragmentDetailConfirmedBinding.bind(it) }) {
 
     private val viewModel: ConfirmedDetailViewModel by viewModel()
-
-
+    
     private val args by navArgs<ConfirmedDetailFragmentArgs>()
     private lateinit var detailAdapter: ConfirmedDetailAdapter
 

@@ -14,6 +14,10 @@ class ProcessOrderActivity :
         supportActionBar?.title = getString(R.string.title_toolbar_process_order)
     }
 
+    override fun setView() {
+        super.setView()
+    }
+
     companion object {
         const val POST_TAB = "positionTab"
     }
