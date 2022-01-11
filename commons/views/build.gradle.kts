@@ -27,5 +27,8 @@ dependencies {
         implementation(NAVIGATION_FRAGMENT)
         implementation(CONSTRAIN_LAYOUT)
         implementation(GLIDE)
+
+        // di
+        implementation(KOIN_CORE)
     }
 }

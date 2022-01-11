@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.iagora.wingman.app.utils.EventWrapper
 import com.iagora.wingman.core.BuildConfig
-import com.iagora.wingman.core.ChCrypto
+import com.iagora.wingman.core.util.ChCrypto
 import com.iagora.wingman.core.source.local.shared_handle.wingman_info.SharedWingmanInfoRepository
 import com.iagora.wingman.core.source.remote.api_handle.main_menu.MainMenuRepository
 import com.iagora.wingman.core.source.remote.response.ResGetWingmanInfo

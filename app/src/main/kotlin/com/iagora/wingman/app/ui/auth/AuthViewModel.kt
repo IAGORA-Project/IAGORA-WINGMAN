@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.iagora.wingman.app.utils.EventWrapper
 import com.iagora.wingman.core.BuildConfig.*
-import com.iagora.wingman.core.ChCrypto
+import com.iagora.wingman.core.util.ChCrypto
 import com.iagora.wingman.core.source.local.shared_handle.auth.SharedAuthRepository
 import com.iagora.wingman.core.source.local.shared_handle.device_token.SharedDeviceTokenRepository
 import com.iagora.wingman.core.source.remote.api_handle.auth.AuthReposiroty

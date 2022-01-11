@@ -19,7 +19,7 @@ class PaymentFragment :
     }
 
     override fun subscribeToViewModel() {
-        viewModel.vmGetPaymentList.collectWhenStarted(this) { res ->
+        viewModel.vmGetPaymentList.collectWhenStarted(viewLifecycleOwner) { res ->
             binding.setupUI(res, adapter)
         }
     }

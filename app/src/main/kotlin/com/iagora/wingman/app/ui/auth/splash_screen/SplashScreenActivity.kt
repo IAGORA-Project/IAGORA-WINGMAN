@@ -47,6 +47,7 @@ class SplashScreenActivity : AppCompatActivity() {
                         startActivity(Intent(this, LoginActivity::class.java))
                         finishAffinity()
                     }
+                    else -> {}
                 }
             }
         })

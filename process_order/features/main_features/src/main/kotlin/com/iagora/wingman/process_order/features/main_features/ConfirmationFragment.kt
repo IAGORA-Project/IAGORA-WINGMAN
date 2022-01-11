@@ -1,7 +1,7 @@
 package com.iagora.wingman.process_order.features.main_features
 
 import androidx.navigation.fragment.findNavController
-import com.iagora.wingman.commons.ui.extensions.collectWhenCreated
+import com.iagora.wingman.commons.ui.extensions.collectWhenStarted
 import com.iagora.wingman.process_order.features.waiting_list.WaitingListFragment
 import com.iagora.wingman.process_order.viewmodels.ConfirmationViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -23,7 +23,7 @@ class ConfirmationFragment :
     }
 
     override fun subscribeToViewModel() {
-        viewModel.vmGetConfirmationList.collectWhenCreated(this) { res ->
+        viewModel.vmGetConfirmationList.collectWhenStarted(viewLifecycleOwner) { res ->
             binding.setupUI(res, adapter)
         }
     }

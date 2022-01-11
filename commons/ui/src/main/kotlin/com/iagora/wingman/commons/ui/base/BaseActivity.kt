@@ -19,14 +19,20 @@ abstract class BaseActivity<B : ViewBinding>(val bindingFactory: (LayoutInflater
         setContentView(binding.root)
         setView()
         setupToolbar()
+        setupAdapter()
     }
 
-    open fun setView(){}
+    open fun setView() {}
 
-    open fun setupToolbar() {
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    open fun setupToolbar(toolbar: androidx.appcompat.widget.Toolbar) {
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
     }
+
+    open fun setupToolbar() {}
+
+    open fun setupAdapter(){}
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

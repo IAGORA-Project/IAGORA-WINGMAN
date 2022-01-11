@@ -38,7 +38,7 @@ fun DependencyHandler.debugImplementation(dependencyNotation: String): Dependenc
  *
  * @return the dependency
  */
-fun DependencyHandler.implementation(dependencyNotation: String): Dependency? =
+fun DependencyHandler.implementation(dependencyNotation: Any): Dependency? =
     add("implementation", dependencyNotation)
 
 /**

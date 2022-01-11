@@ -3,7 +3,7 @@ package com.iagora.wingman.core.source.local.shared_handle.auth
 import android.content.Context
 import com.google.gson.Gson
 import com.iagora.wingman.core.BuildConfig.KEY_CRYPTO_AUTH
-import com.iagora.wingman.core.ChCrypto
+import com.iagora.wingman.core.util.ChCrypto
 import com.iagora.wingman.core.source.local.shared_preference.SharedPreference
 import com.iagora.wingman.core.source.remote.response.ResLogin
 

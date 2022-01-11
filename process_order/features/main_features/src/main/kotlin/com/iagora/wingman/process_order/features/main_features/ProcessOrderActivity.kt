@@ -8,10 +8,9 @@ import com.iagora.wingman.process_order.features.main_features.databinding.Activ
 class ProcessOrderActivity :
     BaseActivity<ActivityProcessOrderBinding>({ ActivityProcessOrderBinding.inflate(it) }) {
 
-    override fun setupToolbar() {
-        super.setupToolbar()
-        setSupportActionBar(binding.incHeader.toolbar)
-        supportActionBar?.title = getString(R.string.title_toolbar_process_order)
+    override fun setView() {
+        super.setView()
+        setupToolbar(binding.incHeader.toolbar)
     }
 
     companion object {

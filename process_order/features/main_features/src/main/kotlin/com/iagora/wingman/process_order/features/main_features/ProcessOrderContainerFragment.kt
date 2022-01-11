@@ -1,6 +1,7 @@
 package com.iagora.wingman.process_order.features.main_features
 
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.navArgs
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +38,11 @@ class  ProcessOrderContainerFragment :
             tabs.setup(vpTabs.setup())
         }
         subscribeToViewModel()
+    }
+
+    override fun setTitleToolbar(supportActionBar: ActionBar?) {
+        super.setTitleToolbar(supportActionBar)
+        supportActionBar?.title = getString(R.string.title_toolbar_process_order)
     }
 
 
@@ -90,12 +96,10 @@ class  ProcessOrderContainerFragment :
 
     private fun ViewPager2.setup(): ViewPager2 {
 
-        val sectionsPagerAdapter =
-            ProcessOrderTabLayoutAdapter(requireActivity() as AppCompatActivity)
 
-        adapter = sectionsPagerAdapter
+        adapter =  ProcessOrderTabLayoutAdapter(requireActivity() as AppCompatActivity)
         getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-        reduceDragSensitivity()
+        reduceDragSensitivity(2)
 
         return this
     }
@@ -104,7 +108,7 @@ class  ProcessOrderContainerFragment :
         val positionTab = requireActivity().navArgs<ProcessOrderActivityArgs>().value.positionTab
 
         processOrderViewModel.posTab.collectWhenStarted(
-            this
+            viewLifecycleOwner
         ) { pos ->
             if (pos >= 0) {
                 binding.vpTabs.currentItem =
@@ -120,7 +124,7 @@ class  ProcessOrderContainerFragment :
 
 
     private fun Flow<Int>.setNumberBadge(badgeDrawable: BadgeDrawable, pos: Int) {
-        collectWhenStarted(this@ProcessOrderContainerFragment, { size ->
+        collectWhenStarted(viewLifecycleOwner, { size ->
             badgeDrawable.number = size
             badgeDrawable.isVisible = size > 0
 

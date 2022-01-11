@@ -49,6 +49,6 @@
     </activity>
     <activity
         android:id="@+id/marketActivity"
-        android:name="com.iagora.wingman.market.features.main_features.MarketActivity"
+        android:name="com.iagora.wingman.market.presentation.MarketActivity"
         android:label="MarketActivity" />
 </navigation>

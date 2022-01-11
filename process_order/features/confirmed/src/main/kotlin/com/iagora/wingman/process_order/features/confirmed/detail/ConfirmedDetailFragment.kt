@@ -3,7 +3,6 @@ package com.iagora.wingman.process_order.features.confirmed.detail
 import android.telephony.PhoneNumberUtils
 import androidx.navigation.fragment.navArgs
 import com.iagora.wingman.commons.ui.base.BaseFragment
-import com.iagora.wingman.commons.ui.extensions.collectWhenCreated
 import com.iagora.wingman.commons.ui.extensions.collectWhenStarted
 import com.iagora.wingman.commons.views.helper.FormatCurrency.formatPrice
 import com.iagora.wingman.commons.views.helper.SetImage.loadPhotoProfile
@@ -31,7 +30,7 @@ class ConfirmedDetailFragment :
 
     override fun setView() {
         handleAdapter()
-        viewModel.vmData.collectWhenCreated(this) { data ->
+        viewModel.vmData.collectWhenStarted(viewLifecycleOwner) { data ->
             if (data == null) {
                 subscribeToViewModel()
             } else {
@@ -49,7 +48,7 @@ class ConfirmedDetailFragment :
     }
 
     private fun subscribeToViewModel() {
-        viewModel.vmGetDetailConfirmed.collectWhenStarted(this) { res ->
+        viewModel.vmGetDetailConfirmed.collectWhenStarted(viewLifecycleOwner) { res ->
             binding.handleUI(res)
         }
     }

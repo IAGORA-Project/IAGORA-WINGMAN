@@ -1,19 +1,17 @@
 import extensions.applyDefault
 
-plugins.apply {
-    with(BuildPlugins) {
-        UPDATE_DEPENDENCIES
-        DETEKT
-        DOKKA
-        KTLINT
-        SPOTLESS
-    }
-}
+
+plugins.apply(BuildPlugins.UPDATE_DEPENDENCIES)
 
 allprojects {
     repositories.applyDefault()
+
+    plugins.apply(BuildPlugins.DETEKT)
+    plugins.apply(BuildPlugins.DOKKA)
+    plugins.apply(BuildPlugins.KTLINT)
+    plugins.apply(BuildPlugins.SPOTLESS)
 }
 
-tasks.create("clean", Delete::class) {
+tasks.create("clean-project", Delete::class) {
     delete(rootProject.buildDir)
 }

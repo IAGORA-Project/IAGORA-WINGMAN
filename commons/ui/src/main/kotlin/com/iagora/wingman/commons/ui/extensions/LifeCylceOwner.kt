@@ -32,15 +32,6 @@ inline fun <T> Flow<T>.collectWithDelay(
     }
 }
 
-inline fun <T> Flow<T>.collectWhenCreated(
-    lifecycleOwner: LifecycleOwner,
-    crossinline action: suspend (value: T) -> Unit,
-) {
-    lifecycleOwner.addRepeatingJob(Lifecycle.State.CREATED) {
-        collect(action)
-    }
-}
-
 fun LifecycleOwner.addRepeatingJob(
     state: Lifecycle.State,
     coroutineContext: CoroutineContext = EmptyCoroutineContext,

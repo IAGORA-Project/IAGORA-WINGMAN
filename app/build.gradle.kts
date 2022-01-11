@@ -102,7 +102,11 @@ dependencies {
 
     implementation(project(BuildModules.ProcessOrder.Features.MAIN))
     implementation(project(BuildModules.ReceiveOrder.Features.MAIN))
-    implementation(project(BuildModules.Market.Features.MAIN))
+
+    implementation(project(BuildModules.Market.DI))
+    implementation(project(BuildModules.Market.PRESENTATION))
+
+    implementation(project(BuildModules.Gallery.PRESENTATION))
 
     with(Dependencies) {
         // common requirement
@@ -130,10 +134,6 @@ dependencies {
         implementation(KOIN_ANDROID)
         implementation(KOIN_CORE)
 
-        // camera-x
-        implementation(CAMERAX)
-        implementation(CAMERAX_LIFECYCLE)
-        implementation(CAMERAX_VIEW)
 
         // remote
         implementation(RETROFIT_GSON)

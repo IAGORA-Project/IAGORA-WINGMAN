@@ -16,10 +16,17 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.snackbar.Snackbar
+import com.iagora.wingman.commons.views.R
 
 object Util {
     fun dpToPx(dp: Int): Int {
         return ((dp * Resources.getSystem().displayMetrics.density).toInt())
+    }
+
+    fun Snackbar.customPrimaryColor(ctx: Context) {
+        view.setBackgroundColor(ctx.getColor(R.color.redPrimary))
+        setTextColor(ctx.getColor(R.color.white))
     }
 
     fun String.capitalizeWords(): String =
@@ -96,7 +103,7 @@ object Util {
         }
     }
 
-    fun ViewPager2.reduceDragSensitivity() {
+    fun ViewPager2.reduceDragSensitivity(density: Int) {
         val recyclerViewField = ViewPager2::class.java.getDeclaredField("mRecyclerView")
         recyclerViewField.isAccessible = true
         val recyclerView = recyclerViewField.get(this) as RecyclerView
@@ -104,7 +111,10 @@ object Util {
         val touchSlopField = RecyclerView::class.java.getDeclaredField("mTouchSlop")
         touchSlopField.isAccessible = true
         val touchSlop = touchSlopField.get(recyclerView) as Int
-        touchSlopField.set(recyclerView, touchSlop * 2)       // "2" was obtained experimentally
+        touchSlopField.set(
+            recyclerView,
+            touchSlop * density
+        )       // "2" was obtained experimentally
     }
 
     fun Editable.convertToLong(): Long {

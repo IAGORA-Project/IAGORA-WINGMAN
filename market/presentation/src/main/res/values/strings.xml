@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_add_product">Tambah Produk</string>
+    <string name="desc_delete_button">delete button</string>
+    <string name="desc_img_photo">img photo</string>
+    <string name="text_choose_unit_product">Pilih Satuan Produk</string>
+    <string name="text_choose_type_product">Pilih Tipe Produk</string>
+    <string name="text_chose_category_product">Pilih Kategori Produk</string>
+    <string name="text_product_name">Nama Produk</string>
+    <string name="text_product_category">Kategori Produk</string>
+    <string name="text_product_type">Tipe Produk</string>
+    <string name="text_product_unit">Satuan Produk</string>
+    <string name="text_price_variant">Variant Harga</string>
+    <string name="text_add_variant_price">+ Tambah varian harga</string>
+    <string name="text_max_9_image">Pilih foto (Max 9)</string>
+    <string name="text_add_image">+ Tambah foto</string>
+</resources>

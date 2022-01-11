@@ -47,6 +47,9 @@
     </string-array>
 
     <string name="des_right_arrow">right_arrow</string>
+    <string name="text_access">Beri Aksess</string>
+    <string name="desc_remove">Remove item</string>
+    <string name="desc_photo">image item</string>
 
     <string-array name="text_dialog_action_transaction">
         <item>Pastikan kamu sudah benar - benar menyetujuinya</item>
@@ -72,6 +75,8 @@
         <item>Selesai</item>
     </string-array>
 
+    <string name="text_next">Lanjut</string>
+
     <string name="title_toolbar_process_order">Orderan Saya</string>
 
     <string name="text_positive_button">Ya</string>
@@ -81,4 +86,7 @@
     <string name="action_decline">decline</string>
     <string name="action_canceled">canceled</string>
     <string name="text_enter">Masuk</string>
+    <string name="text_max_image_seleted">max 9 gambar</string>
+    <string name="desc_close">Tutup</string>
+
 </resources>

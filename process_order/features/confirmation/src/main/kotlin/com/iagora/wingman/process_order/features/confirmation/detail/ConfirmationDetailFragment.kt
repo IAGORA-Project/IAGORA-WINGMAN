@@ -8,19 +8,19 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.iagora.wingman.commons.ui.base.BaseFragment
-import com.iagora.wingman.commons.ui.extensions.collectWhenCreated
+import com.iagora.wingman.commons.ui.extensions.collectWhenStarted
 import com.iagora.wingman.commons.views.helper.FormatCurrency.formatPrice
 import com.iagora.wingman.commons.views.helper.SetImage.loadPhotoProfile
 import com.iagora.wingman.commons.views.helper.Util.clearFocus
 import com.iagora.wingman.commons.views.helper.Util.hide
 import com.iagora.wingman.commons.views.helper.Util.setupTextWithBtn
 import com.iagora.wingman.commons.views.helper.Util.show
+import com.iagora.wingman.helper.FlowProcessOrder
 import com.iagora.wingman.helper.Resource
 import com.iagora.wingman.helper.Status.*
 import com.iagora.wingman.helper.set
 import com.iagora.wingman.process_order.features.confirmation.R
 import com.iagora.wingman.process_order.features.confirmation.databinding.FragmentDetailConfirmationBinding
-import com.iagora.wingman.helper.FlowProcessOrder
 import com.iagora.wingman.process_order.helper.model.body.Bargain
 import com.iagora.wingman.process_order.helper.model.body.HandlingFee
 import com.iagora.wingman.process_order.helper.model.response.ProcessOrder
@@ -47,7 +47,7 @@ class ConfirmationDetailFragment :
 
 
     override fun setView() {
-        viewModel.vmData.collectWhenCreated(this) { data ->
+        viewModel.vmData.collectWhenStarted(viewLifecycleOwner) { data ->
             if (data == null) {
                 subscribeToViewModel()
             } else {
@@ -68,7 +68,7 @@ class ConfirmationDetailFragment :
 
 
     private fun subscribeToViewModel() {
-        viewModel.vmGetDetailConfirmation.collectWhenCreated(this) { res ->
+        viewModel.vmGetDetailConfirmation.collectWhenStarted(viewLifecycleOwner) { res ->
             binding.handleUI(res)
         }
     }
@@ -169,7 +169,7 @@ class ConfirmationDetailFragment :
     }
 
     private fun getFeedHandlingFee() {
-        viewModel.vmGetFeedBackChangeHandlingFee.collectWhenCreated(this) { res ->
+        viewModel.vmGetFeedBackChangeHandlingFee.collectWhenStarted(viewLifecycleOwner) { res ->
             setFeedBackHandlingFee(res)
         }
     }
@@ -199,7 +199,7 @@ class ConfirmationDetailFragment :
     }
 
     private fun getFeedActionTransaction(typeAction: String, idTransaction: String) {
-        viewModel.vmGetFeedBackActionTransaction.collectWhenCreated(this) { res ->
+        viewModel.vmGetFeedBackActionTransaction.collectWhenStarted(viewLifecycleOwner) { res ->
             setFeedBackActionTransaction(res, typeAction, idTransaction)
         }
     }
@@ -288,7 +288,7 @@ class ConfirmationDetailFragment :
         textView: TextView,
         oldPrice: String,
     ) {
-        viewModel.vmGetFeedBackBargainPrice.collectWhenCreated(this) { res ->
+        viewModel.vmGetFeedBackBargainPrice.collectWhenStarted(viewLifecycleOwner) { res ->
             setFeedBackBargainPrice(res, textInputLayout, textView, oldPrice)
         }
     }
