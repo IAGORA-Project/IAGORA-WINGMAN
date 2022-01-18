@@ -45,50 +45,50 @@
 
     <style name="TextViewReguler" />
     <style name="TextViewReguler.OpenSans_8sp_020202">
-        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">8sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewReguler.OpenSans_10sp_020202">
-        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewReguler.OpenSans_12sp_020202">
-        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewReguler.OpenSans_13sp_020202">
-        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">13sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewReguler.OpenSans_14sp_020202">
-        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewReguler.OpenSans_15sp_020202">
-        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewReguler.OpenSans_16sp_020202">
-        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="TextViewReguler.OpenSans_18sp_020202">
-        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
@@ -97,58 +97,58 @@
 
     <style name="TextViewSemiBold" />
     <style name="TextViewSemiBold.OpenSans_8sp_020202">
-        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">8sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewSemiBold.OpenSans_10sp_020202">
-        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewSemiBold.OpenSans_12sp_020202">
-        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="TextViewSemiBold.OpenSans_13sp_020202">
-        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">13sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="TextViewSemiBold.OpenSans_14sp_020202">
-        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewSemiBold.OpenSans_15sp_020202">
-        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewSemiBold.OpenSans_16sp_020202">
-        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="TextViewSemiBold.OpenSans_18sp_020202">
-        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewSemiBold.OpenSans_20sp_020202">
-        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
@@ -157,61 +157,61 @@
 
     <style name="TextViewBold" />
     <style name="TextViewBold.OpenSans_8sp_020202">
-        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">8sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewBold.OpenSans_10sp_020202">
-        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewBold.OpenSans_12sp_020202">
-        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewBold.OpenSans_15sp_020202">
-        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewBold.OpenSans_16sp_020202">
-        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewBold.OpenSans_17sp_020202">
-        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">17sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewBold.OpenSans_18sp_020202">
-        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewBold.OpenSans_19sp_020202">
-        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">19sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewBold.OpenSans_20sp_020202">
-        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
     </style>
     <style name="TextViewBold.OpenSans_25sp_020202">
-        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">25sp</item>
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textAllCaps">false</item>
