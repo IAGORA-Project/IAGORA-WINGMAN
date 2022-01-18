@@ -44,7 +44,7 @@ class MarketRepository(private val api: MarketApi) : IMarketRepository {
         if (listTypeAndCategory.status == 200) {
             Resource.Success(listTypeAndCategory)
         } else {
-            Resource.Error(UiText.DynamicString("Error ${listTypeAndCategory.status}"))
+            Resource.Error(com.iagora.wingman.core.util.UiText.DynamicString("Error ${listTypeAndCategory.status}"))
         }
 
     } catch (e: IOException) {

@@ -53,6 +53,7 @@ object BuildDependenciesVersions {
     const val CAMERAX_VERSION = "1.0.2"
     const val CAMERAX_VIEW = "1.0.0-alpha30"
     const val DATA_BINDING = "7.0.3"
+    const val TIMBER = "5.0.1"
 
     // Tests
     const val TEST = "1.3.0"

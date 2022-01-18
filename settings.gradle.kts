@@ -1,18 +1,28 @@
 include(
     ":app",
-    ":core",
+
     ":helper",
+
     ":commons:ui",
     ":commons:views",
-    ":gallery:presentation",
+
+    ":core:di",
+    ":core:data",
+    ":core:domain",
+    ":core:util",
+
     ":gallery:domain",
+    ":gallery:presentation",
+
+    ":market:di",
+    ":market:data",
+    ":market:domain",
+    ":market:presentation",
+
     ":receive_order:core",
     ":receive_order:helper",
     ":receive_order:features:main_features",
-    ":market:data",
-    ":market:domain",
-    ":market:di",
-    ":market:presentation",
+
     ":process_order:core",
     ":process_order:helper",
     ":process_order:viewmodels",

@@ -7,7 +7,7 @@ plugins {
 
 
 dependencies {
-    implementation(project(BuildModules.CORE))
+    implementation(project(BuildModules.Core.UTIL))
     implementation(project(BuildModules.Market.DOMAIN))
 
     Dependencies.apply {

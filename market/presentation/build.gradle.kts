@@ -13,7 +13,7 @@ android {
 }
 
 dependencies {
-    implementation(project(BuildModules.CORE))
+    implementation(project(BuildModules.Core.UTIL))
 
     implementation(project(BuildModules.Commons.UI))
     implementation(project(BuildModules.Commons.VIEWS))

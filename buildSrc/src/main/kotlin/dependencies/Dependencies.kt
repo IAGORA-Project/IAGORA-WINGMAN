@@ -33,6 +33,9 @@ object Dependencies {
     const val FRAGMENT_KTX =
         "androidx.fragment:fragment-ktx:${BuildDependenciesVersions.FRAGMENT_KTX}"
 
+    // TIMBER
+    const val TIMBER = "com.jakewharton.timber:timber:${BuildDependenciesVersions.TIMBER}"
+
 
     // MATERIAL
     const val MATERIAL_DIALOGS =

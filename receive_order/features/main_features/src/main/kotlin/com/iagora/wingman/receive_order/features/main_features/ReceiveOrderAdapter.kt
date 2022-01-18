@@ -7,7 +7,7 @@ import com.iagora.wingman.commons.ui.base.BaseListAdapter
 import com.iagora.wingman.commons.ui.base.BaseViewHolder
 import com.iagora.wingman.commons.views.databinding.ItemProductBinding
 import com.iagora.wingman.commons.views.helper.FormatCurrency.formatPrice
-import com.iagora.wingman.helper.model.Product
+import com.iagora.wingman.core.domain.model.dto.Product
 
 
 class ReceiveOrderAdapter : BaseListAdapter<Product>(

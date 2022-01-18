@@ -9,7 +9,7 @@ import com.iagora.wingman.market.domain.usecase.IGetListProduct
 import com.iagora.wingman.market.domain.usecase.IGetListTypeAndCategory
 import org.koin.dsl.module
 
-val useCaseModule = module {
+internal val useCaseModule = module {
     single<IGetListMarket> {
         GetListMarket(get())
     }

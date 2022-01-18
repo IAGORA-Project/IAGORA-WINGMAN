@@ -2,9 +2,9 @@ package com.iagora.wingman.process_order.core.data.remote.response
 
 
 import com.google.gson.annotations.SerializedName
-import com.iagora.wingman.core.data.remote.RemAddressUser
-import com.iagora.wingman.core.data.remote.RemDataUser
-import com.iagora.wingman.core.data.remote.RemProduct
+import com.iagora.wingman.core.data.remote.dto.DataUserDto
+import com.iagora.wingman.core.data.remote.dto.AddressUserDto
+import com.iagora.wingman.core.data.remote.dto.ProductDto
 
 data class ResGetProcessOrder(
     var resGetListWaitingOnProcessOrder: ResGetListWaitingOnProcessOrder? = null,
@@ -16,10 +16,10 @@ data class ResGetProcessOrder(
         @SerializedName("success") var success: List<Success?>? = null,
     ) {
         data class Success(
-            @SerializedName("data_user") var dataUser: RemDataUser? = null,
+            @SerializedName("data_user") var dataUser: DataUserDto? = null,
             @SerializedName("grand_total") var grandTotal: Long? = null,
             @SerializedName("id_transaction") var idTransaction: String? = null,
-            @SerializedName("list_product") var listProduct: List<RemProduct>? = null,
+            @SerializedName("list_product") var listProduct: List<ProductDto>? = null,
             @SerializedName("no_order") var noOrder: String? = null,
             @SerializedName("status") var status: String? = null,
             @SerializedName("transaction_date") var transactionDate: Long? = null,
@@ -31,14 +31,14 @@ data class ResGetProcessOrder(
         @SerializedName("success") var success: Success? = null,
     ) {
         data class Success(
-            @SerializedName("adress") var address: RemAddressUser? = null,
+            @SerializedName("adress") var address: AddressUserDto? = null,
             @SerializedName("biaya_penanganan") var handlingFee: Long? = null,
             @SerializedName("belanja") var totalPriceProduct: Long? = null,
-            @SerializedName("data_user") var dataUser: RemDataUser? = null,
+            @SerializedName("data_user") var dataUser: DataUserDto? = null,
             @SerializedName("grand_total") var grandTotal: Long? = null,
             @SerializedName("id_transaction") var idTransaction: String? = null,
             @SerializedName("layanan_pengiriman") var deliveryServices: String? = null,
-            @SerializedName("list_product") var listProduct: List<RemProduct>? = null,
+            @SerializedName("list_product") var listProduct: List<ProductDto>? = null,
             @SerializedName("no_order") var noOrder: String? = null,
             @SerializedName("status") var status: String? = null,
             @SerializedName("transaction_date") var transactionDate: Long? = null,

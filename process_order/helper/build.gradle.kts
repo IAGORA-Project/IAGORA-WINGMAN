@@ -6,5 +6,5 @@ junitJacoco {
 }
 
 dependencies {
-    implementation(project(BuildModules.HELPER))
+    implementation(project(BuildModules.Core.DOMAIN))
 }

@@ -2,8 +2,8 @@ package com.iagora.wingman.receive_order.helper.model.body
 
 
 import android.os.Parcelable
-import com.iagora.wingman.helper.model.DataUser
-import com.iagora.wingman.helper.model.Product
+import com.iagora.wingman.core.domain.model.dto.DataUser
+import com.iagora.wingman.core.domain.model.dto.Product
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

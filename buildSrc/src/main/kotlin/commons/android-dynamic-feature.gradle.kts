@@ -86,7 +86,7 @@ junitJacoco {
 
 dependencies {
     implementation(project(BuildModules.APP))
-    implementation(project(BuildModules.CORE))
+    implementation(project(BuildModules.Core.UTIL))
 
     implementation(Dependencies.KOTLIN)
     implementation(Dependencies.APPCOMPAT)
@@ -100,7 +100,7 @@ dependencies {
     implementation(Dependencies.FRAGMENT_KTX)
     implementation(Dependencies.CONSTRAIN_LAYOUT)
     implementation(Dependencies.LOGGING)
-
+    implementation(Dependencies.TIMBER)
 
 //    kapt(AnnotationProcessorsDependencies.ROOM)
 }

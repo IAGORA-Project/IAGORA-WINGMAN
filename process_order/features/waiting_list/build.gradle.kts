@@ -13,6 +13,7 @@ android {
 
 dependencies {
     implementation(project(BuildModules.HELPER))
+    implementation(project(BuildModules.Core.DOMAIN))
     implementation(project(BuildModules.ProcessOrder.HELPER))
     implementation(project(BuildModules.Commons.UI))
     implementation(project(BuildModules.Commons.VIEWS))

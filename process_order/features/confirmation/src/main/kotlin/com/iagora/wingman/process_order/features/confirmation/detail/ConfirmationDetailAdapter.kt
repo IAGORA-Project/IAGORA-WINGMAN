@@ -10,7 +10,7 @@ import com.iagora.wingman.commons.ui.base.BaseViewHolder
 import com.iagora.wingman.commons.views.helper.FormatCurrency.formatPrice
 import com.iagora.wingman.commons.views.helper.Util.clearFocus
 import com.iagora.wingman.commons.views.helper.Util.setupTextWithBtn
-import com.iagora.wingman.helper.model.Product
+import com.iagora.wingman.core.domain.model.dto.Product
 import com.iagora.wingman.process_order.commons.views.databinding.ItemCardChangePriceBinding
 import com.iagora.wingman.process_order.features.confirmation.R
 

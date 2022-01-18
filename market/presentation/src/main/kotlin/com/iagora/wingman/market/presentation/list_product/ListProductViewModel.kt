@@ -9,6 +9,7 @@ import com.iagora.wingman.market.domain.usecase.IGetListProduct
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class ListProductViewModel(
     idMarket: String,
@@ -31,7 +32,7 @@ class ListProductViewModel(
 
                 is Resource.Error -> {
                     _listProduct.emit(listProduct.value.copy(isLoading = false))
-                    Log.e("ERROR", (result.uiText ?: UiText.unknownError()).toString())
+                    Timber.e("ERROR", (result.uiText ?: UiText.unknownError()).toString())
                 }
             }
         }

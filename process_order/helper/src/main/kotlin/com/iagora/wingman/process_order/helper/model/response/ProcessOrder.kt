@@ -1,8 +1,8 @@
 package com.iagora.wingman.process_order.helper.model.response
 
-import com.iagora.wingman.helper.model.AddressUser
-import com.iagora.wingman.helper.model.DataUser
-import com.iagora.wingman.helper.model.Product
+import com.iagora.wingman.core.domain.model.dto.AddressUser
+import com.iagora.wingman.core.domain.model.dto.DataUser
+import com.iagora.wingman.core.domain.model.dto.Product
 
 
 data class ProcessOrder(

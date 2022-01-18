@@ -1,6 +1,6 @@
 package com.iagora.wingman.receive_order.core.source.remote
 
-import com.iagora.wingman.core.source.remote.network.flowCollector
+import com.iagora.wingman.core.util.flowCollector
 import com.iagora.wingman.receive_order.core.ReceiveOrderApi
 import com.iagora.wingman.receive_order.core.data.remote.body.ReceiveOrderBody
 import kotlinx.coroutines.CoroutineScope

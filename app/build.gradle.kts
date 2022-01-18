@@ -94,8 +94,10 @@ android {
 }
 
 dependencies {
-    implementation(project(BuildModules.CORE))
-    implementation(project(BuildModules.HELPER))
+    implementation(project(BuildModules.Core.DATA))
+    implementation(project(BuildModules.Core.DOMAIN))
+    implementation(project(BuildModules.Core.DI))
+    implementation(project(BuildModules.Core.UTIL))
 
     implementation(project(BuildModules.Commons.UI))
     implementation(project(BuildModules.Commons.VIEWS))
@@ -143,6 +145,8 @@ dependencies {
         implementation(FIREBASE_ANALYTICS)
         implementation(platform(FIREBASE_BOM))
         implementation(FIREBASE_DATABASE)
+
+        implementation(TIMBER)
 
 
         // google

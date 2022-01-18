@@ -7,7 +7,7 @@ plugins {
 
 
 dependencies {
-    implementation(project(BuildModules.CORE))
+    implementation(project(BuildModules.Core.UTIL))
 
     Dependencies.apply {
         // dependency

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.iagora.wingman.app.ui.main_menu.home.HomeFragment"
+        android:name="com.iagora.wingman.app.main_menu.presentation.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home">
 
@@ -34,7 +34,7 @@
 
     <fragment
         android:id="@+id/navigation_akun"
-        android:name="com.iagora.wingman.app.ui.main_menu.akun.ProfileFragment"
+        android:name="com.iagora.wingman.app.main_menu.presentation.akun.ProfileFragment"
         android:label="@string/title_akun"
         tools:layout="@layout/fragment_profile" />
 

@@ -1,11 +1,11 @@
 package com.iagora.wingman.process_order.core
 
-import com.iagora.wingman.core.source.remote.network.ApiResponse
+import com.iagora.wingman.core.util.ApiResponse
 import com.iagora.wingman.helper.Resource
 import com.iagora.wingman.process_order.core.domain.repository.IProcessOrderRepository
-import com.iagora.wingman.process_order.core.source.remote.ProcessOrderRemoteDataSource
 import com.iagora.wingman.process_order.core.mapper.DataMapperProcessOrder.toBody
 import com.iagora.wingman.process_order.core.mapper.DataMapperProcessOrder.toModel
+import com.iagora.wingman.process_order.core.source.remote.ProcessOrderRemoteDataSource
 import com.iagora.wingman.process_order.helper.model.body.Bargain
 import com.iagora.wingman.process_order.helper.model.body.HandlingFee
 import com.iagora.wingman.process_order.helper.model.response.ProcessOrder
@@ -25,15 +25,18 @@ class ProcessOrderRepository(
                 processOrderRemoteDataSource.getAllListWaiting(
                     typeWaiting
                 ).first()
-                    ) {
+            ) {
                 is ApiResponse.Success -> emit(
                     Resource.success(
                         response.data.toModel()
                     )
                 )
-                is ApiResponse.Error -> emit(Resource.error(
-                    response.errorMessage,
-                    null))
+                is ApiResponse.Error -> emit(
+                    Resource.error(
+                        response.errorMessage,
+                        null
+                    )
+                )
             }
         }
 
@@ -55,9 +58,12 @@ class ProcessOrderRepository(
                         response.data.toModel()
                     )
                 )
-                is ApiResponse.Error -> emit(Resource.error(
-                    response.errorMessage,
-                    null))
+                is ApiResponse.Error -> emit(
+                    Resource.error(
+                        response.errorMessage,
+                        null
+                    )
+                )
             }
         }
 
@@ -87,16 +93,20 @@ class ProcessOrderRepository(
         when (val response =
             processOrderRemoteDataSource.postNewHandlingFee(
                 idTransaction,
-                handlingFee.toBody())
+                handlingFee.toBody()
+            )
                 .first()) {
             is ApiResponse.Success -> emit(
                 Resource.success(
                     response.data.toModel()
                 )
             )
-            is ApiResponse.Error -> emit(Resource.error(
-                response.errorMessage,
-                null))
+            is ApiResponse.Error -> emit(
+                Resource.error(
+                    response.errorMessage,
+                    null
+                )
+            )
         }
     }
 
@@ -119,9 +129,12 @@ class ProcessOrderRepository(
                         response.data.toModel()
                     )
                 )
-                is ApiResponse.Error -> emit(Resource.error(
-                    response.errorMessage,
-                    null))
+                is ApiResponse.Error -> emit(
+                    Resource.error(
+                        response.errorMessage,
+                        null
+                    )
+                )
             }
         }
 }

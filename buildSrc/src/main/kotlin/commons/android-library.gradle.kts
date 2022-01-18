@@ -91,5 +91,6 @@ dependencies {
         implementation(KOTLIN)
         implementation(COROUTINES)
         implementation(COROUTINES_ANDROID)
+        implementation(TIMBER)
     }
 }

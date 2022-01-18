@@ -24,7 +24,7 @@ import com.google.android.gms.location.LocationResult
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.iagora.wingman.app.R
-import com.iagora.wingman.app.ui.main_menu.MainActivity
+import com.iagora.wingman.app.main_menu.presentation.MainActivity
 
 class TrackingService(): LifecycleService() {
 

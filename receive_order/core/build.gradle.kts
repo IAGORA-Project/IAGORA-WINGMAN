@@ -7,7 +7,9 @@ plugins {
 
 
 dependencies {
-    implementation(project(BuildModules.CORE))
+    implementation(project(BuildModules.Core.UTIL))
+    implementation(project(BuildModules.Core.DATA))
+    implementation(project(BuildModules.Core.DOMAIN))
     implementation(project(BuildModules.HELPER))
     implementation(project(BuildModules.ReceiveOrder.HELPER))
     Dependencies.apply {
