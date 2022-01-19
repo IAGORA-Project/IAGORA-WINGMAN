@@ -55,12 +55,10 @@ object BuildModules {
     object ReceiveOrder {
         private const val NAME = ":receive_order"
 
-        const val CORE = "$NAME${BuildModules.CORE}"
-        const val HELPER = "$NAME${BuildModules.HELPER}"
-
-        object Features {
-            const val MAIN = "$NAME$FEATURES$MAIN_FEATURES"
-        }
+        const val PRESENTATION = "$NAME${BuildModules.PRESENTATION}"
+        const val DOMAIN = "$NAME${BuildModules.DOMAIN}"
+        const val DATA = "$NAME${BuildModules.DATA}"
+        const val DI = "$NAME${BuildModules.DI}"
     }
 
     object Market {

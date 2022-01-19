@@ -101,10 +101,13 @@ dependencies {
     implementation(project(BuildModules.Core.PRESENTATION))
 
     implementation(project(BuildModules.ProcessOrder.Features.MAIN))
-    implementation(project(BuildModules.ReceiveOrder.Features.MAIN))
+
 
     implementation(project(BuildModules.Market.DI))
     implementation(project(BuildModules.Market.PRESENTATION))
+
+    implementation(project(BuildModules.ReceiveOrder.DI))
+    implementation(project(BuildModules.ReceiveOrder.PRESENTATION))
 
     implementation(project(BuildModules.Gallery.PRESENTATION))
 

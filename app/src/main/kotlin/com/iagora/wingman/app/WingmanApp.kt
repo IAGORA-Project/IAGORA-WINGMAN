@@ -7,7 +7,7 @@ import com.iagora.wingman.app.main_menu.di.mainModule
 import com.iagora.wingman.core.di.coreModule
 import com.iagora.wingman.market.di.marketModule
 import com.iagora.wingman.process_order.features.main_features.di.processOrderModule
-import com.iagora.wingman.receive_order.features.main_features.di.receiveOrderModule
+import com.iagora.wingman.receive_order.di.receiveOrderModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
@@ -29,9 +29,9 @@ class WingmanApp : Application() {
             modules(appModule)
             modules(authModule)
             modules(mainModule)
-            processOrderModule
-            receiveOrderModule
             modules(marketModule)
+            modules(receiveOrderModule)
+            processOrderModule
         }
     }
 }

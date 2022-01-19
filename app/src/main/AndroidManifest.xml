@@ -36,7 +36,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IAGORAWingman">
         <activity
-            android:name="com.iagora.wingman.receive_order.features.main_features.ReceiveOrderActivity"
+            android:name="com.iagora.wingman.receive_order.presentation.ReceiveOrderActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
@@ -89,7 +89,7 @@
 
         <!-- Cloud Messaging Service -->
         <service
-            android:name="com.iagora.wingman.receive_order.features.main_features.services.FirebaseNotificationService"
+            android:name="com.iagora.wingman.receive_order.presentation.services.FirebaseNotificationService"
             android:enabled="true"
             android:foregroundServiceType="location"
             android:exported="false">

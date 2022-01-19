@@ -28,8 +28,6 @@ class LoginViewModel(private val requestAuthLogin: IRequestLogin) : ViewModel() 
             val request = requestAuthLogin(phoneNumber, password)
             _loginState.value = loginState.value.copy(isLoading = false)
             when (request.result) {
-
-
                 is Resource.Success -> {
                     _eventFLow.emit(UiEvent.OnLogin)
                 }

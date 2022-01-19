@@ -3,7 +3,7 @@ package com.iagora.wingman.app.utils
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import com.iagora.wingman.receive_order.features.main_features.services.FirebaseNotificationService
+import com.iagora.wingman.receive_order.presentation.services.FirebaseNotificationService
 
 class TriggerWhatsApp {
     companion object {

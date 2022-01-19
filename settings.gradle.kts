@@ -17,9 +17,10 @@ include(
     ":market:domain",
     ":market:presentation",
 
-    ":receive_order:core",
-    ":receive_order:helper",
-    ":receive_order:features:main_features",
+    ":receive_order:di",
+    ":receive_order:data",
+    ":receive_order:domain",
+    ":receive_order:presentation",
 
     ":process_order:core",
     ":process_order:helper",
