@@ -12,11 +12,9 @@ android {
 }
 
 dependencies {
-    implementation(project(BuildModules.HELPER))
-
-    implementation(project(BuildModules.Commons.UI))
-    implementation(project(BuildModules.Commons.VIEWS))
+    implementation(project(BuildModules.Core.PRESENTATION))
     implementation(project(BuildModules.Gallery.DOMAIN))
+
     Dependencies.apply {
         implementation(APPCOMPAT)
         implementation(FRAGMENT_KTX)

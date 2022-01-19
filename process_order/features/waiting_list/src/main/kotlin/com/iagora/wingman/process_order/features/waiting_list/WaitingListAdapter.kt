@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.core.text.HtmlCompat.FROM_HTML_MODE_COMPACT
 import androidx.core.text.HtmlCompat.fromHtml
 import androidx.recyclerview.widget.RecyclerView
-import com.iagora.wingman.commons.ui.base.BaseListAdapter
-import com.iagora.wingman.commons.ui.base.BaseViewHolder
-import com.iagora.wingman.commons.views.helper.FormatCurrency
-import com.iagora.wingman.commons.views.helper.SetImage.loadPhotoProfile
+import com.iagora.wingman.core.presentation.base.BaseListAdapter
+import com.iagora.wingman.core.presentation.base.BaseViewHolder
+import com.iagora.wingman.core.presentation.util.FormatCurrency
+import com.iagora.wingman.core.presentation.util.SetImage.loadPhotoProfile
 import com.iagora.wingman.process_order.features.waiting_list.databinding.ItemListOnProcessBinding
 import com.iagora.wingman.process_order.helper.model.response.ProcessOrder
 

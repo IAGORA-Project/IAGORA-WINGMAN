@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputLayout
-import com.iagora.wingman.commons.ui.base.BaseListAdapter
-import com.iagora.wingman.commons.ui.base.BaseViewHolder
-import com.iagora.wingman.commons.views.helper.FormatCurrency.formatPrice
-import com.iagora.wingman.commons.views.helper.Util.clearFocus
-import com.iagora.wingman.commons.views.helper.Util.setupTextWithBtn
 import com.iagora.wingman.core.domain.model.dto.Product
+import com.iagora.wingman.core.presentation.base.BaseListAdapter
+import com.iagora.wingman.core.presentation.base.BaseViewHolder
+import com.iagora.wingman.core.presentation.util.FormatCurrency.formatPrice
+import com.iagora.wingman.core.presentation.util.Util.clearFocus
+import com.iagora.wingman.core.presentation.util.Util.setupTextWithBtn
 import com.iagora.wingman.process_order.commons.views.databinding.ItemCardChangePriceBinding
 import com.iagora.wingman.process_order.features.confirmation.R
 

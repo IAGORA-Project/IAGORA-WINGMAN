@@ -2,10 +2,10 @@ package com.iagora.wingman.receive_order.features.main_features
 
 
 import android.content.Intent
-import com.iagora.wingman.commons.ui.base.BaseActivity
-import com.iagora.wingman.commons.ui.extensions.collectWhenStarted
-import com.iagora.wingman.commons.views.helper.Loader
-import com.iagora.wingman.commons.views.helper.SetImage.loadPhotoProfile
+import com.iagora.wingman.core.presentation.base.BaseActivity
+import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
+import com.iagora.wingman.core.presentation.util.Loader
+import com.iagora.wingman.core.presentation.util.SetImage.loadPhotoProfile
 import com.iagora.wingman.helper.set
 import com.iagora.wingman.process_order.features.main_features.ProcessOrderActivity
 import com.iagora.wingman.receive_order.features.main_features.databinding.ActivityReceiveOrderBinding

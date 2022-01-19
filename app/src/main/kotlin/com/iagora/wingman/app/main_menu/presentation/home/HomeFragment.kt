@@ -4,8 +4,8 @@ package com.iagora.wingman.app.main_menu.presentation.home
 import androidx.navigation.fragment.findNavController
 import com.iagora.wingman.app.R
 import com.iagora.wingman.app.databinding.FragmentHomeBinding
-import com.iagora.wingman.commons.ui.base.BaseFragment
-import com.iagora.wingman.commons.ui.extensions.collectWhenStarted
+import com.iagora.wingman.core.presentation.base.BaseFragment
+import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 

@@ -1,17 +1,17 @@
 package com.iagora.wingman.market.presentation.add_product
 
-import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.ActionBar
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
-import com.iagora.wingman.commons.ui.base.BaseFragment
-import com.iagora.wingman.commons.ui.extensions.collectWhenStarted
+import com.iagora.wingman.core.presentation.base.BaseFragment
+import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
 import com.iagora.wingman.market.helper.model.response.ListTypeAndCategory
 import com.iagora.wingman.market.presentation.R
 import com.iagora.wingman.market.presentation.databinding.FragmentAddProductBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 
 class AddProductFragment : BaseFragment<FragmentAddProductBinding>(
@@ -64,7 +64,7 @@ class AddProductFragment : BaseFragment<FragmentAddProductBinding>(
         binding.containerBtn.btnPrimary.isEnabled = true
 
         binding.containerBtn.btnPrimary.setOnClickListener {
-            Log.e("LIST", listTempVariant.toString())
+            Timber.e(listTempVariant.toString())
         }
     }
 

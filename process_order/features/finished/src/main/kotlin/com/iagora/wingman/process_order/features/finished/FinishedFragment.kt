@@ -1,6 +1,6 @@
 package com.iagora.wingman.process_order.features.finished
 
-import com.iagora.wingman.commons.ui.base.BaseFragment
+import com.iagora.wingman.core.presentation.base.BaseFragment
 import com.iagora.wingman.process_order.features.finished.databinding.FragmentFinishedBinding
 
 

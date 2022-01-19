@@ -1,6 +1,6 @@
 package com.iagora.wingman.process_order.features.payment
 
-import com.iagora.wingman.commons.ui.extensions.collectWhenStarted
+import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
 import com.iagora.wingman.process_order.features.waiting_list.WaitingListFragment
 import com.iagora.wingman.process_order.viewmodels.PaymentViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel

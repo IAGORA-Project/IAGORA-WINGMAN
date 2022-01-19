@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
-import com.iagora.wingman.commons.ui.base.BaseListAdapter
-import com.iagora.wingman.commons.ui.base.BaseViewHolder
-import com.iagora.wingman.commons.views.helper.Util.convertToLong
+import com.iagora.wingman.core.presentation.base.BaseListAdapter
+import com.iagora.wingman.core.presentation.base.BaseViewHolder
+import com.iagora.wingman.core.presentation.util.Util.convertToLong
 import com.iagora.wingman.market.presentation.R
 import com.iagora.wingman.market.presentation.databinding.ItemListVariantPriceBinding
 

@@ -3,13 +3,11 @@ include(
 
     ":helper",
 
-    ":commons:ui",
-    ":commons:views",
-
     ":core:di",
     ":core:data",
     ":core:domain",
     ":core:util",
+    ":core:presentation",
 
     ":gallery:domain",
     ":gallery:presentation",

@@ -1,7 +1,7 @@
 package com.iagora.wingman.process_order.features.main_features
 
 import androidx.navigation.fragment.findNavController
-import com.iagora.wingman.commons.ui.extensions.collectWhenStarted
+import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
 import com.iagora.wingman.process_order.features.waiting_list.WaitingListFragment
 import com.iagora.wingman.process_order.viewmodels.ConfirmedViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel

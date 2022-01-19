@@ -3,8 +3,8 @@ package com.iagora.wingman.market.presentation.list_market
 import androidx.appcompat.app.ActionBar
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
-import com.iagora.wingman.commons.ui.base.BaseFragment
-import com.iagora.wingman.commons.ui.extensions.collectWhenStarted
+import com.iagora.wingman.core.presentation.base.BaseFragment
+import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
 import com.iagora.wingman.market.presentation.R
 import com.iagora.wingman.market.presentation.databinding.FragmentListMarketBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel

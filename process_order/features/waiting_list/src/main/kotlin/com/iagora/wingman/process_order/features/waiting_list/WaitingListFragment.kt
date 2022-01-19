@@ -1,9 +1,9 @@
 package com.iagora.wingman.process_order.features.waiting_list
 
 
-import com.iagora.wingman.commons.ui.base.BaseFragment
-import com.iagora.wingman.commons.views.helper.Util.hide
-import com.iagora.wingman.commons.views.helper.Util.show
+import com.iagora.wingman.core.presentation.base.BaseFragment
+import com.iagora.wingman.core.presentation.util.Util.hide
+import com.iagora.wingman.core.presentation.util.Util.show
 import com.iagora.wingman.helper.Resource
 import com.iagora.wingman.helper.set
 import com.iagora.wingman.process_order.features.waiting_list.databinding.FragmentWaitingListBinding

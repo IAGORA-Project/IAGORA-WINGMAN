@@ -2,7 +2,7 @@ package com.iagora.wingman.app.chat.finished_chat
 
 import com.iagora.wingman.app.R
 import com.iagora.wingman.app.databinding.FragmentFinishedChatBinding
-import com.iagora.wingman.commons.ui.base.BaseFragment
+import com.iagora.wingman.core.presentation.base.BaseFragment
 
 
 class FinishedChatFragment :

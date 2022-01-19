@@ -14,8 +14,8 @@ android {
 
 dependencies {
     implementation(project(BuildModules.Core.UTIL))
-    implementation(project(BuildModules.Commons.UI))
-    implementation(project(BuildModules.Commons.VIEWS))
+    implementation(project(BuildModules.Core.PRESENTATION))
+
     implementation(project(BuildModules.ProcessOrder.CORE))
 //    implementation(project(BuildModules.ProcessOrder.Features.MAIN))
 

@@ -98,9 +98,7 @@ dependencies {
     implementation(project(BuildModules.Core.DOMAIN))
     implementation(project(BuildModules.Core.DI))
     implementation(project(BuildModules.Core.UTIL))
-
-    implementation(project(BuildModules.Commons.UI))
-    implementation(project(BuildModules.Commons.VIEWS))
+    implementation(project(BuildModules.Core.PRESENTATION))
 
     implementation(project(BuildModules.ProcessOrder.Features.MAIN))
     implementation(project(BuildModules.ReceiveOrder.Features.MAIN))

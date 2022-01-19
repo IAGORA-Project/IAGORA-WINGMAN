@@ -1,14 +1,15 @@
 package com.iagora.wingman.gallery.presentation.album
 
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import com.iagora.wingman.commons.ui.base.BaseListAdapter
-import com.iagora.wingman.commons.ui.base.BaseViewHolder
-import com.iagora.wingman.commons.views.helper.SetImage.load
-import com.iagora.wingman.commons.views.helper.Util.customPrimaryColor
+import com.iagora.wingman.core.presentation.base.BaseListAdapter
+import com.iagora.wingman.core.presentation.base.BaseViewHolder
+import com.iagora.wingman.core.presentation.util.SetImage.load
+import com.iagora.wingman.core.presentation.util.Util.customPrimaryColor
 import com.iagora.wingman.gallery.domain.models.Image
 import com.iagora.wingman.gallery.presentation.R
 import com.iagora.wingman.gallery.presentation.album.AlbumFragment.Companion.MAX_IMAGE

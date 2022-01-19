@@ -3,7 +3,6 @@ package com.iagora.wingman.gallery.presentation.album
 import android.Manifest
 import android.app.Dialog
 import android.content.pm.PackageManager
-
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -17,8 +16,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
-import com.iagora.wingman.commons.views.helper.Permission
-import com.iagora.wingman.commons.views.helper.Util.customPrimaryColor
+import com.iagora.wingman.core.presentation.util.Permission
+import com.iagora.wingman.core.presentation.util.Util.customPrimaryColor
 import com.iagora.wingman.gallery.domain.models.Image
 import com.iagora.wingman.gallery.presentation.R
 import com.iagora.wingman.gallery.presentation.databinding.FragmentAlbumBinding
@@ -102,7 +101,7 @@ class AlbumFragment :
             btnSelectGallery.setOnClickListener {
                 requireActivity().finish()
             }
-            tvToolbar.setTextColor(R.color.black)
+            tvToolbar.setTextColor(resources.getColor(R.color.black, null))
 
             adapter.getToolbarText { textToolbar ->
                 if (textToolbar == null) {

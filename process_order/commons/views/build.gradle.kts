@@ -16,7 +16,7 @@ android{
 }
 
 dependencies {
-    implementation(project(BuildModules.Commons.VIEWS))
+    implementation(project(BuildModules.Core.PRESENTATION))
 
     Dependencies.apply {
         implementation(APPCOMPAT)

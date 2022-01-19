@@ -3,11 +3,11 @@ package com.iagora.wingman.process_order.features.confirmed.detail
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.iagora.wingman.commons.ui.base.BaseListAdapter
-import com.iagora.wingman.commons.ui.base.BaseViewHolder
-import com.iagora.wingman.commons.views.databinding.ItemProductBinding
-import com.iagora.wingman.commons.views.helper.FormatCurrency.formatPrice
 import com.iagora.wingman.core.domain.model.dto.Product
+import com.iagora.wingman.core.presentation.base.BaseListAdapter
+import com.iagora.wingman.core.presentation.base.BaseViewHolder
+import com.iagora.wingman.core.presentation.databinding.ItemProductBinding
+import com.iagora.wingman.core.presentation.util.FormatCurrency.formatPrice
 import com.iagora.wingman.process_order.features.confirmed.R
 
 

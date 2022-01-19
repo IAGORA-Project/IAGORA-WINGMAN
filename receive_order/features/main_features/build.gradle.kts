@@ -16,8 +16,7 @@ dependencies {
 
     implementation(project(BuildModules.Core.DOMAIN))
 
-    implementation(project(BuildModules.Commons.UI))
-    implementation(project(BuildModules.Commons.VIEWS))
+    implementation(project(BuildModules.Core.PRESENTATION))
 
     implementation(project(BuildModules.ReceiveOrder.CORE))
     implementation(project(BuildModules.ReceiveOrder.HELPER))

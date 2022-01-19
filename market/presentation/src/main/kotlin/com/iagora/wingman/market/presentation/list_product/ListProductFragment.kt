@@ -4,9 +4,8 @@ import androidx.appcompat.app.ActionBar
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.iagora.wingman.commons.ui.base.BaseFragment
-import com.iagora.wingman.commons.ui.extensions.collectWhenStarted
-import com.iagora.wingman.market.features.list_product_market.ListProductAdapter
+import com.iagora.wingman.core.presentation.base.BaseFragment
+import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
 import com.iagora.wingman.market.presentation.R
 import com.iagora.wingman.market.presentation.databinding.FragmentListProductMarketBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel

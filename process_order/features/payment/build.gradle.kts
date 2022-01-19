@@ -16,8 +16,7 @@ dependencies {
     implementation(project(BuildModules.ProcessOrder.Features.WAITING_LIST))
     implementation(project(BuildModules.HELPER))
     implementation(project(BuildModules.ProcessOrder.HELPER))
-    implementation(project(BuildModules.Commons.UI))
-    implementation(project(BuildModules.Commons.VIEWS))
+    implementation(project(BuildModules.Core.PRESENTATION))
     implementation(project(BuildModules.ProcessOrder.CORE))
     implementation(project(BuildModules.ProcessOrder.VIEWMODELS))
 

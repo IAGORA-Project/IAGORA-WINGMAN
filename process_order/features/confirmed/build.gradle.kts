@@ -16,9 +16,8 @@ dependencies {
     implementation(project(BuildModules.HELPER))
 
     implementation(project(BuildModules.Core.DOMAIN))
+    implementation(project(BuildModules.Core.PRESENTATION))
 
-    implementation(project(BuildModules.Commons.UI))
-    implementation(project(BuildModules.Commons.VIEWS))
 
     implementation(project(BuildModules.ProcessOrder.HELPER))
     implementation(project(BuildModules.ProcessOrder.VIEWMODELS))

@@ -4,8 +4,8 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.iagora.wingman.commons.ui.base.BaseFragment
-import com.iagora.wingman.commons.views.helper.Util.dpToPx
+import com.iagora.wingman.core.presentation.base.BaseFragment
+import com.iagora.wingman.core.presentation.util.Util.dpToPx
 import com.iagora.wingman.process_order.features.paid.databinding.FragmentPaidBinding
 
 class PaidFragment :

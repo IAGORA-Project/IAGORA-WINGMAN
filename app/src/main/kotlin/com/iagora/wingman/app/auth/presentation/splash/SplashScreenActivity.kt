@@ -8,8 +8,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.iagora.wingman.app.databinding.ActivitySplashScreenBinding
 import com.iagora.wingman.app.auth.presentation.login.LoginActivity
 import com.iagora.wingman.app.main_menu.presentation.MainActivity
-import com.iagora.wingman.commons.ui.base.BaseActivity
-import com.iagora.wingman.commons.views.helper.Util.customPrimaryColor
+
+import com.iagora.wingman.core.presentation.base.BaseActivity
+import com.iagora.wingman.core.presentation.util.Util.customPrimaryColor
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

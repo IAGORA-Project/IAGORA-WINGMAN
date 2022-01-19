@@ -16,8 +16,8 @@ import com.iagora.wingman.app.databinding.ActivityMainBinding
 import com.iagora.wingman.app.main_menu.domain.model.MyLocation
 import com.iagora.wingman.app.main_menu.presentation.home.HomeViewModel
 import com.iagora.wingman.app.services.TrackingService
-import com.iagora.wingman.commons.ui.base.BaseActivity
-import com.iagora.wingman.commons.ui.extensions.collectWhenStarted
+import com.iagora.wingman.core.presentation.base.BaseActivity
+import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

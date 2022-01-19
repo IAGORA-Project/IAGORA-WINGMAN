@@ -4,10 +4,10 @@ import android.content.Intent
 import com.google.android.material.snackbar.Snackbar
 import com.iagora.wingman.app.databinding.ActivityLoginBinding
 import com.iagora.wingman.app.main_menu.presentation.MainActivity
-import com.iagora.wingman.commons.ui.base.BaseActivity
-import com.iagora.wingman.commons.ui.extensions.collectWhenStarted
-import com.iagora.wingman.commons.views.helper.Loader
-import com.iagora.wingman.commons.views.helper.Util.customPrimaryColor
+import com.iagora.wingman.core.presentation.base.BaseActivity
+import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
+import com.iagora.wingman.core.presentation.util.Loader
+import com.iagora.wingman.core.presentation.util.Util.customPrimaryColor
 import com.iagora.wingman.core.util.UiEvent
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber

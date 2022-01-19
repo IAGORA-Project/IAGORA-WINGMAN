@@ -3,9 +3,9 @@ package com.iagora.wingman.market.presentation.list_market
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.iagora.wingman.commons.ui.base.BaseListAdapter
-import com.iagora.wingman.commons.ui.base.BaseViewHolder
-import com.iagora.wingman.commons.views.helper.Util.capitalizeWords
+import com.iagora.wingman.core.presentation.base.BaseListAdapter
+import com.iagora.wingman.core.presentation.base.BaseViewHolder
+import com.iagora.wingman.core.presentation.util.Util.capitalizeWords
 import com.iagora.wingman.market.helper.model.response.ListMarket
 import com.iagora.wingman.market.presentation.databinding.ItemListMarketBinding
 

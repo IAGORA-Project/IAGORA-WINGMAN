@@ -9,10 +9,10 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.iagora.wingman.commons.ui.base.BaseFragment
-import com.iagora.wingman.commons.ui.extensions.collectWhenStarted
-import com.iagora.wingman.commons.views.helper.Util.dpToPx
-import com.iagora.wingman.commons.views.helper.Util.reduceDragSensitivity
+import com.iagora.wingman.core.presentation.base.BaseFragment
+import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
+import com.iagora.wingman.core.presentation.util.Util.dpToPx
+import com.iagora.wingman.core.presentation.util.Util.reduceDragSensitivity
 import com.iagora.wingman.helper.FlowProcessOrder
 import com.iagora.wingman.process_order.features.main_features.databinding.FragmentProcessOrderBinding
 import com.iagora.wingman.process_order.viewmodels.ConfirmationViewModel

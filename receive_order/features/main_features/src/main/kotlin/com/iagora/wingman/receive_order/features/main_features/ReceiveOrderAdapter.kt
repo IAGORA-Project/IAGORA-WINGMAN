@@ -3,11 +3,11 @@ package com.iagora.wingman.receive_order.features.main_features
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.iagora.wingman.commons.ui.base.BaseListAdapter
-import com.iagora.wingman.commons.ui.base.BaseViewHolder
-import com.iagora.wingman.commons.views.databinding.ItemProductBinding
-import com.iagora.wingman.commons.views.helper.FormatCurrency.formatPrice
 import com.iagora.wingman.core.domain.model.dto.Product
+import com.iagora.wingman.core.presentation.base.BaseListAdapter
+import com.iagora.wingman.core.presentation.base.BaseViewHolder
+import com.iagora.wingman.core.presentation.databinding.ItemProductBinding
+import com.iagora.wingman.core.presentation.util.FormatCurrency.formatPrice
 
 
 class ReceiveOrderAdapter : BaseListAdapter<Product>(

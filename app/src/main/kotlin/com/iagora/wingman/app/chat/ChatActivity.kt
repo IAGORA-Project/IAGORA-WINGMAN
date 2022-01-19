@@ -4,10 +4,10 @@ import android.content.Context
 import android.content.Intent
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
-import com.iagora.wingman.app.databinding.ActivityChatBinding
 import com.iagora.wingman.app.chat.finished_chat.FinishedChatFragment
 import com.iagora.wingman.app.chat.ongoing.OnGoingFragment
-import com.iagora.wingman.commons.ui.base.BaseActivity
+import com.iagora.wingman.app.databinding.ActivityChatBinding
+import com.iagora.wingman.core.presentation.base.BaseActivity
 
 class ChatActivity : BaseActivity<ActivityChatBinding>({ ActivityChatBinding.inflate(it) }) {
 
