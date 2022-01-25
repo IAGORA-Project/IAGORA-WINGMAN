@@ -1,7 +1,5 @@
 package com.iagora.wingman.app.auth.domain.repository
 
-import com.google.android.gms.common.api.Response
-import com.iagora.wingman.core.util.Resource
 import com.iagora.wingman.core.util.SimpleResource
 
 interface IAuthRepository {
@@ -13,7 +11,7 @@ interface IAuthRepository {
 
 
     suspend fun requestOTP(
-        phoneNumber: String
+        phoneNumber: String,
     ): SimpleResource
 
 

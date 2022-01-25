@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/activity_horizontal_padding">
@@ -19,7 +20,7 @@
         android:clipChildren="true"
         android:hint="@string/hint_phone"
         app:boxStrokeWidthFocused="1dp"
-        app:hintTextAppearance="@style/TextViewSemiBold.OpenSans_18sp_020202"
+        app:hintTextAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo">
 
@@ -32,6 +33,16 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <include
+        android:id="@+id/incSetOtp"
+        layout="@layout/layout_set_otp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        tools:layout_editor_absoluteX="15dp" />
+
+    <include
         android:id="@+id/incBtnLogin"
         layout="@layout/layout_button_primary"
         android:layout_width="match_parent"
@@ -40,5 +51,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tlPhone" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

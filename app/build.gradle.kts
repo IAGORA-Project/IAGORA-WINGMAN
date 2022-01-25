@@ -129,9 +129,6 @@ dependencies {
         implementation(LIFECYCLE_RUNTIME)
         implementation(GLIDE)
 
-        // rx-java
-        implementation(RX_ANDROID)
-        implementation(RX_JAVA)
 
         // dependency
         implementation(KOIN_ANDROID)
@@ -141,11 +138,6 @@ dependencies {
         // remote
         implementation(RETROFIT_GSON)
 
-        // firebase
-        implementation(FIREBASE_MESSAGING)
-        implementation(FIREBASE_ANALYTICS)
-        implementation(platform(FIREBASE_BOM))
-        implementation(FIREBASE_DATABASE)
 
         // debug
         implementation(TIMBER)
@@ -153,6 +145,9 @@ dependencies {
         // security
         implementation(JETPACK_SECURITY)
 
+
+        // OTP view
+        implementation(OTP_VIEW)
 
         // google
 //        implementation(GOOGLE_PLAY_SERVICES_LOCATION)

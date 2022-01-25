@@ -55,6 +55,7 @@ object BuildDependenciesVersions {
     const val DATA_BINDING = "7.0.3"
     const val TIMBER = "5.0.1"
     const val JETPACK_SECURITY = "1.1.0-alpha03"
+    const val OTP_VIEW ="2.0.0"
 
     // Tests
     const val TEST = "1.3.0"

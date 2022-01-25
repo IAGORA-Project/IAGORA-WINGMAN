@@ -26,4 +26,5 @@ fun RepositoryHandler.applyDefault() {
     google()
     mavenCentral()
     gradlePluginPortal()
+    maven("https://jitpack.io")
 }

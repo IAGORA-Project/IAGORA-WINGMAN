@@ -20,19 +20,24 @@ class LoginFragment :
 
     override fun setView() {
         Loader.handleLoading(requireContext())
+
+        requestOTP()
         requestLogin()
         observerEventLogin()
     }
 
-    private fun requestLogin() {
+    private fun requestOTP() {
         binding.incBtnLogin.btnPrimary.setOnClickListener {
             val phoneNumber = binding.tlPhone.editText?.text.toString()
-            viewModel.requestLogin(phoneNumber)
+            viewModel.setPhoneNumber(phoneNumber)
         }
     }
 
-    private fun observerEventLogin() {
+    private fun requestLogin() {
+        binding.incSetOtp.otpView.setOtpCompletionListener(viewModel::login)
+    }
 
+    private fun observerEventLogin() {
         viewModel.phoneNumberError.collectWhenStarted(viewLifecycleOwner) {
             Timber.e(it.toString())
 
@@ -44,8 +49,6 @@ class LoginFragment :
         }
 
         viewModel.loginState.collectWhenStarted(viewLifecycleOwner) { isLoading ->
-            Timber.e("STATE $isLoading")
-
             if (isLoading) Loader.progressDialog?.show()
             else Loader.progressDialog?.dismiss()
         }
@@ -60,9 +63,16 @@ class LoginFragment :
                     }.show()
                     Timber.e("EVENT ${event.uiText}")
                 }
-                is UiEvent.OnLogin -> {
-                    Timber.e("EVENT success")
-//                startActivity(requireActivity() (this, MainActivity::class.java))
+                is LoginEvent.OnGetOtp -> {
+                    with(binding) {
+                        tlPhone.hide()
+                        incBtnLogin.root.hide()
+                        incSetOtp.root.show()
+                    }
+                }
+
+                is LoginEvent.OnLogin -> {
+
                 }
             }
         }

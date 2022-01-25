@@ -128,4 +128,7 @@ object Dependencies {
 
     // SECURITY
     const val  JETPACK_SECURITY ="androidx.security:security-crypto:${BuildDependenciesVersions.JETPACK_SECURITY}"
+
+    // OTP VIEW
+    const val OTP_VIEW = "com.github.mukeshsolanki:android-otpview-pinview:${BuildDependenciesVersions.OTP_VIEW}"
 }
