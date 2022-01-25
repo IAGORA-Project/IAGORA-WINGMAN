@@ -3,16 +3,17 @@ package com.iagora.wingman.app.auth.presentation.splash
 import android.annotation.SuppressLint
 import android.os.Handler
 import android.os.Looper
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.iagora.wingman.app.R
 import com.iagora.wingman.app.databinding.FragmentSplashScreenBinding
 import com.iagora.wingman.core.presentation.base.BaseFragment
-import com.iagora.wingman.core.presentation.util.Util.customPrimaryColor
+import com.iagora.wingman.core.presentation.util.customPrimaryColor
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 @SuppressLint("CustomSplashScreen")
-class SplashScreenFragment :
+class SplashActivity :
     BaseFragment<FragmentSplashScreenBinding>(
         R.layout.fragment_splash_screen,
         { FragmentSplashScreenBinding.bind(it) }) {
@@ -23,7 +24,7 @@ class SplashScreenFragment :
         Handler(Looper.getMainLooper()).postDelayed({
             when (val event = viewModel.loadLogin()) {
                 is OnBoardingPage.LoginPage -> {
-//                    startActivity(Intent(this, MainActivity::class.java))
+                    findNavController().navigate(R.id.moveToLogin)
                 }
                 is OnBoardingPage.MainPage -> {
 //                    startActivity(Intent(this, LoginActivity::class.java))

@@ -1,6 +1,7 @@
 package com.iagora.wingman.market.data.repository
 
 import com.iagora.wingman.core.util.Resource
+
 import com.iagora.wingman.core.util.UiText
 import com.iagora.wingman.market.data.R
 import com.iagora.wingman.market.data.mapper.MapperListMarket.toModel
@@ -44,14 +45,14 @@ class MarketRepository(private val api: MarketApi) : IMarketRepository {
         if (listTypeAndCategory.status == 200) {
             Resource.Success(listTypeAndCategory)
         } else {
-            Resource.Error(com.iagora.wingman.core.util.UiText.DynamicString("Error ${listTypeAndCategory.status}"))
+            Resource.Error(UiText.DynamicString("Error ${listTypeAndCategory.status}"))
         }
 
     } catch (e: IOException) {
         Resource.Error(UiText.StringResource(R.string.error_couldnt_reach_server))
     } catch (e: HttpException) {
         Resource.Error(
-            uiText = UiText.StringResource(R.string.oops_something_went_wrong)
+            uiText =UiText.StringResource(R.string.oops_something_went_wrong)
         )
     }
 

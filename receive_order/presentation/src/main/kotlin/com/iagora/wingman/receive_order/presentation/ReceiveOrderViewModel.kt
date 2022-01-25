@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.iagora.wingman.core.util.Event
 import com.iagora.wingman.core.util.Resource
-import com.iagora.wingman.core.util.UiEvent
+import com.iagora.wingman.core.presentation.util.UiEvent
 import com.iagora.wingman.core.util.UiText
 import com.iagora.wingman.receive_order.domain.models.body.ReceiveOrder
 import com.iagora.wingman.receive_order.domain.usecase.IAcceptOrder

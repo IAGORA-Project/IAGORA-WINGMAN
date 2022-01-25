@@ -6,9 +6,9 @@ import com.iagora.wingman.core.presentation.base.BaseActivity
 import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
 import com.iagora.wingman.core.presentation.util.Loader
 import com.iagora.wingman.core.presentation.util.SetImage.loadPhotoProfile
-import com.iagora.wingman.core.presentation.util.Util.customPrimaryColor
-import com.iagora.wingman.core.util.UiEvent
-import com.iagora.wingman.core.util.asString
+import com.iagora.wingman.core.presentation.util.UiEvent
+import com.iagora.wingman.core.presentation.util.asString
+import com.iagora.wingman.core.presentation.util.customPrimaryColor
 import com.iagora.wingman.receive_order.domain.models.body.ReceiveOrder
 import com.iagora.wingman.receive_order.presentation.databinding.ActivityReceiveOrderBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel

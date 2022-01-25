@@ -1,7 +1,7 @@
 package com.iagora.wingman.app.auth.presentation.splash
 
 import com.iagora.wingman.core.util.Event
-import com.iagora.wingman.core.util.UiEvent
+import com.iagora.wingman.core.presentation.util.UiEvent
 
 sealed class OnBoardingPage : Event() {
     object MainPage : OnBoardingPage()

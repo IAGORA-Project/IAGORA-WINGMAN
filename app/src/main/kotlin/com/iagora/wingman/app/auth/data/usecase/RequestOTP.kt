@@ -10,9 +10,9 @@ class RequestOTP(private val repository: IAuthRepository) : IRequestOTP {
     override suspend fun invoke(phoneNumber: String): OtpResult {
 
         val phoneNumberError = ValidationUtil.validatePhoneNumber(phoneNumber)
-        if (phoneNumber == null) {
-            return OtpResult(phoneNumberError)
 
+        if (phoneNumberError != null) {
+            return OtpResult(phoneNumberError)
         }
 
         return OtpResult(result = repository.requestOTP(phoneNumber))

@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
@@ -18,7 +18,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-sdk tools:overrideLibrary="androidx.security"/>
+
+    <uses-sdk tools:overrideLibrary="androidx.security" />
     <queries>
 
         <!-- Explicit apps you know in advance about: -->
@@ -29,7 +30,7 @@
         android:name="com.iagora.wingman.app.WingmanApp"
         android:allowBackup="true"
         android:fullBackupContent="true"
-
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
@@ -42,30 +43,40 @@
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:windowSoftInputMode="adjustPan"
             android:name="com.iagora.wingman.market.presentation.MarketActivity"
             android:exported="true"
-       />
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:windowSoftInputMode="adjustPan"
+            android:name=".auth.presentation.AuthActivity"
+            android:exported="true"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".chat.ChatActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustPan"
             tools:ignore="LockedOrientationActivity" />
-<!--        <activity-->
-<!--            android:windowSoftInputMode="adjustPan"-->
-<!--            android:name="com.iagora.wingman.process_order.features.main_features.ProcessOrderActivity"-->
-<!--            android:exported="true"-->
-<!--            android:screenOrientation="sensorPortrait"-->
-<!--            tools:ignore="LockedOrientationActivity"-->
-<!--            />-->
-<!--        <activity-->
-<!--            android:windowSoftInputMode="adjustPan"-->
-<!--            android:name="com.iagora.wingman.gallery.presentation.camera.GalleryActivity"-->
-<!--            android:exported="true"-->
-<!--            android:screenOrientation="sensorPortrait"-->
-<!--            tools:ignore="LockedOrientationActivity"-->
-<!--            />-->
+        <!--        <activity-->
+        <!--            android:windowSoftInputMode="adjustPan"-->
+        <!--            android:name="com.iagora.wingman.process_order.features.main_features.ProcessOrderActivity"-->
+        <!--            android:exported="true"-->
+        <!--            android:screenOrientation="sensorPortrait"-->
+        <!--            tools:ignore="LockedOrientationActivity"-->
+        <!--            />-->
+        <!--        <activity-->
+        <!--            android:windowSoftInputMode="adjustPan"-->
+        <!--            android:name="com.iagora.wingman.gallery.presentation.camera.GalleryActivity"-->
+        <!--            android:exported="true"-->
+        <!--            android:screenOrientation="sensorPortrait"-->
+        <!--            tools:ignore="LockedOrientationActivity"-->
+        <!--            />-->
 
 
         <activity
@@ -75,9 +86,9 @@
             tools:ignore="LockedOrientationActivity" />
 
         <!-- Tracking Service -->
-<!--        <service-->
-<!--            android:name="com.iagora.wingman.app.services.TrackingService"-->
-<!--            android:foregroundServiceType="location" />-->
+        <!--        <service-->
+        <!--            android:name="com.iagora.wingman.app.services.TrackingService"-->
+        <!--            android:foregroundServiceType="location" />-->
 
         <meta-data
             android:name="preloaded_fonts"

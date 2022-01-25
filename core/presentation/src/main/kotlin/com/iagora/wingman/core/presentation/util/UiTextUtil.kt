@@ -1,6 +1,7 @@
-package com.iagora.wingman.core.util
+package com.iagora.wingman.core.presentation.util
 
 import android.content.Context
+import com.iagora.wingman.core.util.UiText
 
 
 fun UiText.asString(context: Context): String {

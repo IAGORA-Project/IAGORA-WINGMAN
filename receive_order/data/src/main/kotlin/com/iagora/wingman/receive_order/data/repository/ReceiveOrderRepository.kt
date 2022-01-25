@@ -12,12 +12,12 @@ import retrofit2.HttpException
 import java.io.IOException
 
 class ReceiveOrderRepository(
-    private val api: ReceiveOrderApi
+    private val api: ReceiveOrderApi,
 ) : IReceiveOrderRepository {
 
     override suspend fun postOrderAction(
         action: String,
-        request: ReceiveOrder
+        request: ReceiveOrder,
     ): SimpleResource {
         return try {
             api.postOrderAction(action, request.toBody())

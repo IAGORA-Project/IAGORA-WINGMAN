@@ -1,36 +1,34 @@
 package com.iagora.wingman.core.domain.util
 
-import android.util.Patterns
 import com.iagora.wingman.core.util.AuthError
-import com.iagora.wingman.core.util.Constants.OTP_LENGTH
 
 object ValidationUtil {
 
-    private fun validateCleanText(rawText: String): AuthError? {
-        val cleanText = rawText.trim()
+
+    fun validatePhoneNumber(phoneNumber: String): AuthError? {
+        val cleanText = phoneNumber.trim()
 
         if (cleanText.isBlank()) {
             return AuthError.FieldEmpty
         }
-        return null
-    }
+        val regex = "^628[1-9][0-9]{6,9}$".toRegex()
 
-    fun validatePhoneNumber(phoneNumber: String): AuthError? {
-        val cleanText = validateCleanText(phoneNumber)
-        if (!Patterns.PHONE.matcher(phoneNumber).matches()) {
+        if (!regex.matches(phoneNumber)) {
             return AuthError.InvalidPhoneNumber
         }
 
-        return cleanText
+        return null
     }
 
 
     fun validateOTP(otp: String): AuthError? {
-        val cleanText = validateCleanText(otp)
-        if (otp.length != OTP_LENGTH) {
-            return AuthError.InvalidOTP
+        val cleanText = otp.trim()
+
+        if (cleanText.isBlank()) {
+            return AuthError.FieldEmpty
         }
-        return cleanText
+
+        return null
     }
 
 //    fun validateEmail(email: String): AuthError? {

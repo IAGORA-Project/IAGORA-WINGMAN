@@ -1,6 +1,5 @@
 package com.iagora.wingman.market.presentation.list_product
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.iagora.wingman.core.util.Resource

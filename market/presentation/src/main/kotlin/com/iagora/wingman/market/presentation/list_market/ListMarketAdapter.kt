@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.iagora.wingman.core.presentation.base.BaseListAdapter
 import com.iagora.wingman.core.presentation.base.BaseViewHolder
-import com.iagora.wingman.core.presentation.util.Util.capitalizeWords
+import com.iagora.wingman.core.presentation.util.capitalizeWords
 import com.iagora.wingman.market.helper.model.response.ListMarket
 import com.iagora.wingman.market.presentation.databinding.ItemListMarketBinding
 

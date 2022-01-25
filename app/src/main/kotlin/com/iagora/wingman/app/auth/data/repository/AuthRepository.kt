@@ -15,16 +15,17 @@ import java.io.IOException
 
 class AuthRepository(
     private val api: AuthApi,
-    private val getSESSID: IGetSESSID
+    private val getSESSID: IGetSESSID,
 ) : IAuthRepository {
 
     override suspend fun requestOTP(phoneNumber: String): SimpleResource {
         val request = OtpReq(phoneNumber)
         return try {
-            val sessid = getSESSID()
-            val response = api.otp(request)
-
-            if (response.isSuccess() && sessid.data != null) {
+            val sessid = getSESSID().data ?: ""
+            val response = api.otp(request = request, sessid = mapOf(
+                "sessid" to sessid
+            ))
+            if (response.isSuccess() && sessid.isNotEmpty()) {
                 Resource.Success(Unit)
             } else {
                 Resource.Error(UiText.DynamicString("Error occurred state : ${response.message}"))
@@ -46,10 +47,11 @@ class AuthRepository(
     ): SimpleResource {
         val request = LoginReq(OtpReq(phoneNumber), password)
         return try {
-            val response = api.login(request)
-
-            if (response.status) {
-
+            val sessid = getSESSID().data ?: ""
+            val response = api.login(request = request, sessid = mapOf(
+                "sessid" to sessid
+            ))
+            if (response.status && sessid.isNotEmpty()) {
                 Resource.Success(Unit)
             } else {
                 Timber.e("ERROR LOGIN")

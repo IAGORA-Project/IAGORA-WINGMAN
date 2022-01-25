@@ -9,7 +9,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.iagora.wingman.core.presentation.base.BaseListAdapter
 import com.iagora.wingman.core.presentation.base.BaseViewHolder
 import com.iagora.wingman.core.presentation.util.SetImage.load
-import com.iagora.wingman.core.presentation.util.Util.customPrimaryColor
+import com.iagora.wingman.core.presentation.util.customPrimaryColor
 import com.iagora.wingman.gallery.domain.models.Image
 import com.iagora.wingman.gallery.presentation.R
 import com.iagora.wingman.gallery.presentation.album.AlbumFragment.Companion.MAX_IMAGE
@@ -103,7 +103,7 @@ class AlbumAdapter :
     override fun onCreateViewHolder(
         parent: ViewGroup,
         inflater: LayoutInflater,
-        viewType: Int
+        viewType: Int,
     ): RecyclerView.ViewHolder = AlbumViewHolder(inflater, parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

@@ -15,7 +15,7 @@ android {
 dependencies {
     implementation(project(BuildModules.Core.UTIL))
     implementation(project(BuildModules.Core.PRESENTATION))
-    implementation(project(BuildModules.ProcessOrder.CORE))
+
 
 
     Dependencies.apply {

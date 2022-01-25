@@ -5,9 +5,8 @@ import com.iagora.wingman.app.R
 import com.iagora.wingman.app.databinding.FragmentLoginBinding
 import com.iagora.wingman.core.presentation.base.BaseFragment
 import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
-import com.iagora.wingman.core.presentation.util.Loader
-import com.iagora.wingman.core.presentation.util.Util.customPrimaryColor
-import com.iagora.wingman.core.util.UiEvent
+import com.iagora.wingman.core.presentation.util.*
+import com.iagora.wingman.core.util.AuthError
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -26,33 +25,45 @@ class LoginFragment :
     }
 
     private fun requestLogin() {
-        binding.incBtnLogin.setOnClickListener {
+        binding.incBtnLogin.btnPrimary.setOnClickListener {
             val phoneNumber = binding.tlPhone.editText?.text.toString()
             viewModel.requestLogin(phoneNumber)
-
-
         }
-        viewModel.loginState.collectWhenStarted(this) { state ->
-            Timber.e("STATE $state")
-
-            if (state.isLoading) Loader.progressDialog?.show()
-            else Loader.progressDialog?.dismiss()
-        }
-
     }
 
-    private fun observerEventLogin() = viewModel.eventFlow.collectWhenStarted(this) { event ->
+    private fun observerEventLogin() {
 
-        when (event) {
-            is UiEvent.CreateMessage -> {
-                Snackbar.make(binding.root, event.uiText.toString(), Snackbar.LENGTH_SHORT).apply {
-                    customPrimaryColor(this.context)
-                }.show()
-                Timber.e("EVENT ${event.uiText}")
+        viewModel.phoneNumberError.collectWhenStarted(viewLifecycleOwner) {
+            Timber.e(it.toString())
+
+            binding.tlPhone.error = when (it) {
+                is AuthError.FieldEmpty -> resources.getString(R.string.error_field_empty)
+                is AuthError.InvalidPhoneNumber -> resources.getString(R.string.error_invalid_phone_number)
+                else -> ""
             }
-            is UiEvent.OnLogin -> {
-                Timber.e("EVENT success")
+        }
+
+        viewModel.loginState.collectWhenStarted(viewLifecycleOwner) { isLoading ->
+            Timber.e("STATE $isLoading")
+
+            if (isLoading) Loader.progressDialog?.show()
+            else Loader.progressDialog?.dismiss()
+        }
+        viewModel.eventFlow.collectWhenStarted(viewLifecycleOwner) { event ->
+
+            when (event) {
+                is UiEvent.CreateMessage -> {
+                    Snackbar.make(binding.root,
+                        event.uiText.asString(requireContext()),
+                        Snackbar.LENGTH_SHORT).apply {
+                        customPrimaryColor(this.context)
+                    }.show()
+                    Timber.e("EVENT ${event.uiText}")
+                }
+                is UiEvent.OnLogin -> {
+                    Timber.e("EVENT success")
 //                startActivity(requireActivity() (this, MainActivity::class.java))
+                }
             }
         }
     }

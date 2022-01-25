@@ -19,11 +19,6 @@ dependencies {
     implementation(project(BuildModules.Core.PRESENTATION))
 
 
-    implementation(project(BuildModules.ProcessOrder.HELPER))
-    implementation(project(BuildModules.ProcessOrder.VIEWMODELS))
-
-    implementation(project(BuildModules.ProcessOrder.Commons.VIEWS))
-    implementation(project(BuildModules.ProcessOrder.Features.CONFIRMED))
 
 
 

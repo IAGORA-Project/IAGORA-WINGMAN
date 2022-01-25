@@ -13,6 +13,8 @@ android{
 }
 
 dependencies {
+    implementation(project(BuildModules.Core.UTIL))
+
     Dependencies.apply {
         // common requirement
         implementation(CORE_KTX)

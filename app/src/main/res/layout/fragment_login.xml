@@ -26,7 +26,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="phone"
             android:maxLength="15"
             android:theme="@style/TextViewReguler.OpenSans_14sp_020202" />
     </com.google.android.material.textfield.TextInputLayout>

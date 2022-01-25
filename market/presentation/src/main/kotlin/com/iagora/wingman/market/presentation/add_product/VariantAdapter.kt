@@ -8,7 +8,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.iagora.wingman.core.presentation.base.BaseListAdapter
 import com.iagora.wingman.core.presentation.base.BaseViewHolder
-import com.iagora.wingman.core.presentation.util.Util.convertToLong
+import com.iagora.wingman.core.presentation.util.convertToLong
 import com.iagora.wingman.market.presentation.R
 import com.iagora.wingman.market.presentation.databinding.ItemListVariantPriceBinding
 
@@ -76,7 +76,7 @@ class VariantAdapter : BaseListAdapter<AddProductFragment.Companion.TempListVari
     override fun onCreateViewHolder(
         parent: ViewGroup,
         inflater: LayoutInflater,
-        viewType: Int
+        viewType: Int,
     ): RecyclerView.ViewHolder = VariantViewHolder(inflater, parent)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

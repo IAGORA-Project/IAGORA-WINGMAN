@@ -17,16 +17,7 @@ dependencies {
 
     implementation(project(BuildModules.Core.PRESENTATION))
 
-    implementation(project(BuildModules.ProcessOrder.VIEWMODELS))
-    implementation(project(BuildModules.ProcessOrder.CORE))
 
-    implementation(project(BuildModules.ProcessOrder.Features.WAITING_LIST))
-    implementation(project(BuildModules.ProcessOrder.Features.SENT))
-    implementation(project(BuildModules.ProcessOrder.Features.PAID))
-    implementation(project(BuildModules.ProcessOrder.Features.PAYMENT))
-    implementation(project(BuildModules.ProcessOrder.Features.FINISHED))
-    implementation(project(BuildModules.ProcessOrder.Features.CONFIRMED))
-    implementation(project(BuildModules.ProcessOrder.Features.CONFIRMATION))
 
     Dependencies.apply {
         implementation(APPCOMPAT)

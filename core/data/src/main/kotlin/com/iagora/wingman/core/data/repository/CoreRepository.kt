@@ -8,7 +8,6 @@ import com.iagora.wingman.core.data.session.SessionManager.Companion.KEY_SESSID
 import com.iagora.wingman.core.data.util.PrefSetting.clearData
 import com.iagora.wingman.core.domain.repository.ICoreRepository
 import com.iagora.wingman.core.util.Resource
-import com.iagora.wingman.core.util.SimpleResource
 import com.iagora.wingman.core.util.UiText
 import retrofit2.HttpException
 import timber.log.Timber
@@ -17,21 +16,18 @@ import java.io.IOException
 class CoreRepository(
     private val sharedPref: SharedPreferences,
     private val api: CoreAPI,
-    private val sessionManager: SessionManager
+    private val sessionManager: SessionManager,
 ) : ICoreRepository {
     override fun clearData(key: String): Boolean = sharedPref.clearData(key)
 
-    override suspend fun getSESSID(): SimpleResource {
+    override suspend fun getSESSID(): Resource<String> {
         return try {
             val response = api.sessid()
-            if (response.isSuccessful) {
-                val sessid = response.headers().get("sessid")
-                if (sessid != null && sessid.isNotEmpty()) {
-                    sessionManager.saveToPreference(KEY_SESSID, sessid)
-                    Resource.Success(Unit)
-                }
+            val sessid = response.headers().get("sessid")
+            if (response.isSuccessful && sessid != null && sessid.isNotEmpty()) {
+                sessionManager.saveToPreference(KEY_SESSID, sessid)
                 Timber.e(sessid)
-                Resource.Error(UiText.DynamicString("sessid is empty"))
+                Resource.Success(sessid)
             } else {
                 Resource.Error(UiText.DynamicString("Error occurred state : ${response.message()}"))
             }

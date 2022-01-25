@@ -17,7 +17,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
 import com.iagora.wingman.core.presentation.util.Permission
-import com.iagora.wingman.core.presentation.util.Util.customPrimaryColor
+import com.iagora.wingman.core.presentation.util.customPrimaryColor
 import com.iagora.wingman.gallery.domain.models.Image
 import com.iagora.wingman.gallery.presentation.R
 import com.iagora.wingman.gallery.presentation.databinding.FragmentAlbumBinding
@@ -32,7 +32,7 @@ class AlbumFragment :
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentAlbumBinding.inflate(inflater, container, false)
         return binding?.root
@@ -109,9 +109,9 @@ class AlbumFragment :
                     btnSelectGallery.isVisible = false
                     tvToolbar.isVisible = false
 
-                }else{
+                } else {
                     btnSelectGallery.isVisible = true
-                    tvToolbar.apply{
+                    tvToolbar.apply {
                         text = textToolbar
                         isVisible = true
                     }

@@ -14,9 +14,9 @@ android {
 dependencies {
     implementation(project(BuildModules.HELPER))
     implementation(project(BuildModules.Core.DOMAIN))
-    implementation(project(BuildModules.ProcessOrder.HELPER))
+
     implementation(project(BuildModules.Core.PRESENTATION))
-    implementation(project(BuildModules.ProcessOrder.Commons.VIEWS))
+
 
 
     Dependencies.apply {

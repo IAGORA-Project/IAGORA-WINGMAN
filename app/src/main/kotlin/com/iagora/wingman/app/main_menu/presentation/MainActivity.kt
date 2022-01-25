@@ -1,7 +1,6 @@
 package com.iagora.wingman.app.main_menu.presentation
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.view.WindowManager
@@ -15,7 +14,6 @@ import com.iagora.wingman.app.R
 import com.iagora.wingman.app.databinding.ActivityMainBinding
 import com.iagora.wingman.app.main_menu.domain.model.MyLocation
 import com.iagora.wingman.app.main_menu.presentation.home.HomeViewModel
-import com.iagora.wingman.app.services.TrackingService
 import com.iagora.wingman.core.presentation.base.BaseActivity
 import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -46,7 +44,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ ActivityMainBinding.inf
     }
 
 
-    private fun handleStatusBar(){
+    private fun handleStatusBar() {
         val window = this.window
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.statusBarColor = this.getColor(R.color.redPrimary)
@@ -54,21 +52,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ ActivityMainBinding.inf
 
 
     private fun getLocationUpdate(wingman_id: String) {
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-            startService(wingman_id)
-        }else{
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 101)
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        ) {
+
+        } else {
+            ActivityCompat.requestPermissions(this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                101)
         }
     }
 
-
-    private fun startService(wingman_id: String) {
-        Intent(this, TrackingService::class.java).also {
-            it.action = wingman_id
-            this.startService(it)
-        }
-    }
 
     override fun onResume() {
         super.onResume()
@@ -113,11 +109,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ ActivityMainBinding.inf
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray
+        grantResults: IntArray,
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if(requestCode == 101){
+        if (requestCode == 101) {
             if (grantResults.isNotEmpty() && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "Permission Required", Toast.LENGTH_SHORT).show()
             }

@@ -91,4 +91,8 @@
     <string name="text_max_image_seleted">max 9 gambar</string>
     <string name="desc_close">Tutup</string>
 
+
+
+    <string name="error_invalid_phone_number">Use correct format</string>
+
 </resources>

@@ -5,5 +5,5 @@ import com.iagora.wingman.core.util.SimpleResource
 
 
 interface IGetSESSID {
-    suspend operator fun invoke():SimpleResource
+    suspend operator fun invoke():Resource<String>
 }

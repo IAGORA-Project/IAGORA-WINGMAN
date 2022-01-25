@@ -6,5 +6,5 @@ import com.iagora.wingman.core.util.Resource
 import com.iagora.wingman.core.util.SimpleResource
 
 class GetSESSID(private val repository: ICoreRepository) : IGetSESSID {
-    override suspend fun invoke(): SimpleResource = repository.getSESSID()
+    override suspend fun invoke(): Resource<String> = repository.getSESSID()
 }
