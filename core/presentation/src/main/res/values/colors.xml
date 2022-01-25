@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+
+    <!--Custom Color-->
+    <color name="redPrimary">#F94F4F</color>
+    <color name="white">#FFFFFF</color>
+    <color name="grey_100">#EEEEEE</color>
+    <color name="grey_400">#D8D6D6</color>
+    <color name="DividerColor">#C2C2C2</color>
+    <color name="shimmerColor">#C2C2C2</color>
+    <color name="transparent_600">#003A3939</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="transparent_white">#99FFFFFF</color>
+    <color name="background_grey">#E9E9EC</color>
+    <color name="green">#11C747</color>
+
+    <!--Font-->
+    <color name="fontGrey">#C4C4C4</color>
+    <color name="text_primary">#020202</color>
+
+    <!--    chip tab layout-->
+    <color name="colorBg">@color/white</color>
+    <color name="colorText">@color/redPrimary</color>
+    <color name="colorTextSelected">@color/white</color>
+    <color name="colorBgTabSelected">@color/redPrimary</color>
+
+</resources>

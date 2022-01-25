@@ -11,9 +11,7 @@ val repositoryModule = module {
     single<IAuthRepository> {
         AuthRepository(
             get(),
-            get(),
-            get(named(KEY_CRYPT_AUTH)),
-            get(named(KEY_SHARED_AUTH))
+            get()
         )
     }
 }

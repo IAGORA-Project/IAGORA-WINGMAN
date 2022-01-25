@@ -18,5 +18,8 @@ dependencies {
 
         // remote
         implementation(RETROFIT_GSON)
+
+        // security
+        implementation(JETPACK_SECURITY)
     }
 }

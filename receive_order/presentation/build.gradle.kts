@@ -19,7 +19,7 @@ dependencies {
 
     implementation(project(BuildModules.ReceiveOrder.DOMAIN))
 
-    implementation(project(BuildModules.ProcessOrder.Features.MAIN))
+
 
 
     Dependencies.apply {

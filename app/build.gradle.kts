@@ -4,7 +4,7 @@ import extensions.implementation
 plugins {
     with(BuildPlugins) {
         id(ANDROID_APPLICATION)
-        id(GOOGLE_SERVICE)
+//        id(GOOGLE_SERVICE)
         id(KOTLIN_ANDROID)
         id(KOTLIN_PARCELIZE)
         id(NAVIGATION_SAFE_ARGS)
@@ -100,7 +100,7 @@ dependencies {
     implementation(project(BuildModules.Core.UTIL))
     implementation(project(BuildModules.Core.PRESENTATION))
 
-    implementation(project(BuildModules.ProcessOrder.Features.MAIN))
+
 
 
     implementation(project(BuildModules.Market.DI))
@@ -147,11 +147,15 @@ dependencies {
         implementation(platform(FIREBASE_BOM))
         implementation(FIREBASE_DATABASE)
 
+        // debug
         implementation(TIMBER)
+
+        // security
+        implementation(JETPACK_SECURITY)
 
 
         // google
-        implementation(GOOGLE_PLAY_SERVICES_LOCATION)
+//        implementation(GOOGLE_PLAY_SERVICES_LOCATION)
     }
 
 }

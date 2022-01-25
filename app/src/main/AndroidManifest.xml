@@ -18,7 +18,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-
+    <uses-sdk tools:overrideLibrary="androidx.security"/>
     <queries>
 
         <!-- Explicit apps you know in advance about: -->
@@ -29,6 +29,7 @@
         android:name="com.iagora.wingman.app.WingmanApp"
         android:allowBackup="true"
         android:fullBackupContent="true"
+
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
@@ -51,13 +52,13 @@
             android:exported="true"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:windowSoftInputMode="adjustPan"
-            android:name="com.iagora.wingman.process_order.features.main_features.ProcessOrderActivity"
-            android:exported="true"
-            android:screenOrientation="sensorPortrait"
-            tools:ignore="LockedOrientationActivity"
-            />
+<!--        <activity-->
+<!--            android:windowSoftInputMode="adjustPan"-->
+<!--            android:name="com.iagora.wingman.process_order.features.main_features.ProcessOrderActivity"-->
+<!--            android:exported="true"-->
+<!--            android:screenOrientation="sensorPortrait"-->
+<!--            tools:ignore="LockedOrientationActivity"-->
+<!--            />-->
 <!--        <activity-->
 <!--            android:windowSoftInputMode="adjustPan"-->
 <!--            android:name="com.iagora.wingman.gallery.presentation.camera.GalleryActivity"-->
@@ -65,53 +66,18 @@
 <!--            android:screenOrientation="sensorPortrait"-->
 <!--            tools:ignore="LockedOrientationActivity"-->
 <!--            />-->
-        <activity
-            android:name=".auth.presentation.splash.SplashScreenActivity"
-            android:exported="true"
-            android:screenOrientation="sensorPortrait"
-            tools:ignore="LockedOrientationActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".auth.presentation.login.LoginActivity"
-            android:exported="true"
-            android:screenOrientation="sensorPortrait"
-            tools:ignore="LockedOrientationActivity" />
+
         <activity
             android:name=".main_menu.presentation.MainActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity" />
 
-        <!-- Cloud Messaging Service -->
-        <service
-            android:name="com.iagora.wingman.receive_order.presentation.services.FirebaseNotificationService"
-            android:enabled="true"
-            android:foregroundServiceType="location"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_close" />
-        <meta-data
-            android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/redPrimary" />
-        <meta-data
-            android:name="firebase_messaging_auto_init_enabled"
-            android:value="true" />
-
         <!-- Tracking Service -->
-        <service
-            android:name="com.iagora.wingman.app.services.TrackingService"
-            android:foregroundServiceType="location" />
+<!--        <service-->
+<!--            android:name="com.iagora.wingman.app.services.TrackingService"-->
+<!--            android:foregroundServiceType="location" />-->
 
         <meta-data
             android:name="preloaded_fonts"

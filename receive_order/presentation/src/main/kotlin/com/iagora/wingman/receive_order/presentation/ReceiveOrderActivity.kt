@@ -1,7 +1,6 @@
 package com.iagora.wingman.receive_order.presentation
 
 
-import android.content.Intent
 import com.google.android.material.snackbar.Snackbar
 import com.iagora.wingman.core.presentation.base.BaseActivity
 import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
@@ -10,7 +9,6 @@ import com.iagora.wingman.core.presentation.util.SetImage.loadPhotoProfile
 import com.iagora.wingman.core.presentation.util.Util.customPrimaryColor
 import com.iagora.wingman.core.util.UiEvent
 import com.iagora.wingman.core.util.asString
-import com.iagora.wingman.process_order.features.main_features.ProcessOrderActivity
 import com.iagora.wingman.receive_order.domain.models.body.ReceiveOrder
 import com.iagora.wingman.receive_order.presentation.databinding.ActivityReceiveOrderBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -61,7 +59,7 @@ class ReceiveOrderActivity :
     private fun subscribeViewModel() {
         viewModel.eventFLow.collectWhenStarted(this) { event ->
             when (event) {
-                is ReceiveOrderEvent.MoveToProcessOrder -> moveToProcessOrder()
+//                is ReceiveOrderEvent.MoveToProcessOrder -> moveToProcessOrder()
                 is ReceiveOrderEvent.MoveToHome -> finish()
                 is ReceiveOrderEvent.LoadingProcess -> {
                     if (event.isLoading) Loader.progressDialog?.show()
@@ -77,16 +75,16 @@ class ReceiveOrderActivity :
         }
     }
 
-    private fun moveToProcessOrder() {
-        startActivity(Intent(
-            this@ReceiveOrderActivity,
-            ProcessOrderActivity::class.java
-        ).apply {
-            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-            putExtra(ProcessOrderActivity.POST_TAB, 0)
-        })
-        finish()
-    }
+//    private fun moveToProcessOrder() {
+//        startActivity(Intent(
+//            this@ReceiveOrderActivity,
+//            ProcessOrderActivity::class.java
+//        ).apply {
+//            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+//            putExtra(ProcessOrderActivity.POST_TAB, 0)
+//        })
+//        finish()
+//    }
 
     override fun onBackPressed() {
         binding.incBottom.btnCancel.callOnClick()

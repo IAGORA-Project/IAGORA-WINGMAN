@@ -1,38 +1,24 @@
 package com.iagora.wingman.app.auth.data.usecase
 
-import com.google.firebase.messaging.FirebaseMessaging
 import com.iagora.wingman.app.auth.domain.model.LoginResult
 import com.iagora.wingman.app.auth.domain.repository.IAuthRepository
 import com.iagora.wingman.app.auth.domain.usecase.IRequestLogin
-import com.iagora.wingman.core.util.AuthError
-import timber.log.Timber
+import com.iagora.wingman.core.domain.util.ValidationUtil
 
 class RequestLogin(private val repository: IAuthRepository) : IRequestLogin {
     override suspend fun invoke(
         phoneNumber: String,
-        password: String,
+        otp: String,
     ): LoginResult {
-        val deviceToken = getDeviceToken()
-        val phoneNumberError = if (phoneNumber.isBlank()) AuthError.FieldEmpty else null
-        val passwordError = if (password.isBlank()) AuthError.FieldEmpty else null
-        val deviceTokenError = if (deviceToken.isEmpty()) AuthError.FieldEmpty else null
 
-        Timber.e("token : $deviceToken, error: $deviceTokenError")
-
-        if (phoneNumberError != null || passwordError != null ) {
-            return LoginResult(phoneNumberError, passwordError, deviceTokenError)
+        val phoneNumberError = ValidationUtil.validatePhoneNumber(phoneNumber)
+        val otpError = ValidationUtil.validateOTP(otp)
+        if (phoneNumberError != null || otpError != null) {
+            return LoginResult(phoneNumberError, otpError)
         }
 
-
-
-        return LoginResult(
-            result = repository.requestLogin(phoneNumber, password, deviceToken)
-        )
+        return LoginResult(result = repository.requestLogin(phoneNumber, otp))
     }
 
-    private fun getDeviceToken(): String = try {
-        FirebaseMessaging.getInstance().token.result
-    } catch (e: Throwable) {
-        ""
-    }
+
 }

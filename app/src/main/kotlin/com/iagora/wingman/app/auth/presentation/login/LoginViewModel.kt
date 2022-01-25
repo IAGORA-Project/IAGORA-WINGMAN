@@ -2,7 +2,7 @@ package com.iagora.wingman.app.auth.presentation.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.iagora.wingman.app.auth.domain.usecase.IRequestLogin
+import com.iagora.wingman.app.auth.domain.usecase.IRequestOTP
 import com.iagora.wingman.core.util.Event
 import com.iagora.wingman.core.util.Resource
 import com.iagora.wingman.core.util.UiEvent
@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class LoginViewModel(private val requestAuthLogin: IRequestLogin) : ViewModel() {
+class LoginViewModel(private val requestOTP: IRequestOTP) : ViewModel() {
 
     private val _eventFLow = MutableSharedFlow<Event>()
     val eventFlow = _eventFLow.asSharedFlow()
@@ -22,10 +22,10 @@ class LoginViewModel(private val requestAuthLogin: IRequestLogin) : ViewModel() 
     val loginState = _loginState.asStateFlow()
 
 
-    fun requestLogin(phoneNumber: String, password: String) {
+    fun requestLogin(phoneNumber: String) {
         viewModelScope.launch {
             _loginState.value = loginState.value.copy(isLoading = true)
-            val request = requestAuthLogin(phoneNumber, password)
+            val request = requestOTP(phoneNumber)
             _loginState.value = loginState.value.copy(isLoading = false)
             when (request.result) {
                 is Resource.Success -> {

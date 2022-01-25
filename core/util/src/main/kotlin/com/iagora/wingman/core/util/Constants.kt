@@ -12,4 +12,8 @@ object Constants {
 
     //shared pref
     const val SHARED_PREF_NAME = "wingman_pref"
+
+
+    // Length
+    const val OTP_LENGTH = 6
 }

@@ -125,4 +125,7 @@ object Dependencies {
     const val FIREBASE_ANALYTICS = "com.google.firebase:firebase-analytics-ktx"
     const val FIREBASE_MESSAGING =
         "com.google.firebase:firebase-messaging-ktx"
+
+    // SECURITY
+    const val  JETPACK_SECURITY ="androidx.security:security-crypto:${BuildDependenciesVersions.JETPACK_SECURITY}"
 }

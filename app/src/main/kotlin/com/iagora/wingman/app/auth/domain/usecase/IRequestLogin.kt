@@ -6,6 +6,6 @@ import com.iagora.wingman.app.auth.domain.model.LoginResult
 interface IRequestLogin {
     suspend operator fun invoke(
         phoneNumber: String,
-        password: String,
+        otp: String,
     ): LoginResult
 }

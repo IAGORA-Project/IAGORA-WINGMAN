@@ -1,8 +1,9 @@
 package com.iagora.wingman.core.di.component
 
 import com.google.gson.Gson
+import com.iagora.wingman.core.data.session.SessionManager
+import com.iagora.wingman.core.data.session.SessionManager.Companion.KEY_SESSID
 import com.iagora.wingman.core.di.BuildConfig
-import com.iagora.wingman.core.domain.usecase.IGetAuthToken
 import com.iagora.wingman.core.util.Constants.BASE_URL
 import com.iagora.wingman.core.util.Constants.NETWORK_TIMEOUT
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -47,17 +48,21 @@ private fun provideRetrofit(
 
 
 private fun provideOkHttpClient(
-    getAuthToken: IGetAuthToken
+    sessionManager: SessionManager
 ) =
     OkHttpClient().newBuilder()
         .connectTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
         .readTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
         .writeTimeout(NETWORK_TIMEOUT, TimeUnit.SECONDS)
         .addInterceptor {
-            val modifiedRequest = it.request().newBuilder()
-                .addHeader("Authorization", "Bearer ${getAuthToken()}")
-                .build()
-            it.proceed(modifiedRequest)
+            val sessid = sessionManager.getFromPreference(KEY_SESSID) ?: ""
+
+            val modifiedRequest = if (sessid.isNotEmpty()) {
+                it.request().newBuilder()
+                    .addHeader("sessid", sessid)
+            } else it.request().newBuilder()
+
+            it.proceed(modifiedRequest.build())
         }.addInterceptor(HttpLoggingInterceptor().apply {
             level =
                 if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
