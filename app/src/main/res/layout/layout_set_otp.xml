@@ -27,6 +27,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         tools:text="@string/otp_set_desc" />
 
+
     <com.mukesh.OtpView
         android:id="@+id/otpView"
         android:layout_width="wrap_content"
@@ -34,11 +35,14 @@
         android:layout_marginTop="20dp"
         android:cursorVisible="true"
         android:inputType="number"
+        android:focusable="true"
+        android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+        android:textColor="@color/white"
+        app:cursorColor="@color/white"
+        app:itemCount="6"
         android:itemBackground="@drawable/shape_red_rounded_10"
-        android:textColor="@android:color/white"
-        app:OtpItemCount="6"
-        app:OtpLineColor="@color/colorPrimary"
-        app:OtpViewType="line"
+        app:lineColor="@color/transparent"
+        app:viewType="line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDesc" />

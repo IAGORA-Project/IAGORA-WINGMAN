@@ -6,6 +6,6 @@ import org.koin.dsl.module
 
 internal val repositoryModule = module {
     single<ICoreRepository> {
-        CoreRepository(get(), get(), get())
+        CoreRepository(get())
     }
 }

@@ -1,13 +1,12 @@
 package com.iagora.wingman.core.data.remote
 
-import com.iagora.wingman.core.data.remote.response.BasicResponse
+import com.iagora.wingman.core.data.remote.response.SimpleResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
-import retrofit2.http.POST
 
 interface CoreAPI {
     @Headers("auth: ini rahasia")
     @GET("auth/get-token")
-    suspend fun sessid(): Response<BasicResponse>
+    suspend fun sessid(): Response<SimpleResponse>
 }

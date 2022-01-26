@@ -2,7 +2,7 @@ package com.iagora.wingman.app.auth.presentation.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.iagora.wingman.app.auth.data.usecase.RequestLogin
+import com.iagora.wingman.app.auth.domain.usecase.IRequestLogin
 import com.iagora.wingman.app.auth.domain.usecase.IRequestOTP
 import com.iagora.wingman.core.presentation.util.UiEvent
 import com.iagora.wingman.core.util.Error
@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(
     private val requestOTP: IRequestOTP,
-    private val requestLogin: RequestLogin,
+    private val requestLogin: IRequestLogin,
 ) : ViewModel() {
 
     private val _eventFLow = MutableSharedFlow<Event>()
@@ -29,6 +29,7 @@ class LoginViewModel(
     val phoneNumberError = _phoneNumberError.asSharedFlow()
 
     private val _phoneNumberCompleted = MutableStateFlow("")
+    val phoneNumberCompleted = _phoneNumberCompleted.asSharedFlow()
 
     fun login(otp: String) {
         viewModelScope.launch {

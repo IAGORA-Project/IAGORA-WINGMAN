@@ -7,6 +7,7 @@ import com.iagora.wingman.core.presentation.base.BaseFragment
 import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
 import com.iagora.wingman.core.presentation.util.*
 import com.iagora.wingman.core.util.AuthError
+import okhttp3.internal.format
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -34,7 +35,18 @@ class LoginFragment :
     }
 
     private fun requestLogin() {
-        binding.incSetOtp.otpView.setOtpCompletionListener(viewModel::login)
+        binding.incSetOtp.otpView.apply {
+            setOtpCompletionListener(viewModel::login)
+            setOnFocusChangeListener { v, hasFocus ->
+                run {
+                    if (hasFocus) {
+                        requireContext().showKeyboard(v)
+
+                    }
+                    Timber.e(hasFocus.toString())
+                }
+            }
+        }
     }
 
     private fun observerEventLogin() {
@@ -48,6 +60,10 @@ class LoginFragment :
             }
         }
 
+        viewModel.phoneNumberCompleted.collectWhenStarted(viewLifecycleOwner) {
+            binding.incSetOtp.tvDesc.text = format(resources.getString(R.string.otp_set_desc), it)
+        }
+
         viewModel.loginState.collectWhenStarted(viewLifecycleOwner) { isLoading ->
             if (isLoading) Loader.progressDialog?.show()
             else Loader.progressDialog?.dismiss()
@@ -56,9 +72,11 @@ class LoginFragment :
 
             when (event) {
                 is UiEvent.CreateMessage -> {
-                    Snackbar.make(binding.root,
+                    Snackbar.make(
+                        binding.root,
                         event.uiText.asString(requireContext()),
-                        Snackbar.LENGTH_SHORT).apply {
+                        Snackbar.LENGTH_SHORT
+                    ).apply {
                         customPrimaryColor(this.context)
                     }.show()
                     Timber.e("EVENT ${event.uiText}")

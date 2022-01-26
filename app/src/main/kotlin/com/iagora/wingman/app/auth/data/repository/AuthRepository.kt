@@ -5,6 +5,7 @@ import com.iagora.wingman.app.auth.data.remote.AuthApi
 import com.iagora.wingman.app.auth.data.remote.request.LoginReq
 import com.iagora.wingman.app.auth.data.remote.request.OtpReq
 import com.iagora.wingman.app.auth.domain.repository.IAuthRepository
+import com.iagora.wingman.core.data.util.HeaderNames.SESSID
 import com.iagora.wingman.core.domain.usecase.IGetSESSID
 import com.iagora.wingman.core.util.Resource
 import com.iagora.wingman.core.util.SimpleResource
@@ -23,7 +24,7 @@ class AuthRepository(
         return try {
             val sessid = getSESSID().data ?: ""
             val response = api.otp(request = request, sessid = mapOf(
-                "sessid" to sessid
+                SESSID to sessid
             ))
             if (response.isSuccess() && sessid.isNotEmpty()) {
                 Resource.Success(Unit)
@@ -49,9 +50,9 @@ class AuthRepository(
         return try {
             val sessid = getSESSID().data ?: ""
             val response = api.login(request = request, sessid = mapOf(
-                "sessid" to sessid
+                SESSID to sessid
             ))
-            if (response.status && sessid.isNotEmpty()) {
+            if (response.isSuccess() && sessid.isNotEmpty()) {
                 Resource.Success(Unit)
             } else {
                 Timber.e("ERROR LOGIN")

@@ -8,6 +8,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.iagora.wingman.app.R
 import com.iagora.wingman.app.databinding.FragmentSplashScreenBinding
 import com.iagora.wingman.core.presentation.base.BaseFragment
+import com.iagora.wingman.core.presentation.util.asString
 import com.iagora.wingman.core.presentation.util.customPrimaryColor
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -32,7 +33,7 @@ class SplashActivity :
                 is OnBoardingPage.Failed -> {
                     Snackbar.make(
                         binding.root,
-                        event.showError.uiText.toString(),
+                        event.showError.uiText.asString(requireContext()),
                         Snackbar.LENGTH_SHORT
                     ).apply { customPrimaryColor(requireContext()) }.show()
                 }

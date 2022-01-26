@@ -2,16 +2,10 @@ package com.iagora.wingman.core.di.component
 
 import com.google.gson.Gson
 import com.iagora.wingman.core.data.remote.CoreAPI
-import com.iagora.wingman.core.data.session.SessionManager
-import com.iagora.wingman.core.data.session.SessionManager.Companion.KEY_SESSID
 import com.iagora.wingman.core.di.BuildConfig
-import com.iagora.wingman.core.domain.usecase.IGetSESSID
 import com.iagora.wingman.core.util.Constants.BASE_URL
 import com.iagora.wingman.core.util.Constants.NETWORK_TIMEOUT
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.qualifier.named
