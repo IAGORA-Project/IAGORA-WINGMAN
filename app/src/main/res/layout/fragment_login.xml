@@ -11,32 +11,19 @@
         android:id="@+id/logo"
         layout="@layout/layout_logo" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tlPhone"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+    <include
+        android:layout_marginTop="60dp"
+        android:id="@+id/incSetPhone"
+        layout="@layout/layout_loing_set_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:clipChildren="true"
-        android:hint="@string/hint_phone"
-        app:boxStrokeWidthFocused="1dp"
-        app:hintTextAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:imeActionLabel="@string/login"
-            android:imeOptions="actionSend"
-            android:maxLength="15"
-            android:theme="@style/TextViewReguler.OpenSans_14sp_020202" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        tools:layout_editor_absoluteX="15dp" />
 
     <include
         android:id="@+id/incSetOtp"
-        layout="@layout/layout_set_otp"
+        layout="@layout/layout_login_set_otp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -44,13 +31,5 @@
         app:layout_constraintTop_toBottomOf="@+id/logo"
         tools:layout_editor_absoluteX="15dp" />
 
-    <include
-        android:id="@+id/incBtnLogin"
-        layout="@layout/layout_button_primary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tlPhone" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,15 +1,10 @@
 package com.iagora.wingman.core.presentation.util
 
-import android.content.res.Resources
 import android.text.Editable
 import android.view.KeyEvent
-import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
-import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.button.MaterialButton
 
 fun EditText.setupTextWithBtn(btn: MaterialButton) {
@@ -61,6 +56,26 @@ private fun EditText.setOnPressEnter(
     }
 }
 
+fun EditText.performSendAction(
+    action: () -> Unit
+) {
+    setOnEditorActionListener { _, actionId, _ ->
+        if (actionId == EditorInfo.IME_ACTION_SEND) {
+            action()
+            true
+        } else {
+            false
+        }
+    }
+    setOnKeyListener { _, keyCode, event ->
+        if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+            action()
+            true
+        } else {
+            false
+        }
+    }
+}
 
 
 fun Editable.convertToLong(): Long {

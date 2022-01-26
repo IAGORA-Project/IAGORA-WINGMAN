@@ -28,10 +28,15 @@ class LoginFragment :
     }
 
     private fun requestOTP() {
-        binding.incBtnLogin.btnPrimary.setOnClickListener {
-            val phoneNumber = binding.tlPhone.editText?.text.toString()
-            viewModel.setPhoneNumber(phoneNumber)
+        binding.incSetPhone.apply {
+            incBtnLogin.btnAction.setOnClickListener { sendPhoneNumber() }
+            tlPhone.editText?.performSendAction { sendPhoneNumber() }
         }
+    }
+
+    private fun sendPhoneNumber() {
+        val phoneNumber = binding.incSetPhone.tlPhone.editText?.text.toString()
+        viewModel.setPhoneNumber(phoneNumber)
     }
 
     private fun requestLogin() {
@@ -40,9 +45,7 @@ class LoginFragment :
 
     private fun observerEventLogin() {
         viewModel.phoneNumberError.collectWhenStarted(viewLifecycleOwner) {
-            Timber.e(it.toString())
-
-            binding.tlPhone.error = when (it) {
+            binding.incSetPhone.tlPhone.error = when (it) {
                 is AuthError.FieldEmpty -> resources.getString(R.string.error_field_empty)
                 is AuthError.InvalidPhoneNumber -> resources.getString(R.string.error_invalid_phone_number)
                 else -> ""
@@ -72,8 +75,7 @@ class LoginFragment :
                 }
                 is LoginEvent.OnGetOtp -> {
                     with(binding) {
-                        tlPhone.hide()
-                        incBtnLogin.root.hide()
+                        incSetPhone.root.hide()
                         incSetOtp.root.show()
                     }
                 }
