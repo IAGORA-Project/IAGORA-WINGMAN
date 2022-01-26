@@ -16,7 +16,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="70dp"
         android:clipChildren="true"
         android:hint="@string/hint_phone"
         app:boxStrokeWidthFocused="1dp"
@@ -27,7 +27,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="phone"
+            android:inputType="numberDecimal"
+            android:imeActionLabel="@string/login"
+            android:imeOptions="actionSend"
             android:maxLength="15"
             android:theme="@style/TextViewReguler.OpenSans_14sp_020202" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -47,7 +49,7 @@
         layout="@layout/layout_button_primary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tlPhone" />
