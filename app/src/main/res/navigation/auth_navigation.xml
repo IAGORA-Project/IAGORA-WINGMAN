@@ -3,19 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/auth_navigation"
-    app:startDestination="@id/splashScreenFragment">
+    app:startDestination="@id/loginFragment">
 
 
-    <fragment
-        android:id="@+id/splashScreenFragment"
-        android:name="com.iagora.wingman.app.auth.presentation.splash.SplashActivity"
-        tools:layout="@layout/fragment_splash_screen"
-        android:label="SplashScreenFragment" >
-        <action
-            android:id="@+id/moveToLogin"
-            app:destination="@id/loginFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
     <fragment
         tools:layout="@layout/fragment_login"
         android:id="@+id/loginFragment"

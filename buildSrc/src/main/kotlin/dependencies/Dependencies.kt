@@ -127,8 +127,13 @@ object Dependencies {
         "com.google.firebase:firebase-messaging-ktx"
 
     // SECURITY
-    const val  JETPACK_SECURITY ="androidx.security:security-crypto:${BuildDependenciesVersions.JETPACK_SECURITY}"
+    const val JETPACK_SECURITY =
+        "androidx.security:security-crypto:${BuildDependenciesVersions.JETPACK_SECURITY}"
 
     // OTP VIEW
-    const val OTP_VIEW = "com.github.mukeshsolanki:android-otpview-pinview:${BuildDependenciesVersions.OTP_VIEW}"
+    const val OTP_VIEW =
+        "com.github.mukeshsolanki:android-otpview-pinview:${BuildDependenciesVersions.OTP_VIEW}"
+
+    const val SPLASH_SCREEN =
+        "androidx.core:core-splashscreen:${BuildDependenciesVersions.SPLASH_SCREEN}"
 }

@@ -9,9 +9,7 @@ class SplashViewModel(
     private val sessionManager: SessionManager,
 ) : ViewModel() {
 
-
-
-    fun loadLogin() =
+    fun performOnBoardPage() =
         try {
             if (sessionManager.getToken().isNotEmpty()) {
                 OnBoardingPage.MainPage

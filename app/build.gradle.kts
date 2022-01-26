@@ -134,10 +134,8 @@ dependencies {
         implementation(KOIN_ANDROID)
         implementation(KOIN_CORE)
 
-
         // remote
         implementation(RETROFIT_GSON)
-
 
         // debug
         implementation(TIMBER)
@@ -145,9 +143,11 @@ dependencies {
         // security
         implementation(JETPACK_SECURITY)
 
-
         // OTP view
         implementation(OTP_VIEW)
+
+        //splash
+        implementation(SPLASH_SCREEN)
 
         // google
 //        implementation(GOOGLE_PLAY_SERVICES_LOCATION)
