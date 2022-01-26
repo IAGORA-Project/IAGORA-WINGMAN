@@ -13,11 +13,12 @@ class RequestLogin(private val repository: IAuthRepository) : IRequestLogin {
 
         val phoneNumberError = ValidationUtil.validatePhoneNumber(phoneNumber)
         val otpError = ValidationUtil.validateOTP(otp)
+
         if (phoneNumberError != null || otpError != null) {
             return LoginResult(phoneNumberError, otpError)
         }
 
-        return LoginResult(result = repository.requestLogin(phoneNumber, otp))
+        return LoginResult(result = repository.requestLogin(phoneNumber.trim(), otp.trim()))
     }
 
 

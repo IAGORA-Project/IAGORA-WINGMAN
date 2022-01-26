@@ -46,7 +46,7 @@ class AuthRepository(
         phoneNumber: String,
         password: String,
     ): SimpleResource {
-        val request = LoginReq(OtpReq(phoneNumber), password)
+        val request = LoginReq(phoneNumber, password)
         return try {
             val sessid = getSESSID().data ?: ""
             val response = api.login(request = request, sessid = mapOf(

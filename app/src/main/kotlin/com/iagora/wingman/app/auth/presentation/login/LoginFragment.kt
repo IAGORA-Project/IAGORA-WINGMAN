@@ -4,6 +4,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.iagora.wingman.app.R
 import com.iagora.wingman.app.databinding.FragmentLoginBinding
 import com.iagora.wingman.core.presentation.base.BaseFragment
+import com.iagora.wingman.core.presentation.extensions.collectLatestWhenStarted
 import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
 import com.iagora.wingman.core.presentation.util.*
 import com.iagora.wingman.core.util.AuthError
@@ -44,7 +45,7 @@ class LoginFragment :
     }
 
     private fun observerEventLogin() {
-        viewModel.phoneNumberError.collectWhenStarted(viewLifecycleOwner) {
+        viewModel.phoneNumberError.collectLatestWhenStarted(viewLifecycleOwner) {
             binding.incSetPhone.tlPhone.error = when (it) {
                 is AuthError.FieldEmpty -> resources.getString(R.string.error_field_empty)
                 is AuthError.InvalidPhoneNumber -> resources.getString(R.string.error_invalid_phone_number)
@@ -52,11 +53,11 @@ class LoginFragment :
             }
         }
 
-        viewModel.phoneNumberCompleted.collectWhenStarted(viewLifecycleOwner) {
+        viewModel.phoneNumberCompleted.collectLatestWhenStarted(viewLifecycleOwner) {
             binding.incSetOtp.tvDesc.text = format(resources.getString(R.string.otp_set_desc), it)
         }
 
-        viewModel.loginState.collectWhenStarted(viewLifecycleOwner) { isLoading ->
+        viewModel.loginState.collectLatestWhenStarted(viewLifecycleOwner) { isLoading ->
             if (isLoading) Loader.progressDialog?.show()
             else Loader.progressDialog?.dismiss()
         }

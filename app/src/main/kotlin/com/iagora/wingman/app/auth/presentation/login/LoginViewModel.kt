@@ -12,6 +12,7 @@ import com.iagora.wingman.core.util.UiText
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
@@ -22,14 +23,14 @@ class LoginViewModel(
     private val _eventFLow = MutableSharedFlow<Event>()
     val eventFlow = _eventFLow.asSharedFlow()
 
-    private val _loginState = MutableSharedFlow<Boolean>()
-    val loginState = _loginState.asSharedFlow()
+    private val _loginState = MutableStateFlow(false)
+    val loginState = _loginState.asStateFlow()
 
-    private val _phoneNumberError = MutableSharedFlow<Error?>()
-    val phoneNumberError = _phoneNumberError.asSharedFlow()
+    private val _phoneNumberError = MutableStateFlow<Error?>(null)
+    val phoneNumberError = _phoneNumberError.asStateFlow()
 
     private val _phoneNumberCompleted = MutableStateFlow("")
-    val phoneNumberCompleted = _phoneNumberCompleted.asSharedFlow()
+    val phoneNumberCompleted = _phoneNumberCompleted.asStateFlow()
 
     fun login(otp: String) {
         viewModelScope.launch {

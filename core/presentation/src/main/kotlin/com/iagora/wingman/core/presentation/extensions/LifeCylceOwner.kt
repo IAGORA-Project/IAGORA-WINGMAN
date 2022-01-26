@@ -8,6 +8,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
@@ -18,6 +19,18 @@ inline fun <T> Flow<T>.collectWhenStarted(
 ) {
     lifecycleOwner.addRepeatingJob(Lifecycle.State.STARTED) {
         collect(action)
+    }
+}
+
+inline fun <T> Flow<T>.collectLatestWhenStarted(
+    lifecycleOwner: LifecycleOwner,
+    crossinline action: suspend (value: T) -> Unit,
+) {
+    lifecycleOwner.addRepeatingJob(Lifecycle.State.STARTED) {
+        collectLatest {
+            action(it)
+        }
+
     }
 }
 
