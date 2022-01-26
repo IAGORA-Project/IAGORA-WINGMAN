@@ -56,7 +56,7 @@ class AuthRepository(
                 Resource.Success(Unit)
             } else {
                 Timber.e("ERROR LOGIN")
-                Resource.Error(UiText.DynamicString("Error occurred state : ${""}"))
+                Resource.Error(UiText.DynamicString("Error occurred state : ${response.message}"))
             }
         } catch (e: IOException) {
             Resource.Error(

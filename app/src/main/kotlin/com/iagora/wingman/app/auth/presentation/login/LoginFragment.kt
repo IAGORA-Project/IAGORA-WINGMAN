@@ -35,18 +35,7 @@ class LoginFragment :
     }
 
     private fun requestLogin() {
-        binding.incSetOtp.otpView.apply {
-            setOtpCompletionListener(viewModel::login)
-            setOnFocusChangeListener { v, hasFocus ->
-                run {
-                    if (hasFocus) {
-                        requireContext().showKeyboard(v)
-
-                    }
-                    Timber.e(hasFocus.toString())
-                }
-            }
-        }
+        binding.incSetOtp.otpView.setOtpCompletionListener(viewModel::login)
     }
 
     private fun observerEventLogin() {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="otp_set_title">Masukkan kode OTP</string>
-    <string name="otp_set_desc">Kami telah mengirimkan kode OTP pada nomor whatsapp %s silahkan dicek</string>
+    <string name="otp_set_desc">Kami telah mengirimkan kode OTP pada nomor whatsapp <b>%s</b> silahkan dicek</string>
 </resources>

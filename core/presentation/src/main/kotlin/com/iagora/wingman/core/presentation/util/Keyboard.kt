@@ -32,6 +32,6 @@ fun Context.hideKeyboard(view: View) {
 fun Context.showKeyboard(view: View) {
     val inputMethodManager =
         getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-    inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_FORCED)
+    inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
 }
 
