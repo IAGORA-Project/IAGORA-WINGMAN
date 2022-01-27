@@ -29,9 +29,12 @@ class LoginFragment :
     }
 
     private fun requestOTP() {
-        binding.incSetPhone.apply {
-            incBtnLogin.btnAction.setOnClickListener { sendPhoneNumber() }
-            tlPhone.editText?.performSendAction { sendPhoneNumber() }
+        binding.apply {
+            incSetPhone.apply {
+                incBtnLogin.btnAction.setOnClickListener { sendPhoneNumber() }
+                tlPhone.editText?.performSendAction { sendPhoneNumber() }
+            }
+            incSetOtp.btnDescStateOtp.setOnClickListener { sendPhoneNumber();resetFieldOtp() }
         }
     }
 
@@ -40,27 +43,48 @@ class LoginFragment :
         viewModel.setPhoneNumber(phoneNumber)
     }
 
+    private fun resetFieldOtp() {
+        binding.incSetOtp.otpView.text?.clear()
+    }
+
     private fun requestLogin() {
         binding.incSetOtp.otpView.setOtpCompletionListener(viewModel::login)
     }
 
+    private fun setTextDescStateOtp(desc: String, isEnable: Boolean = false) {
+        binding.incSetOtp.btnDescStateOtp.apply {
+            text = desc
+            isEnabled = isEnable
+        }
+    }
+
     private fun observerEventLogin() {
-        viewModel.phoneNumberError.collectLatestWhenStarted(viewLifecycleOwner) {
-            binding.incSetPhone.tlPhone.error = when (it) {
+        viewModel.phoneNumberError.collectLatestWhenStarted(viewLifecycleOwner) { errorType ->
+            binding.incSetPhone.tlPhone.error = when (errorType) {
                 is AuthError.FieldEmpty -> resources.getString(R.string.error_field_empty)
                 is AuthError.InvalidPhoneNumber -> resources.getString(R.string.error_invalid_phone_number)
                 else -> ""
             }
         }
 
-        viewModel.phoneNumberCompleted.collectLatestWhenStarted(viewLifecycleOwner) {
-            binding.incSetOtp.tvDesc.text = format(resources.getString(R.string.otp_set_desc), it)
+        viewModel.phoneNumberCompleted.collectLatestWhenStarted(viewLifecycleOwner) { phoneNumber ->
+            binding.incSetOtp.tvDesc.text =
+                format(resources.getString(R.string.otp_set_desc), phoneNumber)
         }
 
         viewModel.loginState.collectLatestWhenStarted(viewLifecycleOwner) { isLoading ->
             if (isLoading) Loader.progressDialog?.show()
             else Loader.progressDialog?.dismiss()
         }
+
+        viewModel.delayToResendOtp.collectLatestWhenStarted(viewLifecycleOwner) { time ->
+            if (time > 0) {
+                setTextDescStateOtp(format(resources.getString(R.string.desc_state_otp), time))
+            } else {
+                setTextDescStateOtp(resources.getString(R.string.resend_otp), true)
+            }
+        }
+
         viewModel.eventFlow.collectWhenStarted(viewLifecycleOwner) { event ->
 
             when (event) {
@@ -72,13 +96,15 @@ class LoginFragment :
                     ).apply {
                         customPrimaryColor(this.context)
                     }.show()
-                    Timber.e("EVENT ${event.uiText}")
+                    Timber.e("EVENT ${event.uiText.asString(requireContext())}")
                 }
                 is LoginEvent.OnGetOtp -> {
                     with(binding) {
                         incSetPhone.root.hide()
                         incSetOtp.root.show()
                     }
+
+                    showKeyboard()
                 }
 
                 is LoginEvent.OnLogin -> {

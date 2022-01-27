@@ -4,11 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.iagora.wingman.app.auth.domain.usecase.IRequestLogin
 import com.iagora.wingman.app.auth.domain.usecase.IRequestOTP
+import com.iagora.wingman.core.presentation.util.Constants.ONE_SECOND
 import com.iagora.wingman.core.presentation.util.UiEvent
 import com.iagora.wingman.core.util.Error
 import com.iagora.wingman.core.util.Event
 import com.iagora.wingman.core.util.Resource
 import com.iagora.wingman.core.util.UiText
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -32,6 +34,9 @@ class LoginViewModel(
     private val _phoneNumberCompleted = MutableStateFlow("")
     val phoneNumberCompleted = _phoneNumberCompleted.asStateFlow()
 
+    private val _delayToResendOtp = MutableStateFlow(30)
+    val delayToResendOtp = _delayToResendOtp.asStateFlow()
+
     fun login(otp: String) {
         viewModelScope.launch {
             _loginState.emit(true)
@@ -49,8 +54,11 @@ class LoginViewModel(
                             request.result.uiText ?: UiText.unknownError()
                         )
                     )
+                    _delayToResendOtp.emit(0)
                 }
-                else -> {}
+                else -> {
+
+                }
             }
         }
     }
@@ -72,6 +80,8 @@ class LoginViewModel(
                 is Resource.Success -> {
                     _eventFLow.emit(LoginEvent.OnGetOtp)
                     _phoneNumberCompleted.emit(phoneNumber)
+                    _delayToResendOtp.emit(30)
+                    setDelayToResendOtp()
                 }
                 is Resource.Error -> {
                     _eventFLow.emit(
@@ -82,6 +92,13 @@ class LoginViewModel(
                 }
                 else -> {}
             }
+        }
+    }
+
+    private suspend fun setDelayToResendOtp() {
+        while (delayToResendOtp.value > 0) {
+            delay(ONE_SECOND)
+            _delayToResendOtp.value = delayToResendOtp.value.dec()
         }
     }
 }

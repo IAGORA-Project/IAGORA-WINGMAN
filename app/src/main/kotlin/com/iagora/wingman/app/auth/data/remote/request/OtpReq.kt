@@ -3,5 +3,5 @@ package com.iagora.wingman.app.auth.data.remote.request
 import com.google.gson.annotations.SerializedName
 
 data class OtpReq(
-    @SerializedName("hp") var phoneNumber: String,
+    @SerializedName("no_hp") var phoneNumber: String,
 )
