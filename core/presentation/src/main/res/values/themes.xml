@@ -218,6 +218,9 @@
     </style>
 
 
+    <style name="TextInput">
+        <item name="android:textAppearance">@style/TextViewReguler.OpenSans_16sp_020202</item>
+    </style>
 
     <!-- Image radius-->
     <style name="ShapeAppearanceOverlay.AllRadius" parent="">

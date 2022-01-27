@@ -16,9 +16,7 @@ class LoginFragment :
     BaseFragment<FragmentLoginBinding>
         (R.layout.fragment_login, { FragmentLoginBinding.bind(it) }) {
 
-
     private val viewModel: LoginViewModel by viewModel()
-
 
     override fun setView() {
         Loader.handleLoading(requireContext())

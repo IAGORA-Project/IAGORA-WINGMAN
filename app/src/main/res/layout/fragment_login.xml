@@ -15,7 +15,7 @@
     <include
         android:layout_marginTop="60dp"
         android:id="@+id/incSetPhone"
-        layout="@layout/layout_loing_set_phone"
+        layout="@layout/layout_login_set_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/logo"

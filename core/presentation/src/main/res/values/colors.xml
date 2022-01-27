@@ -11,6 +11,7 @@
     <color name="redPrimary">#F94F4F</color>
     <color name="white">#FFFFFF</color>
     <color name="grey_100">#EEEEEE</color>
+    <color name="outline_edit_text">#B8B8B8</color>
     <color name="grey_400">#D8D6D6</color>
     <color name="DividerColor">#C2C2C2</color>
     <color name="shimmerColor">#C2C2C2</color>
