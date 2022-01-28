@@ -220,6 +220,8 @@
 
     <style name="TextInput">
         <item name="android:textAppearance">@style/TextViewReguler.OpenSans_16sp_020202</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
     </style>
 
     <!-- Image radius-->

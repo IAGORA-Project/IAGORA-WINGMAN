@@ -4,7 +4,7 @@
     <string name="desc_delete_button">delete button</string>
     <string name="desc_img_photo">img photo</string>
     <string name="text_choose_unit_product">Pilih Satuan Produk</string>
-    <string name="choose_city">Pilih Kota</string>
+    <string name="select_city">Pilih Kota</string>
     <string name="text_choose_type_product">Pilih Tipe Produk</string>
     <string name="default_city">Medan</string>
     <string name="text_chose_category_product">Pilih Kategori Produk</string>

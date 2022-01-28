@@ -11,15 +11,24 @@
     <string name="address">Alamat</string>
     <string name="city_register">Kota registrasi</string>
     <string name="market_service">Pasar yang dilayani</string>
+    <string name="select_market">Pilih Pasar</string>
     <string name="ktp">KTP</string>
-    <string name="skck">SKCK</string>
+    <string name="skck">SKCK (opsional)</string>
+    <string name="bank">Bank</string>
     <string name="select_bank">Pilih Bank</string>
     <string name="no_rek">Nomor rekening Bank</string>
     <string name="name_on_rek">Nama pada rekening</string>
     <string name="next">Selanjutnya</string>
-    <string name="back">Back</string>
+    <string name="back">kembali</string>
     <string name="proses">Ajukan Pendaftaran</string>
     <string name="hint_name">cth : Aditia Rahman</string>
     <string name="hint_email">cth : aditia.rahman@email.example</string>
+    <string name="hint_no_rek">cth : 81xx xxx xxx</string>
     <string name="hint_address">Jalan Angsa Nomor 33D, Sidodadi</string>
+    <string name="warning_bank_register_1">Data rekening Anda diperlukan untuk pencairan dana
+pendapatan</string>
+    <string name="warning_bank_register_2">Gunakan Bank BCA / BCA Digital untuk pencairan
+Pendapatan bebas biaya admin</string>
+    <string name="question">question</string>
+    <string name="error_invalid_phone_number">Gunakan format (62)</string>
 </resources>

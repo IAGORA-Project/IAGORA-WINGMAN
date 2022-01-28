@@ -1,5 +1,6 @@
 package com.iagora.wingman.core.domain.util
 
+import android.util.Patterns
 import com.iagora.wingman.core.util.AuthError
 
 object ValidationUtil {
@@ -31,17 +32,17 @@ object ValidationUtil {
         return null
     }
 
-//    fun validateEmail(email: String): AuthError? {
-//        val trimmedEmail = email.trim()
-//
-//        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-//            return AuthError.InvalidEmail
-//        }
-//        if (trimmedEmail.isBlank()) {
-//            return AuthError.FieldEmpty
-//        }
-//        return null
-//    }
+    fun validateEmail(email: String): AuthError? {
+        val trimmedEmail = email.trim()
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            return AuthError.InvalidEmail
+        }
+        if (trimmedEmail.isBlank()) {
+            return AuthError.FieldEmpty
+        }
+        return null
+    }
 
 //    fun validateUsername(username: String): AuthError? {
 //        val trimmedUsername = username.trim()
