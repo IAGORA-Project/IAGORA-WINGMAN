@@ -1,4 +1,4 @@
-package com.iagora.wingman.app.auth.presentation.splash
+package com.iagora.wingman.app.auth.presentation.on_boarding
 
 import com.iagora.wingman.core.util.Event
 import com.iagora.wingman.core.presentation.util.UiEvent

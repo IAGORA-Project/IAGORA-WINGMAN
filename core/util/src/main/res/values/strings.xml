@@ -5,4 +5,5 @@
     <string name="error_unknown">kesalahan tidak diketahui</string>
 
     <string name="error_field_empty">Tidak boleh kosong!</string>
+    <string name="error_invalid_email">Gunakan format email yang tepat</string>
 </resources>

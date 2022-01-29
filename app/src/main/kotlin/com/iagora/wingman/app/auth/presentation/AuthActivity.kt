@@ -4,15 +4,15 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.android.material.snackbar.Snackbar
-import com.iagora.wingman.app.auth.presentation.splash.OnBoardingPage
-import com.iagora.wingman.app.auth.presentation.splash.SplashViewModel
+import com.iagora.wingman.app.auth.presentation.on_boarding.OnBoardingPage
+import com.iagora.wingman.app.auth.presentation.on_boarding.OnBoardingViewModel
 import com.iagora.wingman.app.databinding.AcitivityAuthBinding
 import com.iagora.wingman.core.presentation.util.asString
 import com.iagora.wingman.core.presentation.util.customPrimaryColor
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AuthActivity : AppCompatActivity() {
-    private val viewModel: SplashViewModel by viewModel()
+    private val viewModel: OnBoardingViewModel by viewModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

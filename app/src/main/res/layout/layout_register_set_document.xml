@@ -218,12 +218,14 @@
             android:id="@+id/btnNextToPreview"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_margin="20dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:text="@string/next"
             android:textAppearance="@style/TextViewBold.OpenSans_18sp_020202"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnBackToPersonal" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

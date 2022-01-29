@@ -1,11 +1,11 @@
-package com.iagora.wingman.app.auth.presentation.splash
+package com.iagora.wingman.app.auth.presentation.on_boarding
 
 import androidx.lifecycle.ViewModel
 import com.iagora.wingman.core.domain.session.SessionManager
 import com.iagora.wingman.core.presentation.util.UiEvent
 import com.iagora.wingman.core.util.UiText
 
-class SplashViewModel(
+class OnBoardingViewModel(
     private val sessionManager: SessionManager,
 ) : ViewModel() {
 

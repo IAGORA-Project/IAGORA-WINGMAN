@@ -8,7 +8,9 @@
     </string-array>
     <string name="text_album_permission_request">Beri akses untuk membuka album</string>
 
-    <string name="text_permission_camera">Beri akses kamera agar dapat mengambil foto atau swipe up untuk membuka album</string>
+    <string name="text_permission_camera">Beri akses kamera agar dapat mengambil foto</string>
     <string name="desc_btn_shutter">shutter button</string>
     <string name="desc_show_gallery">open gallery</string>
+    <string name="preview">preview</string>
+    <string name="desc_preview">preview foto</string>
 </resources>

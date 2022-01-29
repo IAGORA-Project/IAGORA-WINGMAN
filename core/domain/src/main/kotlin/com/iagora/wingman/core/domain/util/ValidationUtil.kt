@@ -35,12 +35,14 @@ object ValidationUtil {
     fun validateEmail(email: String): AuthError? {
         val trimmedEmail = email.trim()
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            return AuthError.InvalidEmail
-        }
         if (trimmedEmail.isBlank()) {
             return AuthError.FieldEmpty
         }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            return AuthError.InvalidEmail
+        }
+
         return null
     }
 

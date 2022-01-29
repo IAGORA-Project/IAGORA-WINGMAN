@@ -15,5 +15,14 @@
         android:id="@+id/registerFragment"
         android:name="com.iagora.wingman.app.auth.presentation.register.RegisterFragment"
         android:label="RegisterFragment"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/openCamera"
+            app:destination="@id/cameraFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cameraFragment"
+        tools:layout="@layout/fragment_camera"
+        android:name="com.iagora.wingman.gallery.presentation.camera.CameraFragment"
+        android:label="CameraFragment" />
 </navigation>
