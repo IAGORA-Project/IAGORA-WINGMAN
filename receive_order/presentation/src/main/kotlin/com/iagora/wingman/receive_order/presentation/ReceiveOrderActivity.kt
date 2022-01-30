@@ -32,10 +32,10 @@ class ReceiveOrderActivity :
         adapter.submitList(body?.listProduct)
 
         binding.apply {
-           body?.dataUser?.apply {
-               tvUserName.text = fullName
-               ivPicUser.loadPhotoProfile(imgProfile)
-           }
+            body?.dataUser?.apply {
+                tvUserName.text = fullName
+                ivPicUser.loadPhotoProfile(imgProfile)
+            }
 
             incBottom.apply {
                 btnAccepted.setOnClickListener {

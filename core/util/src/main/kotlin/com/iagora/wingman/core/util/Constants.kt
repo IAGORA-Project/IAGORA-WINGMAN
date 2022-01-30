@@ -10,6 +10,8 @@ object Constants {
     const val KEY_CRYPT_AUTH = "key_crypt_auth_wingman"
     const val KEY_SHARED_WINGMAN = "key_shared_wingman_data"
 
+    const val FILE_PROVIDER = "com.iagora.wingman.core.util.file_provider"
+
     //shared pref
     const val SHARED_PREF_NAME = "wingman_pref"
 

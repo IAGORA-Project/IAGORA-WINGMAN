@@ -16,13 +16,24 @@
 
 package com.iagora.wingman.core.presentation.base
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.viewbinding.ViewBinding
+import com.google.android.material.imageview.ShapeableImageView
+import com.iagora.wingman.core.presentation.util.Camera
+import com.iagora.wingman.core.presentation.util.SetImage.load
+import timber.log.Timber
 
 
 /**
@@ -55,11 +66,26 @@ abstract class BaseFragment<B : ViewBinding>(
         setTitleToolbar((requireActivity() as AppCompatActivity?)?.supportActionBar)
         setAdapter()
         setView()
+
+        // Adding an option to handle the back press in fragment
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    onBackPressed()
+                }
+            })
+    }
+
+    open fun onBackPressed() {
+        findNavController().popBackStack()
     }
 
     open fun setTitleToolbar(supportActionBar: ActionBar?) {}
     abstract fun setView()
     open fun setAdapter() {}
+
+
 
     /**
      * @see _binding

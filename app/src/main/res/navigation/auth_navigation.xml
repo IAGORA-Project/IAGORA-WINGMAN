@@ -18,11 +18,19 @@
         tools:layout="@layout/fragment_register" >
         <action
             android:id="@+id/openCamera"
-            app:destination="@id/cameraFragment" />
+            app:destination="@id/cameraFragment"
+            app:enterAnim="@anim/slide_in_up"
+            app:exitAnim="@anim/slide_out_down"
+            app:popEnterAnim="@anim/slide_in_down"
+            app:popExitAnim="@anim/slide_out_up"/>
     </fragment>
     <fragment
         android:id="@+id/cameraFragment"
         tools:layout="@layout/fragment_camera"
         android:name="com.iagora.wingman.gallery.presentation.camera.CameraFragment"
-        android:label="CameraFragment" />
+        android:label="CameraFragment" >
+        <argument
+            android:name="typeImage"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-        <ImageView
-            android:id="@+id/ivPreview"
-            android:contentDescription="@string/desc_preview"
+        <include
+            android:id="@+id/incPreviewPhoto"
+            layout="@layout/layout_preview_photo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:visibility="gone"
             app:layout_constraintTop_toTopOf="parent" />
 
         <include
@@ -32,79 +30,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <!--        <include-->
-        <!--            android:id="@+id/incHeader"-->
-        <!--            layout="@layout/layout_toolbar_gallery"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="?attr/actionBarSize"-->
-        <!--            android:visibility="invisible"-->
-        <!--            tools:visibility="visible"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-        <View
-            android:id="@+id/shutterEffect"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/transparent_white"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/incCameraView"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <!--        <TextView-->
-        <!--            android:id="@+id/btnSwipe"-->
-        <!--            style="@style/TextViewReguler.OpenSans_18sp_020202"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:drawableTop="@drawable/ic_arrow_up"-->
-        <!--            android:text="swipe"-->
-        <!--            android:visibility="invisible"-->
-        <!--            tools:visibility="visible"-->
-        <!--            android:textAlignment="center"-->
-        <!--            android:textColor="@color/white"-->
-        <!--            app:layout_constraintBottom_toTopOf="@+id/guideline2"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            tools:ignore="UseCompatTextViewDrawableXml" />-->
-
-
-
-        <!--        <androidx.recyclerview.widget.RecyclerView-->
-        <!--            android:id="@+id/rvListPhoto"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="90dp"-->
-        <!--            android:layout_marginTop="10dp"-->
-        <!--            android:visibility="invisible"-->
-        <!--            tools:visibility="visible"-->
-        <!--            android:background="@color/transparent"-->
-        <!--            android:orientation="horizontal"-->
-        <!--            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="@+id/guideline2"-->
-        <!--            tools:itemCount="2"-->
-        <!--            tools:listitem="@layout/image_taken" />-->
-
-        <ImageButton
-            android:id="@+id/btnShutter"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:background="@null"
-            android:contentDescription="@string/desc_btn_shutter"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_shutter_transparent"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@+id/incCameraView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="50dp"
-            tools:visibility="visible" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

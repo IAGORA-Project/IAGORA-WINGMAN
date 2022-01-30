@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class RegisterViewModel(
     private val setPersonalInfo: ISetPersonalInfo,
@@ -20,6 +19,9 @@ class RegisterViewModel(
 
     private val _eventFLow = MutableSharedFlow<Event>()
     val eventFlow = _eventFLow.asSharedFlow()
+
+    private val _registerState = MutableStateFlow<RegisterState>(RegisterState.OnSetPersonalInfo)
+    val registerState = _registerState.asStateFlow()
 
     private val _dataInfo = MutableStateFlow<PersonalInfo?>(null)
     val dataInfo = _dataInfo.asStateFlow()
@@ -34,9 +36,12 @@ class RegisterViewModel(
     val emailError = _emailError.asSharedFlow()
 
 
+    fun toPersonalInfo() {
+        _registerState.value = RegisterState.OnSetPersonalInfo
+    }
 
-    fun backToPersonalInfo() = viewModelScope.launch {
-        _eventFLow.emit(RegisterEvent.OnSetPersonalInfo)
+    fun toDocument(){
+        _registerState.value = RegisterState.OnSetDocument
     }
 
     fun preview() {
@@ -67,7 +72,7 @@ class RegisterViewModel(
 
             if (set.result != null) {
                 _dataInfo.emit(set.result)
-                _eventFLow.emit(RegisterEvent.OnSetDocument)
+                _registerState.value = RegisterState.OnSetDocument
             }
         }
     }
