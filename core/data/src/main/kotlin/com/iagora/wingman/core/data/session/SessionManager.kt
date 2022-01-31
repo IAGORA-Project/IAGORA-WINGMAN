@@ -1,4 +1,4 @@
-package com.iagora.wingman.core.domain.session
+package com.iagora.wingman.core.data.session
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -9,10 +9,6 @@ import androidx.security.crypto.MasterKey
 
 
 class SessionManager(context: Context) {
-    companion object {
-        private const val KEY_TOKEN = "token"
-    }
-
     private val spec = KeyGenParameterSpec.Builder(
         MasterKey.DEFAULT_MASTER_KEY_ALIAS,
         KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
@@ -45,9 +41,6 @@ class SessionManager(context: Context) {
         editor.commit()
     }
 
-    fun saveToken(value: String) = editor.putString(KEY_TOKEN, value).commit()
-
-    fun getToken() = pref.getString(KEY_TOKEN, "") ?: ""
 
     fun saveToPreference(key: String, value: String) = editor.putString(key, value).commit()
 

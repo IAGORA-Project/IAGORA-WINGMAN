@@ -1,17 +1,18 @@
 package com.iagora.wingman.app.auth.presentation.on_boarding
 
 import androidx.lifecycle.ViewModel
-import com.iagora.wingman.core.domain.session.SessionManager
+import com.iagora.wingman.core.domain.usecase.IGetPref
+import com.iagora.wingman.core.domain.util.KEYPref
 import com.iagora.wingman.core.presentation.util.UiEvent
 import com.iagora.wingman.core.util.UiText
 
 class OnBoardingViewModel(
-    private val sessionManager: SessionManager,
+    private val getPref: IGetPref,
 ) : ViewModel() {
 
     fun performOnBoardPage() =
         try {
-            if (sessionManager.getToken().isNotEmpty()) {
+            if (getPref(KEYPref.TOKEN).isNotEmpty()) {
                 OnBoardingPage.MainPage
             } else {
                 OnBoardingPage.LoginPage

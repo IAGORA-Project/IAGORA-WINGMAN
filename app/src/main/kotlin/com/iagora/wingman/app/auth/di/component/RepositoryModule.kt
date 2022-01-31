@@ -8,6 +8,7 @@ val repositoryModule = module {
     single<IAuthRepository> {
         AuthRepository(
             get(),
+            get(),
             get()
         )
     }
