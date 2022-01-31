@@ -12,7 +12,6 @@ import com.iagora.wingman.core.presentation.extensions.collectLatestWhenStarted
 import com.iagora.wingman.core.presentation.extensions.collectWhenStarted
 import com.iagora.wingman.core.presentation.util.SetImage.load
 import com.iagora.wingman.core.presentation.util.hide
-import com.iagora.wingman.core.presentation.util.setMessage
 import com.iagora.wingman.core.presentation.util.show
 import com.iagora.wingman.core.util.AuthError
 import com.iagora.wingman.gallery.presentation.camera.CameraFragment.Companion.KTP
@@ -131,7 +130,7 @@ class RegisterFragment :
 
     override fun onBackPressed() = when {
         binding.incDocument.root.isVisible -> viewModel.toPersonalInfo()
-        else -> requireActivity().finish()
+        else -> super.onBackPressed()
     }
 }
 

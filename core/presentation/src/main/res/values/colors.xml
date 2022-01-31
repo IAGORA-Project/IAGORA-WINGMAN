@@ -24,6 +24,7 @@
     <!--Font-->
     <color name="fontGrey">#C4C4C4</color>
     <color name="text_primary">#020202</color>
+    <color name="link">#A163FF</color>
 
     <!--    chip tab layout-->
     <color name="colorBg">@color/white</color>

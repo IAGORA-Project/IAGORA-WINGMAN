@@ -1,5 +1,6 @@
 package com.iagora.wingman.app.auth.presentation.login
 
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.iagora.wingman.app.R
 import com.iagora.wingman.app.databinding.FragmentLoginBinding
@@ -10,7 +11,6 @@ import com.iagora.wingman.core.presentation.util.*
 import com.iagora.wingman.core.util.AuthError
 import okhttp3.internal.format
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class LoginFragment :
     BaseFragment<FragmentLoginBinding>
@@ -24,6 +24,7 @@ class LoginFragment :
         requestOTP()
         requestLogin()
         observerEventLogin()
+        setupNavigation()
     }
 
     private fun requestOTP() {
@@ -84,7 +85,6 @@ class LoginFragment :
         }
 
         viewModel.eventFlow.collectWhenStarted(viewLifecycleOwner) { event ->
-
             when (event) {
                 is UiEvent.CreateMessage -> {
                     Snackbar.make(
@@ -94,7 +94,6 @@ class LoginFragment :
                     ).apply {
                         customPrimaryColor(this.context)
                     }.show()
-                    Timber.e("EVENT ${event.uiText.asString(requireContext())}")
                 }
                 is LoginEvent.OnGetOtp -> {
                     with(binding) {
@@ -112,5 +111,9 @@ class LoginFragment :
         }
     }
 
+    private fun setupNavigation() {
+        binding.incSetPhone.tvRegister.setOnClickListener { findNavController().navigate(R.id.toRegister) }
+    }
 
+    override fun onBackPressed() = requireActivity().finish()
 }

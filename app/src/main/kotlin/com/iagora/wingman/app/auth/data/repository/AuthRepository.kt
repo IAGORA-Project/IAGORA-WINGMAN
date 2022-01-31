@@ -70,8 +70,8 @@ class AuthRepository(
                 if (response.isSuccessful && cookie != null && savePref(KEYPref.TOKEN, cookie)) {
                     Resource.Success(Unit)
                 } else {
-                    Timber.e("ERROR LOGIN")
-                    Resource.Error(UiText.DynamicString("Error occurred state : ${response.body()?.message}"))
+                    Timber.e(response.body().toString())
+                    Resource.Error(UiText.DynamicString("Tidak dapat login : Kode OTP salah"))
                 }
             } else {
                 Resource.Error(UiText.DynamicString("Error occurred state : ${getSESSID().uiText}"))

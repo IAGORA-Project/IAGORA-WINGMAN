@@ -31,4 +31,6 @@ pendapatan</string>
 Pendapatan bebas biaya admin</string>
     <string name="question">question</string>
     <string name="error_invalid_phone_number">Gunakan format (62)</string>
+    <string name="not_registered">Belum ada akun?</string>
+    <string name="register">Daftar Sebagai Wingman</string>
 </resources>
