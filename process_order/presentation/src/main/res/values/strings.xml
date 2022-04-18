@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="logo_service_delivery_text">logo_service_delivery</string>
+
+    <string-array name="path_type_action_transaction">
+        <item>@string/action_accept</item>
+        <item>@string/action_decline</item>
+    </string-array>
+</resources>

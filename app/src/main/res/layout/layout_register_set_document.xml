@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvTitlePersonalInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/title_document"
+            android:textAppearance="@style/TextViewBold.OpenSans_20sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/svKTP"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/grey_100"
+            app:contentPadding="23dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitlePersonalInfo"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.AllRadius"
+            app:srcCompat="@drawable/ic_camera_rounded" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="@string/ktp"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+            app:layout_constraintBottom_toBottomOf="@+id/svKTP"
+            app:layout_constraintStart_toEndOf="@+id/svKTP"
+            app:layout_constraintTop_toTopOf="@+id/svKTP" />
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/svSKCK"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/grey_100"
+            app:contentPadding="23dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/svKTP"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.AllRadius"
+            app:srcCompat="@drawable/ic_camera_rounded" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="@string/skck"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+            app:layout_constraintBottom_toBottomOf="@+id/svSKCK"
+            app:layout_constraintStart_toEndOf="@+id/svSKCK"
+            app:layout_constraintTop_toTopOf="@+id/svSKCK" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@color/grey_100"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/svSKCK">
+
+            <ImageView
+                android:id="@+id/ivQuestion"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="20dp"
+                android:contentDescription="@string/question"
+                android:src="@drawable/ic_question"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tvWarningBank1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="@string/warning_bank_register_1"
+                android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivQuestion"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvWarningBank2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/warning_bank_register_2"
+                android:textAppearance="@style/TextViewReguler.OpenSans_15sp_020202"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tvWarningBank1"
+                app:layout_constraintStart_toStartOf="@+id/tvWarningBank1"
+                app:layout_constraintTop_toBottomOf="@id/tvWarningBank1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvLabelBank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:labelFor="@+id/dropdownChildTypeProduct"
+            android:text="@string/bank"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilBank"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:boxStrokeColor="@null"
+            app:endIconMode="dropdown_menu"
+            app:endIconTint="@color/black"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLabelBank">
+
+            <AutoCompleteTextView
+                android:id="@+id/atvBank"
+                style="@style/TextInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:inputType="none|textNoSuggestions"
+                android:hint="@string/select_bank" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvNoRekLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/no_rek"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilBank" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNoRek"
+            style="@style/TextInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/shape_border_item_scale"
+            android:hint="@string/hint_no_rek"
+            android:inputType="numberDecimal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNoRekLabel" />
+
+        <TextView
+            android:id="@+id/tvRekName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/title_nama_rekening"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etNoRek" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNameRek"
+            style="@style/TextInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/shape_border_item_scale"
+            android:hint="@string/hint_name"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRekName" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBackToPersonal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/grey_400"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/back"
+            android:textAppearance="@style/TextViewBold.OpenSans_18sp_020202"
+            app:layout_constraintTop_toBottomOf="@+id/etNameRek" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNextToPreview"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/next"
+            android:textAppearance="@style/TextViewBold.OpenSans_18sp_020202"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnBackToPersonal" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

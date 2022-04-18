@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvTitlePersonalInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_personal_info"
+            android:textAppearance="@style/TextViewBold.OpenSans_20sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvLabelFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:labelFor="@+id/etFullName"
+            android:text="@string/full_name"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etFullName"
+            style="@style/TextInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_border_item_scale"
+            android:hint="@string/hint_name"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/tvLabelEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:labelFor="@+id/etEmail"
+            android:text="@string/email"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEmail"
+            style="@style/TextInput"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_border_item_scale"
+            android:hint="@string/hint_email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmailLabel" />
+
+
+        <TextView
+            android:id="@+id/tvLabelAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:labelFor="@+id/etAddress"
+            android:text="@string/address"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etAddress"
+            style="@style/TextInput"
+            android:paddingTop="10dp"
+            android:background="@drawable/shape_border_item_scale"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="5dp"
+            android:minLines="4"
+            android:gravity="start"
+            android:hint="@string/hint_address"
+            android:inputType="textEmailAddress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLabelAddress" />
+
+
+        <TextView
+            android:id="@+id/tvLabelCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:labelFor="@+id/atvCity"
+            android:text="@string/city_register"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_city"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:boxStrokeColor="@null"
+            app:endIconMode="dropdown_menu"
+            app:endIconTint="@color/black"
+            app:hintEnabled="false"
+            app:shapeAppearance="@style/ShapeAppearance.MaterialComponents.SmallComponent">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/select_city"
+                android:focusable="false"
+                android:inputType="none|textNoSuggestions"
+                android:padding="0dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNextToDocument"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/next"
+            android:textAppearance="@style/TextViewBold.OpenSans_18sp_020202" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</ScrollView>

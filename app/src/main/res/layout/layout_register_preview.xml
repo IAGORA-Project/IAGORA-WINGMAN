@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvTitleReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_review"
+            android:textAppearance="@style/TextViewBold.OpenSans_20sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvLabelFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/full_name"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitleReview" />
+
+        <View
+            android:id="@+id/line_name"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/grey_400"
+            android:backgroundTint="@color/grey_400"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelFullName" />
+
+
+        <TextView
+            android:id="@+id/tvLabelTelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/title_no_hp"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line_name" />
+
+        <View
+            android:id="@+id/line_telp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/grey_400"
+            android:backgroundTint="@color/grey_400"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelTelp" />
+
+        <TextView
+            android:id="@+id/tvLabelEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/email"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line_telp" />
+
+        <View
+            android:id="@+id/line_email"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/grey_400"
+            android:backgroundTint="@color/grey_400"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelEmail" />
+
+
+        <TextView
+            android:id="@+id/tvLabelAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/address"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line_email" />
+
+        <View
+            android:id="@+id/line_address"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/grey_400"
+            android:backgroundTint="@color/grey_400"
+            app:layout_constraintTop_toBottomOf="@id/tv_address" />
+
+
+        <TextView
+            android:id="@+id/title_dana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/rekening_pencairan_dana"
+            android:textAppearance="@style/TextViewReguler.OpenSans_14sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line_address" />
+
+
+        <TextView
+            android:id="@+id/tvLabelBank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/title_rekening_bank"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_dana" />
+
+        <View
+            android:id="@+id/line_bank"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/grey_400"
+            android:backgroundTint="@color/grey_400"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelBank" />
+
+        <TextView
+            android:id="@+id/tvLabelNoRek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/title_nomor_rekening"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line_bank" />
+
+        <View
+            android:id="@+id/line_norek"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/grey_400"
+            android:backgroundTint="@color/grey_400"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelNoRek" />
+
+        <TextView
+            android:id="@+id/tvLabelNameRek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/title_nama_rekening"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/line_norek" />
+
+
+        <TextView
+            android:id="@+id/tvLabelKtp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/ktp"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelNameRek" />
+
+
+        <ImageView
+            android:id="@+id/img_ktp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:contentDescription="@string/ktp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelKtp"
+            app:srcCompat="@drawable/ic_camera_rounded" />
+
+        <TextView
+            android:id="@+id/tvLabelSkck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/skck"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_ktp" />
+
+
+        <ImageView
+            android:id="@+id/img_skck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:contentDescription="@string/skck"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelSkck"
+            app:srcCompat="@drawable/ic_camera_rounded" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="tvLabelFullName, tvLabelTelp,
+            tvLabelEmail, tvLabelAddress, tvLabelBank, tvLabelNoRek, tvLabelNameRek" />
+
+        <TextView
+            android:id="@+id/tv_fullname"
+            style="@style/TextBody"
+            android:layout_width="0dp"
+            tools:text="Ahmad Subagyo"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tvLabelFullName"
+            app:layout_constraintStart_toEndOf="@id/barrier_review"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_telp"
+            style="@style/TextBody"
+            android:layout_width="0dp"
+            tools:text="6285641518876"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tvLabelTelp"
+            app:layout_constraintStart_toEndOf="@id/barrier_review"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_email"
+            style="@style/TextBody"
+            android:layout_width="0dp"
+            tools:text="ah@co.com"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tvLabelEmail"
+            app:layout_constraintStart_toEndOf="@id/barrier_review"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_address"
+            style="@style/TextBody"
+            android:layout_width="0dp"
+            tools:text="Jalan dimana lorem ipsum dolor sit amet"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tvLabelAddress"
+            app:layout_constraintStart_toEndOf="@id/barrier_review"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <TextView
+            android:id="@+id/tv_bank"
+            style="@style/TextBody"
+            android:layout_width="0dp"
+            tools:text="Mandiri"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tvLabelBank"
+            app:layout_constraintStart_toEndOf="@id/barrier_review"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_norek"
+            style="@style/TextBody"
+            android:layout_width="0dp"
+            tools:text="545454545"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tvLabelNoRek"
+            app:layout_constraintStart_toEndOf="@id/barrier_review"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_nameRek"
+            style="@style/TextBody"
+            android:layout_width="0dp"
+            tools:text="Abdul Asize"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/tvLabelNameRek"
+            app:layout_constraintStart_toEndOf="@id/barrier_review"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cb_accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="0dp"
+            android:drawablePadding="0dp"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_skck" />
+
+        <TextView
+            android:id="@+id/tv_label_accept"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_14sp_020202"
+            android:text="@string/saya_telah_membaca_dan_menyetujui"
+            app:layout_constraintStart_toEndOf="@id/cb_accept"
+            app:layout_constraintTop_toTopOf="@id/cb_accept" />
+
+        <TextView
+            android:id="@+id/tv_terms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textAppearance="@style/TextViewSemiBold.OpenSans_14sp_020202"
+            android:textColor="@color/link"
+            android:text="@string/syarat_ketentuan"
+            app:layout_constraintTop_toBottomOf="@id/tv_label_accept"
+            app:layout_constraintStart_toStartOf="@id/tv_label_accept"/>
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnProcess"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/title_proses"
+            android:textAppearance="@style/TextViewBold.OpenSans_18sp_020202"
+            app:layout_constraintTop_toBottomOf="@id/cb_accept" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

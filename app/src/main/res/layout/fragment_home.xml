@@ -1,78 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:clipToPadding="false"
-    android:paddingHorizontal="@dimen/activity_horizontal_padding"
-    tools:context=".ui.main_menu.home.HomeFragment">
+    android:paddingHorizontal="@dimen/activity_horizontal_padding">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:layout_marginStart="-16dp"
-        android:layout_marginEnd="-16dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_background_home"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
 
 
-    <ImageView
-        android:id="@+id/ivButtonChat"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/ic_chat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Selamat Siang,"
-        android:layout_marginTop="20dp"
-        android:theme="@style/TextViewBold.OpenSans_20sp_020202"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvFullName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:text="Mamang Sate"
-        android:textColor="@color/white"
-        android:theme="@style/TextViewBold.OpenSans_18sp_020202"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="-16dp"
+            android:layout_marginEnd="-16dp"
+            android:contentDescription="@string/title_home"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_background_home"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <include
-        android:id="@+id/incCardInfomration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/layout_card_information_home"
-        android:layout_marginTop="-50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        <!--    <ImageView-->
+        <!--        android:id="@+id/ivButtonChat"-->
+        <!--        android:layout_width="30dp"-->
+        <!--        android:layout_height="30dp"-->
+        <!--        android:layout_marginTop="20dp"-->
+        <!--        android:src="@drawable/ic_chat"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--    <TextView-->
+        <!--        android:id="@+id/tvFullName"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginTop="7dp"-->
+        <!--        android:text="Mamang Sate"-->
+        <!--        android:textColor="@color/white"-->
+        <!--        android:theme="@style/TextViewBold.OpenSans_18sp_020202"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />-->
 
 
-    <include
-        android:id="@+id/incMenuWingman"
-        layout="@layout/layout_menu_wingman"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/incCardInfomration" />
+        <!--    <com.google.android.material.button.MaterialButton-->
+        <!--        android:id="@+id/btn_active"-->
+        <!--        style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+        <!--        android:textAppearance="@style/TextViewSemiBold.OpenSans_14sp_020202"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:text="@string/aktifkan_layanan"-->
+        <!--        android:textAllCaps="false"-->
+        <!--        android:backgroundTint="@color/white"-->
+        <!--        android:textColor="@color/black"-->
+        <!--        app:cornerRadius="20dp"-->
+        <!--        android:layout_marginBottom="24dp"-->
+        <!--        app:layout_constraintBottom_toBottomOf="@id/imageView"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"/>-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Selamat Siang, Josef"
+            android:textColor="@color/white"
+            android:theme="@style/TextViewBold.OpenSans_20sp_020202"
+            app:layout_constraintBottom_toTopOf="@id/tvRating"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:drawablePadding="15dp"
+            android:text="4.8 /5"
+            android:textColor="@color/white"
+            android:theme="@style/TextViewReguler.OpenSans_18sp_020202"
+            app:drawableStartCompat="@drawable/ic_star_rate"
+            app:drawableTint="#FFC420"
+            app:layout_constraintBottom_toTopOf="@id/tvTitleActiveStatus"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitleActiveStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/aktifkan_layanan"
+            android:textColor="@color/white"
+            android:theme="@style/TextViewBold.OpenSans_16sp_020202"
+            app:layout_constraintBottom_toTopOf="@id/switchActiveStatus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchActiveStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:thumb="@drawable/thumb_switch"
+            android:layout_marginBottom="10dp"
+            app:useMaterialThemeColors="false"
+            app:layout_constraintBottom_toBottomOf="@id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:switchMinWidth="50dp"
+            app:track="@drawable/track_switch" />
+
+
+        <include
+            android:id="@+id/incCardInfomration"
+            layout="@layout/layout_card_information_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <include
+            android:id="@+id/incMenuWingman"
+            layout="@layout/layout_menu_wingman"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/incCardInfomration" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

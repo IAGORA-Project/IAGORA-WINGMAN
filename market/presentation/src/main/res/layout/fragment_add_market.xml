@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_image_market"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:backgroundTint="#eeee"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    style="@style/TextViewReguler.OpenSans_14sp_020202"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
+                    android:text="@string/foto_pasar_dengan_posisi_lanskap"
+                    app:drawableTopCompat="@drawable/ic_camera_rounded"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/text_add_image" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/label_name"
+            style="@style/TextViewSemiBold.OpenSans_14sp_020202"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/nama_pasar"
+            app:layout_constraintTop_toBottomOf="@id/card_image_market"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/label_name">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:hint="@string/nama_pasar"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/label_address"
+            style="@style/TextViewSemiBold.OpenSans_14sp_020202"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/alamat_pasar"
+            app:layout_constraintTop_toBottomOf="@id/tl_name"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_address"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/label_address">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:hint="@string/alamat_pasar"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/label_city"
+            style="@style/TextViewSemiBold.OpenSans_14sp_020202"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/kota_atau_kecamatan"
+            app:layout_constraintTop_toBottomOf="@id/tl_address"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_city"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/label_city">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:hint="@string/kota_atau_kecamatan"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/label_address_detail"
+            style="@style/TextViewSemiBold.OpenSans_14sp_020202"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/detail_alamat"
+            app:layout_constraintTop_toBottomOf="@id/tl_city"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_address_detail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/label_address_detail">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:minHeight="100dp"
+                android:imeOptions="actionDone"
+                android:hint="@string/detail_alamat"
+                android:gravity="start"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/tv_pinpoint"
+            style="@style/TextViewBold.OpenSans_15sp_020202"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pilih_pinpoint"
+            android:textColor="@color/link"
+            android:layout_margin="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tl_address_detail"
+            app:drawableStartCompat="@drawable/ic_location_on" />
+
+        <TextView
+            android:id="@+id/tv_message_market"
+            style="@style/TextViewSemiBold.OpenSans_15sp_020202"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_pinpoint"
+            android:text="@string/message_add_market"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tambahkan_pasar"
+            app:cornerRadius="8dp"
+            android:paddingVertical="8dp"
+            android:theme="@style/TextViewBold.OpenSans_17sp_020202"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_message_market"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

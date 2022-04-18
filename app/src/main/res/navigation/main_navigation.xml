@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.iagora.wingman.app.main_menu.presentation.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/homeNavigateToProcessOrder"
+            app:destination="@id/processOrderActivity"
+            app:enterAnim="@anim/screen_new_in"
+            app:exitAnim="@anim/screen_old_out"
+            app:popEnterAnim="@anim/screen_old_in"
+            app:popExitAnim="@anim/screen_new_out">
+
+            <argument
+                android:name="positionTab"
+                app:argType="integer" />
+        </action>
+        <action
+            android:id="@+id/homeNavigateToMarket"
+            app:destination="@id/marketActivity"
+            app:enterAnim="@anim/screen_new_in"
+            app:exitAnim="@anim/screen_old_out"
+            app:popEnterAnim="@anim/screen_old_in"
+            app:popExitAnim="@anim/screen_new_out" />
+
+        <action
+            android:id="@+id/homeNavigateToAddProduct"
+            app:destination="@id/add_product_nav"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_akun"
+        android:name="com.iagora.wingman.app.main_menu.presentation.akun.ProfileFragment"
+        android:label="@string/title_akun"
+        tools:layout="@layout/fragment_profile" />
+
+    <activity
+        android:id="@+id/processOrderActivity"
+        android:name="com.iagora.wingman.process_order.features.main_features.ProcessOrderActivity"
+        android:label="activity_process_order"
+        tools:layout="@layout/activity_process_order">
+        <argument
+            android:name="positionTab"
+            app:argType="integer" />
+    </activity>
+    <activity
+        android:id="@+id/marketActivity"
+        android:name="com.iagora.wingman.market.presentation.MarketActivity"
+        android:label="MarketActivity" />
+
+    <include app:graph="@navigation/add_product_nav" />
+</navigation>

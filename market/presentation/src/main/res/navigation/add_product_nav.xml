@@ -1,0 +1,47 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_product_nav"
+    app:startDestination="@id/addProductFragment">
+
+
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.iagora.wingman.market.presentation.add_product.AddProductFragment"
+        android:label="AddProductFragment"
+        tools:layout="@layout/fragment_add_product">
+        <argument
+            android:name="idMarket"
+            app:argType="string" />
+        <action
+            android:id="@+id/moveToGallery"
+            app:destination="@id/galleryActivity"
+            app:enterAnim="@anim/screen_new_in"
+            app:exitAnim="@anim/screen_old_out"
+            app:popEnterAnim="@anim/screen_new_out"
+            app:popExitAnim="@anim/screen_old_in" />
+
+        <action
+            android:id="@+id/openCamera"
+            app:destination="@id/cameraFragment"
+            app:enterAnim="@anim/slide_in_up"
+            app:exitAnim="@anim/slide_out_down"
+            app:popEnterAnim="@anim/slide_in_down"
+            app:popExitAnim="@anim/slide_out_up"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/cameraFragment"
+        tools:layout="@layout/fragment_camera"
+        android:name="com.iagora.wingman.gallery.presentation.camera.CameraFragment"
+        android:label="CameraFragment" >
+        <argument
+            android:name="typeImage"
+            app:argType="string" />
+    </fragment>
+
+    <activity
+        android:id="@+id/galleryActivity"
+        android:name="com.iagora.wingman.gallery.presentation.camera.GalleryActivity"
+        android:label="GalleryActivity" />
+</navigation>

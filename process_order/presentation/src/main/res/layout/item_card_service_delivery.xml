@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_white_rounded_20"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvTitleLocation"
+        style="@style/TextViewSemiBold.OpenSans_15sp_020202"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_Location"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvUserLocation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleLocation"
+        tools:text="Jalan Jambi No.22A, Medan Kota,
+SUMUT, 22222" />
+
+    <TextView
+        android:id="@+id/tvTitleService"
+        style="@style/TextViewSemiBold.OpenSans_15sp_020202"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/text_delivery_services"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvUserLocation" />
+
+    <ImageView
+        android:id="@+id/ivDeliveryServices"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPredictionDelivery"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleService"
+        android:contentDescription="@string/logo_service_delivery_text"
+        tools:src="@drawable/img_grab_express" />
+
+    <TextView
+        android:id="@+id/tvDelivery"
+        style="@style/TextViewSemiBold.OpenSans_20sp_020202"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        tools:text="-"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPredictionDelivery"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleService" />
+
+    <TextView
+        android:id="@+id/tvDeliveryFee"
+        style="@style/TextViewBold.OpenSans_15sp_020202"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelinePriceServices"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleService"
+        tools:text="@string/dummy_price" />
+
+    <TextView
+        android:id="@+id/tvPredictionDelivery"
+        style="@style/TextViewSemiBold.OpenSans_10sp_020202"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:textColor="#757575"
+        app:layout_constraintEnd_toEndOf="@+id/tvDeliveryFee"
+        app:layout_constraintStart_toStartOf="@+id/tvDeliveryFee"
+        app:layout_constraintTop_toBottomOf="@+id/tvDeliveryFee"
+        tools:text="Same day delivery" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinePriceServices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="236dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
