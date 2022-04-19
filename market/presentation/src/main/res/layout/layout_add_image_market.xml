@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Title"
+        android:theme="@style/TextViewSemiBold.OpenSans_15sp_020202"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/svPlaceHolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/grey_100"
+        app:contentPadding="23dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.AllRadius"
+        app:srcCompat="@drawable/ic_camera_rounded" />
+
+    <TextView
+        android:id="@+id/tvTitleTambahFoto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="10dp"
+        android:maxLines="2"
+        android:lines="1"
+        android:text="@string/text_max_9_image"
+        android:theme="@style/TextViewReguler.OpenSans_15sp_020202"
+        app:layout_constraintBottom_toTopOf="@+id/tvAddPhoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/svPlaceHolder"
+        app:layout_constraintTop_toTopOf="@+id/svPlaceHolder" />
+
+    <TextView
+        android:id="@+id/tvAddPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/text_add_image"
+        android:textColor="@color/redPrimary"
+        android:theme="@style/TextViewSemiBold.OpenSans_15sp_020202"
+        app:layout_constraintBottom_toBottomOf="@+id/svPlaceHolder"
+        app:layout_constraintStart_toEndOf="@+id/svPlaceHolder" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

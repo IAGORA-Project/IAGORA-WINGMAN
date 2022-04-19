@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_camera">Camera</string>
+    <string name="text_album">Album</string>
+    <string-array name="tab_title_gallery">
+        <item>@string/text_album</item>
+        <item>@string/text_camera</item>
+    </string-array>
+    <string name="text_album_permission_request">Beri akses untuk membuka album</string>
+
+    <string name="text_permission_camera">Beri akses kamera agar dapat mengambil foto</string>
+    <string name="desc_btn_shutter">shutter button</string>
+    <string name="desc_show_gallery">open gallery</string>
+    <string name="preview">preview</string>
+    <string name="desc_preview">preview foto</string>
+</resources>

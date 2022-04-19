@@ -1,42 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">IAGORA Wingman</string>
-    <string name="title_activity_main_app">MainAppActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_akun">Akun</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="text_order_not_processed">Order belum diproses</string>
-    <string name="dummy_text_total_item">Total belanja : <b>Rp.7,000</b></string>
-    <string name="format_text_total_item">Total belanja : <b>%1$s</b></string>
-    <string name="dummy_item_price_discount"><strike>Rp.6000/<sub>kg</sub></strike></string>
-    <string name="format_item_price_discount"><strike>%1$s/<sub>%2$s</sub></strike></string>
-    <string name="dummy_item_price">Rp.6,000/<sub>kg</sub></string>
-    <string name="format_item_price">%1$s/<sub>%2$s</sub></string>
-    <string name="text_price_bargaining">Harga Tawaran</string>
-    <string name="text_bargain">Tawar</string>
-    <string name="text_change">Ubah</string>
-    <string name="text_sentence_changing_services">Ubah biaya penanganan</string>
-    <string name="text_button_detail">button detail</string>
-    <string name="text_delivery_services">Layanan Pengiriman</string>
-    <string name="text_Location">Lokasi Pengiriman</string>
-    <string name="dummy_price">Rp.6,000</string>
-    <string name="text_total_title">Total</string>
-    <string name="text_shopping_title">Belanja</string>
-    <string name="text_discount_voucher_title">Diskon Voucher</string>
-    <string name="text_sub_total_title">Sub-total</string>
-    <string name="text_price_delivery_title">Ongkir</string>
-    <string name="text_services_charge_title">Biaya penanganan</string>
-    <string name="text_platform_charge_title">Biaya platform</string>
-    <string name="text_grand_total_title">Grand total</string>
-
-    <string-array name="satuan">
-        <item>Gram</item>
-        <item>Pcs</item>
-    </string-array>
-    <string-array name="tab_title_order">
-        <item>Dalam proses</item>
-        <item>Telah dibayar</item>
-        <item>Dikirm</item>
-        <item>Selesai</item>
-    </string-array>
+    <string name="otp_set_title">Masukkan kode OTP</string>
+    <string name="otp_set_desc">Kami telah mengirimkan kode OTP pada nomor WA <b>%s</b> silahkan dicek</string>
+    <string name="title_personal_info">Lengkapi Data Diri</string>
+    <string name="title_document">Lengkapi Dokumen</string>
+    <string name="desc_state_otp">Belum mendapatkan token? minta kembali dalam %d</string>
+    <string name="resend_otp">minta otp</string>
+    <string name="full_name">Nama Lengkap</string>
+    <string name="email">Email</string>
+    <string name="address">Alamat</string>
+    <string name="city_register">Kota registrasi</string>
+    <string name="market_service">Pasar yang dilayani</string>
+    <string name="select_market">Pilih Pasar</string>
+    <string name="ktp">KTP</string>
+    <string name="skck">SKCK (opsional)</string>
+    <string name="bank">Bank</string>
+    <string name="select_bank">Pilih Bank</string>
+    <string name="no_rek">Nomor rekening Bank</string>
+    <string name="name_on_rek">Nama pada rekening</string>
+    <string name="next">Selanjutnya</string>
+    <string name="back">kembali</string>
+    <string name="proses">Ajukan Pendaftaran</string>
+    <string name="hint_name">cth : Aditia Rahman</string>
+    <string name="hint_email">cth : aditia.rahman@email.example</string>
+    <string name="hint_no_rek">cth : 81xx xxx xxx</string>
+    <string name="hint_address">Jalan Angsa Nomor 33D, Sidodadi</string>
+    <string name="warning_bank_register_1">Data rekening Anda diperlukan untuk pencairan dana
+pendapatan</string>
+    <string name="warning_bank_register_2">Gunakan Bank BCA / BCA Digital untuk pencairan
+Pendapatan bebas biaya admin</string>
+    <string name="question">question</string>
+    <string name="error_invalid_phone_number">Gunakan format (62)</string>
+    <string name="not_registered">Belum ada akun?</string>
+    <string name="register">Daftar Sebagai Wingman</string>
+    <string name="verif">Verifikasi</string>
+    <string name="input_phone_number">Masukan Nomor HP</string>
+    <string name="pendaftaran_wingman">Pendaftaran WINGMAN</string>
+    <string name="title_review">Review</string>
+    <string name="title_no_hp">No. HP</string>
+    <string name="rekening_pencairan_dana">Rekening Pencairan Dana</string>
+    <string name="title_rekening_bank">Rekening bank</string>
+    <string name="title_nomor_rekening">Nomor rekening</string>
+    <string name="title_nama_rekening">Nama rekening</string>
+    <string name="saya_telah_membaca_dan_menyetujui">Saya telah membaca dan menyetujui</string>
+    <string name="title_proses">Proses</string>
+    <string name="syarat_ketentuan"><![CDATA[syarat & ketentuan]]></string>
+    <string name="aktifkan_layanan">Aktifkan Layanan</string>
+    <string name="tambahkan_produk">Tambahkan produk</string>
 </resources>

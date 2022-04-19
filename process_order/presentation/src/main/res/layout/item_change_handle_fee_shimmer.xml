@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="30dp">
+
+    <TextView
+        android:id="@+id/tvHandlingFeeTitleShimmer"
+        style="@style/TextViewReguler.OpenSans_18sp_020202"
+        android:layout_width="160dp"
+        android:layout_height="20dp"
+       android:background="@drawable/shape_shimmer_rounded_50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvHandlingFeeValueShimmer"
+        style="@style/TextViewSemiBold.OpenSans_16sp_020202"
+        android:layout_width="80dp"
+        android:layout_height="18dp"
+        android:gravity="end"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHandlingFeeTitleShimmer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvHandlingFeeTitleShimmer"
+       android:background="@drawable/shape_shimmer_rounded_50" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_shimmer_rounded_20"
+        app:layout_constraintTop_toBottomOf="@+id/tvHandlingFeeValueShimmer" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

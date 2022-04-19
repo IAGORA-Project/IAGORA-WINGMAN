@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/confirmation_navigation"
+    app:startDestination="@id/confirmationDetailFragment">
+
+
+    <fragment
+        android:id="@+id/confirmationDetailFragment"
+        android:name="com.iagora.wingman.process_order.features.confirmation.detail.ConfirmationDetailFragment"
+        android:label="ConfirmationDetailFragment">
+        <argument
+            android:name="id_transaction"
+            app:argType="string" />
+    </fragment>
+
+    <include app:graph="@navigation/confirmed_navigation" />
+
+    <action
+        android:id="@+id/moveToConfirmed"
+        app:destination="@id/confirmed_navigation"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"
+        app:popUpTo="@id/confirmation_navigation">
+
+        <argument
+            android:name="id_transaction"
+            app:argType="string" />
+    </action>
+</navigation>

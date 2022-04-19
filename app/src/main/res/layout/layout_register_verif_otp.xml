@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvTitleWingman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pendaftaran_wingman"
+        android:textAppearance="@style/TextViewBold.OpenSans_20sp_020202"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="@string/otp_set_title"
+        android:textAppearance="@style/TextViewSemiBold.OpenSans_18sp_020202"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleWingman"/>
+
+
+
+    <com.mukesh.OtpView
+        android:id="@+id/otpView"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
+        android:cursorVisible="false"
+        android:focusableInTouchMode="true"
+        android:inputType="numberPassword"
+        android:itemBackground="@drawable/shape_shimmer_circle"
+        android:textColor="@color/redPrimary"
+        android:textAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202"
+        app:itemHeight="12dp"
+        app:itemCount="6"
+        app:itemWidth="12dp"
+        app:lineColor="@color/transparent"
+        app:viewType="line"
+        app:itemSpacing="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

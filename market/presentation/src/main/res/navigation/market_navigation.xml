@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/market_navigation"
+    app:startDestination="@id/listMarketFragment">
+
+    <fragment
+        android:id="@+id/listMarketFragment"
+        android:name="com.iagora.wingman.market.presentation.list_market.ListMarketFragment"
+        android:label="fragment_list_market"
+        tools:layout="@layout/fragment_list_market">
+        <action
+            android:id="@+id/moveToListProduct"
+            app:destination="@id/list_product_nav"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
+            <argument
+                android:name="idMarket"
+                app:argType="string" />
+        </action>
+        <action
+            android:id="@+id/action_listMarketFragment_to_addMarketFragment"
+            app:destination="@id/addMarketFragment" />
+    </fragment>
+
+    <include app:graph="@navigation/list_product_nav" />
+    <fragment
+        android:id="@+id/addMarketFragment"
+        android:name="com.iagora.wingman.market.presentation.add_market.AddMarketFragment"
+        android:label="AddMarketFragment" />
+</navigation>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_couldnt_reach_server">\"duh! tidak dapat menyambungkan. periksa internet anda\"</string>
+    <string name="oops_something_went_wrong">\"duh! ada yang salah. silahkan cobalagi\"</string>
+    <string name="error_unknown">kesalahan tidak diketahui</string>
+
+    <string name="error_field_empty">Tidak boleh kosong!</string>
+    <string name="error_invalid_email">Gunakan format email yang tepat</string>
+</resources>

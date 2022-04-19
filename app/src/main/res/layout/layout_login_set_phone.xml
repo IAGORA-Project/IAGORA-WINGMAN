@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tlPhone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="true"
+        android:hint="@string/hint_phone"
+        app:boxStrokeWidthFocused="1dp"
+        app:hintTextAppearance="@style/TextViewSemiBold.OpenSans_16sp_020202">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeActionLabel="@string/login"
+            android:imeOptions="actionSend"
+            android:inputType="numberDecimal"
+            android:maxLength="15"
+            android:theme="@style/TextViewReguler.OpenSans_14sp_020202" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <include
+        android:id="@+id/incBtnLogin"
+        layout="@layout/layout_button_primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/not_registered"
+        android:textAppearance="@style/TextViewReguler.OpenSans_16sp_020202" />
+
+    <TextView
+        android:id="@+id/tvRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/link"
+        android:layout_marginTop="20dp"
+        android:text="@string/register"
+        android:textAppearance="@style/TextViewSemiBold.OpenSans_18sp_020202" />
+
+</LinearLayout>

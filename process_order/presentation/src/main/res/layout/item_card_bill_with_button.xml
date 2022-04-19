@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:theme="@style/Theme.IAGORAWingman"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_white_rounded_20"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvStoreName"
+            style="@style/TextViewSemiBold.OpenSans_18sp_020202"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            app:drawableStartCompat="@drawable/ic_toko"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Pasaraya MMTC" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvItemProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:overScrollMode="never"
+            tools:itemCount="3"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_card_change_price"
+            app:layout_constraintTop_toBottomOf="@+id/tvStoreName" />
+
+
+
+        <include
+            android:id="@+id/containerHandlingFee"
+            layout="@layout/item_change_handle_fee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvItemProduct" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

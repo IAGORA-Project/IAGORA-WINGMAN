@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/process_order_navigation"
+    app:startDestination="@id/processOrderContainerFragment">
+
+    <fragment
+        android:id="@+id/processOrderContainerFragment"
+        android:name="com.iagora.wingman.process_order.features.main_features.ProcessOrderContainerFragment"
+        android:label="ProcessOrderContainerFragment"
+        tools:layout="@layout/fragment_process_order">
+        <action
+            android:id="@+id/moveToFinishFragment"
+            app:destination="@id/finishedFragment" />
+
+        <action
+            android:id="@+id/moveToDetailConfirmed"
+            app:destination="@id/confirmed_navigation">
+            <argument
+                android:name="id_transaction"
+                app:argType="string" />
+        </action>
+        <action
+            android:id="@+id/moveToPaymentDetail"
+            app:destination="@id/paymentFragment" />
+        <action
+            android:id="@+id/moveToDetailConfirmation"
+            app:destination="@id/confirmation_navigation">
+            <argument
+                android:name="id_transaction"
+                app:argType="string" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/finishedFragment"
+        android:name="com.iagora.wingman.process_order.features.finished.FinishedFragment"
+        android:label="fragment_finished"
+        tools:layout="@layout/fragment_finished" />
+
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.iagora.wingman.process_order.features.payment.PaymentFragment"
+        android:label="PaymentFragment">
+        <argument
+            android:name="idTransaction"
+            app:argType="string" />
+    </fragment>
+
+    <activity
+        android:id="@+id/processOrderActivity"
+        android:name="com.iagora.wingman.process_order.features.main_features.ProcessOrderActivity"
+        android:label="activity_process_order"
+        tools:layout="@layout/activity_process_order">
+        <argument
+            android:name="positionTab"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </activity>
+
+
+    <include app:graph="@navigation/confirmation_navigation" />
+    <include app:graph="@navigation/confirmed_navigation" />
+</navigation>

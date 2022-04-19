@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <View
+        android:id="@+id/shapeIvPersonShimmer2"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:background="@drawable/shape_shimmer_circle"
+        app:layout_constraintBottom_toBottomOf="@+id/tvItemTotalShimmer2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvNamePersonShimmer2" />
+
+    <TextView
+        android:id="@+id/tvNamePersonShimmer2"
+        style="@style/TextViewBold.OpenSans_17sp_020202"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/shape_shimmer_rounded_50"
+        app:layout_constraintStart_toEndOf="@+id/shapeIvPersonShimmer2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvItemShimmer2"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
+        android:layout_width="229dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shape_shimmer_rounded_50"
+        android:textColor="@color/text_primary"
+        app:layout_constraintStart_toEndOf="@+id/shapeIvPersonShimmer2"
+        app:layout_constraintTop_toBottomOf="@+id/tvNamePersonShimmer2" />
+
+    <TextView
+        android:id="@+id/tvItemTotalShimmer2"
+        style="@style/TextViewReguler.OpenSans_15sp_020202"
+        android:layout_width="150dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shape_shimmer_rounded_50"
+        android:textColor="@color/text_primary"
+        app:layout_constraintStart_toEndOf="@+id/shapeIvPersonShimmer2"
+        app:layout_constraintTop_toBottomOf="@+id/tvItemShimmer2" />
+
+    <ImageButton
+        android:id="@+id/imageButtonShimmer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:background="@color/transparent_600"
+        android:contentDescription="@string/text_button_detail"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_arrow_right_shimmer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
